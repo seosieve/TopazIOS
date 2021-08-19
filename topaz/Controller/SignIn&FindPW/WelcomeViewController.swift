@@ -21,6 +21,8 @@ class WelcomeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         super.viewDidLoad()
         
         let attributedString = NSMutableAttributedString(string: titleLabel.text!)
@@ -36,6 +38,7 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "GoToHome", sender: sender)
     }
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
@@ -56,3 +59,14 @@ class WelcomeViewController: UIViewController {
     }
 }
 
+//MARK: - UITextFieldDelegate
+extension WelcomeViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.resignFirstResponder()
+        }
+        return true
+    }
+}

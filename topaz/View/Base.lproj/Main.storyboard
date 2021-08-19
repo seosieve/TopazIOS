@@ -26,25 +26,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="색다른 여행을 즐겨보아요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PO-Au-X34">
-                                <rect key="frame" x="28" y="171.5" width="207" height="23.5"/>
+                                <rect key="frame" x="28" y="177" width="220.5" height="29"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
                                 <color key="textColor" name="Gray3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbv-mF-9PU">
-                                <rect key="frame" x="28" y="348" width="48.5" height="16.5"/>
+                                <rect key="frame" x="28" y="366.5" width="52" height="20.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                 <color key="textColor" name="Gray3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfc-vA-ihU">
-                                <rect key="frame" x="28" y="259" width="36.5" height="16.5"/>
+                                <rect key="frame" x="28" y="270" width="39" height="20.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                 <color key="textColor" name="Gray3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 입력해주세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAm-Ls-Ex2">
-                                <rect key="frame" x="28" y="376.5" width="358" height="19"/>
+                                <rect key="frame" x="28" y="399" width="358" height="24"/>
                                 <color key="textColor" name="Gray2"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -55,7 +55,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일 주소를 입력해주세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RIf-Z9-KSJ">
-                                <rect key="frame" x="28" y="287.5" width="358" height="20.5"/>
+                                <rect key="frame" x="28" y="302.5" width="358" height="24"/>
                                 <color key="textColor" name="Gray2"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -66,21 +66,21 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ew1-h7-AaI">
-                                <rect key="frame" x="28" y="312" width="358" height="1"/>
+                                <rect key="frame" x="28" y="330.5" width="358" height="1"/>
                                 <color key="backgroundColor" name="Gray5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="MB8-vV-YTh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Wo-Ha-HDn">
-                                <rect key="frame" x="28" y="399.5" width="358" height="1"/>
+                                <rect key="frame" x="28" y="427" width="358" height="1"/>
                                 <color key="backgroundColor" name="Gray5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="AnX-y2-KOF"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMj-ah-0Ek">
-                                <rect key="frame" x="28" y="708" width="358" height="48"/>
+                                <rect key="frame" x="28" y="704" width="358" height="48"/>
                                 <color key="backgroundColor" name="MintBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="FGv-sY-GHj"/>
@@ -93,7 +93,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buQ-fJ-vKh">
-                                <rect key="frame" x="139.5" y="834" width="135" height="26"/>
+                                <rect key="frame" x="136" y="830" width="142" height="30"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
                                 <state key="normal" title="비밀번호를 잊어버리셨나요?">
                                     <color key="titleColor" name="Gray4"/>
@@ -103,25 +103,25 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kxa-bB-YeX">
-                                <rect key="frame" x="28" y="768" width="358" height="48"/>
+                                <rect key="frame" x="28" y="764" width="358" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="Ydb-u3-r28"/>
                                 </constraints>
                                 <state key="normal" title="회원가입">
-                                    <color key="titleColor" name="MainBlue"/>
+                                    <color key="titleColor" name="MintBlue"/>
                                 </state>
                                 <connections>
                                     <action selector="signUpButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qc4-Wh-bfw"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="topaz 와 함께" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwx-IW-Sb8">
-                                <rect key="frame" x="28" y="140" width="113" height="23.5"/>
+                                <rect key="frame" x="28" y="140" width="117.5" height="29"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
                                 <color key="textColor" name="Gray3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CloudImage" translatesAutoresizingMaskIntoConstraints="NO" id="maj-nR-oO8">
-                                <rect key="frame" x="128" y="46" width="286" height="136"/>
+                                <rect key="frame" x="128" y="60" width="286" height="136"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="286" id="C8z-vh-K2J"/>
                                     <constraint firstAttribute="height" constant="136" id="hs6-OQ-egx"/>
@@ -150,7 +150,7 @@
                             <constraint firstItem="kxa-bB-YeX" firstAttribute="top" secondItem="FMj-ah-0Ek" secondAttribute="bottom" constant="12" id="hR6-Vh-0yu"/>
                             <constraint firstItem="RIf-Z9-KSJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jU9-FL-0oh"/>
                             <constraint firstItem="FMj-ah-0Ek" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdn-dr-Em0"/>
-                            <constraint firstItem="maj-nR-oO8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="46" id="lrd-ef-hhR"/>
+                            <constraint firstItem="maj-nR-oO8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="60" id="lrd-ef-hhR"/>
                             <constraint firstItem="jfc-vA-ihU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="m3o-wS-CXS"/>
                             <constraint firstItem="ew1-h7-AaI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="28" id="mVt-Mk-sIG"/>
                             <constraint firstItem="kAm-Ls-Ex2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nNp-6g-0Jx"/>
@@ -172,31 +172,14 @@
                         <outlet property="passwordTextField" destination="kAm-Ls-Ex2" id="OXK-5S-jiO"/>
                         <outlet property="signUpButton" destination="kxa-bB-YeX" id="oHN-Zj-xrE"/>
                         <outlet property="titleLabel" destination="Xwx-IW-Sb8" id="BXO-xD-Ajj"/>
-                        <segue destination="qYA-NQ-4LT" kind="show" identifier="goToSignUp" id="SIW-t5-9qV"/>
                         <segue destination="CGG-1P-JWm" kind="show" identifier="goToFindPassword" id="DRc-wy-3PU"/>
+                        <segue destination="IIs-rb-4Ca" kind="show" identifier="goToSignUp" id="RSo-Jg-K1X"/>
+                        <segue destination="lqj-A3-vZ3" kind="show" id="qhH-QR-xF7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121.73913043478262" y="87.723214285714278"/>
-        </scene>
-        <!--Sign Up View Controller-->
-        <scene sceneID="QVr-It-Fvh">
-            <objects>
-                <viewController id="qYA-NQ-4LT" customClass="SignUpViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="gfJ-Dc-ZGB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="cjq-u3-78z"/>
-                        <color key="backgroundColor" name="White"/>
-                    </view>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="2Xu-7h-68Z">
-                        <barButtonItem key="backBarButtonItem" title=" " id="kBa-Td-Q5S"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nwP-3T-k0X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="858" y="88"/>
+            <point key="canvasLocation" x="122" y="94"/>
         </scene>
         <!--Find Password View Controller-->
         <scene sceneID="Wli-IO-bfJ">
@@ -207,7 +190,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CloudImage" translatesAutoresizingMaskIntoConstraints="NO" id="mFU-Tl-9N4">
-                                <rect key="frame" x="128" y="46" width="286" height="136"/>
+                                <rect key="frame" x="128" y="60" width="286" height="136"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="136" id="Rzv-3c-HNL"/>
                                     <constraint firstAttribute="width" constant="286" id="aMC-vr-CY4"/>
@@ -223,13 +206,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 찾기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhg-IC-Xw1">
-                                <rect key="frame" x="20" y="168" width="131.5" height="28"/>
+                                <rect key="frame" x="20" y="168" width="139.5" height="35"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="24"/>
                                 <color key="textColor" name="Gray1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 주소로 찾기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lf-6z-eln">
-                                <rect key="frame" x="20" y="242" width="120" height="19"/>
+                                <rect key="frame" x="20" y="242" width="127" height="23.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                                 <color key="textColor" name="Gray2"/>
                                 <nil key="highlightedColor"/>
@@ -244,12 +227,15 @@
                                 <state key="normal" title="인증 메일 보내기">
                                     <color key="titleColor" name="Gray4"/>
                                 </state>
+                                <connections>
+                                    <action selector="emailSendingButtonPressed:" destination="CGG-1P-JWm" eventType="touchUpInside" id="VKn-0b-4HL"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcJ-Xy-lfv">
-                                <rect key="frame" x="20" y="269.5" width="374" height="50"/>
+                                <rect key="frame" x="20" y="274" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일 주소를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3e-mG-lzH">
-                                        <rect key="frame" x="10" y="14" width="354" height="20.5"/>
+                                        <rect key="frame" x="10" y="14" width="354" height="24"/>
                                         <color key="textColor" name="Gray2"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -264,7 +250,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가입되지 않은 이메일입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZ0-2W-r4I">
-                                <rect key="frame" x="20" y="327.5" width="135" height="14"/>
+                                <rect key="frame" x="20" y="332" width="143" height="17.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
                                 <color key="textColor" name="WarningRed"/>
                                 <nil key="highlightedColor"/>
@@ -280,7 +266,7 @@
                             <constraint firstItem="WZ0-2W-r4I" firstAttribute="top" secondItem="UcJ-Xy-lfv" secondAttribute="bottom" constant="8" id="LMe-Y8-vls"/>
                             <constraint firstItem="mFU-Tl-9N4" firstAttribute="leading" secondItem="U2o-pZ-PoD" secondAttribute="leading" constant="128" id="Tya-cT-BMJ"/>
                             <constraint firstItem="vhl-73-F2l" firstAttribute="leading" secondItem="U2o-pZ-PoD" secondAttribute="leading" constant="20" id="XOn-wk-AVK"/>
-                            <constraint firstItem="mFU-Tl-9N4" firstAttribute="top" secondItem="U2o-pZ-PoD" secondAttribute="top" constant="46" id="ZyV-H4-ULg"/>
+                            <constraint firstItem="mFU-Tl-9N4" firstAttribute="top" secondItem="U2o-pZ-PoD" secondAttribute="top" constant="60" id="ZyV-H4-ULg"/>
                             <constraint firstItem="7lf-6z-eln" firstAttribute="top" secondItem="U2o-pZ-PoD" secondAttribute="top" constant="242" id="doC-Qd-w0d"/>
                             <constraint firstItem="Y57-AN-Tl2" firstAttribute="leading" secondItem="U2o-pZ-PoD" secondAttribute="leading" constant="20" id="lxB-7f-UaH"/>
                             <constraint firstItem="UcJ-Xy-lfv" firstAttribute="centerX" secondItem="U2o-pZ-PoD" secondAttribute="centerX" id="ptO-hr-11b"/>
@@ -293,10 +279,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="ELN-7S-ZF3"/>
                     <connections>
-                        <outlet property="emailSendingButton" destination="vhl-73-F2l" id="yR9-pK-24G"/>
                         <outlet property="emailTextField" destination="h3e-mG-lzH" id="Zk3-h8-ZKi"/>
                         <outlet property="emailTextFieldBorder" destination="UcJ-Xy-lfv" id="4yB-Zr-3ga"/>
                         <outlet property="emailWarningMessage" destination="WZ0-2W-r4I" id="AEI-2a-5Z4"/>
+                        <outlet property="sendingButton" destination="vhl-73-F2l" id="yR9-pK-24G"/>
                         <outlet property="sendingButtonYConstraint" destination="A9b-nl-G6o" id="alO-51-Ph6"/>
                     </connections>
                 </viewController>
@@ -304,56 +290,25 @@
             </objects>
             <point key="canvasLocation" x="121.73913043478262" y="800.89285714285711"/>
         </scene>
-        <!--Item 2-->
-        <scene sceneID="pEd-x3-UdW">
+        <!--EmailPWEditVC-->
+        <scene sceneID="NYg-IJ-Vsd">
             <objects>
-                <viewController id="44I-vI-gOq" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ynj-Cn-fWA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="ihm-Iv-cZY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="2zI-Xr-HT7"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EMi-Ds-aBk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="SignUp" referencedIdentifier="EmailPWEditVC" id="IIs-rb-4Ca" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="YKn-58-rq0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iNa-Li-dyx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5661" y="427"/>
+            <point key="canvasLocation" x="716" y="82"/>
         </scene>
-        <!--Item 1-->
-        <scene sceneID="mu7-sz-nN5">
+        <!--HomeVC-->
+        <scene sceneID="wVa-ry-gKA">
             <objects>
-                <viewController id="dVY-V1-KMX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E0r-1Y-ByI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="X3K-r6-tsB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="LlB-fE-qFS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jrc-Mx-fcf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="HomeVC" id="lqj-A3-vZ3" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Rgl-Dp-j4g"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sVj-Ic-5lv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5661" y="-252"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="hMQ-de-cWr">
-            <objects>
-                <tabBarController id="Rv6-lN-G5G" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="hl1-SG-Vxm"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uFa-xH-IXn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="dVY-V1-KMX" kind="relationship" relationship="viewControllers" id="bWr-Ox-MUI"/>
-                        <segue destination="44I-vI-gOq" kind="relationship" relationship="viewControllers" id="bMa-3x-8QD"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h1W-ig-u3s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4683" y="107"/>
+            <point key="canvasLocation" x="756" y="183"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H8c-Yr-JBy">
@@ -399,9 +354,6 @@
         </namedColor>
         <namedColor name="Gray6">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="MainBlue">
-            <color red="0.19200000166893005" green="0.86699998378753662" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MintBlue">
             <color red="0.19200000166893005" green="0.86699998378753662" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
