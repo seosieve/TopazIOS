@@ -8,22 +8,29 @@
 import UIKit
 
 class CompleteViewController: UIViewController {
-
+    @IBOutlet weak var completeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        removeNavigationBackground(view: self)
+        addMultipleFonts()
+    }
 
-        // Do any additional setup after loading the view.
+    @IBAction func goToLoginPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToMain", sender: sender)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
+//MARK: - UI Functions
+extension CompleteViewController {
+    func addMultipleFonts() {
+        let attributedString = NSMutableAttributedString(string: completeLabel.text!)
+        attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 32)!, range: (completeLabel.text! as NSString).range(of: "회원가입"))
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "MintBlue")!, range: (completeLabel.text! as NSString).range(of: "회원가입"))
+        completeLabel.attributedText = attributedString
+    }
+}
+

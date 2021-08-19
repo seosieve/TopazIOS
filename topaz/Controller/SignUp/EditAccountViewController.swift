@@ -7,12 +7,164 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
-
+class EditAccountController: UIViewController {
+    @IBOutlet weak var emailTextFieldBorder: UIView!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var PWTextField: UITextField!
+    @IBOutlet weak var PWTextFieldBorder: UIView!
+    @IBOutlet weak var PWConfirmTextField: UITextField!
+    @IBOutlet weak var PWConfirmTextFieldBorder: UIView!
+    @IBOutlet weak var PGBarComponentStack: UIStackView!
+    @IBOutlet weak var PGBar: UIProgressView!
+    @IBOutlet weak var planeX: NSLayoutConstraint!
+    
+    @IBOutlet weak var emailWarning: UILabel!
+    @IBOutlet weak var PWWarning: UILabel!
+    @IBOutlet weak var PWConfirmWarning: UILabel!
+    
+    @IBOutlet weak var emailWarningY: NSLayoutConstraint!
+    @IBOutlet weak var PWWarningY: NSLayoutConstraint!
+    
+    
+    @IBOutlet var check: [UIImageView]!
+    @IBOutlet weak var goToNext: UIButton!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        removeNavigationBackground(view: self)
+        makeBorder(target: emailTextFieldBorder, isFilled: false)
+        makeBorder(target: PWTextFieldBorder, isFilled: false)
+        makeBorder(target: PWConfirmTextFieldBorder, isFilled: false)
+        // TextField 입력 감지
+        emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        PWTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        PWConfirmTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
+        emailTextField.delegate = self
+        PWTextField.delegate = self
+        PWConfirmTextField.delegate = self
+        
+        setPlane(level: 1, stack: PGBarComponentStack)
+        goToNext.isEnabled = true
+        //goToNext.isEnabled = false 나중에 바꾸기 꼭
     }
     
-
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        emailTextField.endEditing(true)
+        PWTextField.endEditing(true)
+        PWConfirmTextField.endEditing(true)
+    }
+    
+    @objc func textFieldDidChange(_ sender: UITextField) {
+        if sender == emailTextField {
+            if sender.text!.contains("@"){
+                //이메일 양식에 맞을 때
+                check[0].alpha = 1
+                correctAnimation(index: 0)
+                if sender.text!.contains("1") {
+                    //이메일 양식에 맞지만 이미 가입된 이메일일 때
+                    check[0].alpha = 0
+                    emailWarning.text = "이미 가입된 이메일입니다."
+                    incorrectAnimation(index: 0)
+                }
+            } else {
+                //이메일 양식에 맞지 않을 때
+                check[0].alpha = 0
+                emailWarning.text = "이메일 주소가 올바르지 않습니다."
+                incorrectAnimation(index: 0)
+            }
+        } else if sender == PWTextField {
+            if 8 < sender.text!.count && sender.text!.count < 20 {
+                //이메일 양식에 맞을 때
+                check[1].alpha = 1
+                correctAnimation(index: 1)
+                if sender.text!.contains("@") {
+                    //이메일 양식에 맞지만 이미 가입된 이메일일 때
+                    check[1].alpha = 0
+                    PWWarning.text = "숫자, 영문을 포함해주세요."
+                    incorrectAnimation(index: 1)
+                }
+            } else {
+                //이메일 양식에 맞지 않을 때
+                check[1].alpha = 0
+                PWWarning.text = "8~20자 이내로 입력해 주세요."
+                incorrectAnimation(index: 1)
+            }
+        } else {
+            if sender.text == PWTextField.text {
+                check[2].alpha = 1
+                correctAnimation(index: 2)
+            } else {
+                check[2].alpha = 0
+                PWConfirmWarning.text = "비밀번호가 일치하지 않습니다."
+                incorrectAnimation(index: 2)
+            }
+        }
+        let state = checkState()
+        movePlane(level: 1, planeX: planeX, view: self.view, bar: PGBar, isCompleted: state)
+        shiftButton(for: goToNext, isOn: state)
+    }
+    
+    @IBAction func goToNextPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToAcceptTerms", sender: sender)
+    }
 }
+//MARK: - UI Functions
+extension EditAccountController {
+    func correctAnimation(index: Int) {
+        if index == 0 {
+            self.emailWarning.alpha = 0
+            self.emailWarningY.constant = -9.5
+            self.emailTextFieldBorder.layer.borderColor = UIColor(named: "Gray5")?.cgColor
+        } else if index == 1 {
+            self.PWWarning.alpha = 0
+            self.PWWarningY.constant = -9.5
+            self.PWTextFieldBorder.layer.borderColor = UIColor(named: "Gray5")?.cgColor
+        } else {
+            self.PWConfirmWarning.alpha = 0
+            self.PWConfirmTextFieldBorder.layer.borderColor = UIColor(named: "Gray5")?.cgColor
+        }
+    }
+    
+    func incorrectAnimation(index: Int) {
+        UIView.animate(withDuration: 1, animations: {
+            if index == 0 {
+                self.emailWarning.alpha = 1
+                self.emailWarningY.constant = 14.5
+                self.emailTextFieldBorder.layer.borderColor = UIColor(named: "WarningRed")?.cgColor
+            } else if index == 1 {
+                self.PWWarning.alpha = 1
+                self.PWWarningY.constant = 14.5
+                self.PWTextFieldBorder.layer.borderColor = UIColor(named: "WarningRed")?.cgColor
+            } else {
+                self.PWConfirmWarning.alpha = 1
+                self.PWConfirmTextFieldBorder.layer.borderColor = UIColor(named: "WarningRed")?.cgColor
+            }
+        })
+    }
+    
+    func checkState() -> Bool {
+        if check[0].alpha == 1 && check[1].alpha == 1 && check[2].alpha == 1 {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
+//MARK: - UITextFieldDelegate
+//return 눌렀을 때 키보드 down
+extension EditAccountController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            PWTextField.becomeFirstResponder()
+        } else if textField == PWTextField {
+            PWConfirmTextField.becomeFirstResponder()
+        } else {
+            PWConfirmTextField.resignFirstResponder()
+        }
+        return true
+    }
+}
+
+

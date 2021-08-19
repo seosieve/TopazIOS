@@ -12,52 +12,44 @@ class FindPasswordViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailTextFieldBorder: UIView!
     @IBOutlet weak var sendingButton: UIButton!
-    @IBOutlet weak var sendingButtonYConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sendingButtonY: NSLayoutConstraint!
     @IBOutlet weak var emailWarningMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        emailTextField.delegate = self
+        removeNavigationBackground(view: self)
+        makeBorder(target: emailTextFieldBorder, isFilled: false)
+        makeBorder(target: sendingButton, isFilled: true)
         sendingButton.isEnabled = false
+        // TextField 입력 감지
+        emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
-        emailTextFieldBorder.layer.cornerRadius = 6
-        emailTextFieldBorder.layer.borderWidth = 1
-        emailTextFieldBorder.layer.borderColor = UIColor(named: "Gray5")?.cgColor
-        
-        //Navigation Bar line과 Background 제거
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        emailTextField.delegate = self
+
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField.text!.contains("호르몬동") {
-            // 하나의 함수로 만들자
-            sendingButton.isEnabled = true
-            sendingButton.backgroundColor = UIColor(named: "MintBlue")
-            sendingButton.setTitleColor(UIColor(named: "White"), for: .normal)
-            emailTextFieldBorder.layer.borderColor = UIColor(named: "Gray5")?.cgColor
-            emailWarningMessage.alpha = 0
-            sendingButtonYConstraint.constant = 360
-            
+    @objc func textFieldDidChange(_ sender: UITextField) {
+        if sender.text!.contains("호르몬동") {
+            shiftButton(for: sendingButton, isOn: true)
+            correctAnimation()
         } else {
-            //하나의 함수로 만들자
-            sendingButton.backgroundColor = UIColor(named: "Gray6")
-            sendingButton.setTitleColor(UIColor(named: "Gray4"), for: .normal)
-            emailTextFieldBorder.layer.borderColor = UIColor(named: "WarningRed")?.cgColor
-            emailWarningMessage.alpha = 1
-            sendingButtonYConstraint.constant = 372
+            shiftButton(for: sendingButton, isOn: false)
+            incorrectAnimation()
         }
-        return true
     }
-    
+        
     @IBAction func emailSendingButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "메일이 전송되었습니다. 비밀번호 변경 후 다시 로그인해주세요.", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default) { (action) in
             // Navigation Controller에서 dismiss
             self.navigationController?.popViewController(animated: true)
         }
+        let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
+        imgViewTitle.image = UIImage(named:"Group 2265")
+        alert.view.addSubview(imgViewTitle)
         alert.addAction(action)
-        alert.view.tintColor = UIColor.black
+        alert.view.tintColor = UIColor(named: "Gray2")
+
         present(alert, animated: true, completion: nil)
     }
     
@@ -65,8 +57,28 @@ class FindPasswordViewController: UIViewController {
         emailTextField.endEditing(true)
     }
 }
+//MARK: - UI Functions
+extension FindPasswordViewController {
+    // email이 가입되었을 때 애니메이션
+    func correctAnimation() {
+        UIView.animate(withDuration: 1) {
+            self.emailTextFieldBorder.layer.borderColor = UIColor(named: "Gray5")?.cgColor
+            self.emailWarningMessage.alpha = 0
+            self.sendingButtonY.constant = 360
+        }
+    }
+    // email이 가입되어있지 않을 때 애니메이션
+    func incorrectAnimation() {
+        UIView.animate(withDuration: 1) {
+            self.emailTextFieldBorder.layer.borderColor = UIColor(named: "WarningRed")?.cgColor
+            self.emailWarningMessage.alpha = 1
+            self.sendingButtonY.constant = 384
+        }
+    }
+}
 
 //MARK: - UITextFieldDelegate
+//return 눌렀을 때 키보드 down
 extension FindPasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTextField.resignFirstResponder()

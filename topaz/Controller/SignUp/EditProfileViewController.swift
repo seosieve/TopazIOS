@@ -8,22 +8,161 @@
 import UIKit
 
 class EditProfileViewController: UIViewController {
-
+    @IBOutlet weak var PGBarComponentStack: UIStackView!
+    @IBOutlet weak var PGBar: UIProgressView!
+    @IBOutlet weak var planeX: NSLayoutConstraint!
+    @IBOutlet weak var profileAdd: UIButton!
+    @IBOutlet weak var profileAddText: UIButton!
+    
+    @IBOutlet weak var nicknameDot: UIView!
+    @IBOutlet weak var nicknameTextFieldBorder: UIView!
+    @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var introduceTextFieldBorder: UIView!
+    @IBOutlet weak var introduceTextField: UITextField!
+    @IBOutlet weak var nicknameWarning: UILabel!
+    @IBOutlet weak var nicknameWarningY: NSLayoutConstraint!
+    
+    @IBOutlet weak var check: UIImageView!
+    @IBOutlet weak var goToNext: UIButton!
+    
+    var imagePicker: UIImagePickerController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        removeNavigationBackground(view: self)
+        makeBorder(target: nicknameTextFieldBorder, isFilled: false)
+        makeBorder(target: introduceTextFieldBorder, isFilled: false)
+        makeCircle(target: profileAdd, color: "MintBlue", width: 3)
+        makeCircle(target: nicknameDot, color: "WarningRed", width: 0)
+        profileAdd.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        // TextField 입력 감지
+        self.nicknameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
+        nicknameTextField.delegate = self
+        introduceTextField.delegate = self
+        
+        setPlane(level: 3, stack: PGBarComponentStack)
+        goToNext.isEnabled = false
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nicknameTextField.endEditing(true)
+        introduceTextField.endEditing(true)
+    }
+    
+    @IBAction func profileAddPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "프로필 이미지를 선택해주세요", message: "앨범에서 선택 또는 카메라 사용이 가능합니다.", preferredStyle: .actionSheet)
+        let album = UIAlertAction(title: "앨범에서 선택", style: .default) { (action) in
+            self.useLibrary()
+        }
+        let camera = UIAlertAction(title: "카메라 촬영", style: .default) { (action) in
+            self.useCamera()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(album)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    @objc func textFieldDidChange(_ sender: UITextField) {
+        if 1 <= sender.text!.count && sender.text!.count <= 4 {
+            //닉네임 글자가 4자 이하일 때, 한글일 때
+            check.alpha = 1
+            correctAnimation()
+            if sender.text!.contains("김") {
+                //이메일 양식에 맞지만 이미 가입된 이메일일 때
+                check.alpha = 0
+                nicknameWarning.text = "이미 사용중인 닉네임입니다."
+                incorrectAnimation()
+            }
+        } else {
+            //닉네임 글자가 4자 초과일 때, 영어일 때
+            check.alpha = 0
+            nicknameWarning.text = "네 글자 이하의 한글 닉네임을 사용해주세요."
+            incorrectAnimation()
+        }
+        let state = checkState()
+        movePlane(level: 3, planeX: planeX, view: self.view, bar: PGBar, isCompleted: state)
+        shiftButton(for: goToNext, isOn: state)
+    }
+    
+    @IBAction func goToNext(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToComplete", sender: sender)
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//MARK: - UI Functions
+extension EditProfileViewController {
+    func makeCircle(target view: UIView, color: String, width: Int) {
+        view.layer.masksToBounds = true
+        view.layer.cornerRadius = view.frame.size.width/2
+        view.layer.borderWidth = CGFloat(width)
+        view.layer.borderColor = UIColor(named: color)?.cgColor
     }
-    */
+    
+    func correctAnimation() {
+        self.nicknameWarning.alpha = 0
+        self.nicknameWarningY.constant = -9.5
+        self.nicknameTextFieldBorder.layer.borderColor = UIColor(named: "Gray5")?.cgColor
+    }
+    
+    func incorrectAnimation() {
+        self.nicknameWarning.alpha = 1
+        self.nicknameWarningY.constant = 14.5
+        self.nicknameTextFieldBorder.layer.borderColor = UIColor(named: "WarningRed")?.cgColor
+    }
+    
+    func checkState() -> Bool {
+        if check.alpha == 1 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+}
 
+//MARK: - UITextFieldDelegate
+//return 눌렀을 때 키보드 down
+extension EditProfileViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nicknameTextField {
+            introduceTextField.becomeFirstResponder()
+        } else {
+            introduceTextField.resignFirstResponder()
+        }
+        return true
+    }
+}
+
+//MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func useCamera() {
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .camera
+        imagePicker.modalPresentationStyle = .fullScreen
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func useLibrary() {
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.modalPresentationStyle = .fullScreen
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            profileAdd.setImage(img, for: .normal)
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
 }

@@ -15,47 +15,42 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        removeNavigationBackground(view: self)
+        makeBorder(target: loginButton, isFilled: true)
+        makeBorder(target: signUpButton, color: "MintBlue", isFilled: false)
+        addMultipleFonts()
+
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        super.viewDidLoad()
-        
-        let attributedString = NSMutableAttributedString(string: titleLabel.text!)
-        attributedString.addAttribute(.font, value: UIFont(name: "Poppins-Bold", size: 32)!, range: (titleLabel.text! as NSString).range(of: "topaz"))
-        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "Gray1")!, range: (titleLabel.text! as NSString).range(of: "topaz"))
-        titleLabel.attributedText = attributedString
-
-        loginButton.layer.cornerRadius = 6
-        loginButton.layer.masksToBounds = true
-        signUpButton.layer.borderWidth = 1
-        signUpButton.layer.cornerRadius = 6
-        signUpButton.layer.borderColor = UIColor(named: "MintBlue")?.cgColor
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "GoToHome", sender: sender)
+        performSegue(withIdentifier: "goToHome", sender: sender)
     }
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "goToSignUp", sender: sender)
     }
-    @IBAction func findPasswordButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "goToFindPassword", sender: sender)
+    @IBAction func findPWButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToFindPW", sender: sender)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         emailTextField.endEditing(true)
         passwordTextField.endEditing(true)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        self.navigationController?.navigationBar.isHidden = false
+}
+
+//MARK: - UI Functions
+extension WelcomeViewController {
+    // 한 레이블에 여러 폰트 넣기
+    func addMultipleFonts() {
+        let attributedString = NSMutableAttributedString(string: titleLabel.text!)
+        attributedString.addAttribute(.font, value: UIFont(name: "Poppins-Bold", size: 32)!, range: (titleLabel.text! as NSString).range(of: "topaz"))
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "Gray1")!, range: (titleLabel.text! as NSString).range(of: "topaz"))
+        titleLabel.attributedText = attributedString
     }
 }
 
