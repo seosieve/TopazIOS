@@ -21,6 +21,7 @@
 		4E0FAEB726C0EE9A003D80E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0FAEB526C0EE9A003D80E3 /* LaunchScreen.storyboard */; };
 		4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05026CD16FF005682E5 /* TermsViewController.swift */; };
 		4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05226CD3085005682E5 /* CompleteViewController.swift */; };
+		4E32E07926DE35FB005682E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */; };
 		4E9DCB1F26C177EF001D218A /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0826C177D1001D218A /* NotoSansKR-Black.otf */; };
 		4E9DCB2026C177F1001D218A /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0D26C177DB001D218A /* NotoSansKR-Bold.otf */; };
 		4E9DCB2126C177F3001D218A /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0A26C177DB001D218A /* NotoSansKR-Light.otf */; };
@@ -45,9 +46,11 @@
 		4E9DCB3426C1781F001D218A /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB1826C177E2001D218A /* Poppins-Thin.ttf */; };
 		4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0F26C177E1001D218A /* Poppins-ThinItalic.ttf */; };
 		4EFBA8DA26C1362C001F1557 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFBA8D926C1362C001F1557 /* Assets.xcassets */; };
+		A5A94767E83929E3AA0881CF /* Pods_topaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44604151810CDEE526775EAB /* Pods_topaz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44604151810CDEE526775EAB /* Pods_topaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_topaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E056DF026C25E5100FDF0F3 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
 		4E056DF226C25EEB00FDF0F3 /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		4E056DF726C3901E00FDF0F3 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		4E0FAEB826C0EE9A003D80E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E32E05026CD16FF005682E5 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		4E32E05226CD3085005682E5 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
+		4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4E9DCB0826C177D1001D218A /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
 		4E9DCB0926C177DB001D218A /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		4E9DCB0A26C177DB001D218A /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		4E9DCB1D26C177E2001D218A /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		4E9DCB1E26C177E2001D218A /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
 		4EFBA8D926C1362C001F1557 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Downloads/AppIcons (1)/Assets.xcassets"; sourceTree = "<group>"; };
+		7E3975921A6298E978E2E2DB /* Pods-topaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-topaz.debug.xcconfig"; path = "Target Support Files/Pods-topaz/Pods-topaz.debug.xcconfig"; sourceTree = "<group>"; };
+		D0BB8C8097326A0C7F69BE6B /* Pods-topaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-topaz.release.xcconfig"; path = "Target Support Files/Pods-topaz/Pods-topaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,12 +101,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A94767E83929E3AA0881CF /* Pods_topaz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47753D3DDBC92C3E504B07DC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E3975921A6298E978E2E2DB /* Pods-topaz.debug.xcconfig */,
+				D0BB8C8097326A0C7F69BE6B /* Pods-topaz.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4E056DFB26C39A1700FDF0F3 /* SignIn&FindPW */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +144,8 @@
 			children = (
 				4E0FAEA926C0EE99003D80E3 /* topaz */,
 				4E0FAEA826C0EE99003D80E3 /* Products */,
+				47753D3DDBC92C3E504B07DC /* Pods */,
+				6B6292D5191DF706BC534E8D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +167,7 @@
 				4EFBA8DB26C137A8001F1557 /* View */,
 				4EFBA8D926C1362C001F1557 /* Assets.xcassets */,
 				4E0FAEB526C0EE9A003D80E3 /* LaunchScreen.storyboard */,
+				4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */,
 				4E0FAEB826C0EE9A003D80E3 /* Info.plist */,
 				4E9DCB0426C173BE001D218A /* Fonts */,
 			);
@@ -211,6 +231,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6B6292D5191DF706BC534E8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44604151810CDEE526775EAB /* Pods_topaz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -218,9 +246,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E0FAEBB26C0EE9A003D80E3 /* Build configuration list for PBXNativeTarget "topaz" */;
 			buildPhases = (
+				664AC069DD48ECBCF581AB08 /* [CP] Check Pods Manifest.lock */,
 				4E0FAEA326C0EE99003D80E3 /* Sources */,
 				4E0FAEA426C0EE99003D80E3 /* Frameworks */,
 				4E0FAEA526C0EE99003D80E3 /* Resources */,
+				D272080A3756150DD9F4DEE4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -289,6 +319,7 @@
 				4E9DCB2826C17806001D218A /* Poppins-BoldItalic.ttf in Resources */,
 				4E9DCB1F26C177EF001D218A /* NotoSansKR-Black.otf in Resources */,
 				4E9DCB2526C17801001D218A /* Poppins-Black.ttf in Resources */,
+				4E32E07926DE35FB005682E5 /* GoogleService-Info.plist in Resources */,
 				4E056DF826C3901E00FDF0F3 /* SignUp.storyboard in Resources */,
 				4E9DCB3326C1781D001D218A /* Poppins-SemiBold.ttf in Resources */,
 				4E9DCB2026C177F1001D218A /* NotoSansKR-Bold.otf in Resources */,
@@ -300,6 +331,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		664AC069DD48ECBCF581AB08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-topaz-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D272080A3756150DD9F4DEE4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-topaz/Pods-topaz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-topaz/Pods-topaz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-topaz/Pods-topaz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4E0FAEA326C0EE99003D80E3 /* Sources */ = {
@@ -459,6 +532,7 @@
 		};
 		4E0FAEBC26C0EE9A003D80E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E3975921A6298E978E2E2DB /* Pods-topaz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -478,6 +552,7 @@
 		};
 		4E0FAEBD26C0EE9A003D80E3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0BB8C8097326A0C7F69BE6B /* Pods-topaz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
