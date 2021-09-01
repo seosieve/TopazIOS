@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class EditAccountController: UIViewController {
     @IBOutlet weak var emailTextFieldBorder: UIView!
@@ -28,7 +29,9 @@ class EditAccountController: UIViewController {
     
     @IBOutlet var check: [UIImageView]!
     @IBOutlet weak var goToNext: UIButton!
-        
+    
+    let viewModel = EditAccountViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
@@ -57,15 +60,18 @@ class EditAccountController: UIViewController {
     
     @objc func textFieldDidChange(_ sender: UITextField) {
         if sender == emailTextField {
-            if sender.text!.contains("@"){
+            let safeEmail = viewModel.isEmailValid(emailTextField.text ?? "")
+            if safeEmail {
                 //이메일 양식에 맞을 때
                 check[0].alpha = 1
                 correctAnimation(index: 0)
-                if sender.text!.contains("1") {
-                    //이메일 양식에 맞지만 이미 가입된 이메일일 때
-                    check[0].alpha = 0
-                    emailWarning.text = "이미 가입된 이메일입니다."
-                    incorrectAnimation(index: 0)
+                //이메일 양식에 맞지만 이미 가입된 이메일일 때
+                viewModel.collection.whereField("email", isEqualTo: viewModel.storableEmail(sender.text!)).getDocuments{ querySnapshot, error in
+                    if querySnapshot!.documents.count != 0 {
+                        self.check[0].alpha = 0
+                        self.emailWarning.text = "이미 가입된 이메일입니다."
+                        self.incorrectAnimation(index: 0)
+                    }
                 }
             } else {
                 //이메일 양식에 맞지 않을 때
@@ -74,18 +80,19 @@ class EditAccountController: UIViewController {
                 incorrectAnimation(index: 0)
             }
         } else if sender == PWTextField {
+            let safePassword = viewModel.isPWValid(PWTextField.text ?? "")
             if 8 < sender.text!.count && sender.text!.count < 20 {
-                //이메일 양식에 맞을 때
+                //비밀번호 글자 수가 맞을 때
                 check[1].alpha = 1
                 correctAnimation(index: 1)
-                if sender.text!.contains("@") {
-                    //이메일 양식에 맞지만 이미 가입된 이메일일 때
+                if !safePassword {
+                    //비밀번호 글자 수가 맞지만 숫자, 영문이 포함되어있지 않을 때
                     check[1].alpha = 0
                     PWWarning.text = "숫자, 영문을 포함해주세요."
                     incorrectAnimation(index: 1)
                 }
             } else {
-                //이메일 양식에 맞지 않을 때
+                //비밀번호 글자 수가 맞지 않을 때
                 check[1].alpha = 0
                 PWWarning.text = "8~20자 이내로 입력해 주세요."
                 incorrectAnimation(index: 1)
@@ -108,7 +115,21 @@ class EditAccountController: UIViewController {
     @IBAction func goToNextPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToAcceptTerms", sender: sender)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! AcceptTermsViewController
+        destinationVC.userEmail = emailTextField.text!
+        destinationVC.userPW = PWTextField.text!
+    }
+
+    
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        // Custom ToastMessage 구현하기
+        print("bb")
+    }
 }
+
+
 //MARK: - UI Functions
 extension EditAccountController {
     func correctAnimation(index: Int) {
@@ -166,5 +187,4 @@ extension EditAccountController: UITextFieldDelegate {
         return true
     }
 }
-
 

@@ -12,20 +12,33 @@ class AcceptTermsViewController: UIViewController {
     @IBOutlet weak var PGBar: UIProgressView!
     @IBOutlet weak var planeX: NSLayoutConstraint!
     @IBOutlet weak var acceptAllBorder: UIView!
-    @IBOutlet var acceptCheck: [UIButton]!
+    @IBOutlet var acceptCheck: [UIButton]! {
+        didSet {acceptCheck.sort{$0.tag < $1.tag}}
+    }
+    @IBOutlet var acceptCheckLabel: [UILabel]! {
+        didSet {acceptCheckLabel.sort{$0.tag < $1.tag}}
+    }
     @IBOutlet weak var goToNext: UIButton!
     
-
+    var userEmail: String = ""
+    var userPW: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
         makeBorder(target: acceptAllBorder, color: "MintBlue", isFilled: false)
         setPlane(level: 2, stack: PGBarComponentStack)
         //button 입력 감지
+        
         acceptCheck.forEach { button in
             button.addTarget(self, action: #selector(acceptCheckDidChange(_:)), for: .touchUpInside)
         }
-        goToNext.isEnabled = true
+        //lable 입력 감지
+        acceptCheckLabel.forEach { label in
+            let tap = UITapGestureRecognizer(target: self, action: #selector(acceptCheckLabelDidChange(_:)))
+            label.addGestureRecognizer(tap)
+        }
+        goToNext.isEnabled = false
     }
     
     @IBAction func acceptAllPressed(_ sender: UIButton) {
@@ -47,6 +60,12 @@ class AcceptTermsViewController: UIViewController {
         shiftButton(for: goToNext, isOn: state)
     }
     
+    @objc func acceptCheckLabelDidChange(_ sender: UITapGestureRecognizer) {
+        let tappedLabel = sender.view as! UILabel
+        let tappedLabelIndex = acceptCheckLabel.firstIndex(of: tappedLabel)!
+        acceptCheckDidChange(acceptCheck[tappedLabelIndex])
+    }
+    
     @IBAction func Detail1Pressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToDetail1", sender: sender)
     }
@@ -65,6 +84,14 @@ class AcceptTermsViewController: UIViewController {
     
     @IBAction func goToNextPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToEditProfile", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToEditProfile" {
+            let destinationVC = segue.destination as! EditProfileViewController
+            destinationVC.userEmail = userEmail
+            destinationVC.userPW = userPW
+        }
     }
 }
 

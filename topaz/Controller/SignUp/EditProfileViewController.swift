@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class EditProfileViewController: UIViewController {
     @IBOutlet weak var PGBarComponentStack: UIStackView!
@@ -25,7 +27,11 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var check: UIImageView!
     @IBOutlet weak var goToNext: UIButton!
     
+    var userEmail: String = ""
+    var userPW: String = ""
+    
     var imagePicker: UIImagePickerController!
+    let viewModel = EditProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,15 +76,18 @@ class EditProfileViewController: UIViewController {
     
     
     @objc func textFieldDidChange(_ sender: UITextField) {
-        if 1 <= sender.text!.count && sender.text!.count <= 4 {
+        let safeNickname = viewModel.isNicknameValid(nicknameTextField.text ?? "")
+        if safeNickname {
             //닉네임 글자가 4자 이하일 때, 한글일 때
             check.alpha = 1
             correctAnimation()
-            if sender.text!.contains("김") {
-                //이메일 양식에 맞지만 이미 가입된 이메일일 때
-                check.alpha = 0
-                nicknameWarning.text = "이미 사용중인 닉네임입니다."
-                incorrectAnimation()
+            //이메일 양식에 맞지만 이미 가입된 닉네임일 때
+            viewModel.collection.whereField("nickname", isEqualTo: nicknameTextField.text!).getDocuments { querySnapshot, error in
+                if querySnapshot!.documents.count != 0 {
+                    self.check.alpha = 0
+                    self.nicknameWarning.text = "이미 사용중인 닉네임입니다."
+                    self.incorrectAnimation()
+                }
             }
         } else {
             //닉네임 글자가 4자 초과일 때, 영어일 때
@@ -92,6 +101,14 @@ class EditProfileViewController: UIViewController {
     }
     
     @IBAction func goToNext(_ sender: UIButton) {
+        let storableEmail = viewModel.storableEmail(userEmail)
+        Auth.auth().createUser(withEmail: userEmail, password: userPW) { result, error in
+            if error != nil {
+                print(error!)
+            } else {
+                self.viewModel.addUserInfo(storableEmail, result!.user.uid, self.nicknameTextField.text!, self.introduceTextField.text!)
+            }
+        }
         self.performSegue(withIdentifier: "goToComplete", sender: sender)
     }
     

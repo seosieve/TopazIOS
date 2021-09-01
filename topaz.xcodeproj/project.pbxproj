@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,8 @@
 		4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05026CD16FF005682E5 /* TermsViewController.swift */; };
 		4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05226CD3085005682E5 /* CompleteViewController.swift */; };
 		4E32E07926DE35FB005682E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */; };
+		4E32E07C26DE6147005682E5 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E07B26DE6147005682E5 /* EditAccountViewModel.swift */; };
+		4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E07D26DF6ED8005682E5 /* EditProfileViewModel.swift */; };
 		4E9DCB1F26C177EF001D218A /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0826C177D1001D218A /* NotoSansKR-Black.otf */; };
 		4E9DCB2026C177F1001D218A /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0D26C177DB001D218A /* NotoSansKR-Bold.otf */; };
 		4E9DCB2126C177F3001D218A /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0A26C177DB001D218A /* NotoSansKR-Light.otf */; };
@@ -68,6 +70,8 @@
 		4E32E05026CD16FF005682E5 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		4E32E05226CD3085005682E5 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4E32E07B26DE6147005682E5 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
+		4E32E07D26DF6ED8005682E5 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		4E9DCB0826C177D1001D218A /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
 		4E9DCB0926C177DB001D218A /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		4E9DCB0A26C177DB001D218A /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
@@ -114,7 +118,6 @@
 				7E3975921A6298E978E2E2DB /* Pods-topaz.debug.xcconfig */,
 				D0BB8C8097326A0C7F69BE6B /* Pods-topaz.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -134,6 +137,8 @@
 				4E056DFD26C39AB500FDF0F3 /* AcceptTermsViewController.swift */,
 				4E056DFF26C39AD200FDF0F3 /* EditProfileViewController.swift */,
 				4E32E05026CD16FF005682E5 /* TermsViewController.swift */,
+				4E32E07B26DE6147005682E5 /* EditAccountViewModel.swift */,
+				4E32E07D26DF6ED8005682E5 /* EditProfileViewModel.swift */,
 				4E32E05226CD3085005682E5 /* CompleteViewController.swift */,
 			);
 			path = SignUp;
@@ -165,6 +170,7 @@
 				4EFBA8DD26C137C9001F1557 /* Model */,
 				4EFBA8DC26C137B3001F1557 /* Controller */,
 				4EFBA8DB26C137A8001F1557 /* View */,
+				4E32E07A26DE5FC0005682E5 /* ViewModel */,
 				4EFBA8D926C1362C001F1557 /* Assets.xcassets */,
 				4E0FAEB526C0EE9A003D80E3 /* LaunchScreen.storyboard */,
 				4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */,
@@ -172,6 +178,13 @@
 				4E9DCB0426C173BE001D218A /* Fonts */,
 			);
 			path = topaz;
+			sourceTree = "<group>";
+		};
+		4E32E07A26DE5FC0005682E5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4E9DCB0426C173BE001D218A /* Fonts */ = {
@@ -379,10 +392,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */,
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
 				4E056DF126C25E5100FDF0F3 /* FindPasswordViewController.swift in Sources */,
 				4E0FAEAF26C0EE99003D80E3 /* WelcomeViewController.swift in Sources */,
 				4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */,
+				4E32E07C26DE6147005682E5 /* EditAccountViewModel.swift in Sources */,
 				4E0FAEAB26C0EE99003D80E3 /* AppDelegate.swift in Sources */,
 				4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */,
 				4E0FAEAD26C0EE99003D80E3 /* SceneDelegate.swift in Sources */,
@@ -538,6 +553,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B44YL23J9X;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = topaz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -558,6 +574,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B44YL23J9X;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = topaz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
