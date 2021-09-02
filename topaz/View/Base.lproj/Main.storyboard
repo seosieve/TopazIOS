@@ -25,25 +25,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="색다른 여행을 즐겨보아요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PO-Au-X34">
-                                <rect key="frame" x="28" y="171.5" width="207" height="23.5"/>
+                                <rect key="frame" x="28" y="163" width="207" height="23.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
-                                <color key="textColor" name="Gray3"/>
+                                <color key="textColor" name="Gray1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbv-mF-9PU">
-                                <rect key="frame" x="28" y="348" width="48.5" height="16.5"/>
+                                <rect key="frame" x="28" y="335.5" width="48.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                 <color key="textColor" name="Gray3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfc-vA-ihU">
-                                <rect key="frame" x="28" y="259" width="36.5" height="16.5"/>
+                                <rect key="frame" x="28" y="246.5" width="36.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                 <color key="textColor" name="Gray3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호를 입력해주세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kAm-Ls-Ex2">
-                                <rect key="frame" x="28" y="376.5" width="358" height="19"/>
+                                <rect key="frame" x="28" y="364" width="358" height="19"/>
                                 <color key="textColor" name="Gray2"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -54,7 +54,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일 주소를 입력해주세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RIf-Z9-KSJ">
-                                <rect key="frame" x="28" y="287.5" width="358" height="20.5"/>
+                                <rect key="frame" x="28" y="275" width="358" height="20.5"/>
                                 <color key="textColor" name="Gray2"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -65,14 +65,14 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ew1-h7-AaI">
-                                <rect key="frame" x="28" y="312" width="358" height="1"/>
+                                <rect key="frame" x="28" y="299.5" width="358" height="1"/>
                                 <color key="backgroundColor" name="Gray5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="MB8-vV-YTh"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Wo-Ha-HDn">
-                                <rect key="frame" x="28" y="399.5" width="358" height="1"/>
+                                <rect key="frame" x="28" y="387" width="358" height="1"/>
                                 <color key="backgroundColor" name="Gray5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="AnX-y2-KOF"/>
@@ -113,17 +113,24 @@
                                     <action selector="signUpButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qc4-Wh-bfw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="topaz 와 함께" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwx-IW-Sb8">
-                                <rect key="frame" x="28" y="140" width="113" height="23.5"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
-                                <color key="textColor" name="Gray3"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="와 함께" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwx-IW-Sb8">
+                                <rect key="frame" x="169" y="140" width="46" height="19"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
+                                <color key="textColor" name="Gray1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CloudImage" translatesAutoresizingMaskIntoConstraints="NO" id="maj-nR-oO8">
-                                <rect key="frame" x="128" y="60" width="286" height="136"/>
+                                <rect key="frame" x="128" y="48" width="286" height="136"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="286" id="C8z-vh-K2J"/>
                                     <constraint firstAttribute="height" constant="136" id="hs6-OQ-egx"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopazLogo" translatesAutoresizingMaskIntoConstraints="NO" id="1VL-gM-wco">
+                                <rect key="frame" x="28" y="130" width="133" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZbK-Uc-Kwu"/>
+                                    <constraint firstAttribute="width" constant="133" id="qfV-tF-6Ns"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -140,16 +147,18 @@
                             <constraint firstItem="FMj-ah-0Ek" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="28" id="Bdi-Il-Q5f"/>
                             <constraint firstItem="kxa-bB-YeX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CrG-gR-lQU"/>
                             <constraint firstItem="ew1-h7-AaI" firstAttribute="top" secondItem="RIf-Z9-KSJ" secondAttribute="bottom" constant="4" id="Jgv-37-jnb"/>
-                            <constraint firstItem="jfc-vA-ihU" firstAttribute="top" secondItem="0PO-Au-X34" secondAttribute="bottom" constant="64" id="Kvh-Fh-ipb"/>
+                            <constraint firstItem="jfc-vA-ihU" firstAttribute="top" secondItem="0PO-Au-X34" secondAttribute="bottom" constant="60" id="Kvh-Fh-ipb"/>
+                            <constraint firstItem="1VL-gM-wco" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="130" id="L7Y-vF-WgR"/>
                             <constraint firstItem="RIf-Z9-KSJ" firstAttribute="top" secondItem="jfc-vA-ihU" secondAttribute="bottom" constant="12" id="NHU-Uu-3Qz"/>
                             <constraint firstItem="4Wo-Ha-HDn" firstAttribute="top" secondItem="kAm-Ls-Ex2" secondAttribute="bottom" constant="4" id="Oyj-b4-slY"/>
-                            <constraint firstItem="Xwx-IW-Sb8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="Rh1-fT-fMc"/>
+                            <constraint firstItem="Xwx-IW-Sb8" firstAttribute="leading" secondItem="1VL-gM-wco" secondAttribute="trailing" constant="8" id="Rh1-fT-fMc"/>
+                            <constraint firstItem="1VL-gM-wco" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="28" id="Yz8-oJ-M76"/>
                             <constraint firstItem="bbv-mF-9PU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="aGR-ge-86E"/>
-                            <constraint firstItem="0PO-Au-X34" firstAttribute="top" secondItem="Xwx-IW-Sb8" secondAttribute="bottom" constant="8" id="ehp-Am-AF5"/>
+                            <constraint firstItem="0PO-Au-X34" firstAttribute="top" secondItem="Xwx-IW-Sb8" secondAttribute="bottom" constant="4" id="ehp-Am-AF5"/>
                             <constraint firstItem="kxa-bB-YeX" firstAttribute="top" secondItem="FMj-ah-0Ek" secondAttribute="bottom" constant="12" id="hR6-Vh-0yu"/>
                             <constraint firstItem="RIf-Z9-KSJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jU9-FL-0oh"/>
                             <constraint firstItem="FMj-ah-0Ek" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jdn-dr-Em0"/>
-                            <constraint firstItem="maj-nR-oO8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="60" id="lrd-ef-hhR"/>
+                            <constraint firstItem="maj-nR-oO8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="48" id="lrd-ef-hhR"/>
                             <constraint firstItem="jfc-vA-ihU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="28" id="m3o-wS-CXS"/>
                             <constraint firstItem="ew1-h7-AaI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="28" id="mVt-Mk-sIG"/>
                             <constraint firstItem="kAm-Ls-Ex2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nNp-6g-0Jx"/>
@@ -170,15 +179,15 @@
                         <outlet property="loginButton" destination="FMj-ah-0Ek" id="9ne-7d-BJu"/>
                         <outlet property="passwordTextField" destination="kAm-Ls-Ex2" id="OXK-5S-jiO"/>
                         <outlet property="signUpButton" destination="kxa-bB-YeX" id="oHN-Zj-xrE"/>
-                        <outlet property="titleLabel" destination="Xwx-IW-Sb8" id="BXO-xD-Ajj"/>
+                        <outlet property="titleLabel" destination="0PO-Au-X34" id="d5U-1r-joO"/>
                         <segue destination="CGG-1P-JWm" kind="show" identifier="goToFindPW" id="DRc-wy-3PU"/>
                         <segue destination="IIs-rb-4Ca" kind="show" identifier="goToSignUp" id="RSo-Jg-K1X"/>
-                        <segue destination="lqj-A3-vZ3" kind="show" identifier="goToHome" id="qhH-QR-xF7"/>
+                        <segue destination="IfX-0C-1Wp" kind="show" identifier="goToHome" id="CB8-mS-0ss"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="94"/>
+            <point key="canvasLocation" x="16" y="82"/>
         </scene>
         <!--Find Password View Controller-->
         <scene sceneID="Wli-IO-bfJ">
@@ -305,14 +314,14 @@
             <point key="canvasLocation" x="716" y="82"/>
         </scene>
         <!--HomeVC-->
-        <scene sceneID="wVa-ry-gKA">
+        <scene sceneID="85B-Vr-fbJ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="HomeVC" id="lqj-A3-vZ3" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Rgl-Dp-j4g"/>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="HomeVC" id="IfX-0C-1Wp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ijM-JK-7cd"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sVj-Ic-5lv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="45f-h6-skc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="756" y="183"/>
+            <point key="canvasLocation" x="735" y="217"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H8c-Yr-JBy">
@@ -341,6 +350,7 @@
     <resources>
         <image name="AirplaneIcon" width="48" height="48"/>
         <image name="CloudImage" width="286" height="136"/>
+        <image name="TopazLogo" width="133" height="29"/>
         <namedColor name="Gray1">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

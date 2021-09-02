@@ -31,4 +31,33 @@ class EditAccountViewModel {
         storableEmail = storableEmail.replacingOccurrences(of: "@", with: "-")
         return storableEmail
     }
+    
+//    func isExist(_ email: String) -> Bool {
+//        var a = true
+//        Firestore.firestore().collection("UserDataBase").whereField("email", isEqualTo: email).getDocuments{ querySnapshot, error in
+//            if querySnapshot!.documents.count != 0 {
+//                a = false
+//            } else {
+//                a = true
+//            }
+//        }
+//        print(a)
+//        return a
+//    }
+    
+    
+}
+
+class EditAccountViewModell {
+    func isExist(_ email: String) -> Bool {
+        var a = true
+        Firestore.firestore().collection("UserDataBase").whereField("email", isEqualTo: email).getDocuments{ querySnapshot, error in
+            if querySnapshot!.documents.count != 0 {
+                a = false
+            } else {
+                a = true
+            }
+        }
+        return a
+    }
 }
