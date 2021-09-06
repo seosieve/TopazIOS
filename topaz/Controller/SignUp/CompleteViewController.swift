@@ -13,7 +13,6 @@ class CompleteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        self.navigationController?.isNavigationBarHidden = true
         addMultipleFonts()
     }
 

@@ -19,6 +19,7 @@
 		4E0FAEAF26C0EE99003D80E3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0FAEAE26C0EE99003D80E3 /* WelcomeViewController.swift */; };
 		4E0FAEB226C0EE99003D80E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0FAEB026C0EE99003D80E3 /* Main.storyboard */; };
 		4E0FAEB726C0EE9A003D80E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0FAEB526C0EE9A003D80E3 /* LaunchScreen.storyboard */; };
+		4E18A57526E66050001504A9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18A57426E66050001504A9 /* SettingViewController.swift */; };
 		4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05026CD16FF005682E5 /* TermsViewController.swift */; };
 		4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05226CD3085005682E5 /* CompleteViewController.swift */; };
 		4E32E07926DE35FB005682E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */; };
@@ -29,7 +30,7 @@
 		4E533F3426E060F500527FC2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3326E060F500527FC2 /* HomeViewController.swift */; };
 		4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3826E0612000527FC2 /* CommunityViewController.swift */; };
 		4E533F3C26E08A0900527FC2 /* TravelNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */; };
-		4E533F3E26E09A8E00527FC2 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3D26E09A8E00527FC2 /* TabbarController.swift */; };
+		4E533F3E26E09A8E00527FC2 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3D26E09A8E00527FC2 /* TabBarController.swift */; };
 		4E9DCB1F26C177EF001D218A /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0826C177D1001D218A /* NotoSansKR-Black.otf */; };
 		4E9DCB2026C177F1001D218A /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0D26C177DB001D218A /* NotoSansKR-Bold.otf */; };
 		4E9DCB2126C177F3001D218A /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0A26C177DB001D218A /* NotoSansKR-Light.otf */; };
@@ -73,6 +74,7 @@
 		4E0FAEB126C0EE99003D80E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E0FAEB626C0EE9A003D80E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E0FAEB826C0EE9A003D80E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E18A57426E66050001504A9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		4E32E05026CD16FF005682E5 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		4E32E05226CD3085005682E5 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 		4E533F3326E060F500527FC2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4E533F3826E0612000527FC2 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelNoteViewController.swift; sourceTree = "<group>"; };
-		4E533F3D26E09A8E00527FC2 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		4E533F3D26E09A8E00527FC2 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		4E9DCB0826C177D1001D218A /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
 		4E9DCB0926C177DB001D218A /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		4E9DCB0A26C177DB001D218A /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
@@ -196,7 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				4E533F3326E060F500527FC2 /* HomeViewController.swift */,
-				4E533F3D26E09A8E00527FC2 /* TabbarController.swift */,
+				4E533F3D26E09A8E00527FC2 /* TabBarController.swift */,
+				4E18A57426E66050001504A9 /* SettingViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -429,10 +432,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */,
-				4E533F3E26E09A8E00527FC2 /* TabbarController.swift in Sources */,
+				4E533F3E26E09A8E00527FC2 /* TabBarController.swift in Sources */,
 				4E533F3C26E08A0900527FC2 /* TravelNoteViewController.swift in Sources */,
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
 				4E056DF126C25E5100FDF0F3 /* FindPasswordViewController.swift in Sources */,
+				4E18A57526E66050001504A9 /* SettingViewController.swift in Sources */,
 				4E0FAEAF26C0EE99003D80E3 /* WelcomeViewController.swift in Sources */,
 				4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */,
 				4E32E07C26DE6147005682E5 /* EditAccountViewModel.swift in Sources */,

@@ -28,22 +28,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcI-2p-DZ5">
-                                <rect key="frame" x="20" y="168" width="88.5" height="35"/>
+                                <rect key="frame" x="20" y="168" width="83.5" height="28"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="24"/>
                                 <color key="textColor" name="Gray1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsI-2x-Ppl">
-                                <rect key="frame" x="20" y="241" width="44.5" height="23.5"/>
+                                <rect key="frame" x="20" y="234" width="42" height="19"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                                 <color key="textColor" name="Gray2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSa-Y0-DVN">
-                                <rect key="frame" x="20" y="272.5" width="374" height="50"/>
+                                <rect key="frame" x="20" y="261" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일 주소를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BrW-z9-23P">
-                                        <rect key="frame" x="10" y="13" width="354" height="24"/>
+                                        <rect key="frame" x="10" y="15" width="354" height="20.5"/>
                                         <color key="textColor" name="Gray2"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -72,22 +72,22 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가입되지 않은 이메일입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNu-Mz-R2E">
-                                <rect key="frame" x="20" y="330.5" width="143" height="17.5"/>
+                                <rect key="frame" x="20" y="319" width="135" height="14"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
                                 <color key="textColor" name="WarningRed"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcE-Sc-hEO">
-                                <rect key="frame" x="20" y="338.5" width="59" height="23.5"/>
+                                <rect key="frame" x="20" y="323.5" width="55.5" height="19"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                                 <color key="textColor" name="Gray2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Up2-Qz-sxy">
-                                <rect key="frame" x="20" y="370" width="374" height="50"/>
+                                <rect key="frame" x="20" y="350.5" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호(숫자, 영문, 특수문자 조합 최소 8자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MDD-AN-bHB">
-                                        <rect key="frame" x="10" y="13" width="354" height="24"/>
+                                        <rect key="frame" x="10" y="15.5" width="354" height="19"/>
                                         <color key="textColor" name="Gray2"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -116,16 +116,16 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8~20자 이내로 입력해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KX-LD-UfL">
-                                <rect key="frame" x="20" y="428" width="150.5" height="17.5"/>
+                                <rect key="frame" x="20" y="408.5" width="144.5" height="14"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
                                 <color key="textColor" name="WarningRed"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EuZ-dx-1D9">
-                                <rect key="frame" x="20" y="436" width="374" height="50"/>
+                                <rect key="frame" x="20" y="413" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 확인" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fnc-MM-m2f">
-                                        <rect key="frame" x="10" y="13" width="354" height="24"/>
+                                        <rect key="frame" x="10" y="15.5" width="354" height="19"/>
                                         <color key="textColor" name="Gray2"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -154,7 +154,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호가 일치하지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDU-Nw-93g">
-                                <rect key="frame" x="20" y="494" width="154" height="17.5"/>
+                                <rect key="frame" x="20" y="471" width="145" height="14"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
                                 <color key="textColor" name="WarningRed"/>
                                 <nil key="highlightedColor"/>
@@ -338,7 +338,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약관 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3S-3I-ayI">
-                                <rect key="frame" x="20" y="168" width="95.5" height="35"/>
+                                <rect key="frame" x="20" y="168" width="90" height="28"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="24"/>
                                 <color key="textColor" name="Gray1"/>
                                 <nil key="highlightedColor"/>
@@ -355,7 +355,7 @@
                                         <state key="normal" title="Button" image="Check_OFF"/>
                                     </button>
                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관 (필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7u-jI-mDG">
-                                        <rect key="frame" x="37" y="0.0" width="151.5" height="25"/>
+                                        <rect key="frame" x="37" y="0.0" width="142" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="3Xa-Ev-Gse"/>
                                         </constraints>
@@ -407,7 +407,7 @@
                                         <state key="normal" title="Button" image="Check_OFF"/>
                                     </button>
                                     <label opaque="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관 (필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ot8-wM-0as">
-                                        <rect key="frame" x="37" y="0.0" width="151.5" height="25"/>
+                                        <rect key="frame" x="37" y="0.0" width="142" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="tKm-UO-r73"/>
                                         </constraints>
@@ -459,7 +459,7 @@
                                         <state key="normal" title="Button" image="Check_OFF"/>
                                     </button>
                                     <label opaque="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관 (필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="744-u7-n4Y">
-                                        <rect key="frame" x="37" y="0.0" width="151.5" height="25"/>
+                                        <rect key="frame" x="37" y="0.0" width="142" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="RqG-mV-5p8"/>
                                         </constraints>
@@ -511,7 +511,7 @@
                                         <state key="normal" title="Button" image="Check_OFF"/>
                                     </button>
                                     <label opaque="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관 (필수)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIH-nD-gT8">
-                                        <rect key="frame" x="37" y="0.0" width="151.5" height="25"/>
+                                        <rect key="frame" x="37" y="0.0" width="142" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="0XJ-qy-kLA"/>
                                         </constraints>
@@ -568,7 +568,7 @@
                                 <rect key="frame" x="20" y="243" width="374" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrU-b6-aYR">
-                                        <rect key="frame" x="124" y="8.5" width="126" height="39"/>
+                                        <rect key="frame" x="127.5" y="11.5" width="119" height="33"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="18"/>
                                         <state key="normal" title="약관에 모두 동의">
                                             <color key="titleColor" name="MintBlue"/>
@@ -701,13 +701,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgd-iO-KY5">
-                                        <rect key="frame" x="28" y="16" width="114.5" height="25"/>
+                                        <rect key="frame" x="28" y="18.5" width="108" height="20"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="17"/>
                                         <color key="textColor" name="White"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6HK-RJ-P9b">
-                                        <rect key="frame" x="356" y="11.5" width="30" height="34"/>
+                                        <rect key="frame" x="356" y="13.5" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="15"/>
                                         <state key="normal" title="닫기">
                                             <color key="titleColor" name="White"/>
@@ -794,7 +794,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="약관 동의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLO-NL-WPf">
-                                <rect key="frame" x="20" y="168" width="95.5" height="35"/>
+                                <rect key="frame" x="20" y="168" width="90" height="28"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="24"/>
                                 <color key="textColor" name="Gray1"/>
                                 <nil key="highlightedColor"/>
@@ -813,16 +813,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeH-4c-3ij">
-                                <rect key="frame" x="20" y="403" width="44.5" height="23.5"/>
+                                <rect key="frame" x="20" y="391" width="42" height="19"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                                 <color key="textColor" name="Gray2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrC-Vx-b3l">
-                                <rect key="frame" x="20" y="435.5" width="374" height="50"/>
+                                <rect key="frame" x="20" y="419" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="원하는 이름을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7B0-kA-YZ6">
-                                        <rect key="frame" x="10" y="13" width="354" height="24"/>
+                                        <rect key="frame" x="10" y="15" width="354" height="20.5"/>
                                         <color key="textColor" name="Gray2"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -851,22 +851,22 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가입되지 않은 이메일입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPh-aF-F8W">
-                                <rect key="frame" x="20" y="493.5" width="143" height="17.5"/>
+                                <rect key="frame" x="20" y="477" width="135" height="14"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
                                 <color key="textColor" name="WarningRed"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knl-VJ-QJD">
-                                <rect key="frame" x="20" y="501.5" width="29.5" height="23.5"/>
+                                <rect key="frame" x="20" y="481.5" width="28" height="19"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                                 <color key="textColor" name="Gray2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N60-Ts-zV9">
-                                <rect key="frame" x="20" y="534" width="374" height="50"/>
+                                <rect key="frame" x="20" y="509.5" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="자기 소개를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Opt-Me-Kg0">
-                                        <rect key="frame" x="10" y="13" width="354" height="24"/>
+                                        <rect key="frame" x="10" y="15" width="354" height="20.5"/>
                                         <color key="textColor" name="Gray2"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -886,7 +886,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2tO-ZE-TkL">
-                                <rect key="frame" x="157.5" y="227" width="99" height="99"/>
+                                <rect key="frame" x="157.5" y="220" width="99" height="99"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="99" id="5mb-fL-rMJ"/>
                                     <constraint firstAttribute="width" constant="99" id="cU1-dJ-1Jq"/>
@@ -897,7 +897,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLV-Da-JUO">
-                                <rect key="frame" x="151" y="336" width="112" height="36"/>
+                                <rect key="frame" x="154" y="329" width="106" height="31"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                                 <state key="normal" title="프로필 사진 등록">
                                     <color key="titleColor" name="MintBlue"/>
@@ -907,7 +907,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3G-aA-zYf">
-                                <rect key="frame" x="67.5" y="404.5" width="6" height="6"/>
+                                <rect key="frame" x="65" y="388" width="6" height="6"/>
                                 <color key="backgroundColor" name="WarningRed"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="6" id="9Nm-oz-dA4"/>
@@ -986,7 +986,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeX-gw-ye6">
-                                <rect key="frame" x="28" y="277" width="176" height="41"/>
+                                <rect key="frame" x="28" y="259" width="168.5" height="33"/>
                                 <string key="text">토파즈와 함께
 즐거운 여행 되시길 바랄게요 :)</string>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
@@ -1007,7 +1007,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKE-p9-j7c">
-                                <rect key="frame" x="28" y="162" width="187" height="93"/>
+                                <rect key="frame" x="28" y="162" width="174.5" height="75"/>
                                 <string key="text">회원가입이
 완료되었어요!</string>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="32"/>
@@ -1015,7 +1015,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CompleteImage" translatesAutoresizingMaskIntoConstraints="NO" id="g6q-hg-T9M">
-                                <rect key="frame" x="45" y="378" width="324" height="205"/>
+                                <rect key="frame" x="45" y="352" width="324" height="205"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="205" id="LA6-Rj-xSw"/>
                                     <constraint firstAttribute="width" constant="324" id="UjQ-3g-XJd"/>
@@ -1036,7 +1036,7 @@
                             <constraint firstItem="XRu-dj-b3X" firstAttribute="leading" secondItem="wGh-VE-Loz" secondAttribute="leading" id="xGz-9Q-S5o"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title=" " id="Edn-PV-iaX">
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="Edn-PV-iaX">
                         <barButtonItem key="backBarButtonItem" title=" " id="8bN-Rc-RiG"/>
                     </navigationItem>
                     <connections>
@@ -1129,13 +1129,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5b-EQ-v94">
-                                        <rect key="frame" x="28" y="16" width="114.5" height="25"/>
+                                        <rect key="frame" x="28" y="18.5" width="108" height="20"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="17"/>
                                         <color key="textColor" name="White"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kT-a6-0xm">
-                                        <rect key="frame" x="356" y="11.5" width="30" height="34"/>
+                                        <rect key="frame" x="356" y="13.5" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="15"/>
                                         <state key="normal" title="닫기">
                                             <color key="titleColor" name="White"/>
@@ -1225,13 +1225,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Loq-Ek-wgc">
-                                        <rect key="frame" x="28" y="16" width="114.5" height="25"/>
+                                        <rect key="frame" x="28" y="18.5" width="108" height="20"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="17"/>
                                         <color key="textColor" name="White"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIF-hw-CIb">
-                                        <rect key="frame" x="356" y="11.5" width="30" height="34"/>
+                                        <rect key="frame" x="356" y="13.5" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="15"/>
                                         <state key="normal" title="닫기">
                                             <color key="titleColor" name="White"/>
@@ -1321,13 +1321,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnu-t2-Yt3">
-                                        <rect key="frame" x="28" y="16" width="114.5" height="25"/>
+                                        <rect key="frame" x="28" y="18.5" width="108" height="20"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="17"/>
                                         <color key="textColor" name="White"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lyq-D9-Kct">
-                                        <rect key="frame" x="356" y="11.5" width="30" height="34"/>
+                                        <rect key="frame" x="356" y="13.5" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="15"/>
                                         <state key="normal" title="닫기">
                                             <color key="titleColor" name="White"/>

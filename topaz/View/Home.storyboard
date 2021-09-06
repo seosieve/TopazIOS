@@ -17,40 +17,72 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TopazLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-Kn-s3M">
-                                <rect key="frame" x="20" y="98" width="134" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopazLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-Kn-s3M">
+                                <rect key="frame" x="20" y="54" width="110" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="CTI-3z-t16"/>
+                                    <constraint firstAttribute="width" constant="110" id="Gzm-Wy-z9F"/>
+                                </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVf-zo-2zI">
+                                <rect key="frame" x="370" y="54" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="ZtT-u6-EtE"/>
+                                    <constraint firstAttribute="height" constant="24" id="klr-En-1Oi"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="SettingButton"/>
+                                <connections>
+                                    <action selector="settingButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LBd-6u-9ju"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstItem="ntf-Kn-s3M" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="54" id="F9a-Y7-wFF"/>
+                            <constraint firstAttribute="trailing" secondItem="sVf-zo-2zI" secondAttribute="trailing" constant="20" id="VTc-FB-wcm"/>
+                            <constraint firstItem="ntf-Kn-s3M" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="dsh-jF-p3g"/>
+                            <constraint firstItem="sVf-zo-2zI" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="54" id="yqz-Ns-qNv"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tF8-QG-nvf">
                         <barButtonItem key="backBarButtonItem" title=" " id="Y9y-Gb-GtM"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="YGK-I6-HGI" kind="show" id="CS3-QW-WYO"/>
+                        <segue destination="YGK-I6-HGI" kind="show" identifier="goToSetting" id="CS3-QW-WYO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3457.971014492754" y="115.84821428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--설정-->
         <scene sceneID="IOJ-4L-Bfs">
             <objects>
-                <viewController id="YGK-I6-HGI" sceneMemberID="viewController">
+                <viewController id="YGK-I6-HGI" customClass="SettingViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OW2-bl-7qE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EC2-43-ctK">
+                                <rect key="frame" x="182" y="218" width="51" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="LogOut">
+                                    <color key="titleColor" name="WarningRed"/>
+                                </state>
+                                <connections>
+                                    <action selector="LogoutPressed:" destination="YGK-I6-HGI" eventType="touchUpInside" id="feU-Uk-scL"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ahH-6D-CLf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="CRk-Wj-Cgd"/>
+                    <navigationItem key="navigationItem" title="설정" leftItemsSupplementBackButton="YES" id="CRk-Wj-Cgd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FHu-L4-dOQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4168.115942028986" y="115.84821428571428"/>
+            <point key="canvasLocation" x="4174" y="116"/>
         </scene>
         <!--TravelNoteVC-->
         <scene sceneID="qIz-Ob-z0v">
@@ -72,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="2210.8695652173915" y="540.40178571428567"/>
         </scene>
-        <!--Tabbar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="ZiE-WT-G57">
             <objects>
-                <tabBarController storyboardIdentifier="HomeVC" automaticallyAdjustsScrollViewInsets="NO" id="R25-Y2-lY0" customClass="TabbarController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeVC" automaticallyAdjustsScrollViewInsets="NO" id="R25-Y2-lY0" customClass="TabBarController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="36w-tw-ufD">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -101,6 +133,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sSP-5Y-kyL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="Gray1"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
+                            <color key="textColor" name="Gray1"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -115,9 +152,16 @@
     <resources>
         <image name="Home_OFF" width="28.5" height="34"/>
         <image name="Home_ON" width="28.5" height="34"/>
+        <image name="SettingButton" width="24" height="24"/>
         <image name="TopazLogo" width="133" height="29"/>
+        <namedColor name="Gray1">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Gray2">
             <color red="0.31000000238418579" green="0.31000000238418579" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WarningRed">
+            <color red="0.95300000905990601" green="0.28600001335144043" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

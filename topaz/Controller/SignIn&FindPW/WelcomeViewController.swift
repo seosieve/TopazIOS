@@ -56,7 +56,10 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "goToSignUp", sender: sender)
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomeVC")
+        homeVC.modalPresentationStyle = .fullScreen
+        present(homeVC, animated: true, completion: nil)
     }
     @IBAction func findPWButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "goToFindPW", sender: sender)

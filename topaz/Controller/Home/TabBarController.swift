@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabbarController: UITabBarController {
+class TabBarController: UITabBarController {
 
     var customTabBarView = UIView(frame: .zero)
             

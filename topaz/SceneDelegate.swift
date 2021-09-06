@@ -17,13 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         guard let winScene = (scene as? UIWindowScene) else { return }
         
-//        let vc = UIStoryboard(name: "Home", bundle: .main).instantiateViewController(withIdentifier: "HomeVC")
-//        let nc = UINavigationController(rootViewController: vc)
-//
-//        let win = UIWindow(windowScene: winScene)
-//        win.rootViewController = nc
-//        win.makeKeyAndVisible()
-//        window = win
+        let homeVC = UIStoryboard(name: "Home", bundle: .main).instantiateViewController(withIdentifier: "HomeVC")
+        let win = UIWindow(windowScene: winScene)
+        win.rootViewController = homeVC
+        win.makeKeyAndVisible()
+        window = win
         
         
     }

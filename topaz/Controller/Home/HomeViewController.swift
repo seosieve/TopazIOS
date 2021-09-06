@@ -28,4 +28,14 @@ class HomeViewController: UIViewController {
         }
     }
     
+    @IBAction func settingButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToSetting", sender: sender)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    
 }

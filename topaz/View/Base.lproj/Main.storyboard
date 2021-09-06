@@ -182,7 +182,6 @@
                         <outlet property="titleLabel" destination="0PO-Au-X34" id="d5U-1r-joO"/>
                         <segue destination="CGG-1P-JWm" kind="show" identifier="goToFindPW" id="DRc-wy-3PU"/>
                         <segue destination="IIs-rb-4Ca" kind="show" identifier="goToSignUp" id="RSo-Jg-K1X"/>
-                        <segue destination="IfX-0C-1Wp" kind="show" identifier="goToHome" id="CB8-mS-0ss"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -312,16 +311,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iNa-Li-dyx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="716" y="82"/>
-        </scene>
-        <!--HomeVC-->
-        <scene sceneID="85B-Vr-fbJ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="HomeVC" id="IfX-0C-1Wp" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ijM-JK-7cd"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="45f-h6-skc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="735" y="217"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="H8c-Yr-JBy">
