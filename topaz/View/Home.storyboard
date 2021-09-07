@@ -5,9 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Regular.otf">
+            <string>NotoSansKR-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -17,6 +21,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y68-KY-y6h">
+                                <rect key="frame" x="24" y="132" width="81" height="12"/>
+                                <color key="backgroundColor" name="LightMintBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="ju3-zA-OYO"/>
+                                    <constraint firstAttribute="height" constant="12" id="xeg-Mz-JBP"/>
+                                </constraints>
+                            </view>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopazLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ntf-Kn-s3M">
                                 <rect key="frame" x="20" y="54" width="110" height="24"/>
                                 <constraints>
@@ -24,6 +36,14 @@
                                     <constraint firstAttribute="width" constant="110" id="Gzm-Wy-z9F"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sD7-kr-3ph">
+                                <rect key="frame" x="330" y="54" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="060-Mn-fvQ"/>
+                                    <constraint firstAttribute="width" constant="24" id="15T-he-0Dz"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="FriendsListButton"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVf-zo-2zI">
                                 <rect key="frame" x="370" y="54" width="24" height="24"/>
                                 <constraints>
@@ -35,13 +55,37 @@
                                     <action selector="settingButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="LBd-6u-9ju"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAi-4S-zKP">
+                                <rect key="frame" x="290" y="54" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Qk0-OK-M2m"/>
+                                    <constraint firstAttribute="width" constant="24" id="hJM-m5-rgC"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="SearchButton"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PP4-Sc-DDT">
+                                <rect key="frame" x="24" y="112" width="228" height="51.5"/>
+                                <string key="text">삥빵뽕삐님, 꼭 멀리가야만
+좋은 여행은 아니에요!</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="22"/>
+                                <color key="textColor" name="Gray2"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="White"/>
                         <constraints>
+                            <constraint firstItem="sD7-kr-3ph" firstAttribute="top" secondItem="sVf-zo-2zI" secondAttribute="top" id="1W2-WR-h8Y"/>
                             <constraint firstItem="ntf-Kn-s3M" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="54" id="F9a-Y7-wFF"/>
+                            <constraint firstItem="gAi-4S-zKP" firstAttribute="top" secondItem="sVf-zo-2zI" secondAttribute="top" id="KBm-s8-y3l"/>
+                            <constraint firstItem="sVf-zo-2zI" firstAttribute="leading" secondItem="sD7-kr-3ph" secondAttribute="trailing" constant="16" id="QPY-CM-qYu"/>
+                            <constraint firstItem="sD7-kr-3ph" firstAttribute="leading" secondItem="gAi-4S-zKP" secondAttribute="trailing" constant="16" id="QeM-Iw-ffV"/>
                             <constraint firstAttribute="trailing" secondItem="sVf-zo-2zI" secondAttribute="trailing" constant="20" id="VTc-FB-wcm"/>
+                            <constraint firstItem="Y68-KY-y6h" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="W7b-oe-z7a"/>
+                            <constraint firstItem="PP4-Sc-DDT" firstAttribute="top" secondItem="ntf-Kn-s3M" secondAttribute="bottom" constant="34" id="WsV-x8-X2e"/>
                             <constraint firstItem="ntf-Kn-s3M" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="dsh-jF-p3g"/>
+                            <constraint firstItem="Y68-KY-y6h" firstAttribute="top" secondItem="ntf-Kn-s3M" secondAttribute="bottom" constant="54" id="mq7-wO-ohX"/>
+                            <constraint firstItem="PP4-Sc-DDT" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="sjP-LJ-yqv"/>
                             <constraint firstItem="sVf-zo-2zI" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="54" id="yqz-Ns-qNv"/>
                         </constraints>
                     </view>
@@ -49,6 +93,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Y9y-Gb-GtM"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="IceBreakingLabel" destination="PP4-Sc-DDT" id="CMd-i1-Aqd"/>
                         <segue destination="YGK-I6-HGI" kind="show" identifier="goToSetting" id="CS3-QW-WYO"/>
                     </connections>
                 </viewController>
@@ -64,25 +109,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EC2-43-ctK">
-                                <rect key="frame" x="182" y="218" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="LogOut">
-                                    <color key="titleColor" name="WarningRed"/>
-                                </state>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oxd-Yh-zJ8" customClass="UIControl">
+                                <rect key="frame" x="0.0" y="108" width="414" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyT-Ro-OF1">
+                                        <rect key="frame" x="370" y="20" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="bbm-Uf-gaA"/>
+                                            <constraint firstAttribute="width" constant="24" id="nY2-es-d1J"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Detail"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSd-tH-aPj">
+                                        <rect key="frame" x="20" y="20" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="0bK-xL-ruH"/>
+                                            <constraint firstAttribute="height" constant="24" id="Hzw-xU-pDd"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Logout"/>
+                                    </button>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그아웃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9V-nw-DtT">
+                                        <rect key="frame" x="64" y="24" width="48.5" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                        <color key="textColor" name="Gray1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstItem="c9V-nw-DtT" firstAttribute="leading" secondItem="lSd-tH-aPj" secondAttribute="trailing" constant="20" id="4Ad-x5-brk"/>
+                                    <constraint firstAttribute="trailing" secondItem="pyT-Ro-OF1" secondAttribute="trailing" constant="20" id="GN4-dn-Sqv"/>
+                                    <constraint firstAttribute="height" constant="64" id="H04-d8-znJ"/>
+                                    <constraint firstItem="pyT-Ro-OF1" firstAttribute="centerY" secondItem="Oxd-Yh-zJ8" secondAttribute="centerY" id="UGd-w1-lF8"/>
+                                    <constraint firstItem="c9V-nw-DtT" firstAttribute="centerY" secondItem="Oxd-Yh-zJ8" secondAttribute="centerY" id="aI3-RH-7Sg"/>
+                                    <constraint firstItem="lSd-tH-aPj" firstAttribute="centerY" secondItem="Oxd-Yh-zJ8" secondAttribute="centerY" id="ugj-iR-WdC"/>
+                                    <constraint firstItem="lSd-tH-aPj" firstAttribute="leading" secondItem="Oxd-Yh-zJ8" secondAttribute="leading" constant="20" id="zk6-jg-oIj"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="LogoutPressed:" destination="YGK-I6-HGI" eventType="touchUpInside" id="feU-Uk-scL"/>
+                                    <action selector="logoutPressed:" destination="YGK-I6-HGI" eventType="touchUpInside" id="iJ9-vg-405"/>
                                 </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ahH-6D-CLf"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="GrayBackground"/>
+                        <constraints>
+                            <constraint firstItem="Oxd-Yh-zJ8" firstAttribute="leading" secondItem="OW2-bl-7qE" secondAttribute="leading" id="2ON-ri-Td0"/>
+                            <constraint firstItem="Oxd-Yh-zJ8" firstAttribute="trailing" secondItem="OW2-bl-7qE" secondAttribute="trailing" id="pcs-Kb-uNm"/>
+                            <constraint firstItem="Oxd-Yh-zJ8" firstAttribute="top" secondItem="ahH-6D-CLf" secondAttribute="top" constant="20" id="x6B-vg-MBj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="설정" leftItemsSupplementBackButton="YES" id="CRk-Wj-Cgd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FHu-L4-dOQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4174" y="116"/>
+            <point key="canvasLocation" x="4173.913043478261" y="115.84821428571428"/>
         </scene>
         <!--TravelNoteVC-->
         <scene sceneID="qIz-Ob-z0v">
@@ -150,8 +230,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Detail" width="24" height="24"/>
+        <image name="FriendsListButton" width="24" height="24"/>
         <image name="Home_OFF" width="28.5" height="34"/>
         <image name="Home_ON" width="28.5" height="34"/>
+        <image name="Logout" width="24" height="24"/>
+        <image name="SearchButton" width="24" height="24"/>
         <image name="SettingButton" width="24" height="24"/>
         <image name="TopazLogo" width="133" height="29"/>
         <namedColor name="Gray1">
@@ -160,14 +244,14 @@
         <namedColor name="Gray2">
             <color red="0.31000000238418579" green="0.31000000238418579" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="WarningRed">
-            <color red="0.95300000905990601" green="0.28600001335144043" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="GrayBackground">
+            <color red="0.89800000190734863" green="0.89800000190734863" blue="0.89800000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightMintBlue">
+            <color red="0.76099997758865356" green="0.96100002527236938" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

@@ -9,23 +9,25 @@ import UIKit
 import FirebaseAuth
 
 class HomeViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    
+    @IBOutlet weak var IceBreakingLabel: UILabel!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if Auth.auth().currentUser == nil {
+            instantiateVC()
+        }
         removeNavigationBackground(view: self)
         navigationController?.isNavigationBarHidden = true
-        print("aaaaa")
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         
-        if Auth.auth().currentUser == nil {
-//            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
-//            let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
-//
-//            mainVC.modalPresentationStyle = .fullScreen
-//            mainVC.modalTransitionStyle = .crossDissolve
-//            self.present(mainVC, animated: true, completion: nil)
-        }
+        makeIceBreakingLabel()
+        print(Auth.auth().currentUser?.email)
+        
     }
     
     @IBAction func settingButtonPressed(_ sender: UIButton) {
@@ -34,8 +36,23 @@ class HomeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
     }
     
     
 }
+
+//MARK: - UI Functions
+extension HomeViewController {
+    func makeIceBreakingLabel() {
+        IceBreakingLabel.text = "삥빵뽕삐님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
+    }
+    
+    func instantiateVC() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
+        let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+        mainVC.modalPresentationStyle = .fullScreen
+        mainVC.modalTransitionStyle = .crossDissolve
+        self.present(mainVC, animated: true, completion: nil)
+    }
+}
+

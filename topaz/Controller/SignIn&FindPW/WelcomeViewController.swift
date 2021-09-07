@@ -16,13 +16,6 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        if Auth.auth().currentUser != nil {
-//            self.performSegue(withIdentifier: "goToHome", sender: self)
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()        
         removeNavigationBackground(view: self)
@@ -50,16 +43,13 @@ class WelcomeViewController: UIViewController {
                     self.popUpToast("로그인 중 오류가 발생했습니다. 다시 회원가입을 진행해주세요.")
                 }
             } else {
-                self.performSegue(withIdentifier: "goToHome", sender: sender)
+                self.instantiateVC()
             }
         }
     }
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
-        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomeVC")
-        homeVC.modalPresentationStyle = .fullScreen
-        present(homeVC, animated: true, completion: nil)
+        performSegue(withIdentifier: "goToSignUp", sender: sender)
     }
     @IBAction func findPWButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "goToFindPW", sender: sender)
@@ -90,6 +80,15 @@ extension WelcomeViewController {
         DispatchQueue.main.asyncAfter(deadline: when){
             alert.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func instantiateVC() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: .main)
+        let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC")
+        
+        mainVC.modalPresentationStyle = .fullScreen
+        mainVC.modalTransitionStyle = .crossDissolve
+        self.present(mainVC, animated: true, completion: nil)
     }
 }
 
