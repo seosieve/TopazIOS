@@ -32,6 +32,7 @@ class EditProfileViewController: UIViewController {
     
     var imagePicker: UIImagePickerController!
     let viewModel = EditProfileViewModel()
+    var userImage = UIImage(named: "DefaultUserImage")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,15 +102,25 @@ class EditProfileViewController: UIViewController {
     }
     
     @IBAction func goToNext(_ sender: UIButton) {
-        let storableEmail = viewModel.storableEmail(userEmail)
         Auth.auth().createUser(withEmail: userEmail, password: userPW) { result, error in
             if error != nil {
                 print(error!)
             } else {
-                self.viewModel.addUserInfo(storableEmail, result!.user.uid, self.nicknameTextField.text!, self.introduceTextField.text!)
+                self.viewModel.addUserInfo(self.userEmail, result!.user.uid, self.nicknameTextField.text!, self.introduceTextField.text!)
             }
         }
+        // 다음에 디폴트 유저 이미지 추가하기
+        let data = userImage.pngData()!
+        viewModel.addUserImage(userEmail: userEmail, data: data)
         self.performSegue(withIdentifier: "goToComplete", sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToComplete" {
+            let destinationVC = segue.destination as! CompleteViewController
+            destinationVC.userEmail = userEmail
+            destinationVC.userPW = userPW
+        }
     }
     
 
@@ -117,13 +128,6 @@ class EditProfileViewController: UIViewController {
 
 //MARK: - UI Functions
 extension EditProfileViewController {
-    func makeCircle(target view: UIView, color: String, width: Int) {
-        view.layer.masksToBounds = true
-        view.layer.cornerRadius = view.frame.size.width/2
-        view.layer.borderWidth = CGFloat(width)
-        view.layer.borderColor = UIColor(named: color)?.cgColor
-    }
-    
     func correctAnimation() {
         self.nicknameWarning.alpha = 0
         self.nicknameWarningY.constant = -9.5
@@ -177,7 +181,8 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            profileAdd.setImage(img, for: .normal)
+            userImage = viewModel.resizeImage(image: img, newWidth: 100)
+            profileAdd.setImage(userImage, for: .normal)
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }

@@ -29,7 +29,7 @@ class CommunityViewController: UIViewController {
         luggageCollectionView.delegate = self
         
         DispatchQueue.main.async {
-            self.timer = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.changeLuggage), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.changeLuggage), userInfo: nil, repeats: true)
         }
     }
     
@@ -38,21 +38,19 @@ class CommunityViewController: UIViewController {
         
     }
     
-    @objc func countryDetailTapped() {
-        
+    @objc func changeLuggage() {
+        UIView.animate(withDuration: 4) {
+            let index = IndexPath.init(item: self.counter, section: 0)
+            self.luggageCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
+            self.luggageCollectionView.layoutIfNeeded()
+            self.counter += 1
+        }
     }
     
-    @objc func changeLuggage() {
-//        if counter < luggageImgArr.count { //인덱스가 끝번호가 아니라면 -  마지막 이미지가 아니라면,
-            let index = IndexPath.init(item: counter, section: 0) //인덱스 패스 생성.
-            self.luggageCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true) // 해당 인덱스로 이동.
-            counter += 1 // 인덱스 증가
-//        } else {//마지막 이미지라면
-//            counter = 0 // 처음으로 돌아가
-//            let index = IndexPath.init(item: counter, section: 0) // 이동할 곳.
-//            self.luggageCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true) // 해당인덱스로 이동.
-//        }
+    @IBAction func writeButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToWritting", sender: sender)
     }
+    
 }
 
 //MARK: - UI Functions
@@ -81,14 +79,10 @@ extension CommunityViewController {
 //MARK: - UICollectionView,UICollectionViewDataSource
 extension CommunityViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return luggageImgArr.count
         return Int.max
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "luggageCell", for: indexPath) as! luggageCollectionViewCell
-//        cell.luggageImage.image = luggageImgArr[indexPath.row]
-//        return cell
         
         let itemToShow = luggageImgArr[indexPath.row % luggageImgArr.count]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "luggageCell", for: indexPath) as! luggageCollectionViewCell
@@ -96,15 +90,14 @@ extension CommunityViewController : UICollectionViewDelegate, UICollectionViewDa
         return cell
     }
     
-//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        let pageFloat = (scrollView.layer.)
-//    }
+//    func collec
     
     
 }
 
 class luggageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var luggageImage: UIImageView!
+    
     
 }
 

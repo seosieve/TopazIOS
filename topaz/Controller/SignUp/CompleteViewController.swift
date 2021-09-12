@@ -6,21 +6,28 @@
 //
 
 import UIKit
+import Firebase
 
 class CompleteViewController: UIViewController {
     @IBOutlet weak var completeLabel: UILabel!
     
+    var userEmail: String = ""
+    var userPW: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        Auth.auth().signIn(withEmail: userEmail, password: userPW) { result, error in
+            if let error = error {
+                print("로그인 에러 : \(error)")
+            }
+        }
         removeNavigationBackground(view: self)
         addMultipleFonts()
     }
 
     @IBAction func goToLoginPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "goToMain", sender: sender)
+        instantiateVC()
     }
-    
-
 }
 
 
@@ -31,6 +38,15 @@ extension CompleteViewController {
         attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 32)!, range: (completeLabel.text! as NSString).range(of: "회원가입"))
         attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "MintBlue")!, range: (completeLabel.text! as NSString).range(of: "회원가입"))
         completeLabel.attributedText = attributedString
+    }
+    
+    func instantiateVC() {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: .main)
+        let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC")
+        
+        mainVC.modalPresentationStyle = .fullScreen
+        mainVC.modalTransitionStyle = .crossDissolve
+        self.present(mainVC, animated: true, completion: nil)
     }
 }
 

@@ -31,6 +31,9 @@
 		4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3826E0612000527FC2 /* CommunityViewController.swift */; };
 		4E533F3C26E08A0900527FC2 /* TravelNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */; };
 		4E533F3E26E09A8E00527FC2 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3D26E09A8E00527FC2 /* TabBarController.swift */; };
+		4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */; };
+		4E9B9BBD26EDE50800ABCE87 /* TravelNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */; };
+		4E9B9BBF26EDE87600ABCE87 /* WrittingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */; };
 		4E9DCB1F26C177EF001D218A /* NotoSansKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0826C177D1001D218A /* NotoSansKR-Black.otf */; };
 		4E9DCB2026C177F1001D218A /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0D26C177DB001D218A /* NotoSansKR-Bold.otf */; };
 		4E9DCB2126C177F3001D218A /* NotoSansKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0A26C177DB001D218A /* NotoSansKR-Light.otf */; };
@@ -86,6 +89,9 @@
 		4E533F3826E0612000527FC2 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelNoteViewController.swift; sourceTree = "<group>"; };
 		4E533F3D26E09A8E00527FC2 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelNoteViewModel.swift; sourceTree = "<group>"; };
+		4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingViewController.swift; sourceTree = "<group>"; };
 		4E9DCB0826C177D1001D218A /* NotoSansKR-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.otf"; sourceTree = "<group>"; };
 		4E9DCB0926C177DB001D218A /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		4E9DCB0A26C177DB001D218A /* NotoSansKR-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.otf"; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				4E533F3326E060F500527FC2 /* HomeViewController.swift */,
+				4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */,
 				4E533F3D26E09A8E00527FC2 /* TabBarController.swift */,
 				4E18A57426E66050001504A9 /* SettingViewController.swift */,
 			);
@@ -208,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				4E533F3826E0612000527FC2 /* CommunityViewController.swift */,
+				4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -216,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */,
+				4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */,
 			);
 			path = TravelNote;
 			sourceTree = "<group>";
@@ -432,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */,
+				4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */,
 				4E533F3E26E09A8E00527FC2 /* TabBarController.swift in Sources */,
 				4E533F3C26E08A0900527FC2 /* TravelNoteViewController.swift in Sources */,
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
@@ -440,12 +450,14 @@
 				4E0FAEAF26C0EE99003D80E3 /* WelcomeViewController.swift in Sources */,
 				4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */,
 				4E32E07C26DE6147005682E5 /* EditAccountViewModel.swift in Sources */,
+				4E9B9BBF26EDE87600ABCE87 /* WrittingViewController.swift in Sources */,
 				4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */,
 				4E0FAEAB26C0EE99003D80E3 /* AppDelegate.swift in Sources */,
 				4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */,
 				4E0FAEAD26C0EE99003D80E3 /* SceneDelegate.swift in Sources */,
 				4E056E0226C3B50100FDF0F3 /* GlobalUIFunctions.swift in Sources */,
 				4E056DF326C25EEB00FDF0F3 /* EditAccountViewController.swift in Sources */,
+				4E9B9BBD26EDE50800ABCE87 /* TravelNoteViewModel.swift in Sources */,
 				4E533F3426E060F500527FC2 /* HomeViewController.swift in Sources */,
 				4E056E0026C39AD200FDF0F3 /* EditProfileViewController.swift in Sources */,
 			);

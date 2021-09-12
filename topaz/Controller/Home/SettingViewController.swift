@@ -26,11 +26,9 @@ class SettingViewController: UIViewController {
         }
         alert.addAction(cancel)
         alert.addAction(logout)
+        alert.view.tintColor = UIColor(named: "Gray2")
         present(alert, animated: true, completion: nil)
     }
-    
-    
-    
 }
 
 //MARK: - UI Functions

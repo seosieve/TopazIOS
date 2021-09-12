@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class FindPasswordViewController: UIViewController {
 
@@ -14,6 +16,8 @@ class FindPasswordViewController: UIViewController {
     @IBOutlet weak var sendingButton: UIButton!
     @IBOutlet weak var sendingButtonY: NSLayoutConstraint!
     @IBOutlet weak var emailWarningMessage: UILabel!
+    
+    let collection = Firestore.firestore().collection("UserDataBase")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,24 +33,28 @@ class FindPasswordViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ sender: UITextField) {
-        if sender.text!.contains("호르몬동") {
-            shiftButton(for: sendingButton, isOn: true)
-            correctAnimation()
-        } else {
-            shiftButton(for: sendingButton, isOn: false)
-            incorrectAnimation()
+        collection.whereField("email", isEqualTo: sender.text ?? "").getDocuments { querySnapshot, error in
+            if querySnapshot!.documents.count != 0 {
+                shiftButton(for: self.sendingButton, isOn: true)
+                self.correctAnimation()
+            } else {
+                shiftButton(for: self.sendingButton, isOn: false)
+                self.incorrectAnimation()
+            }
         }
     }
         
     @IBAction func emailSendingButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "메일이 전송되었습니다. 비밀번호 변경 후 다시 로그인해주세요.", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default) { (action) in
+            Auth.auth().sendPasswordReset(withEmail: "royalcircle97@naver.com") { error in
+                if let error = error {
+                    print("패스워드 재설정 메일 송신 에러 : \(error)")
+                }
+            }
             // Navigation Controller에서 dismiss
             self.navigationController?.popViewController(animated: true)
         }
-        let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
-        imgViewTitle.image = UIImage(named:"Group 2265")
-        alert.view.addSubview(imgViewTitle)
         alert.addAction(action)
         alert.view.tintColor = UIColor(named: "Gray2")
 

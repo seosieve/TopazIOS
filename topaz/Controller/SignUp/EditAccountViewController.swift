@@ -60,25 +60,19 @@ class EditAccountController: UIViewController {
     
     @objc func textFieldDidChange(_ sender: UITextField) {
         if sender == emailTextField {
-            let safeEmail = viewModel.isEmailValid(emailTextField.text ?? "")
-            let storeableEmail = viewModel.storableEmail(sender.text ?? "")
+            let safeEmail = viewModel.isEmailValid(sender.text ?? "")
             if safeEmail {
                 //이메일 양식에 맞을 때
                 check[0].alpha = 1
                 correctAnimation(index: 0)
                 //이메일 양식에 맞지만 이미 가입된 이메일일 때
-                viewModel.collection.whereField("email", isEqualTo: storeableEmail).getDocuments{ querySnapshot, error in
+                viewModel.collection.whereField("email", isEqualTo: safeEmail).getDocuments{ querySnapshot, error in
                     if querySnapshot!.documents.count != 0 {
                         self.check[0].alpha = 0
                         self.emailWarning.text = "이미 가입된 이메일입니다."
                         self.incorrectAnimation(index: 0)
                     }
                 }
-//                if viewModel.isPWValid(storeableEmail) {
-//                        self.check[0].alpha = 0
-//                        self.emailWarning.text = "이미 가입된 이메일입니다."
-//                        self.incorrectAnimation(index: 0)
-//                }
             } else {
                 //이메일 양식에 맞지 않을 때
                 check[0].alpha = 0
@@ -86,7 +80,7 @@ class EditAccountController: UIViewController {
                 incorrectAnimation(index: 0)
             }
         } else if sender == PWTextField {
-            let safePassword = viewModel.isPWValid(PWTextField.text ?? "")
+            let safePassword = viewModel.isPWValid(sender.text ?? "")
             if 8 < sender.text!.count && sender.text!.count < 20 {
                 //비밀번호 글자 수가 맞을 때
                 check[1].alpha = 1

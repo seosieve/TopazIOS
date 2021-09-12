@@ -64,8 +64,8 @@
                                 <state key="normal" title="Button" image="SearchButton"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PP4-Sc-DDT">
-                                <rect key="frame" x="24" y="112" width="228" height="51.5"/>
-                                <string key="text">삥빵뽕삐님, 꼭 멀리가야만
+                                <rect key="frame" x="24" y="112" width="189.5" height="51.5"/>
+                                <string key="text">님, 꼭 멀리가야만
 좋은 여행은 아니에요!</string>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="22"/>
                                 <color key="textColor" name="Gray2"/>

@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,12 +14,15 @@
         <array key="NotoSansKR-Bold.otf">
             <string>NotoSansKR-Bold</string>
         </array>
+        <array key="NotoSansKR-Medium.otf">
+            <string>NotoSansKR-Medium</string>
+        </array>
         <array key="NotoSansKR-Regular.otf">
             <string>NotoSansKR-Regular</string>
         </array>
     </customFonts>
     <scenes>
-        <!--Community View Controller-->
+        <!-- -->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="CommunityViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
@@ -54,7 +58,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="289"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Luggage1" id="MKy-td-LjS">
+                                                            <imageView clipsSubviews="YES" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Luggage1" id="MKy-td-LjS">
                                                                 <rect key="frame" x="0.0" y="45" width="207" height="244"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             </imageView>
@@ -82,7 +86,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6b-Hi-AZs">
-                                        <rect key="frame" x="20" y="21" width="157" height="33"/>
+                                        <rect key="frame" x="20" y="17" width="164" height="41"/>
                                         <string key="text">이번 주의 인기글이 담겨있는
 여행 캐리어를 열어보세요!</string>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
@@ -107,6 +111,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="writeButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="EMi-Ff-saA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" name="White"/>
@@ -126,7 +133,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커뮤니티" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ap5-Pp-dH7">
-                                <rect key="frame" x="20" y="51" width="69.5" height="23.5"/>
+                                <rect key="frame" x="20" y="51" width="74" height="29"/>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -140,7 +147,7 @@
                                 <state key="normal" title="Button" image="SearchButton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-Gl-KJU">
-                                <rect key="frame" x="93.5" y="54" width="24" height="24"/>
+                                <rect key="frame" x="98" y="54" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="9lc-wp-vcD"/>
                                     <constraint firstAttribute="height" constant="24" id="qN7-Ds-ZQP"/>
@@ -182,18 +189,115 @@
                             <constraint firstItem="aF8-be-zaJ" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="zGn-Lq-3XC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gd5-xe-dqw"/>
+                    <navigationItem key="navigationItem" title=" " id="gd5-xe-dqw"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="introduceLabel" destination="C6b-Hi-AZs" id="d84-J4-gy8"/>
                         <outlet property="luggageCollectionView" destination="stM-QK-7KH" id="YG9-xs-TNd"/>
                         <outlet property="upperBackground" destination="nIa-W7-yZK" id="RtT-Do-Zq0"/>
                         <outlet property="writeButton" destination="7oV-dz-MfB" id="uU2-NO-53a"/>
+                        <segue destination="1Ng-CP-npj" kind="presentation" identifier="goToWritting" modalPresentationStyle="overFullScreen" id="AzV-oq-4k8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4637.68115942029" y="64.955357142857139"/>
+            <point key="canvasLocation" x="4610" y="65"/>
+        </scene>
+        <!--Writting View Controller-->
+        <scene sceneID="dxt-Vg-bqO">
+            <objects>
+                <viewController id="1Ng-CP-npj" customClass="WrittingViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ecu-eh-5qT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIm-TK-aqd">
+                                <rect key="frame" x="20" y="54" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="8Y3-N4-fQK"/>
+                                    <constraint firstAttribute="height" constant="24" id="dpN-t2-eoo"/>
+                                </constraints>
+                                <color key="tintColor" name="Gray1"/>
+                                <state key="normal" title="Button">
+                                    <imageReference key="image" image="CancelButton" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="1Ng-CP-npj" eventType="touchUpInside" id="SUO-F8-SVK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행경험 글쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjA-5e-CsQ">
+                                <rect key="frame" x="153" y="54" width="108" height="23.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
+                                <color key="textColor" name="Gray1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxX-Jl-PgI">
+                                <rect key="frame" x="349" y="53" width="45" height="25"/>
+                                <color key="backgroundColor" name="MintBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="ndE-aH-0OK"/>
+                                    <constraint firstAttribute="width" constant="45" id="ndb-za-dHe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
+                                <state key="normal" title="등록">
+                                    <color key="titleColor" name="White"/>
+                                </state>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9R-cd-JgD">
+                                <rect key="frame" x="45" y="97" width="262" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHQ-xF-3hf">
+                                        <rect key="frame" x="0.0" y="0.0" width="232" height="30"/>
+                                        <color key="tintColor" name="MintBlue"/>
+                                        <state key="normal" title="    다녀온 나라는 어디인가요?" image="SearchButton">
+                                            <color key="titleColor" name="LightMintBlue"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxM-Dp-3ua">
+                                        <rect key="frame" x="232" y="0.0" width="30" height="30"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Niy-XI-H5H">
+                                <rect key="frame" x="51" y="148" width="240" height="2"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="Gray3"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tuo-7c-HBP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cxX-Jl-PgI" firstAttribute="top" secondItem="ecu-eh-5qT" secondAttribute="top" constant="53" id="44A-Fz-vPn"/>
+                            <constraint firstAttribute="trailing" secondItem="cxX-Jl-PgI" secondAttribute="trailing" constant="20" id="767-jE-ghT"/>
+                            <constraint firstItem="dIm-TK-aqd" firstAttribute="top" secondItem="ecu-eh-5qT" secondAttribute="top" constant="54" id="MRU-Zx-O9k"/>
+                            <constraint firstItem="IjA-5e-CsQ" firstAttribute="top" secondItem="ecu-eh-5qT" secondAttribute="top" constant="54" id="eQt-HB-tC0"/>
+                            <constraint firstItem="IjA-5e-CsQ" firstAttribute="centerX" secondItem="ecu-eh-5qT" secondAttribute="centerX" id="wOI-Uv-Vkw"/>
+                            <constraint firstItem="dIm-TK-aqd" firstAttribute="leading" secondItem="ecu-eh-5qT" secondAttribute="leading" constant="20" id="xV8-l9-TkY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="resisterButton" destination="cxX-Jl-PgI" id="Fen-IA-t3T"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zk9-Ld-wf2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4607.2463768115949" y="775.44642857142856"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wtG-JB-Fo0">
+            <objects>
+                <viewController id="xsB-hf-6Jj" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l4g-yW-pwQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vuS-mf-uJR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2yb-53-5ld" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5377" y="775"/>
         </scene>
         <!--커뮤니티-->
         <scene sceneID="fth-4z-Qg4">
@@ -205,6 +309,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y7u-lA-Xfs">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="MintBlue"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -217,6 +322,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="CancelButton" width="24" height="24"/>
         <image name="Community_OFF" width="33" height="31"/>
         <image name="Community_ON" width="33" height="31"/>
         <image name="CountryDetail" width="24" height="24"/>
@@ -225,11 +331,20 @@
         <image name="MypostButton" width="24" height="24"/>
         <image name="SearchButton" width="24" height="24"/>
         <image name="WriteIcon" width="24" height="24"/>
+        <namedColor name="Gray1">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Gray2">
             <color red="0.31000000238418579" green="0.31000000238418579" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="Gray3">
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Gray6">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightMintBlue">
+            <color red="0.76099997758865356" green="0.96100002527236938" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MintBlue">
             <color red="0.19200000166893005" green="0.86699998378753662" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

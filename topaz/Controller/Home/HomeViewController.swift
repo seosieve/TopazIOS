@@ -6,16 +6,22 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var IceBreakingLabel: UILabel!
     
+    let db = Firestore.firestore()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if Auth.auth().currentUser == nil {
             instantiateVC()
+        }
+        if Auth.auth().currentUser != nil {
+            makeIceBreakingLabel()
         }
         removeNavigationBackground(view: self)
         navigationController?.isNavigationBarHidden = true
@@ -23,11 +29,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-        makeIceBreakingLabel()
-        print(Auth.auth().currentUser?.email)
-        
     }
     
     @IBAction func settingButtonPressed(_ sender: UIButton) {
@@ -44,7 +45,24 @@ class HomeViewController: UIViewController {
 //MARK: - UI Functions
 extension HomeViewController {
     func makeIceBreakingLabel() {
-        IceBreakingLabel.text = "삥빵뽕삐님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
+        let email = Auth.auth().currentUser!.email!
+        db.collection("UserDataBase").document(email).getDocument { document, error in
+            if let document = document {
+                let nickname = document.get("nickname") as! String
+                self.IceBreakingLabel.text = "\(nickname)님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
+                self.addMultipleFonts(nickname)
+            } else {
+                if let error = error {
+                    print("유저 닉네임 탐색 오류 : \(error)")
+                }
+            }
+        }
+    }
+    
+    func addMultipleFonts(_ range: String) {
+        let attributedString = NSMutableAttributedString(string: IceBreakingLabel.text!)
+        attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 22)!, range: (IceBreakingLabel.text! as NSString).range(of: range))
+        IceBreakingLabel.attributedText = attributedString
     }
     
     func instantiateVC() {

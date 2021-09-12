@@ -12,6 +12,7 @@ import FirebaseFirestore
 class EditProfileViewModel {
     
     let collection = Firestore.firestore().collection("UserDataBase")
+    let storage = Storage.storage()
     
     func isNicknameValid(_ nickname: String?) -> Bool {
         let nicknameReg = "^[가-힣]{1,4}$"
@@ -19,28 +20,35 @@ class EditProfileViewModel {
         return nicknameTest.evaluate(with: nickname)
     }
     
-    // firestore에 들어갈 수 았는 형태로 email 변형
-    func storableEmail(_ email: String) -> String {
-        var storableEmail = email.replacingOccurrences(of: ".", with: "-")
-        storableEmail = storableEmail.replacingOccurrences(of: "@", with: "-")
-        return storableEmail
-    }
-    
     func addUserInfo(_ email: String, _ uid: String, _ nickname: String, _ introduce: String) {
         collection.document(email)
             .setData(["email": email, "uid": uid, "nickname": nickname, "introduce": introduce]) { error in
-            if error != nil {
-                print("Error saving user data : \(error!)")
+            if let error = error {
+                print("Error saving user data : \(error)")
             }
         }
     }
     
-    func deleteUserInfo(_ email: String, _ uid: String) {
-        collection.document(email).delete() { error in
-            if error != nil {
-                print("Error deleting user data : \(error!)")
+    func addUserImage(userEmail: String, data: Data) {
+        let imageRef = storage.reference().child("UserProfileImages/\(userEmail).png")
+        imageRef.putData(data, metadata: nil) {
+            _, error in
+            if let error = error {
+                print("프로필 사진 저장 에러 : \(error)")
             }
         }
     }
     
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
+        let newHeight = image.size.height * scale
+        let screenScale = UIScreen.main.scale // 화면 @레티나에 따라 조정
+        let scaleWidth = screenScale * newWidth
+        let scaleHeight = screenScale * newHeight
+        UIGraphicsBeginImageContext(CGSize(width: scaleWidth, height: scaleHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: scaleWidth, height: scaleHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
 }

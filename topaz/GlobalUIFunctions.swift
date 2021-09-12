@@ -19,6 +19,13 @@ func makeBorder(target view: UIView, color: String = "Gray5", isFilled Fill: Boo
     }
 }
 
+func makeCircle(target view: UIView, color: String, width: Int) {
+    view.layer.masksToBounds = true
+    view.layer.cornerRadius = view.frame.size.height/2
+    view.layer.borderWidth = CGFloat(width)
+    view.layer.borderColor = UIColor(named: color)?.cgColor
+}
+
 //Navigation Bar line과 Background 제거
 func removeNavigationBackground(view: UIViewController) {
     view.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)

@@ -1041,22 +1041,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="completeLabel" destination="EKE-p9-j7c" id="LtJ-VC-5ko"/>
-                        <segue destination="Y1H-Ej-zaA" kind="show" identifier="goToMain" id="9OF-yZ-rXv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yX-sy-txA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4707.2463768115949" y="114.50892857142857"/>
-        </scene>
-        <!--HomeVC-->
-        <scene sceneID="xE1-rP-mz8">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="HomeVC" id="Y1H-Ej-zaA" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="MLo-1d-jxR"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2fQ-B0-ncA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5325" y="358"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TcI-3X-CMy">
