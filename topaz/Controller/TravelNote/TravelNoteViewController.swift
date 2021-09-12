@@ -18,7 +18,9 @@ class TravelNoteViewController: UIViewController {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
         makeCircle(target: profileImage, color: "MintBlue", width: 0)
-        viewModel.getUserImage(view: profileImage)
+        if Auth.auth().currentUser != nil {
+            viewModel.getUserImage(view: profileImage)
+        }
     }
 
 }

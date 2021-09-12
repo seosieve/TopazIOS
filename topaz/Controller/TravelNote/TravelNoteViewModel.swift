@@ -10,10 +10,10 @@ import Firebase
 import FirebaseAuth
 
 class TravelNoteViewModel {
-    let userEmail = Auth.auth().currentUser!.email!
     let storage = Storage.storage()
     
     func getUserImage(view:UIImageView) {
+        let userEmail = Auth.auth().currentUser!.email!
         let imageRef = storage.reference(withPath: "UserProfileImages/\(userEmail).png")
         imageRef.getData(maxSize: 1*300*300) { data, error in
             if let error = error {
