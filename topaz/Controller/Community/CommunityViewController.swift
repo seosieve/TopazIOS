@@ -76,7 +76,7 @@ extension CommunityViewController {
     }
 }
 
-//MARK: - UICollectionView,UICollectionViewDataSource
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension CommunityViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Int.max
@@ -89,9 +89,6 @@ extension CommunityViewController : UICollectionViewDelegate, UICollectionViewDa
         cell.luggageImage.image = itemToShow
         return cell
     }
-    
-//    func collec
-    
     
 }
 
