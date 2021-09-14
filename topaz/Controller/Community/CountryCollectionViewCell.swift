@@ -9,7 +9,6 @@ import UIKit
 
 class CountryCollectionViewCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var countryImage: UIImageView!
     @IBOutlet weak var countryName: UILabel!
     
@@ -20,13 +19,9 @@ class CountryCollectionViewCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                let selectedView = UIView()
-                selectedView.backgroundColor = UIColor(named: "MintBlue")?.withAlphaComponent(0.4)
-                selectedView.frame = countryImage.layer.frame
-                countryImage.addSubview(selectedView)
-                countryImage.layer.borderWidth = 2
-                countryImage.layer.borderColor = UIColor(named: "MintBlue")?.cgColor
+                selected()
             } else {
+                deselected()
             }
         }
     }
@@ -41,4 +36,27 @@ class CountryCollectionViewCell: UICollectionViewCell {
         return UINib(nibName: "CountryCollectionViewCell", bundle: nil)
     }
 
+}
+
+//MARK: - UI Functions
+extension CountryCollectionViewCell {
+    func selected() {
+        let selectedView = UIView()
+        selectedView.backgroundColor = UIColor(named: "MintBlue")?.withAlphaComponent(0.4)
+        selectedView.frame = countryImage.layer.frame
+        selectedView.tag = 100
+        if countryImage.viewWithTag(100) == nil {
+            countryImage.addSubview(selectedView)
+        }
+        countryImage.layer.borderWidth = 2
+        countryImage.layer.borderColor = UIColor(named: "MintBlue")?.cgColor
+    }
+    
+    func deselected() {
+        if let viewWithTag = countryImage.viewWithTag(100) {
+            viewWithTag.removeFromSuperview()
+        }
+        countryImage.layer.borderWidth = 1
+        countryImage.layer.borderColor = UIColor(named: "Gray6")?.cgColor
+    }
 }
