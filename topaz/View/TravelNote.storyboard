@@ -3,12 +3,13 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Travel Note View Controller-->
+        <!--내 여행 수첩-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="TravelNoteViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,14 +32,57 @@
                             <constraint firstItem="HwZ-Cn-RIX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="116" id="ecd-7i-MJu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bCC-04-Ddu"/>
+                    <navigationItem key="navigationItem" title="내 여행 수첩" id="bCC-04-Ddu">
+                        <barButtonItem key="backBarButtonItem" title=" " id="S99-nZ-JN8"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="MypostButton" id="V9x-fp-cqb"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="profileImage" destination="HwZ-Cn-RIX" id="Vy0-NH-RwR"/>
+                        <segue destination="soN-xB-idz" kind="show" id="IGv-G5-d39"/>
+                        <segue destination="ShL-07-c3F" kind="show" id="RZa-PM-UxI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="984.05797101449286" y="64.955357142857139"/>
+        </scene>
+        <!--프로필 편집-->
+        <scene sceneID="b3z-Hh-LHy">
+            <objects>
+                <viewController id="ShL-07-c3F" customClass="MyProfileEditViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PNm-xE-kB2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="RjG-6h-kjr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="프로필 편집" id="KZ5-q2-iXT">
+                        <barButtonItem key="rightBarButtonItem" title="완료" id="WpU-Hp-rqA">
+                            <color key="tintColor" name="Gray3"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JVG-kc-5tq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="984" y="782"/>
+        </scene>
+        <!--내가 쓴 글-->
+        <scene sceneID="3PZ-Cu-r9C">
+            <objects>
+                <viewController id="soN-xB-idz" customClass="MyArticleViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qbY-0H-QsU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bDA-kp-3ye"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="내가 쓴 글" id="2Ux-7h-RxS">
+                        <barButtonItem key="backBarButtonItem" title=" " id="WvF-me-pAF"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="grx-hu-sTB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1791" y="65"/>
         </scene>
         <!--여행수첩-->
         <scene sceneID="jB9-HG-Xa1">
@@ -50,6 +94,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nIB-5B-Ylu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="Gray1"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
+                            <color key="textColor" name="Gray1"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -62,8 +111,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MypostButton" width="24" height="24"/>
         <image name="TravelNote_OFF" width="33" height="30"/>
         <image name="TravelNote_ON" width="33" height="30"/>
+        <namedColor name="Gray1">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray3">
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -60,6 +60,14 @@
 		4E9DCB3326C1781D001D218A /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0E26C177E1001D218A /* Poppins-SemiBold.ttf */; };
 		4E9DCB3426C1781F001D218A /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB1826C177E2001D218A /* Poppins-Thin.ttf */; };
 		4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0F26C177E1001D218A /* Poppins-ThinItalic.ttf */; };
+		4EE9A3AB26F2D1BA00395B2F /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AA26F2D1BA00395B2F /* ArticleModel.swift */; };
+		4EE9A3AD26F2D97300395B2F /* WrittingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AC26F2D97300395B2F /* WrittingViewModel.swift */; };
+		4EE9A3B026F3042E00395B2F /* FullArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AE26F3042D00395B2F /* FullArticleTableViewCell.swift */; };
+		4EE9A3B126F3042E00395B2F /* FullArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AF26F3042D00395B2F /* FullArticleTableViewCell.xib */; };
+		4EE9A3B326F6379500395B2F /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3B226F6379500395B2F /* CommunityViewModel.swift */; };
+		4EE9A3B726F758ED00395B2F /* MainDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3B626F758ED00395B2F /* MainDetailViewController.swift */; };
+		4EE9A3B926F7684C00395B2F /* MyArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3B826F7684C00395B2F /* MyArticleViewController.swift */; };
+		4EE9A3BB26F76A6800395B2F /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3BA26F76A6800395B2F /* MyProfileEditViewController.swift */; };
 		4EFBA8DA26C1362C001F1557 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFBA8D926C1362C001F1557 /* Assets.xcassets */; };
 		A5A94767E83929E3AA0881CF /* Pods_topaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44604151810CDEE526775EAB /* Pods_topaz.framework */; };
 /* End PBXBuildFile section */
@@ -121,6 +129,14 @@
 		4E9DCB1C26C177E2001D218A /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
 		4E9DCB1D26C177E2001D218A /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		4E9DCB1E26C177E2001D218A /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4EE9A3AA26F2D1BA00395B2F /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
+		4EE9A3AC26F2D97300395B2F /* WrittingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingViewModel.swift; sourceTree = "<group>"; };
+		4EE9A3AE26F3042D00395B2F /* FullArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullArticleTableViewCell.swift; sourceTree = "<group>"; };
+		4EE9A3AF26F3042D00395B2F /* FullArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullArticleTableViewCell.xib; sourceTree = "<group>"; };
+		4EE9A3B226F6379500395B2F /* CommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
+		4EE9A3B626F758ED00395B2F /* MainDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailViewController.swift; sourceTree = "<group>"; };
+		4EE9A3B826F7684C00395B2F /* MyArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleViewController.swift; sourceTree = "<group>"; };
+		4EE9A3BA26F76A6800395B2F /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
 		4EFBA8D926C1362C001F1557 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Downloads/AppIcons (1)/Assets.xcassets"; sourceTree = "<group>"; };
 		7E3975921A6298E978E2E2DB /* Pods-topaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-topaz.debug.xcconfig"; path = "Target Support Files/Pods-topaz/Pods-topaz.debug.xcconfig"; sourceTree = "<group>"; };
 		D0BB8C8097326A0C7F69BE6B /* Pods-topaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-topaz.release.xcconfig"; path = "Target Support Files/Pods-topaz/Pods-topaz.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,11 +236,8 @@
 		4E533F3726E0610D00527FC2 /* Community */ = {
 			isa = PBXGroup;
 			children = (
-				4E533F3826E0612000527FC2 /* CommunityViewController.swift */,
-				4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */,
-				4E9B9BC026EE673200ABCE87 /* AddCountryViewController.swift */,
-				4E64D12826EF5BA100DB3FDB /* CountryCollectionViewCell.swift */,
-				4E64D12926EF5BA100DB3FDB /* CountryCollectionViewCell.xib */,
+				4EE9A3B526F7586200395B2F /* MainArticle&View */,
+				4EE9A3B426F7582800395B2F /* Writting */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -234,6 +247,8 @@
 			children = (
 				4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */,
 				4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */,
+				4EE9A3B826F7684C00395B2F /* MyArticleViewController.swift */,
+				4EE9A3BA26F76A6800395B2F /* MyProfileEditViewController.swift */,
 			);
 			path = TravelNote;
 			sourceTree = "<group>";
@@ -268,6 +283,30 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		4EE9A3B426F7582800395B2F /* Writting */ = {
+			isa = PBXGroup;
+			children = (
+				4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */,
+				4EE9A3AC26F2D97300395B2F /* WrittingViewModel.swift */,
+				4E9B9BC026EE673200ABCE87 /* AddCountryViewController.swift */,
+				4E64D12826EF5BA100DB3FDB /* CountryCollectionViewCell.swift */,
+				4E64D12926EF5BA100DB3FDB /* CountryCollectionViewCell.xib */,
+			);
+			path = Writting;
+			sourceTree = "<group>";
+		};
+		4EE9A3B526F7586200395B2F /* MainArticle&View */ = {
+			isa = PBXGroup;
+			children = (
+				4E533F3826E0612000527FC2 /* CommunityViewController.swift */,
+				4EE9A3B226F6379500395B2F /* CommunityViewModel.swift */,
+				4EE9A3AE26F3042D00395B2F /* FullArticleTableViewCell.swift */,
+				4EE9A3AF26F3042D00395B2F /* FullArticleTableViewCell.xib */,
+				4EE9A3B626F758ED00395B2F /* MainDetailViewController.swift */,
+			);
+			path = "MainArticle&View";
+			sourceTree = "<group>";
+		};
 		4EFBA8DB26C137A8001F1557 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +334,7 @@
 		4EFBA8DD26C137C9001F1557 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4EE9A3AA26F2D1BA00395B2F /* ArticleModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -392,6 +432,7 @@
 				4E9DCB2526C17801001D218A /* Poppins-Black.ttf in Resources */,
 				4E32E07926DE35FB005682E5 /* GoogleService-Info.plist in Resources */,
 				4E056DF826C3901E00FDF0F3 /* SignUp.storyboard in Resources */,
+				4EE9A3B126F3042E00395B2F /* FullArticleTableViewCell.xib in Resources */,
 				4E9DCB3326C1781D001D218A /* Poppins-SemiBold.ttf in Resources */,
 				4E9DCB2026C177F1001D218A /* NotoSansKR-Bold.otf in Resources */,
 				4E0FAEB226C0EE99003D80E3 /* Main.storyboard in Resources */,
@@ -452,13 +493,18 @@
 			files = (
 				4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */,
 				4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */,
+				4EE9A3B026F3042E00395B2F /* FullArticleTableViewCell.swift in Sources */,
 				4E533F3E26E09A8E00527FC2 /* TabBarController.swift in Sources */,
+				4EE9A3AB26F2D1BA00395B2F /* ArticleModel.swift in Sources */,
+				4EE9A3BB26F76A6800395B2F /* MyProfileEditViewController.swift in Sources */,
 				4E533F3C26E08A0900527FC2 /* TravelNoteViewController.swift in Sources */,
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
+				4EE9A3AD26F2D97300395B2F /* WrittingViewModel.swift in Sources */,
 				4E056DF126C25E5100FDF0F3 /* FindPasswordViewController.swift in Sources */,
 				4E18A57526E66050001504A9 /* SettingViewController.swift in Sources */,
 				4E0FAEAF26C0EE99003D80E3 /* WelcomeViewController.swift in Sources */,
 				4E9B9BC126EE673200ABCE87 /* AddCountryViewController.swift in Sources */,
+				4EE9A3B326F6379500395B2F /* CommunityViewModel.swift in Sources */,
 				4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */,
 				4E32E07C26DE6147005682E5 /* EditAccountViewModel.swift in Sources */,
 				4E9B9BBF26EDE87600ABCE87 /* WrittingViewController.swift in Sources */,
@@ -470,6 +516,8 @@
 				4E056DF326C25EEB00FDF0F3 /* EditAccountViewController.swift in Sources */,
 				4E9B9BBD26EDE50800ABCE87 /* TravelNoteViewModel.swift in Sources */,
 				4E533F3426E060F500527FC2 /* HomeViewController.swift in Sources */,
+				4EE9A3B726F758ED00395B2F /* MainDetailViewController.swift in Sources */,
+				4EE9A3B926F7684C00395B2F /* MyArticleViewController.swift in Sources */,
 				4E056E0026C39AD200FDF0F3 /* EditProfileViewController.swift in Sources */,
 				4E64D12A26EF5BA100DB3FDB /* CountryCollectionViewCell.swift in Sources */,
 			);

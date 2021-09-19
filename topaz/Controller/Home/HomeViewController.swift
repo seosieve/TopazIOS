@@ -13,22 +13,26 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var IceBreakingLabel: UILabel!
     
-    let db = Firestore.firestore()
+    let ViewModel = HomeViewModel()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("ViewDidLoad")
         if Auth.auth().currentUser == nil {
             instantiateVC()
         }
         if Auth.auth().currentUser != nil {
-            makeIceBreakingLabel()
+            ViewModel.getUserNickname { nickname in
+                self.IceBreakingLabel.text = "\(nickname)님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
+                self.addMultipleFonts(nickname)
+            }
+            
         }
-        removeNavigationBackground(view: self)
-        navigationController?.isNavigationBarHidden = true
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
     }
     
     @IBAction func settingButtonPressed(_ sender: UIButton) {
@@ -44,20 +48,6 @@ class HomeViewController: UIViewController {
 
 //MARK: - UI Functions
 extension HomeViewController {
-    func makeIceBreakingLabel() {
-        let email = Auth.auth().currentUser!.email!
-        db.collection("UserDataBase").document(email).getDocument { document, error in
-            if let document = document {
-                let nickname = document.get("nickname") as! String
-                self.IceBreakingLabel.text = "\(nickname)님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
-                self.addMultipleFonts(nickname)
-            } else {
-                if let error = error {
-                    print("유저 닉네임 탐색 오류 : \(error)")
-                }
-            }
-        }
-    }
     
     func addMultipleFonts(_ range: String) {
         let attributedString = NSMutableAttributedString(string: IceBreakingLabel.text!)

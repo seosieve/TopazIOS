@@ -26,6 +26,15 @@ func makeCircle(target view: UIView, color: String, width: Int) {
     view.layer.borderColor = UIColor(named: color)?.cgColor
 }
 
+func makeShadow(target view: UIView, radius: CGFloat) {
+    view.clipsToBounds = false
+    view.layer.shadowColor = UIColor(named: "Gray4")?.cgColor
+    view.layer.shadowOpacity = 0.5
+    view.layer.shadowOffset = CGSize.zero
+    view.layer.shadowRadius = 2
+    view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: radius).cgPath
+}
+
 //Navigation Bar line과 Background 제거
 func removeNavigationBackground(view: UIViewController) {
     view.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
