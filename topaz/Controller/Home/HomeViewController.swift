@@ -12,21 +12,22 @@ import FirebaseAuth
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var IceBreakingLabel: UILabel!
+    @IBOutlet weak var nicknameBackground: UIView!
     
-    let ViewModel = HomeViewModel()
+    let userdefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ViewDidLoad")
+        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+           print("\(key) = \(value) \n")
+         }
         if Auth.auth().currentUser == nil {
             instantiateVC()
         }
         if Auth.auth().currentUser != nil {
-            ViewModel.getUserNickname { nickname in
-                self.IceBreakingLabel.text = "\(nickname)님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
-                self.addMultipleFonts(nickname)
-            }
-            
+            let nickname = userdefault.string(forKey: "nickname")!
+            IceBreakingLabel.text = "\(nickname)님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
+            addMultipleFonts(nickname)
         }
     }
     

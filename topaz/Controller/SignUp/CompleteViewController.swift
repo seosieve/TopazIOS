@@ -6,27 +6,27 @@
 //
 
 import UIKit
-import Firebase
 
 class CompleteViewController: UIViewController {
     @IBOutlet weak var completeLabel: UILabel!
+    
+    let viewModel = CompleteViewModel()
     
     var userEmail: String = ""
     var userPW: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Auth.auth().signIn(withEmail: userEmail, password: userPW) { result, error in
-            if let error = error {
-                print("로그인 에러 : \(error)")
-            }
-        }
-        removeNavigationBackground(view: self)
+        self.navigationController?.isNavigationBarHidden = true
         addMultipleFonts()
     }
 
     @IBAction func goToLoginPressed(_ sender: UIButton) {
-        instantiateVC()
+        viewModel.signIn(email: userEmail, password: userPW) {
+            self.viewModel.addUserdefault(email: self.userEmail) {
+                self.instantiateVC()
+            }
+        }
     }
 }
 

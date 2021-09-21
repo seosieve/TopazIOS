@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,7 +44,7 @@
                                 <rect key="frame" x="20" y="272.5" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일 주소를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BrW-z9-23P">
-                                        <rect key="frame" x="10" y="13" width="354" height="24"/>
+                                        <rect key="frame" x="10" y="12.5" width="354" height="25"/>
                                         <color key="textColor" name="Gray2"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -822,7 +823,7 @@
                                 <rect key="frame" x="20" y="435.5" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="원하는 이름을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7B0-kA-YZ6">
-                                        <rect key="frame" x="10" y="13" width="354" height="24"/>
+                                        <rect key="frame" x="10" y="12.5" width="354" height="25"/>
                                         <color key="textColor" name="Gray2"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -866,7 +867,7 @@
                                 <rect key="frame" x="20" y="534" width="374" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="자기 소개를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Opt-Me-Kg0">
-                                        <rect key="frame" x="10" y="13" width="354" height="24"/>
+                                        <rect key="frame" x="10" y="12.5" width="354" height="25"/>
                                         <color key="textColor" name="Gray2"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -920,16 +921,16 @@
                         <constraints>
                             <constraint firstItem="GLO-NL-WPf" firstAttribute="top" secondItem="4br-17-aQF" secondAttribute="top" constant="28" id="3S5-L1-zfH"/>
                             <constraint firstItem="yvD-1U-FgH" firstAttribute="leading" secondItem="76u-VA-LUe" secondAttribute="leading" id="4U2-Mq-gLN"/>
-                            <constraint firstItem="N60-Ts-zV9" firstAttribute="leading" secondItem="76u-VA-LUe" secondAttribute="leading" constant="20" id="7FE-Zv-duh"/>
+                            <constraint firstItem="N60-Ts-zV9" firstAttribute="leading" secondItem="HeH-4c-3ij" secondAttribute="leading" id="7FE-Zv-duh"/>
                             <constraint firstItem="mrC-Vx-b3l" firstAttribute="top" secondItem="HeH-4c-3ij" secondAttribute="bottom" constant="9" id="B7B-Uh-wuS"/>
                             <constraint firstItem="mrC-Vx-b3l" firstAttribute="centerX" secondItem="76u-VA-LUe" secondAttribute="centerX" id="FUD-23-9KP"/>
                             <constraint firstItem="SLV-Da-JUO" firstAttribute="centerX" secondItem="76u-VA-LUe" secondAttribute="centerX" id="HfW-vo-RHu"/>
-                            <constraint firstItem="Knl-VJ-QJD" firstAttribute="leading" secondItem="76u-VA-LUe" secondAttribute="leading" constant="20" id="JUr-HC-bzc"/>
+                            <constraint firstItem="Knl-VJ-QJD" firstAttribute="leading" secondItem="HeH-4c-3ij" secondAttribute="leading" id="JUr-HC-bzc"/>
                             <constraint firstItem="GLO-NL-WPf" firstAttribute="leading" secondItem="76u-VA-LUe" secondAttribute="leading" constant="20" id="Kng-xg-OAZ"/>
                             <constraint firstItem="4br-17-aQF" firstAttribute="leading" secondItem="76u-VA-LUe" secondAttribute="leading" constant="20" id="MZJ-zc-b6v"/>
                             <constraint firstItem="o3G-aA-zYf" firstAttribute="leading" secondItem="HeH-4c-3ij" secondAttribute="trailing" constant="3" id="Mgw-k8-dLs"/>
                             <constraint firstItem="Knl-VJ-QJD" firstAttribute="top" secondItem="qPh-aF-F8W" secondAttribute="bottom" constant="-9.5" id="NSc-y3-rbi"/>
-                            <constraint firstItem="mrC-Vx-b3l" firstAttribute="leading" secondItem="76u-VA-LUe" secondAttribute="leading" constant="20" id="Nuy-Ni-gaK"/>
+                            <constraint firstItem="mrC-Vx-b3l" firstAttribute="leading" secondItem="HeH-4c-3ij" secondAttribute="leading" id="Nuy-Ni-gaK"/>
                             <constraint firstItem="EcK-Gz-mc3" firstAttribute="leading" secondItem="76u-VA-LUe" secondAttribute="leading" constant="20" id="QQN-Pk-92y"/>
                             <constraint firstItem="yvD-1U-FgH" firstAttribute="bottom" secondItem="Pw9-fF-vvs" secondAttribute="bottom" id="SoZ-jf-6T2"/>
                             <constraint firstItem="HeH-4c-3ij" firstAttribute="top" secondItem="SLV-Da-JUO" secondAttribute="bottom" constant="31" id="XwU-Ks-qNd"/>

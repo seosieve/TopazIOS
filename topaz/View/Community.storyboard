@@ -470,12 +470,12 @@
                         <color key="backgroundColor" name="White"/>
                         <constraints>
                             <constraint firstItem="iqK-Y7-yJ3" firstAttribute="leading" secondItem="ecu-eh-5qT" secondAttribute="leading" constant="20" id="2ez-1A-8pz"/>
-                            <constraint firstAttribute="bottom" secondItem="AK5-al-9b1" secondAttribute="bottom" constant="58" id="2fg-xX-L7K"/>
+                            <constraint firstItem="tuo-7c-HBP" firstAttribute="bottom" secondItem="AK5-al-9b1" secondAttribute="bottom" constant="24" id="2fg-xX-L7K"/>
                             <constraint firstItem="wLi-Xu-Ldg" firstAttribute="trailing" secondItem="ecu-eh-5qT" secondAttribute="trailing" id="5dQ-Rn-uTg"/>
-                            <constraint firstAttribute="bottom" secondItem="iqK-Y7-yJ3" secondAttribute="bottom" constant="58" id="CHn-Iy-j7U"/>
+                            <constraint firstItem="tuo-7c-HBP" firstAttribute="bottom" secondItem="iqK-Y7-yJ3" secondAttribute="bottom" constant="24" id="CHn-Iy-j7U"/>
                             <constraint firstItem="fLV-Sm-4j8" firstAttribute="top" secondItem="tuo-7c-HBP" secondAttribute="top" id="JYA-nW-Qsk"/>
                             <constraint firstItem="fLV-Sm-4j8" firstAttribute="leading" secondItem="ecu-eh-5qT" secondAttribute="leading" id="Rkv-gb-YtW"/>
-                            <constraint firstAttribute="bottom" secondItem="jyQ-iV-dKH" secondAttribute="bottom" constant="58" id="TkT-A3-hdl"/>
+                            <constraint firstItem="AK5-al-9b1" firstAttribute="bottom" secondItem="jyQ-iV-dKH" secondAttribute="bottom" id="TkT-A3-hdl"/>
                             <constraint firstAttribute="trailing" secondItem="AK5-al-9b1" secondAttribute="trailing" constant="20" id="aMq-y9-iB6"/>
                             <constraint firstItem="fLV-Sm-4j8" firstAttribute="centerX" secondItem="ecu-eh-5qT" secondAttribute="centerX" id="b52-jY-P9l"/>
                             <constraint firstItem="wLi-Xu-Ldg" firstAttribute="leading" secondItem="ecu-eh-5qT" secondAttribute="leading" id="e2k-Df-IPh"/>

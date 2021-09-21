@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E01361826FA1B710071F31D /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01361726FA1B710071F31D /* WelcomeViewModel.swift */; };
+		4E01361A26FA24600071F31D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01361926FA24600071F31D /* SettingViewModel.swift */; };
+		4E01361C26FA25D50071F31D /* CompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01361B26FA25D50071F31D /* CompleteViewModel.swift */; };
 		4E056DF126C25E5100FDF0F3 /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E056DF026C25E5100FDF0F3 /* FindPasswordViewController.swift */; };
 		4E056DF326C25EEB00FDF0F3 /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E056DF226C25EEB00FDF0F3 /* EditAccountViewController.swift */; };
 		4E056DF826C3901E00FDF0F3 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E056DF726C3901E00FDF0F3 /* SignUp.storyboard */; };
@@ -74,6 +77,9 @@
 
 /* Begin PBXFileReference section */
 		44604151810CDEE526775EAB /* Pods_topaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_topaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E01361726FA1B710071F31D /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		4E01361926FA24600071F31D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		4E01361B26FA25D50071F31D /* CompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewModel.swift; sourceTree = "<group>"; };
 		4E056DF026C25E5100FDF0F3 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
 		4E056DF226C25EEB00FDF0F3 /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		4E056DF726C3901E00FDF0F3 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				4E0FAEAE26C0EE99003D80E3 /* WelcomeViewController.swift */,
+				4E01361726FA1B710071F31D /* WelcomeViewModel.swift */,
 				4E056DF026C25E5100FDF0F3 /* FindPasswordViewController.swift */,
 			);
 			path = "SignIn&FindPW";
@@ -182,6 +189,7 @@
 				4E32E07D26DF6ED8005682E5 /* EditProfileViewModel.swift */,
 				4E32E05026CD16FF005682E5 /* TermsViewController.swift */,
 				4E32E05226CD3085005682E5 /* CompleteViewController.swift */,
+				4E01361B26FA25D50071F31D /* CompleteViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -229,6 +237,7 @@
 				4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */,
 				4E533F3D26E09A8E00527FC2 /* TabBarController.swift */,
 				4E18A57426E66050001504A9 /* SettingViewController.swift */,
+				4E01361926FA24600071F31D /* SettingViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -492,6 +501,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */,
+				4E01361A26FA24600071F31D /* SettingViewModel.swift in Sources */,
+				4E01361826FA1B710071F31D /* WelcomeViewModel.swift in Sources */,
 				4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */,
 				4EE9A3B026F3042E00395B2F /* FullArticleTableViewCell.swift in Sources */,
 				4E533F3E26E09A8E00527FC2 /* TabBarController.swift in Sources */,
@@ -512,6 +523,7 @@
 				4E0FAEAB26C0EE99003D80E3 /* AppDelegate.swift in Sources */,
 				4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */,
 				4E0FAEAD26C0EE99003D80E3 /* SceneDelegate.swift in Sources */,
+				4E01361C26FA25D50071F31D /* CompleteViewModel.swift in Sources */,
 				4E056E0226C3B50100FDF0F3 /* GlobalUIFunctions.swift in Sources */,
 				4E056DF326C25EEB00FDF0F3 /* EditAccountViewController.swift in Sources */,
 				4E9B9BBD26EDE50800ABCE87 /* TravelNoteViewModel.swift in Sources */,

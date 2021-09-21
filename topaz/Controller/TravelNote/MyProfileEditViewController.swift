@@ -11,7 +11,8 @@ class MyProfileEditViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        removeNavigationBackground(view: self)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
 
     }
     

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
 
@@ -15,6 +14,8 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    
+    let viewModel = WelcomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -30,22 +31,16 @@ class WelcomeViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
         let email = emailTextField.text!
         let password = passwordTextField.text!
-        let idErrorMessage = "There is no user record corresponding to this identifier. The user may have been deleted."
-        let PWErrorMessage = "The password is invalid or the user does not have a password."
-        
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let errorMessage = error?.localizedDescription {
-                if errorMessage == idErrorMessage {
-                    self.popUpToast("존재하지 않는 아이디입니다.")
-                } else if errorMessage == PWErrorMessage {
-                    self.popUpToast("비밀번호가 일치하지 않습니다.")
-                } else {
-                    self.popUpToast("로그인 중 오류가 발생했습니다. 다시 회원가입을 진행해주세요.")
-                }
+        viewModel.signIn(email: email, password: password) { message in
+            if message != nil {
+                self.popUpToast(message!)
             } else {
-                self.instantiateVC()
+                self.viewModel.addUserdefault(email: email) {
+                    self.instantiateVC()
+                }
             }
         }
+        
     }
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
