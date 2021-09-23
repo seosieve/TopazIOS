@@ -20,21 +20,47 @@ class EditProfileViewModel {
         return nicknameTest.evaluate(with: nickname)
     }
     
-    func addUserInfo(_ email: String, _ uid: String, _ nickname: String, _ introduce: String) {
-        collection.document(email)
-            .setData(["email": email, "uid": uid, "nickname": nickname, "introduce": introduce]) { error in
+    func isExist(nickname: String, nicknameHandler: @escaping () -> ()) {
+        collection.whereField("nickname", isEqualTo: nickname).getDocuments { querySnapshot, error in
             if let error = error {
-                print("Error saving user data : \(error)")
+                print("닉네임 탐색 에러 : \(error)")
+            } else {
+                if querySnapshot!.documents.count != 0 {
+                    nicknameHandler()
+                }
             }
         }
     }
     
-    func addUserImage(userEmail: String, data: Data) {
+    func createUser(email: String, password: String, createUserHandler: @escaping () -> ()) {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error!)
+            } else {
+                createUserHandler()
+            }
+        }
+    }
+    
+    func addUserInfo(_ email: String, _ nickname: String, _ introduce: String, addInfoHandler: @escaping () -> ()) {
+        collection.document(email)
+            .setData(["email": email, "nickname": nickname, "introduce": introduce]) { error in
+            if let error = error {
+                print("Error saving user data : \(error)")
+            } else {
+                addInfoHandler()
+            }
+        }
+    }
+    
+    func addUserImage(userEmail: String, data: Data, addImageHandler: @escaping () -> ()) {
         let imageRef = storage.reference().child("UserProfileImages/\(userEmail).png")
         imageRef.putData(data, metadata: nil) {
             _, error in
             if let error = error {
                 print("프로필 사진 저장 에러 : \(error)")
+            } else {
+                addImageHandler()
             }
         }
     }
@@ -43,6 +69,7 @@ class EditProfileViewModel {
         let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
         let newHeight = image.size.height * scale
         let screenScale = UIScreen.main.scale // 화면 @레티나에 따라 조정
+        print(screenScale)
         let scaleWidth = screenScale * newWidth
         let scaleHeight = screenScale * newHeight
         UIGraphicsBeginImageContext(CGSize(width: scaleWidth, height: scaleHeight))

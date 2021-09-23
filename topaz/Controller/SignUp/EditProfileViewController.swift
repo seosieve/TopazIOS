@@ -30,19 +30,18 @@ class EditProfileViewController: UIViewController {
     var userEmail: String = ""
     var userPW: String = ""
     
-    var imagePicker: UIImagePickerController!
+    var imagePicker = UIImagePickerController()
     let viewModel = EditProfileViewModel()
     var userImage = UIImage(named: "DefaultUserImage")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        makeBorder(target: nicknameTextFieldBorder, isFilled: false)
-        makeBorder(target: introduceTextFieldBorder, isFilled: false)
+        makeBorder(target: nicknameTextFieldBorder, radius: 6, isFilled: false)
+        makeBorder(target: introduceTextFieldBorder, radius: 6, isFilled: false)
         makeCircle(target: profileAdd, color: "MintBlue", width: 3)
         makeCircle(target: nicknameDot, color: "WarningRed", width: 0)
         profileAdd.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
-        imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         // TextField 입력 감지
         self.nicknameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -83,12 +82,10 @@ class EditProfileViewController: UIViewController {
             check.alpha = 1
             correctAnimation()
             //이메일 양식에 맞지만 이미 가입된 닉네임일 때
-            viewModel.collection.whereField("nickname", isEqualTo: nicknameTextField.text!).getDocuments { querySnapshot, error in
-                if querySnapshot!.documents.count != 0 {
-                    self.check.alpha = 0
-                    self.nicknameWarning.text = "이미 사용중인 닉네임입니다."
-                    self.incorrectAnimation()
-                }
+            viewModel.isExist(nickname: nicknameTextField.text ?? "") {
+                self.check.alpha = 0
+                self.nicknameWarning.text = "이미 사용중인 닉네임입니다."
+                self.incorrectAnimation()
             }
         } else {
             //닉네임 글자가 4자 초과일 때, 영어일 때
@@ -102,17 +99,36 @@ class EditProfileViewController: UIViewController {
     }
     
     @IBAction func goToNext(_ sender: UIButton) {
-        Auth.auth().createUser(withEmail: userEmail, password: userPW) { result, error in
-            if error != nil {
-                print(error!)
-            } else {
-                self.viewModel.addUserInfo(self.userEmail, result!.user.uid, self.nicknameTextField.text!, self.introduceTextField.text!)
+        // 나중에 uid 필요해지면 추가
+        let data = userImage.pngData()!
+        let nickname = nicknameTextField.text!
+        let introduce = introduceTextField.text ?? ""
+        let makeUserGroup = DispatchGroup()
+        
+        makeUserGroup.enter()
+        DispatchQueue.global().async {
+            self.viewModel.createUser(email: self.userEmail, password: self.userPW) {
+                print("createUser Success")
+                makeUserGroup.leave()
             }
         }
-        // 다음에 디폴트 유저 이미지 추가하기
-        let data = userImage.pngData()!
-        viewModel.addUserImage(userEmail: userEmail, data: data)
-        self.performSegue(withIdentifier: "goToComplete", sender: sender)
+        makeUserGroup.enter()
+        DispatchQueue.global().async {
+            self.viewModel.addUserInfo(self.userEmail, nickname, introduce) {
+                print("addUserInfo Success")
+                makeUserGroup.leave()
+            }
+        }
+        makeUserGroup.enter()
+        DispatchQueue.global().async {
+            self.viewModel.addUserImage(userEmail: self.userEmail, data: data) {
+                print("addUserImage Success")
+                makeUserGroup.leave()
+            }
+        }
+        makeUserGroup.notify(queue: .main) {
+            self.performSegue(withIdentifier: "goToComplete", sender: sender)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -181,7 +197,7 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            userImage = viewModel.resizeImage(image: img, newWidth: 100)
+            userImage = viewModel.resizeImage(image: img, newWidth: 50)
             profileAdd.setImage(userImage, for: .normal)
         }
         imagePicker.dismiss(animated: true, completion: nil)

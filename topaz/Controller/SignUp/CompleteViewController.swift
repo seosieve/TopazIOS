@@ -20,7 +20,7 @@ class CompleteViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         addMultipleFonts()
     }
-
+    
     @IBAction func goToLoginPressed(_ sender: UIButton) {
         viewModel.signIn(email: userEmail, password: userPW) {
             self.viewModel.addUserdefault(email: self.userEmail) {

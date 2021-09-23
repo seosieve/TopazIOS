@@ -35,9 +35,9 @@ class EditAccountController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        makeBorder(target: emailTextFieldBorder, isFilled: false)
-        makeBorder(target: PWTextFieldBorder, isFilled: false)
-        makeBorder(target: PWConfirmTextFieldBorder, isFilled: false)
+        makeBorder(target: emailTextFieldBorder, radius:6, isFilled: false)
+        makeBorder(target: PWTextFieldBorder, radius:6, isFilled: false)
+        makeBorder(target: PWConfirmTextFieldBorder, radius:6, isFilled: false)
         // TextField 입력 감지
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         PWTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -60,18 +60,16 @@ class EditAccountController: UIViewController {
     
     @objc func textFieldDidChange(_ sender: UITextField) {
         if sender == emailTextField {
-            let safeEmail = viewModel.isEmailValid(sender.text ?? "")
-            if safeEmail {
+            let validEmail = viewModel.isEmailValid(sender.text ?? "")
+            if validEmail {
                 //이메일 양식에 맞을 때
                 check[0].alpha = 1
                 correctAnimation(index: 0)
                 //이메일 양식에 맞지만 이미 가입된 이메일일 때
-                viewModel.collection.whereField("email", isEqualTo: safeEmail).getDocuments{ querySnapshot, error in
-                    if querySnapshot!.documents.count != 0 {
-                        self.check[0].alpha = 0
-                        self.emailWarning.text = "이미 가입된 이메일입니다."
-                        self.incorrectAnimation(index: 0)
-                    }
+                viewModel.isExist(email: sender.text ?? "") {
+                    self.check[0].alpha = 0
+                    self.emailWarning.text = "이미 가입된 이메일입니다."
+                    self.incorrectAnimation(index: 0)
                 }
             } else {
                 //이메일 양식에 맞지 않을 때

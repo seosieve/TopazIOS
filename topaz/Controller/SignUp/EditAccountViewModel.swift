@@ -24,4 +24,16 @@ class EditAccountViewModel {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordReg)
         return passwordTest.evaluate(with: password)
     }
+    
+    func isExist(email: String, emailHandler: @escaping () -> ()) {
+        collection.whereField("email", isEqualTo: email).getDocuments { querySnapshot, error in
+            if let error = error {
+                print("이메일 탐색 에러 : \(error)")
+            } else {
+                if querySnapshot!.documents.count != 0 {
+                    emailHandler()
+                }
+            }
+        }
+    }
 }

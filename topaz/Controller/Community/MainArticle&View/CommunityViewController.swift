@@ -26,15 +26,14 @@ class CommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        removeNavigationBackground(view: self)
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         makeCircular(target: upperBackground, each: true)
         makeCircular(target: writeButton, each: false)
         addMultipleFonts()
-        //CollectionView
+        // CollectionView
         luggageCollectionView.dataSource = self
         luggageCollectionView.delegate = self
-        //TableView
+        // TableView
         fullArticleTableView.register(FullArticleTableViewCell.nib(), forCellReuseIdentifier: "FullArticleTableViewCell")
         fullArticleTableView.dataSource = self
         fullArticleTableView.delegate = self
@@ -167,7 +166,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         cell.views.setTitle(String(articleArr[indexPath.row].views), for: .normal)
         
         makeCircle(target: cell.countryNumber, color: "MintBlue", width: 0)
-        cell.mainImage.image = UIImage(named: "France")
+        cell.mainImage.image = UIImage(named: "aa")
         DispatchQueue.main.async {
             self.makeShadow(target: cell.shadowView)
             cell.mainView.roundCorners(topLeft: 6, bottomLeft: 24)

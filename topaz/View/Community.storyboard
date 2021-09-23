@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -34,7 +35,7 @@
                                 <rect key="frame" x="0.0" y="151" width="414" height="706"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U51-bX-qVs">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="701.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="705.5"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" id="stM-QK-7KH">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="305"/>
@@ -72,13 +73,13 @@
                                                 </cells>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체글" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyb-2P-kjm">
-                                                <rect key="frame" x="20" y="329" width="36.5" height="16.5"/>
+                                                <rect key="frame" x="20" y="329" width="39" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="14"/>
                                                 <color key="textColor" name="Gray3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="aF8-be-zaJ">
-                                                <rect key="frame" x="0.0" y="361.5" width="414" height="300"/>
+                                                <rect key="frame" x="0.0" y="365.5" width="414" height="300"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="6t8-BD-8m6"/>
@@ -111,7 +112,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6b-Hi-AZs">
-                                        <rect key="frame" x="20" y="21" width="157" height="33"/>
+                                        <rect key="frame" x="20" y="17" width="164" height="41"/>
                                         <string key="text">이번 주의 인기글이 담겨있는
 여행 캐리어를 열어보세요!</string>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
@@ -150,61 +151,45 @@
                                     <constraint firstItem="C6b-Hi-AZs" firstAttribute="centerY" secondItem="nIa-W7-yZK" secondAttribute="centerY" id="syD-21-HAn"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SIU-Cp-d87">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
-                                <color key="backgroundColor" name="White"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="adt-Zx-AN9"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="커뮤니티" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ap5-Pp-dH7">
-                                <rect key="frame" x="20" y="51" width="69.5" height="23.5"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Vf-R0-Eog">
-                                <rect key="frame" x="370" y="54" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="TAH-BB-X5R"/>
-                                    <constraint firstAttribute="width" constant="24" id="rks-ZV-AXW"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="SearchButton"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-Gl-KJU">
-                                <rect key="frame" x="93.5" y="54" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="9lc-wp-vcD"/>
-                                    <constraint firstAttribute="height" constant="24" id="qN7-Ds-ZQP"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="CountryDetail"/>
-                                <connections>
-                                    <action selector="countryDetailPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sRt-4J-GcD"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="White"/>
                         <constraints>
-                            <constraint firstItem="f0Z-Gl-KJU" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="54" id="17N-k7-gdI"/>
-                            <constraint firstItem="SIU-Cp-d87" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="7qQ-5G-Wx0"/>
                             <constraint firstAttribute="trailing" secondItem="nIa-W7-yZK" secondAttribute="trailing" id="CgA-he-1hG"/>
-                            <constraint firstItem="nIa-W7-yZK" firstAttribute="top" secondItem="SIU-Cp-d87" secondAttribute="bottom" id="DoR-IR-kyi"/>
                             <constraint firstItem="UWj-9r-pRe" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="J7v-Vc-VHF"/>
                             <constraint firstItem="UWj-9r-pRe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Jo4-jO-vHL"/>
                             <constraint firstAttribute="bottom" secondItem="UWj-9r-pRe" secondAttribute="bottom" constant="39" id="K5s-VL-LSu"/>
-                            <constraint firstItem="Ap5-Pp-dH7" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="51" id="Kfe-Vk-P4H"/>
-                            <constraint firstItem="SIU-Cp-d87" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="LJ7-oF-jug"/>
-                            <constraint firstItem="Ap5-Pp-dH7" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="SM6-oj-BfI"/>
                             <constraint firstItem="UWj-9r-pRe" firstAttribute="top" secondItem="nIa-W7-yZK" secondAttribute="bottom" constant="-12" id="Xd7-Ds-yBp"/>
                             <constraint firstItem="nIa-W7-yZK" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="aH3-9N-L9x"/>
-                            <constraint firstItem="f0Z-Gl-KJU" firstAttribute="leading" secondItem="Ap5-Pp-dH7" secondAttribute="trailing" constant="4" id="iWx-QY-XvO"/>
-                            <constraint firstAttribute="trailing" secondItem="SIU-Cp-d87" secondAttribute="trailing" id="qBt-fi-b2D"/>
-                            <constraint firstAttribute="trailing" secondItem="3Vf-R0-Eog" secondAttribute="trailing" constant="20" id="sR9-Px-4ux"/>
-                            <constraint firstItem="3Vf-R0-Eog" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="54" id="tTy-9S-9bJ"/>
+                            <constraint firstItem="nIa-W7-yZK" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="yrJ-JO-H6n"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="gd5-xe-dqw">
-                        <barButtonItem key="backBarButtonItem" title=" " id="P5Z-rf-oB8"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="OGE-oT-56s"/>
+                        <leftBarButtonItems>
+                            <barButtonItem style="plain" id="BBS-aJ-xIp">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Ocb-9f-E0n">
+                                    <rect key="frame" x="20" y="0.5" width="98" height="43"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" name="Gray1"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="커뮤니티">
+                                                <attributes>
+                                                    <font key="NSFont" size="20" name="NotoSansKR-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </buttonConfiguration>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="CountryDetail" id="pzQ-zB-Fav">
+                                <inset key="imageInsets" minX="-25" minY="1" maxX="0.0" maxY="0.0"/>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="SearchButton" id="4FP-YW-sGI"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -228,16 +213,37 @@
                     <view key="view" contentMode="scaleToFill" id="qhy-MC-Ocr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2bn-7g-Ixy">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="G80-JP-4h5"/>
+                                    <constraint firstAttribute="width" constant="300" id="gNC-R9-wHJ"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="QIA-2K-rg4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2bn-7g-Ixy" firstAttribute="centerX" secondItem="qhy-MC-Ocr" secondAttribute="centerX" id="7X1-Dk-P7E"/>
+                            <constraint firstItem="2bn-7g-Ixy" firstAttribute="centerY" secondItem="qhy-MC-Ocr" secondAttribute="centerY" id="v4H-RU-nsT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jdG-Zy-YC5">
                         <barButtonItem key="backBarButtonItem" title=" " id="79O-ZD-R5j"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="aaa" destination="2bn-7g-Ixy" id="iTh-El-2mZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n39-2K-CM0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5378" y="65"/>
+            <point key="canvasLocation" x="5376.811594202899" y="64.955357142857139"/>
         </scene>
         <!--Writting View Controller-->
         <scene sceneID="dxt-Vg-bqO">
@@ -257,7 +263,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHQ-xF-3hf">
-                                                        <rect key="frame" x="20" y="15.5" width="149" height="29"/>
+                                                        <rect key="frame" x="20" y="13.5" width="157" height="33"/>
                                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="14"/>
                                                         <color key="tintColor" name="Gray4"/>
                                                         <state key="normal" title="다녀온 나라는 어디인가요?">
@@ -433,7 +439,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행경험 글쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjA-5e-CsQ">
-                                        <rect key="frame" x="156.5" y="12.5" width="101.5" height="19"/>
+                                        <rect key="frame" x="153" y="10.5" width="108" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                                         <color key="textColor" name="Gray1"/>
                                         <nil key="highlightedColor"/>
@@ -559,7 +565,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행경험 글쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sma-uU-y6S">
-                                        <rect key="frame" x="156.5" y="12.5" width="101.5" height="19"/>
+                                        <rect key="frame" x="153" y="10.5" width="108" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                                         <color key="textColor" name="Gray1"/>
                                         <nil key="highlightedColor"/>
@@ -667,7 +673,7 @@
                                 </constraints>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="fhK-G0-qKQ">
-                                <rect key="frame" x="156" y="359" width="102.5" height="28"/>
+                                <rect key="frame" x="138.5" y="361" width="137.5" height="26"/>
                                 <color key="pageIndicatorTintColor" name="Gray5"/>
                                 <color key="currentPageIndicatorTintColor" name="MintBlue"/>
                             </pageControl>
@@ -719,6 +725,11 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="Gray1"/>
+                        <color key="barTintColor" name="White"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                            <color key="textColor" name="Gray1"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

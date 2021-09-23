@@ -143,7 +143,7 @@ extension WrittingViewController: UITextViewDelegate {
             guard let str = titleTextView.text else { return true }
             let length = str.count + text.count - range.length
             print(length)
-            return length <= 33
+            return length <= 31
         default:
             // Title 글자수 제한
             guard let str = mainTextView.text else { return true }
@@ -179,10 +179,14 @@ extension WrittingViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor(named: "Gray4") {
-            textView.text = nil
-            textView.textColor = UIColor(named: "Gray2")
-            if textView == titleTextView {
+            switch textView {
+            case titleTextView:
+                textView.text = nil
+                textView.textColor = UIColor(named: "Gray1")
                 textView.font = UIFont(name: "NotoSansKR-Bold", size: 24)
+            default:
+                textView.text = nil
+                textView.textColor = UIColor(named: "Gray2")
             }
         }
     }

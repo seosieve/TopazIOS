@@ -8,12 +8,12 @@
 import UIKit
 
 //Border 생성
-func makeBorder(target view: UIView, color: String = "Gray5", isFilled Fill: Bool) {
+func makeBorder(target view: UIView, radius: Int, color: String = "Gray5", isFilled Fill: Bool) {
     if Fill == true {
-        view.layer.cornerRadius = 6
+        view.layer.cornerRadius = CGFloat(radius)
         view.layer.masksToBounds = true
     } else {
-        view.layer.cornerRadius = 6
+        view.layer.cornerRadius = CGFloat(radius)
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor(named: color)?.cgColor
     }

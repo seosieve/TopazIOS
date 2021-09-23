@@ -22,8 +22,8 @@ class FindPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        makeBorder(target: emailTextFieldBorder, isFilled: false)
-        makeBorder(target: sendingButton, isFilled: true)
+        makeBorder(target: emailTextFieldBorder, radius: 6, isFilled: false)
+        makeBorder(target: sendingButton, radius: 12, isFilled: true)
         sendingButton.isEnabled = false
         // TextField 입력 감지
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)

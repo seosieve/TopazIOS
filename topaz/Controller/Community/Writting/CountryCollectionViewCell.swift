@@ -28,7 +28,7 @@ class CountryCollectionViewCell: UICollectionViewCell {
     
     func configure(image: UIImage, text: String) {
         countryImage.image = image
-        makeBorder(target: countryImage, color: "Gray6", isFilled: false)
+        makeBorder(target: countryImage, radius: 6, color: "Gray6", isFilled: false)
         countryName.text = text
     }
     

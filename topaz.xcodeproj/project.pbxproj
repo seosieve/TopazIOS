@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E01361826FA1B710071F31D /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01361726FA1B710071F31D /* WelcomeViewModel.swift */; };
-		4E01361A26FA24600071F31D /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01361926FA24600071F31D /* SettingViewModel.swift */; };
+		4E01361A26FA24600071F31D /* MySettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01361926FA24600071F31D /* MySettingViewModel.swift */; };
 		4E01361C26FA25D50071F31D /* CompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01361B26FA25D50071F31D /* CompleteViewModel.swift */; };
 		4E056DF126C25E5100FDF0F3 /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E056DF026C25E5100FDF0F3 /* FindPasswordViewController.swift */; };
 		4E056DF326C25EEB00FDF0F3 /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E056DF226C25EEB00FDF0F3 /* EditAccountViewController.swift */; };
@@ -22,7 +22,7 @@
 		4E0FAEAF26C0EE99003D80E3 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0FAEAE26C0EE99003D80E3 /* WelcomeViewController.swift */; };
 		4E0FAEB226C0EE99003D80E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0FAEB026C0EE99003D80E3 /* Main.storyboard */; };
 		4E0FAEB726C0EE9A003D80E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0FAEB526C0EE9A003D80E3 /* LaunchScreen.storyboard */; };
-		4E18A57526E66050001504A9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18A57426E66050001504A9 /* SettingViewController.swift */; };
+		4E18A57526E66050001504A9 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18A57426E66050001504A9 /* MySettingViewController.swift */; };
 		4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05026CD16FF005682E5 /* TermsViewController.swift */; };
 		4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05226CD3085005682E5 /* CompleteViewController.swift */; };
 		4E32E07926DE35FB005682E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */; };
@@ -63,6 +63,7 @@
 		4E9DCB3326C1781D001D218A /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0E26C177E1001D218A /* Poppins-SemiBold.ttf */; };
 		4E9DCB3426C1781F001D218A /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB1826C177E2001D218A /* Poppins-Thin.ttf */; };
 		4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0F26C177E1001D218A /* Poppins-ThinItalic.ttf */; };
+		4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */; };
 		4EE9A3AB26F2D1BA00395B2F /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AA26F2D1BA00395B2F /* ArticleModel.swift */; };
 		4EE9A3AD26F2D97300395B2F /* WrittingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AC26F2D97300395B2F /* WrittingViewModel.swift */; };
 		4EE9A3B026F3042E00395B2F /* FullArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AE26F3042D00395B2F /* FullArticleTableViewCell.swift */; };
@@ -78,7 +79,7 @@
 /* Begin PBXFileReference section */
 		44604151810CDEE526775EAB /* Pods_topaz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_topaz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E01361726FA1B710071F31D /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
-		4E01361926FA24600071F31D /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		4E01361926FA24600071F31D /* MySettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewModel.swift; sourceTree = "<group>"; };
 		4E01361B26FA25D50071F31D /* CompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewModel.swift; sourceTree = "<group>"; };
 		4E056DF026C25E5100FDF0F3 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
 		4E056DF226C25EEB00FDF0F3 /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +95,7 @@
 		4E0FAEB126C0EE99003D80E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E0FAEB626C0EE9A003D80E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E0FAEB826C0EE9A003D80E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E18A57426E66050001504A9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		4E18A57426E66050001504A9 /* MySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
 		4E32E05026CD16FF005682E5 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		4E32E05226CD3085005682E5 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -135,6 +136,7 @@
 		4E9DCB1C26C177E2001D218A /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
 		4E9DCB1D26C177E2001D218A /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		4E9DCB1E26C177E2001D218A /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewModel.swift; sourceTree = "<group>"; };
 		4EE9A3AA26F2D1BA00395B2F /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		4EE9A3AC26F2D97300395B2F /* WrittingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingViewModel.swift; sourceTree = "<group>"; };
 		4EE9A3AE26F3042D00395B2F /* FullArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -236,8 +238,6 @@
 				4E533F3326E060F500527FC2 /* HomeViewController.swift */,
 				4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */,
 				4E533F3D26E09A8E00527FC2 /* TabBarController.swift */,
-				4E18A57426E66050001504A9 /* SettingViewController.swift */,
-				4E01361926FA24600071F31D /* SettingViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -258,6 +258,9 @@
 				4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */,
 				4EE9A3B826F7684C00395B2F /* MyArticleViewController.swift */,
 				4EE9A3BA26F76A6800395B2F /* MyProfileEditViewController.swift */,
+				4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */,
+				4E18A57426E66050001504A9 /* MySettingViewController.swift */,
+				4E01361926FA24600071F31D /* MySettingViewModel.swift */,
 			);
 			path = TravelNote;
 			sourceTree = "<group>";
@@ -501,18 +504,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */,
-				4E01361A26FA24600071F31D /* SettingViewModel.swift in Sources */,
+				4E01361A26FA24600071F31D /* MySettingViewModel.swift in Sources */,
 				4E01361826FA1B710071F31D /* WelcomeViewModel.swift in Sources */,
 				4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */,
 				4EE9A3B026F3042E00395B2F /* FullArticleTableViewCell.swift in Sources */,
 				4E533F3E26E09A8E00527FC2 /* TabBarController.swift in Sources */,
 				4EE9A3AB26F2D1BA00395B2F /* ArticleModel.swift in Sources */,
+				4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */,
 				4EE9A3BB26F76A6800395B2F /* MyProfileEditViewController.swift in Sources */,
 				4E533F3C26E08A0900527FC2 /* TravelNoteViewController.swift in Sources */,
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
 				4EE9A3AD26F2D97300395B2F /* WrittingViewModel.swift in Sources */,
 				4E056DF126C25E5100FDF0F3 /* FindPasswordViewController.swift in Sources */,
-				4E18A57526E66050001504A9 /* SettingViewController.swift in Sources */,
+				4E18A57526E66050001504A9 /* MySettingViewController.swift in Sources */,
 				4E0FAEAF26C0EE99003D80E3 /* WelcomeViewController.swift in Sources */,
 				4E9B9BC126EE673200ABCE87 /* AddCountryViewController.swift in Sources */,
 				4EE9A3B326F6379500395B2F /* CommunityViewModel.swift in Sources */,

@@ -20,8 +20,8 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()        
         removeNavigationBackground(view: self)
-        makeBorder(target: loginButton, isFilled: true)
-        makeBorder(target: signUpButton, color: "MintBlue", isFilled: false)
+        makeBorder(target: loginButton, radius: 12, isFilled: true)
+        makeBorder(target: signUpButton, radius: 12, color: "MintBlue", isFilled: false)
         addMultipleFonts()
 
         emailTextField.delegate = self

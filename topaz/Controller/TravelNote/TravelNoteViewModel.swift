@@ -7,20 +7,24 @@
 
 import Foundation
 import Firebase
-import FirebaseAuth
 
 class TravelNoteViewModel {
     let storage = Storage.storage()
     
-    func getUserImage(view:UIImageView) {
-        let userEmail = Auth.auth().currentUser!.email!
-        let imageRef = storage.reference(withPath: "UserProfileImages/\(userEmail).png")
-        imageRef.getData(maxSize: 1*300*300) { data, error in
-            if let error = error {
-                print("프로필 이미지 다운로드 에러 : \(error)")
-            } else {
-                let image = UIImage(data: data!)
-                view.image = image
+    func getUserImage(email: String, getImageHandler: @escaping (UIImage) -> ()) {
+        DispatchQueue.global().async {
+            let imageRef = self.storage.reference(withPath: "UserProfileImages/\(email).png")
+            imageRef.getData(maxSize: 1*300*300) { data, error in
+                if let error = error {
+                    print("프로필 이미지 다운로드 에러 : \(error)")
+                } else {
+                    if let data = data {
+                        let image = UIImage(data: data)!
+                        DispatchQueue.main.async {
+                            getImageHandler(image) 
+                        }
+                    }
+                }
             }
         }
     }

@@ -26,7 +26,7 @@ class AcceptTermsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        makeBorder(target: acceptAllBorder, color: "MintBlue", isFilled: false)
+        makeBorder(target: acceptAllBorder, radius: 12, color: "MintBlue", isFilled: false)
         setPlane(level: 2, stack: PGBarComponentStack)
         //button 입력 감지
         
