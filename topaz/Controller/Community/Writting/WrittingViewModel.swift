@@ -9,7 +9,6 @@ import Foundation
 import Firebase
 
 class WrittingViewModel {
-    let collection = Firestore.firestore().collection("Articles")
     
     func makeCountry(country1: UIButton, country2: UIButton, country3: UIButton) -> [String] {
         var countryArr = [String]()
@@ -37,32 +36,24 @@ class WrittingViewModel {
     }
     
     func makeArticle(country: [String],title: UITextView, mainText: UITextView, makeArticleHandler: @escaping (Article) -> ()) {
-        let collection = Firestore.firestore().collection("UserDataBase")
-        let email = Auth.auth().currentUser!.email!
+        let document = Firestore.firestore().collection("Articles").document()
+        let articleID = document.documentID
+        let nickname = UserDefaults.standard.string(forKey: "nickname")!
         let writtenDate = NSDate().timeIntervalSince1970
         let strWrittenDate = makeDate()
         let title = title.text ?? ""
         let mainText = mainText.text ?? ""
         let country = country
         
-        collection.document(email).getDocument { document, error in
-            if let error = error {
-                print("닉네임 불러오기 에러: \(error)")
-            } else {
-                if let document = document {
-                    let nickname = document.get("nickname") as! String
-                    let article = Article(auther: nickname, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, likes: 0, views: 0)
-                    makeArticleHandler(article)
-                } else {
-                    if let error = error {
-                        print("유저 닉네임 필드 에러: \(error)")
-                    }
-                }
-            }
-        }
+        let article = Article(articleID: articleID, auther: nickname, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, likes: 0, views: 0)
+        document.setData(<#T##documentData: [String : Any]##[String : Any]#>)
+        
+        makeArticleHandler(article)
     }
 
     func addArticle(_ article: Article, addArticleHandler: @escaping () -> ()) {
+        let collection = Firestore.firestore().collection("Articles")
+        collection.document(article)
         collection.addDocument(data: article.dicDataType) {error in
             if let error = error {
                 print("FireStore 저장 에러 : \(error)")
@@ -71,5 +62,18 @@ class WrittingViewModel {
                 addArticleHandler()
             }
         }
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
+        let newHeight = image.size.height * scale
+        let screenScale = UIScreen.main.scale // 화면 @레티나에 따라 조정
+        let scaleWidth = screenScale * newWidth
+        let scaleHeight = screenScale * newHeight
+        UIGraphicsBeginImageContext(CGSize(width: scaleWidth, height: scaleHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: scaleWidth, height: scaleHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
     }
 }

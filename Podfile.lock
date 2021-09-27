@@ -481,12 +481,14 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - UIImageCropper (1.4.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
   - Firebase/Storage
+  - UIImageCropper
 
 SPEC REPOS:
   trunk:
@@ -509,6 +511,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - PromisesObjC
+    - UIImageCropper
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -530,7 +533,8 @@ SPEC CHECKSUMS:
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  UIImageCropper: ab1c519018189af90b0780e1c7c9c900945b896e
 
-PODFILE CHECKSUM: 2bbdce2062e64610b131108f5e0fae199bef1447
+PODFILE CHECKSUM: e5f4e596898dfad4ae903b669cebfa1687afcfa2
 
 COCOAPODS: 1.10.1

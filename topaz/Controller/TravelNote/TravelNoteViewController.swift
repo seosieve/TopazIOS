@@ -50,16 +50,6 @@ class TravelNoteViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if isProfileChange {
-            viewModel.getUserImage(email: userdefault.string(forKey: "email")!) { image in
-                self.profileImage.image = image
-            }
-            makeProfile()
-        }
-    }
-    
     @IBAction func mySettingPressed(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "goToMySetting", sender: sender)
     }
@@ -68,8 +58,12 @@ class TravelNoteViewController: UIViewController {
         self.performSegue(withIdentifier: "goToMyProfileEdit", sender: sender)
     }
     
-    
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToMyProfileEdit" {
+            let destinationVC = segue.destination as! MyProfileEditViewController
+            destinationVC.delegate = self
+        }
+    }
 }
 //MARK: - UI Functions
 extension TravelNoteViewController {
@@ -89,6 +83,20 @@ extension TravelNoteViewController {
             nicknameConstraintW.constant = CGFloat(89)
         default:
             nicknameConstraintW.constant = CGFloat(0)
+        }
+    }
+}
+
+//MARK: - EditDelegate
+extension TravelNoteViewController: EditDelegate {
+    func profileChange(_ dataChanged: Bool, _ imageChanged: Bool) {
+        if dataChanged {
+            makeProfile()
+        }
+        if imageChanged {
+            viewModel.getUserImage(email: userdefault.string(forKey: "email")!) { image in
+                self.profileImage.image = image
+            }
         }
     }
 }

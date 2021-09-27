@@ -85,20 +85,4 @@ class MyProfileEditViewModel {
             }
         }
     }
-    
-    func addUserdefault(email: String, userdefaultHandler: @escaping () -> ()) {
-        let userdefault = UserDefaults.standard
-        Firestore.firestore().collection("UserDataBase").document(email).getDocument { document, error in
-            if let error = error {
-                print("유저 정보 탐색 오류: \(error)")
-            } else {
-                let nickname = document?.get("nickname") as! String
-                let introduce = document?.get("introduce") as! String
-                userdefault.set(nickname, forKey: "nickname")
-                userdefault.set(introduce, forKey: "introduce")
-                userdefaultHandler()
-            }
-        }
-    }
-    
 }

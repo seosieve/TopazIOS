@@ -22,6 +22,7 @@ class CompleteViewController: UIViewController {
     }
     
     @IBAction func goToLoginPressed(_ sender: UIButton) {
+        // 애니메이션 나오니까 오래걸려도 상관없나? 오류 있으면 userdefault 바로 그냥 꽂는 것도 생각해보기.
         viewModel.signIn(email: userEmail, password: userPW) {
             self.viewModel.addUserdefault(email: self.userEmail) {
                 self.instantiateVC()

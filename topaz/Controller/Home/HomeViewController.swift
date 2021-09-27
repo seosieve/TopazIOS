@@ -44,7 +44,7 @@ extension HomeViewController {
     }
     
     func makeNicknameLabel() {
-        let nickname = userdefault.string(forKey: "nickname")!
+        let nickname = userdefault.string(forKey: "nickname") ?? ""
         IceBreakingLabel.text = "\(nickname)님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
         addMultipleFonts(nickname)
         let nicknameCount = nickname.count

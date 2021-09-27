@@ -257,7 +257,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Nx-9n-cf7">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="580"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="724"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8N-g9-UUW">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -362,25 +362,47 @@
                                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="83g-CD-qfm">
+                                                <rect key="frame" x="0.0" y="250" width="414" height="184"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="184" id="scn-gd-fu9"/>
+                                                </constraints>
+                                            </tableView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="본문" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="IAg-GB-9aF">
+                                                <rect key="frame" x="20" y="434" width="374" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="Aaz-PG-tcQ"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Niy-XI-H5H" firstAttribute="top" secondItem="C8N-g9-UUW" secondAttribute="bottom" id="5ps-1I-lVT"/>
-                                            <constraint firstAttribute="trailing" secondItem="Gxp-hw-o25" secondAttribute="trailing" constant="20" id="7Ig-26-qic"/>
                                             <constraint firstItem="9H7-CG-Lcr" firstAttribute="centerX" secondItem="1Nx-9n-cf7" secondAttribute="centerX" id="7mo-fT-EJh"/>
+                                            <constraint firstItem="IAg-GB-9aF" firstAttribute="centerX" secondItem="1Nx-9n-cf7" secondAttribute="centerX" id="9jy-Hu-ZAF"/>
                                             <constraint firstItem="qKk-VM-Ri1" firstAttribute="centerX" secondItem="1Nx-9n-cf7" secondAttribute="centerX" id="Cjg-If-PbA"/>
                                             <constraint firstItem="9H7-CG-Lcr" firstAttribute="leading" secondItem="1Nx-9n-cf7" secondAttribute="leading" constant="20" id="HSJ-oq-leF"/>
                                             <constraint firstItem="Niy-XI-H5H" firstAttribute="leading" secondItem="1Nx-9n-cf7" secondAttribute="leading" id="KoY-JT-1eH"/>
+                                            <constraint firstItem="83g-CD-qfm" firstAttribute="top" secondItem="Gxp-hw-o25" secondAttribute="bottom" constant="20" id="Lq3-5e-iKF"/>
                                             <constraint firstItem="C8N-g9-UUW" firstAttribute="top" secondItem="1Nx-9n-cf7" secondAttribute="top" id="M2W-ET-5F5"/>
+                                            <constraint firstAttribute="bottom" secondItem="IAg-GB-9aF" secondAttribute="bottom" constant="240" id="Nfm-Vu-UhZ"/>
                                             <constraint firstItem="qKk-VM-Ri1" firstAttribute="leading" secondItem="1Nx-9n-cf7" secondAttribute="leading" id="XJS-qI-jDd"/>
                                             <constraint firstAttribute="trailing" secondItem="C8N-g9-UUW" secondAttribute="trailing" id="c1T-jl-jaQ"/>
                                             <constraint firstItem="Gxp-hw-o25" firstAttribute="top" secondItem="qKk-VM-Ri1" secondAttribute="bottom" constant="20" id="cCw-55-Qv4"/>
+                                            <constraint firstItem="Gxp-hw-o25" firstAttribute="centerX" secondItem="1Nx-9n-cf7" secondAttribute="centerX" id="ciN-Nr-3qR"/>
+                                            <constraint firstItem="IAg-GB-9aF" firstAttribute="top" secondItem="83g-CD-qfm" secondAttribute="bottom" id="eHj-eK-kjf"/>
+                                            <constraint firstItem="IAg-GB-9aF" firstAttribute="leading" secondItem="1Nx-9n-cf7" secondAttribute="leading" constant="20" id="fke-3R-jHm"/>
                                             <constraint firstItem="Niy-XI-H5H" firstAttribute="centerX" secondItem="1Nx-9n-cf7" secondAttribute="centerX" id="gfL-u2-g7Z"/>
-                                            <constraint firstAttribute="bottom" secondItem="Gxp-hw-o25" secondAttribute="bottom" constant="350" id="iCZ-5X-n7b"/>
                                             <constraint firstItem="9H7-CG-Lcr" firstAttribute="top" secondItem="Niy-XI-H5H" secondAttribute="bottom" constant="24" id="itF-8t-rku"/>
                                             <constraint firstItem="Gxp-hw-o25" firstAttribute="leading" secondItem="1Nx-9n-cf7" secondAttribute="leading" constant="20" id="kpN-WB-u7H"/>
                                             <constraint firstItem="C8N-g9-UUW" firstAttribute="leading" secondItem="1Nx-9n-cf7" secondAttribute="leading" id="mdw-79-fCg"/>
                                             <constraint firstItem="qKk-VM-Ri1" firstAttribute="top" secondItem="9H7-CG-Lcr" secondAttribute="bottom" constant="24" id="o19-KI-Mwx"/>
+                                            <constraint firstItem="83g-CD-qfm" firstAttribute="leading" secondItem="1Nx-9n-cf7" secondAttribute="leading" id="uXc-ZP-M2z"/>
+                                            <constraint firstItem="83g-CD-qfm" firstAttribute="centerX" secondItem="1Nx-9n-cf7" secondAttribute="centerX" id="xSI-k6-0Ye"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -407,6 +429,9 @@
                                     <constraint firstAttribute="width" constant="48" id="5mt-i2-oPr"/>
                                 </constraints>
                                 <state key="normal" image="AddImage"/>
+                                <connections>
+                                    <action selector="addImageButtonPressed:" destination="1Ng-CP-npj" eventType="touchUpInside" id="VYU-dK-fUl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AK5-al-9b1">
                                 <rect key="frame" x="346" y="790" width="48" height="48"/>
@@ -417,7 +442,7 @@
                                 </constraints>
                                 <state key="normal" image="AddEmoji"/>
                                 <connections>
-                                    <action selector="addImageButtonPressed:" destination="1Ng-CP-npj" eventType="touchUpInside" id="fYu-f7-mge"/>
+                                    <action selector="addImojiButtonPressed:" destination="1Ng-CP-npj" eventType="touchUpInside" id="rPB-Wg-EGB"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-Sm-4j8">
@@ -494,12 +519,14 @@
                     <connections>
                         <outlet property="addEmojiButton" destination="AK5-al-9b1" id="S5a-Pf-8hC"/>
                         <outlet property="addImageButton" destination="jyQ-iV-dKH" id="I8K-Ff-GNw"/>
+                        <outlet property="addImageTableView" destination="83g-CD-qfm" id="w6L-Sb-k4e"/>
                         <outlet property="country1" destination="mxM-Dp-3ua" id="Acj-Zn-lHp"/>
                         <outlet property="country2" destination="p5a-RA-r2d" id="GHK-lj-KEU"/>
                         <outlet property="country3" destination="4TU-qx-vlI" id="MaF-Of-pp9"/>
                         <outlet property="countryQuestionButton" destination="KHQ-xF-3hf" id="B5u-7y-lGN"/>
                         <outlet property="mainTextView" destination="Gxp-hw-o25" id="RWG-k1-klI"/>
                         <outlet property="resisterButton" destination="cxX-Jl-PgI" id="rHP-Xc-ygn"/>
+                        <outlet property="tailTextView" destination="IAg-GB-9aF" id="L2A-eA-DBD"/>
                         <outlet property="titleTextView" destination="9H7-CG-Lcr" id="wUi-I6-Ls6"/>
                         <outlet property="writtingScrollView" destination="wLi-Xu-Ldg" id="hV7-3z-VXU"/>
                         <segue destination="xsB-hf-6Jj" kind="presentation" identifier="goToAddCountry" modalPresentationStyle="fullScreen" id="xgX-6s-tz6"/>

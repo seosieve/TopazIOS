@@ -64,6 +64,8 @@
 		4E9DCB3426C1781F001D218A /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB1826C177E2001D218A /* Poppins-Thin.ttf */; };
 		4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0F26C177E1001D218A /* Poppins-ThinItalic.ttf */; };
 		4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */; };
+		4EDA40282700B57E00B5E80B /* AddImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA40262700B57E00B5E80B /* AddImageTableViewCell.swift */; };
+		4EDA40292700B57E00B5E80B /* AddImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA40272700B57E00B5E80B /* AddImageTableViewCell.xib */; };
 		4EE9A3AB26F2D1BA00395B2F /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AA26F2D1BA00395B2F /* ArticleModel.swift */; };
 		4EE9A3AD26F2D97300395B2F /* WrittingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AC26F2D97300395B2F /* WrittingViewModel.swift */; };
 		4EE9A3B026F3042E00395B2F /* FullArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3AE26F3042D00395B2F /* FullArticleTableViewCell.swift */; };
@@ -137,6 +139,8 @@
 		4E9DCB1D26C177E2001D218A /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		4E9DCB1E26C177E2001D218A /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
 		4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewModel.swift; sourceTree = "<group>"; };
+		4EDA40262700B57E00B5E80B /* AddImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageTableViewCell.swift; sourceTree = "<group>"; };
+		4EDA40272700B57E00B5E80B /* AddImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageTableViewCell.xib; sourceTree = "<group>"; };
 		4EE9A3AA26F2D1BA00395B2F /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		4EE9A3AC26F2D97300395B2F /* WrittingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingViewModel.swift; sourceTree = "<group>"; };
 		4EE9A3AE26F3042D00395B2F /* FullArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -300,6 +304,8 @@
 			children = (
 				4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */,
 				4EE9A3AC26F2D97300395B2F /* WrittingViewModel.swift */,
+				4EDA40262700B57E00B5E80B /* AddImageTableViewCell.swift */,
+				4EDA40272700B57E00B5E80B /* AddImageTableViewCell.xib */,
 				4E9B9BC026EE673200ABCE87 /* AddCountryViewController.swift */,
 				4E64D12826EF5BA100DB3FDB /* CountryCollectionViewCell.swift */,
 				4E64D12926EF5BA100DB3FDB /* CountryCollectionViewCell.xib */,
@@ -439,6 +445,7 @@
 				4E9DCB3226C1781B001D218A /* Poppins-Regular.ttf in Resources */,
 				4E9DCB2F26C17814001D218A /* Poppins-Medium.ttf in Resources */,
 				4E533F3026DFD9A700527FC2 /* Community.storyboard in Resources */,
+				4EDA40292700B57E00B5E80B /* AddImageTableViewCell.xib in Resources */,
 				4E9DCB2826C17806001D218A /* Poppins-BoldItalic.ttf in Resources */,
 				4E9DCB1F26C177EF001D218A /* NotoSansKR-Black.otf in Resources */,
 				4E9DCB2526C17801001D218A /* Poppins-Black.ttf in Resources */,
@@ -522,6 +529,7 @@
 				4EE9A3B326F6379500395B2F /* CommunityViewModel.swift in Sources */,
 				4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */,
 				4E32E07C26DE6147005682E5 /* EditAccountViewModel.swift in Sources */,
+				4EDA40282700B57E00B5E80B /* AddImageTableViewCell.swift in Sources */,
 				4E9B9BBF26EDE87600ABCE87 /* WrittingViewController.swift in Sources */,
 				4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */,
 				4E0FAEAB26C0EE99003D80E3 /* AppDelegate.swift in Sources */,

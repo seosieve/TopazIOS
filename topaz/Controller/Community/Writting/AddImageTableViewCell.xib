@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Regular.otf">
+            <string>NotoSansKR-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddImageTableViewCell" rowHeight="606" id="KGk-i7-Jjw" customClass="AddImageTableViewCell" customModule="topaz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="465"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="465"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="doh-9d-FTg">
+                        <rect key="frame" x="20" y="0.0" width="374" height="374"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="doh-9d-FTg" secondAttribute="height" multiplier="1:1" id="vOV-e4-hlP"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lka-AW-fdw">
+                        <rect key="frame" x="358" y="12" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="RzS-GI-MsF"/>
+                            <constraint firstAttribute="width" constant="24" id="Vi8-l1-a2u"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="CancelButton_Invert"/>
+                        <connections>
+                            <action selector="deleteButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rzx-fq-GDv"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN9-LS-cHN">
+                        <rect key="frame" x="20" y="382" width="374" height="56"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="안녕하세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="frL-HT-hNz">
+                                <rect key="frame" x="12" y="7" width="350" height="42.5"/>
+                                <color key="textColor" name="Gray4"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" name="Gray7"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="2q5-Kk-Cou"/>
+                            <constraint firstItem="frL-HT-hNz" firstAttribute="top" secondItem="aN9-LS-cHN" secondAttribute="top" constant="7" id="Ga5-8e-7Oc"/>
+                            <constraint firstItem="frL-HT-hNz" firstAttribute="centerX" secondItem="aN9-LS-cHN" secondAttribute="centerX" id="OzB-ZC-NTI"/>
+                            <constraint firstAttribute="bottom" secondItem="frL-HT-hNz" secondAttribute="bottom" constant="6.5" id="rWi-CN-IOd"/>
+                            <constraint firstItem="frL-HT-hNz" firstAttribute="leading" secondItem="aN9-LS-cHN" secondAttribute="leading" constant="12" id="wWg-T2-1gx"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lka-AW-fdw" firstAttribute="top" secondItem="doh-9d-FTg" secondAttribute="top" constant="12" id="AgA-5c-ACf"/>
+                    <constraint firstItem="doh-9d-FTg" firstAttribute="leading" secondItem="aN9-LS-cHN" secondAttribute="leading" id="D3u-X0-Mn6"/>
+                    <constraint firstItem="aN9-LS-cHN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="FEi-Dj-s1X"/>
+                    <constraint firstItem="doh-9d-FTg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UPI-vJ-zIc"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="aN9-LS-cHN" secondAttribute="bottom" constant="16" id="bdi-hO-wwS"/>
+                    <constraint firstItem="aN9-LS-cHN" firstAttribute="top" secondItem="doh-9d-FTg" secondAttribute="bottom" constant="8" id="e8V-Jr-5Tk"/>
+                    <constraint firstItem="doh-9d-FTg" firstAttribute="trailing" secondItem="lka-AW-fdw" secondAttribute="trailing" constant="12" id="mbw-WR-USY"/>
+                    <constraint firstItem="doh-9d-FTg" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="vYP-Q1-xCO"/>
+                    <constraint firstItem="aN9-LS-cHN" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="zZJ-si-Whi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containerView" destination="H2p-sc-9uM" id="hEM-6q-z6T"/>
+                <outlet property="experienceImage" destination="doh-9d-FTg" id="cDy-hL-jYh"/>
+                <outlet property="experienceTextView" destination="frL-HT-hNz" id="Zej-n8-GmZ"/>
+                <outlet property="experienceTextViewBorder" destination="aN9-LS-cHN" id="zaF-cv-itn"/>
+            </connections>
+            <point key="canvasLocation" x="298.55072463768118" y="244.08482142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="CancelButton_Invert" width="24" height="24"/>
+        <namedColor name="Gray4">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray7">
+            <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

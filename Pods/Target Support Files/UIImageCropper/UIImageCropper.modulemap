@@ -1,0 +1,6 @@
+framework module UIImageCropper {
+  umbrella header "UIImageCropper-umbrella.h"
+
+  export *
+  module * { export * }
+}

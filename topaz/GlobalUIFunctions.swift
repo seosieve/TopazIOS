@@ -9,7 +9,7 @@ import UIKit
 
 //Border 생성
 func makeBorder(target view: UIView, radius: Int, color: String = "Gray5", isFilled Fill: Bool) {
-    if Fill == true {
+    if Fill {
         view.layer.cornerRadius = CGFloat(radius)
         view.layer.masksToBounds = true
     } else {

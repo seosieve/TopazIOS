@@ -18,14 +18,19 @@ class WrittingViewController: UIViewController {
     @IBOutlet weak var country3: UIButton!
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var mainTextView: UITextView!
+    @IBOutlet weak var tailTextView: UITextView!
+    @IBOutlet weak var addImageTableView: UITableView!
     @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var addEmojiButton: UIButton!
     
     let viewModel = WrittingViewModel()
+    private let imagePicker = UIImagePickerController()
     
     var countryName1: String!
     var countryName2: String!
     var countryName3: String!
+    var imageArr = [UIImage]()
+    var textArr = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +46,17 @@ class WrittingViewController: UIViewController {
         
         titleTextView.delegate = self
         mainTextView.delegate = self
+        tailTextView.delegate = self
+        
+        addImageTableView.register(AddImageTableViewCell.nib(), forCellReuseIdentifier: "AddImageTableViewCell")
+        addImageTableView.delegate = self
+        addImageTableView.dataSource = self
+        
+        imagePicker.delegate = self
+        
         placeholderSetting()
+        makeTableViewHeight()
+        tailTextView.isHidden = true
     }
     
     // 다녀온 나라 정보값 받아오기
@@ -53,6 +68,7 @@ class WrittingViewController: UIViewController {
     @objc func tabScrollView() {
         titleTextView.endEditing(true)
         mainTextView.endEditing(true)
+        tailTextView.endEditing(true)
     }
 
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -83,11 +99,24 @@ class WrittingViewController: UIViewController {
     }
     
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(named: "Luggage3")
-        let strImage = NSAttributedString(attachment: imageAttachment)
-        mainTextView.attributedText = strImage
+        let alert = UIAlertController(title: "삽입할 이미지를 선택해주세요", message: "앨범에서 선택 또는 카메라 사용이 가능합니다.", preferredStyle: .actionSheet)
+        let album = UIAlertAction(title: "앨범에서 선택", style: .default) { (action) in
+            self.useLibrary()
+        }
+        let camera = UIAlertAction(title: "카메라 촬영", style: .default) { (action) in
+            self.useCamera()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(album)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func addImojiButtonPressed(_ sender: UIButton) {
+        makeTableViewHeight()
+    }
+    
 }
 
 //MARK: - UI Functions
@@ -115,6 +144,8 @@ extension WrittingViewController {
         titleTextView.font = UIFont(name: "NotoSansKR-Regular", size: 24)
         mainTextView.text = "당신이 다녀왔던 생생한 여행경험은 무엇인가요?"
         mainTextView.textColor = UIColor(named: "Gray4")
+        tailTextView.text = "당신의 이야기의 끝맺음을 듣고싶어요."
+        tailTextView.textColor = UIColor(named: "Gray4")
     }
     
     func popUpToast(_ string: String) {
@@ -126,6 +157,15 @@ extension WrittingViewController {
         let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when){
             alert.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func makeTableViewHeight() {
+        addImageTableView.layoutIfNeeded()
+        addImageTableView.constraints.forEach { constraint in
+            if constraint.firstAttribute == .height {
+                constraint.constant = addImageTableView.contentSize.height
+            }
         }
     }
 }
@@ -146,7 +186,7 @@ extension WrittingViewController: UITextViewDelegate {
             return length <= 31
         default:
             // Title 글자수 제한
-            guard let str = mainTextView.text else { return true }
+            guard let str = textView.text else { return true }
             let length = str.count + text.count - range.length
             print(length)
             return length <= 2000
@@ -155,24 +195,12 @@ extension WrittingViewController: UITextViewDelegate {
     
     // TextView Line에 따라 동적 height조절
     func textViewDidChange(_ textView: UITextView) {
-        switch textView {
-        case titleTextView:
-            let size = CGSize(width: view.frame.width-40, height: .infinity)
-            let estimatedSize = titleTextView.sizeThatFits(size)
-
-            titleTextView.constraints.forEach { constraint in
-                if constraint.firstAttribute == .height {
-                    constraint.constant = estimatedSize.height
-                }
-            }
-        default:
-            let size = CGSize(width: view.frame.width-40, height: .infinity)
-            let estimatedSize = mainTextView.sizeThatFits(size)
-
-            mainTextView.constraints.forEach { constraint in
-                if constraint.firstAttribute == .height {
-                    constraint.constant = estimatedSize.height
-                }
+        let size = CGSize(width: view.frame.width-40, height: .infinity)
+        let estimatedSize = textView.sizeThatFits(size)
+        
+        textView.constraints.forEach { constraint in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
             }
         }
     }
@@ -198,10 +226,87 @@ extension WrittingViewController: UITextViewDelegate {
                 textView.text = "제목을 입력해주세요."
                 textView.textColor = UIColor(named: "Gray4")
                 textView.font = UIFont(name: "NotoSansKR-Regular", size: 24)
-            default:
+            case mainTextView:
                 textView.text = "당신이 다녀왔던 생생한 여행경험은 무엇인가요?"
                 textView.textColor = UIColor(named: "Gray4")
+            default:
+                textView.text = "당신의 이야기의 끝맺음을 듣고싶어요."
+                textView.textColor = UIColor(named: "Gray4")
             }
+        }
+    }
+}
+
+//MARK: - UITableViewDelegate, UITableViewDataSource
+extension WrittingViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return imageArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddImageTableViewCell", for: indexPath) as! AddImageTableViewCell
+        makeBorder(target: cell.experienceTextViewBorder, radius: 12, isFilled: true)
+        cell.experienceImage.image = imageArr[indexPath.row]
+        cell.experienceTextView.text = textArr[indexPath.row]
+        cell.index = indexPath.row
+        makeBorder(target: cell.experienceImage, radius: 12, isFilled: true)
+        //삭제 델리게이트 설정
+        cell.delegate = self
+        
+        cell.textChanged {[weak tableView, weak self] newText in
+            self?.textArr[indexPath.row] = newText
+            DispatchQueue.main.async {
+                tableView?.beginUpdates()
+                self?.makeTableViewHeight()
+                tableView?.endUpdates()
+            }
+        }
+        return cell
+    }
+}
+
+//MARK: - DeleteImageDelegate
+extension WrittingViewController: DeleteImageDelegate {
+    func deleteImage(index: Int) {
+        imageArr.remove(at: index)
+        textArr.remove(at: index)
+        if textArr.count == 0 {
+            tailTextView.isHidden = true
+        }
+        addImageTableView.reloadData()
+        makeTableViewHeight()
+    }
+}
+
+//MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension WrittingViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func useCamera() {
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .camera
+        imagePicker.modalPresentationStyle = .fullScreen
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func useLibrary() {
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.modalPresentationStyle = .fullScreen
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            let image = viewModel.resizeImage(image: img, newWidth: 150)
+            imageArr.append(image)
+            textArr.append("사진에 대한 여행경험을 적어주세요.")
+            addImageTableView.reloadData()
+            makeTableViewHeight()
+        }
+        DispatchQueue.main.async {
+            self.makeTableViewHeight()
+            self.tailTextView.isHidden = false
+            self.imagePicker.dismiss(animated: true, completion: nil)
         }
     }
 }

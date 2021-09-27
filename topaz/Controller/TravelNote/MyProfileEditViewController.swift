@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol EditDelegate {
+    func profileChange(_ dataChanged: Bool, _ imageChanged: Bool)
+}
+
 class MyProfileEditViewController: UIViewController {
     @IBOutlet weak var profileAdd: UIButton!
     @IBOutlet weak var check: UIImageView!
@@ -20,11 +24,14 @@ class MyProfileEditViewController: UIViewController {
     @IBOutlet weak var profileEditComplete: UIBarButtonItem!
     
     let viewModel = MyProfileEditViewModel()
-    let userdefault = UserDefaults.standard
     let imagePicker = UIImagePickerController()
     var changedImage: UIImage? = nil
     
     let email = UserDefaults.standard.string(forKey: "email")!
+    let originalNickname = UserDefaults.standard.string(forKey: "nickname")!
+    let originalIntroduce = UserDefaults.standard.string(forKey: "introduce")!
+    
+    var delegate: EditDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +39,8 @@ class MyProfileEditViewController: UIViewController {
         makeCircle(target: profileAdd, color: "MintBlue", width: 3)
         makeBorder(target: nicknameBorder, radius: 6, isFilled: false)
         makeBorder(target: introduceBorder, radius: 6, isFilled: false)
-        nickname.text = userdefault.string(forKey: "nickname")!
-        introduce.text = userdefault.string(forKey: "introduce")!
+        nickname.text = originalNickname
+        introduce.text = originalIntroduce
         viewModel.getUserImage(email: email) { image in
             self.profileAdd.setImage(image, for: .normal)
         }
@@ -63,35 +70,39 @@ class MyProfileEditViewController: UIViewController {
     
     @IBAction func profileEditCompletePressed(_ sender: UIBarButtonItem) {
         //현재는 userDefault로 계속 뷰가 바뀌는데 그거 수정하기 Delegate? 등으로
-        //outlet 이름들도 수정하기
         let makeUserGroup = DispatchGroup()
-        let data = changedImage?.pngData()!
-        let email = userdefault.string(forKey: "email")!
+        let data = changedImage?.pngData()
         let nickname = nickname.text!
         let introduce = introduce.text!
+        var dataChanged = false
+        var imageChanged = false
         
-        makeUserGroup.enter()
-        DispatchQueue.global().async {
-            self.viewModel.addUserInfo(email, nickname, introduce) {
-                print("addUserInfo Success")
-                makeUserGroup.leave()
+        if nickname != originalNickname || introduce != originalIntroduce {
+            makeUserGroup.enter()
+            DispatchQueue.global().async {
+                self.viewModel.addUserInfo(self.email, nickname, introduce) {
+                    UserDefaults.standard.set(nickname, forKey: "nickname")
+                    UserDefaults.standard.set(introduce, forKey: "introduce")
+                    print("addUserInfo Success")
+                    dataChanged = true
+                    makeUserGroup.leave()
+                }
             }
         }
-        makeUserGroup.enter()
-        DispatchQueue.global().async {
-            self.viewModel.addUserImage(userEmail: email, data: data!) {
-                print("addUserImage Success")
-                makeUserGroup.leave()
+        
+        if data != nil {
+            makeUserGroup.enter()
+            DispatchQueue.global().async {
+                self.viewModel.addUserImage(userEmail: self.email, data: data!) {
+                    print("addUserImage Success")
+                    imageChanged = true
+                    makeUserGroup.leave()
+                }
             }
         }
-        makeUserGroup.enter()
-        DispatchQueue.global().async {
-            self.viewModel.addUserdefault(email: email) {
-                print("createUser Success")
-                makeUserGroup.leave()
-            }
-        }
+        
         makeUserGroup.notify(queue: .main) {
+            self.delegate?.profileChange(dataChanged, imageChanged)
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -110,7 +121,7 @@ class MyProfileEditViewController: UIViewController {
             correctAnimation()
             //이메일 양식에 맞지만 이미 가입된 닉네임일 때
             viewModel.isExist(nickname: nickname.text ?? "") {
-                if self.nickname.text != self.userdefault.string(forKey: "nickname")! {
+                if self.nickname.text != self.originalNickname {
                     self.check.alpha = 0
                     self.nicknameWarning.text = "이미 사용중인 닉네임입니다."
                     self.incorrectAnimation()
