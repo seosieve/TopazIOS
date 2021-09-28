@@ -10,28 +10,19 @@ import Foundation
 struct Article {
     let articleID: String
     let auther: String
+    let autherEmail: String
     let writtenDate: Double
     let strWrittenDate: String
     let country: [String]
     let title: String
     let mainText: String
+    let imageText: [String]
+    let tailText: String
     let likes: Int
     let views: Int
-//    
-//    init(articleID: String = "", auther: String = "", writtenDate: Double = 0.0, strWrittenDate: String = "", country: [String] = [String](), title: String = "", mainText: String = "", likes: Int = 0, views: Int = 0) {
-//        self.articleID = articleID
-//        self.auther = auther
-//        self.writtenDate = writtenDate
-//        self.strWrittenDate = strWrittenDate
-//        self.country = country
-//        self.title = title
-//        self.mainText = mainText
-//        self.likes = likes
-//        self.views = views
-//    }
     
     // [String:Any] 타입으로 변환
     var dicDataType: [String: Any] {
-        return ["articleID": articleID, "auther": auther, "writtenDate": writtenDate, "strWrittenDate": strWrittenDate, "country": country, "title": title, "mainText": mainText, "likes": likes, "views": views]
+        return ["articleID": articleID, "auther": auther, "autherEmail": autherEmail, "writtenDate": writtenDate, "strWrittenDate": strWrittenDate, "country": country, "title": title, "mainText": mainText, "imageText": imageText, "tailText": tailText, "likes": likes, "views": views]
     }
 }

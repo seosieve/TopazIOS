@@ -16,7 +16,7 @@ class MyProfileEditViewModel {
     func getUserImage(email: String, getImageHandler: @escaping (UIImage) -> ()) {
         DispatchQueue.global().async {
             let imageRef = self.storage.reference(withPath: "UserProfileImages/\(email).png")
-            imageRef.getData(maxSize: 1*300*300) { data, error in
+            imageRef.getData(maxSize: 1*350*350) { data, error in
                 if let error = error {
                     print("프로필 이미지 다운로드 에러 : \(error)")
                 } else {

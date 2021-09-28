@@ -212,7 +212,7 @@ extension MyProfileEditViewController: UIImagePickerControllerDelegate, UINaviga
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            changedImage = viewModel.resizeImage(image: img, newWidth: 50)
+            changedImage = viewModel.resizeImage(image: img, newWidth: 100)
             profileAdd.setImage(changedImage, for: .normal)
         }
         imagePicker.dismiss(animated: true, completion: nil)

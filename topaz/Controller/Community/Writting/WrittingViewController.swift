@@ -82,12 +82,14 @@ class WrittingViewController: UIViewController {
         } else if titleTextView.textColor == UIColor(named: "Gray4") {
             popUpToast("당신의 여행경험의 제목을 지어주세요.")
         } else if mainTextView.textColor == UIColor(named: "Gray4") {
-            popUpToast("좀 더 자세한 여행경험을 듣고싶어요!.")
+            popUpToast("좀 더 자세한 여행경험을 듣고싶어요!")
         } else {
-            viewModel.makeArticle(country: countryArr, title: titleTextView, mainText: mainTextView) { article in
-//                현재 비동기 처리 안됨. 어짜피 이미지 포함 토스트 하나 더 넣을꺼니까 거기다가 저장
-//                self.popUpToast("당신의 소중한 경험이 저장되었습니다!")
-                self.viewModel.addArticle(article) {
+            let imageText = viewModel.makeImageText(imageText: textArr)
+            let tailText = viewModel.makeTailText(tailText: tailTextView)
+            viewModel.addArticle(country: countryArr, title: titleTextView, mainText: mainTextView, imageText: imageText, tailText: tailText) { articleID in
+                self.viewModel.addUserImage(articleID: articleID, imageArr: self.imageArr) {
+                    // 현재 비동기 처리 안됨. 어짜피 이미지 포함 토스트 하나 더 넣을꺼니까 거기다가 저장
+                    // self.popUpToast("당신의 소중한 경험이 저장되었습니다!")
                     self.dismiss(animated: true, completion: nil)
                 }
             }
@@ -197,7 +199,7 @@ extension WrittingViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let size = CGSize(width: view.frame.width-40, height: .infinity)
         let estimatedSize = textView.sizeThatFits(size)
-        
+
         textView.constraints.forEach { constraint in
             if constraint.firstAttribute == .height {
                 constraint.constant = estimatedSize.height
@@ -246,9 +248,17 @@ extension WrittingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddImageTableViewCell", for: indexPath) as! AddImageTableViewCell
+        cell.selectionStyle = .none
         makeBorder(target: cell.experienceTextViewBorder, radius: 12, isFilled: true)
         cell.experienceImage.image = imageArr[indexPath.row]
         cell.experienceTextView.text = textArr[indexPath.row]
+        // Image 지웠을 때 기존 cell색 따라가는 이슈 대응
+        if cell.experienceTextView.text == "사진에 대한 여행경험을 적어주세요." {
+            cell.experienceTextView.textColor = UIColor(named: "Gray4")
+        } else {
+            cell.experienceTextView.textColor = UIColor(named: "Gray2")
+        }
+        
         cell.index = indexPath.row
         makeBorder(target: cell.experienceImage, radius: 12, isFilled: true)
         //삭제 델리게이트 설정

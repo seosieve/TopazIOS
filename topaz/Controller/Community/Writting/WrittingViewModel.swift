@@ -30,40 +30,69 @@ class WrittingViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT+9")
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateFormatter.dateFormat = "yyyy. MM. dd"
         let strDate = dateFormatter.string(from: date)
         return strDate
     }
     
-    func makeArticle(country: [String],title: UITextView, mainText: UITextView, makeArticleHandler: @escaping (Article) -> ()) {
+    func makeImageText(imageText: [String]) -> [String] {
+        var imageTextOutput = [String]()
+        let spaceholder = "사진에 대한 여행경험을 적어주세요."
+        for text in imageText {
+            let output = (text == spaceholder ? "" : text)
+            imageTextOutput.append(output)
+        }
+        return imageTextOutput
+    }
+    
+    func makeTailText(tailText: UITextView) -> String {
+        let spaceholder = "당신의 이야기의 끝맺음을 듣고싶어요."
+        if tailText.isHidden == true {
+            return ""
+        } else {
+            let tailTextOutput = (tailText.text == spaceholder ? "" : tailText.text!)
+            return tailTextOutput
+        }
+    }
+    
+    func addArticle(country: [String], title: UITextView, mainText: UITextView, imageText: [String], tailText: String, makeArticleHandler: @escaping (String) -> ()) {
         let document = Firestore.firestore().collection("Articles").document()
         let articleID = document.documentID
         let nickname = UserDefaults.standard.string(forKey: "nickname")!
+        let email = UserDefaults.standard.string(forKey: "email")!
         let writtenDate = NSDate().timeIntervalSince1970
         let strWrittenDate = makeDate()
         let title = title.text ?? ""
         let mainText = mainText.text ?? ""
+        let imageText = imageText
+        let tailText = tailText
         let country = country
         
-        let article = Article(articleID: articleID, auther: nickname, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, likes: 0, views: 0)
-        document.setData(<#T##documentData: [String : Any]##[String : Any]#>)
-        
-        makeArticleHandler(article)
-    }
-
-    func addArticle(_ article: Article, addArticleHandler: @escaping () -> ()) {
-        let collection = Firestore.firestore().collection("Articles")
-        collection.document(article)
-        collection.addDocument(data: article.dicDataType) {error in
+        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, tailText: tailText, likes: 0, views: 0)
+        document.setData(article.dicDataType){ error in
             if let error = error {
                 print("FireStore 저장 에러 : \(error)")
             } else {
-                print("FireStore 저장 성공")
-                addArticleHandler()
+                makeArticleHandler(articleID)
             }
         }
     }
     
+    func addUserImage(articleID: String, imageArr: [UIImage], addImageHandler: @escaping () -> ()) {
+        let reference = Storage.storage().reference()
+        for (index, image) in imageArr.enumerated() {
+            let imageRef = reference.child("Articles/\(articleID)/\(index).png")
+            let data = image.pngData()
+            imageRef.putData(data!, metadata: nil) { _, error in
+                if let error = error {
+                    print("프로필 사진 저장 에러 : \(error)")
+                } else {
+                    addImageHandler()
+                }
+            }
+        }
+    }
+
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
         let newHeight = image.size.height * scale

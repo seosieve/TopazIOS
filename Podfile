@@ -8,6 +8,6 @@ target 'topaz' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  pod 'UIImageCropper'
+  pod 'lottie-ios' 
 
 end

@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Lottie
 
 class HomeViewController: UIViewController {
     
@@ -31,6 +32,15 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         makeNicknameLabel()
+        // Lottie
+        let animationView = AnimationView(name: "data")
+        animationView.frame = CGRect(x:0, y:0, width:414, height:400)
+        animationView.center = self.view.center
+        animationView.contentMode = .scaleAspectFill
+        view.addSubview(animationView)
+        animationView.play()
+        animationView.loopMode = .loop
+
     }
 }
 

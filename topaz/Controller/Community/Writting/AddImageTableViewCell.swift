@@ -42,7 +42,6 @@ class AddImageTableViewCell: UITableViewCell {
         self.delegate?.deleteImage(index: index!)
     }
     
-    
     func textChanged(action: @escaping (String) -> Void) {
         self.textChanged = action
     }

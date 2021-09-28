@@ -152,21 +152,25 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FullArticleTableViewCell", for: indexPath) as! FullArticleTableViewCell
         cell.selectionStyle = .none
-        cell.title.text = articleArr[indexPath.row].title
-        cell.auther.text = articleArr[indexPath.row].auther
-        cell.country.text = articleArr[indexPath.row].country[0]
-        let countryNumber = articleArr[indexPath.row].country.count
+        let articleForRow = articleArr[indexPath.row]
+        cell.title.text = articleForRow.title
+        cell.auther.text = articleForRow.auther
+        cell.country.text = articleForRow.country[0]
+        let countryNumber = articleForRow.country.count
         if countryNumber == 1 {
             cell.countryNumber.isHidden = true
         } else {
             cell.countryNumber.isHidden = false
             cell.countryNumber.text = "+\(countryNumber-1)"
         }
-        cell.likes.setTitle(String(articleArr[indexPath.row].likes), for: .normal)
-        cell.views.setTitle(String(articleArr[indexPath.row].views), for: .normal)
+        cell.likes.setTitle(String(articleForRow.likes), for: .normal)
+        cell.views.setTitle(String(articleForRow.views), for: .normal)
         
         makeCircle(target: cell.countryNumber, color: "MintBlue", width: 0)
-        cell.mainImage.image = UIImage(named: "aa")
+        viewModel.getArticleImage(articleID: articleForRow.articleID, imageText: articleForRow.imageText) { image in
+            cell.mainImage.image = image
+        }
+        
         DispatchQueue.main.async {
             self.makeShadow(target: cell.shadowView)
             cell.mainView.roundCorners(topLeft: 6, bottomLeft: 24)

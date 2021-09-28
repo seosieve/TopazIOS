@@ -19,7 +19,7 @@ func makeBorder(target view: UIView, radius: Int, color: String = "Gray5", isFil
     }
 }
 
-func makeCircle(target view: UIView, color: String, width: Int) {
+func makeCircle(target view: UIView, color: String = "MintBlue", width: Int = 0) {
     view.layer.masksToBounds = true
     view.layer.cornerRadius = view.frame.size.height/2
     view.layer.borderWidth = CGFloat(width)
