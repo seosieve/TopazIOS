@@ -71,7 +71,7 @@ class CommunityViewModel {
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
         let newHeight = image.size.height * scale
-        let screenScale = UIScreen.main.scale // 화면 @레티나에 따라 조정
+        let screenScale = 2.0 // 화면 @레티나에 따라 조정
         let scaleWidth = screenScale * newWidth
         let scaleHeight = screenScale * newHeight
         UIGraphicsBeginImageContext(CGSize(width: scaleWidth, height: scaleHeight))

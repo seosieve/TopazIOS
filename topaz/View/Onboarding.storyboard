@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Bold.otf">
+            <string>NotoSansKR-Bold</string>
+        </array>
+        <array key="NotoSansKR-Regular.otf">
+            <string>NotoSansKR-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Onboarding View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingVC" id="Y6W-OH-hqX" customClass="OnboardingViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ep-2u-EhB">
+                                <rect key="frame" x="0.0" y="665" width="414" height="197"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5N-II-h0c">
+                                        <rect key="frame" x="149.5" y="94.5" width="115" height="8"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dcz-nF-6I4">
+                                                <rect key="frame" x="0.0" y="0.0" width="23" height="8"/>
+                                                <color key="backgroundColor" name="MintBlue"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="8" id="Jge-7U-nuB"/>
+                                                    <constraint firstAttribute="width" constant="23" id="zMp-c8-vdT"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" name="Gray6"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="8" id="RGJ-5c-Dep"/>
+                                            <constraint firstAttribute="width" constant="115" id="RHk-Lp-hNU"/>
+                                            <constraint firstItem="Dcz-nF-6I4" firstAttribute="centerY" secondItem="J5N-II-h0c" secondAttribute="centerY" id="gaf-sR-cuz"/>
+                                            <constraint firstItem="Dcz-nF-6I4" firstAttribute="leading" secondItem="J5N-II-h0c" secondAttribute="leading" id="qVT-bW-zWj"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wy-sN-Tgu">
+                                        <rect key="frame" x="0.0" y="137" width="414" height="60"/>
+                                        <color key="backgroundColor" name="MintBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Fqy-2O-OCk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="로그인 하기">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0OO-l5-tEO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="4wy-sN-Tgu" firstAttribute="centerX" secondItem="8Ep-2u-EhB" secondAttribute="centerX" id="CGu-gz-oge"/>
+                                    <constraint firstItem="J5N-II-h0c" firstAttribute="centerY" secondItem="8Ep-2u-EhB" secondAttribute="centerY" id="FNG-Oz-9af"/>
+                                    <constraint firstItem="4wy-sN-Tgu" firstAttribute="leading" secondItem="8Ep-2u-EhB" secondAttribute="leading" id="FtK-LK-WJ0"/>
+                                    <constraint firstAttribute="bottom" secondItem="4wy-sN-Tgu" secondAttribute="bottom" id="KCd-yW-9ZQ"/>
+                                    <constraint firstItem="J5N-II-h0c" firstAttribute="centerX" secondItem="8Ep-2u-EhB" secondAttribute="centerX" id="xQL-YD-yf7"/>
+                                </constraints>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4x-zo-W1X">
+                                <rect key="frame" x="0.0" y="44" width="414" height="621"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="b4x-zo-W1X" secondAttribute="height" multiplier="2:3" id="lLc-FP-ajp"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="uhi-Qc-5Oq" kind="embed" identifier="goToPageVC" id="reB-N4-Idg"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstItem="8Ep-2u-EhB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="5Ux-cA-sNv"/>
+                            <constraint firstItem="b4x-zo-W1X" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="7yg-UA-34n"/>
+                            <constraint firstItem="b4x-zo-W1X" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="8bx-Kt-f9W"/>
+                            <constraint firstItem="8Ep-2u-EhB" firstAttribute="top" secondItem="b4x-zo-W1X" secondAttribute="bottom" id="ZCU-Zh-Bnx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8Ep-2u-EhB" secondAttribute="bottom" id="cat-7x-wc8"/>
+                            <constraint firstItem="8Ep-2u-EhB" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="g2X-iv-l9y"/>
+                            <constraint firstItem="b4x-zo-W1X" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="kId-qd-0Va"/>
+                            <constraint firstItem="b4x-zo-W1X" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zVk-dJ-8LM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="itI-5P-r0i"/>
+                    <connections>
+                        <outlet property="loginButton" destination="4wy-sN-Tgu" id="hoB-lx-tA3"/>
+                        <outlet property="progress" destination="Dcz-nF-6I4" id="kYP-LY-21R"/>
+                        <outlet property="progressBackground" destination="J5N-II-h0c" id="vaN-DQ-G7h"/>
+                        <outlet property="progressConstraintY" destination="qVT-bW-zWj" id="LwJ-GY-PDh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="902.89855072463774" y="63.616071428571423"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Nh6-6H-CvO">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="uhi-Qc-5Oq" customClass="PageViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="VAs-mR-KNt" kind="presentation" modalPresentationStyle="fullScreen" id="0gw-b9-QcD"/>
+                        <segue destination="RHd-Yo-I9b" kind="presentation" modalPresentationStyle="fullScreen" id="m3n-ti-rUA"/>
+                        <segue destination="fK9-9J-FC2" kind="presentation" modalPresentationStyle="fullScreen" id="j8D-bm-O5i"/>
+                        <segue destination="RRe-sR-GiG" kind="presentation" modalPresentationStyle="fullScreen" id="EU8-u4-HAM"/>
+                        <segue destination="y0B-JF-JVA" kind="presentation" modalPresentationStyle="fullScreen" id="utg-Ie-z3D"/>
+                    </connections>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="52K-2i-mBk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1739" y="63"/>
+        </scene>
+        <!--First Page View Controller-->
+        <scene sceneID="XbW-rX-Sa9">
+            <objects>
+                <viewController storyboardIdentifier="FirstPageVC" id="VAs-mR-KNt" customClass="FirstPageViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4ZR-Sq-5cJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="621"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DOL-9k-5fB">
+                                <rect key="frame" x="39" y="494" width="107" height="12"/>
+                                <color key="backgroundColor" red="0.59215686274509804" green="0.94117647058823528" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="BVE-gb-f6v"/>
+                                    <constraint firstAttribute="height" constant="12" id="yMk-Uq-VeP"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LWH-wZ-CwP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LWH-wZ-CwP" secondAttribute="height" multiplier="414:400" id="Q4O-oa-w9i"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9b-ub-zo6">
+                                <rect key="frame" x="40" y="440" width="271" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="271" id="8WU-7Y-Rgr"/>
+                                    <constraint firstAttribute="height" constant="70" id="t42-oG-hdB"/>
+                                </constraints>
+                                <string key="text">해외여행을 직접 가지 않아도
+여행의 감성을 느낄 수 있어요!</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="22"/>
+                                <color key="textColor" name="Gray1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVk-N6-KD9">
+                                <rect key="frame" x="40" y="528" width="254" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="254" id="3ga-iU-nJX"/>
+                                    <constraint firstAttribute="height" constant="44" id="uNA-TI-yAt"/>
+                                </constraints>
+                                <string key="text">토파즈와 함께라면 해외여행을 가지 않아도
+직접 다녀온 것과 같은 경험을 할 수 있습니다</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" name="Gray4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="7Kz-a9-x76"/>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstItem="uVk-N6-KD9" firstAttribute="top" secondItem="J9b-ub-zo6" secondAttribute="bottom" constant="18" id="7oF-MT-8rt"/>
+                            <constraint firstItem="LWH-wZ-CwP" firstAttribute="trailing" secondItem="7Kz-a9-x76" secondAttribute="trailing" id="8b0-1g-jsP"/>
+                            <constraint firstItem="DOL-9k-5fB" firstAttribute="leading" secondItem="7Kz-a9-x76" secondAttribute="leading" constant="39" id="HaG-gU-UYE"/>
+                            <constraint firstItem="DOL-9k-5fB" firstAttribute="top" secondItem="LWH-wZ-CwP" secondAttribute="bottom" constant="94" id="PAO-SK-GKJ"/>
+                            <constraint firstItem="uVk-N6-KD9" firstAttribute="leading" secondItem="J9b-ub-zo6" secondAttribute="leading" id="QqK-Es-ON0"/>
+                            <constraint firstItem="J9b-ub-zo6" firstAttribute="leading" secondItem="7Kz-a9-x76" secondAttribute="leading" constant="40" id="T6K-TA-mrC"/>
+                            <constraint firstItem="LWH-wZ-CwP" firstAttribute="centerX" secondItem="4ZR-Sq-5cJ" secondAttribute="centerX" id="YQF-ma-jS3"/>
+                            <constraint firstItem="LWH-wZ-CwP" firstAttribute="top" secondItem="4ZR-Sq-5cJ" secondAttribute="top" id="kBB-CE-aai"/>
+                            <constraint firstItem="J9b-ub-zo6" firstAttribute="top" secondItem="LWH-wZ-CwP" secondAttribute="bottom" constant="40" id="ugO-gs-tAF"/>
+                            <constraint firstItem="LWH-wZ-CwP" firstAttribute="leading" secondItem="7Kz-a9-x76" secondAttribute="leading" id="xGF-D3-w3C"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GRF-KU-nfQ"/>
+                    <connections>
+                        <outlet property="animationContainer" destination="LWH-wZ-CwP" id="Ic8-Ev-6XA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZWn-kj-TZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2418.840579710145" y="63.950892857142854"/>
+        </scene>
+        <!--Second Page View Controller-->
+        <scene sceneID="m3n-BT-Zmz">
+            <objects>
+                <viewController storyboardIdentifier="SecondPageVC" id="fK9-9J-FC2" customClass="SecondPageViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6M9-vA-2Ow">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="621"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wak-NT-zOB">
+                                <rect key="frame" x="0.0" y="202" width="414" height="400"/>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wak-NT-zOB" secondAttribute="height" multiplier="414:400" id="f6B-3i-wKL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Utm-Cx-zqO">
+                                <rect key="frame" x="124" y="61" width="150" height="12"/>
+                                <color key="backgroundColor" red="0.76470588235294112" green="0.94509803921568625" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="ghQ-Tc-OWE"/>
+                                    <constraint firstAttribute="width" constant="150" id="u2V-UE-Utq"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rty-Yu-gLH">
+                                <rect key="frame" x="40" y="40" width="253" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="3Ru-DF-ubj"/>
+                                    <constraint firstAttribute="width" constant="253" id="844-iF-n2q"/>
+                                </constraints>
+                                <string key="text">재미있는 해외여행 콘텐츠를
+풍부하게 즐겨보세요!</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="22"/>
+                                <color key="textColor" name="Gray1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdM-ip-o1n">
+                                <rect key="frame" x="40" y="128" width="319" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="319" id="Ata-bK-yor"/>
+                                    <constraint firstAttribute="height" constant="44" id="Q5t-fC-nwl"/>
+                                </constraints>
+                                <string key="text">여행경험 커뮤니티, 체험 콘텐츠, 패키지 등
+풍부한 콘텐츠를 통해 해외여행 경험을 즐길 수 있습니다</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" name="Gray4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tJP-p6-VXA"/>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstItem="Rty-Yu-gLH" firstAttribute="leading" secondItem="tJP-p6-VXA" secondAttribute="leading" constant="40" id="27F-ud-tw8"/>
+                            <constraint firstItem="gdM-ip-o1n" firstAttribute="top" secondItem="Rty-Yu-gLH" secondAttribute="bottom" constant="18" id="5Pv-n2-gVI"/>
+                            <constraint firstItem="wak-NT-zOB" firstAttribute="top" secondItem="gdM-ip-o1n" secondAttribute="bottom" constant="30" id="AIr-sN-CyO"/>
+                            <constraint firstItem="Rty-Yu-gLH" firstAttribute="top" secondItem="6M9-vA-2Ow" secondAttribute="top" constant="40" id="JG1-vJ-N4t"/>
+                            <constraint firstItem="wak-NT-zOB" firstAttribute="leading" secondItem="tJP-p6-VXA" secondAttribute="leading" id="W93-e0-30e"/>
+                            <constraint firstItem="Utm-Cx-zqO" firstAttribute="top" secondItem="6M9-vA-2Ow" secondAttribute="top" constant="61" id="ltA-WJ-CS4"/>
+                            <constraint firstItem="wak-NT-zOB" firstAttribute="centerX" secondItem="6M9-vA-2Ow" secondAttribute="centerX" id="mhx-ju-QzL"/>
+                            <constraint firstItem="gdM-ip-o1n" firstAttribute="leading" secondItem="Rty-Yu-gLH" secondAttribute="leading" id="pip-c1-UPn"/>
+                            <constraint firstItem="Utm-Cx-zqO" firstAttribute="leading" secondItem="tJP-p6-VXA" secondAttribute="leading" constant="124" id="zEp-cG-xlC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="animationContainer" destination="wak-NT-zOB" id="Td8-h4-n39"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cpb-su-3Ph" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3090" y="64"/>
+        </scene>
+        <!--Third Page View Controller-->
+        <scene sceneID="xQk-eE-NeI">
+            <objects>
+                <viewController storyboardIdentifier="ThirdPageVC" id="RHd-Yo-I9b" customClass="ThirdPageViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9yY-Ui-6vE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="621"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHq-mZ-yIZ">
+                                <rect key="frame" x="40" y="493" width="80" height="12"/>
+                                <color key="backgroundColor" red="1" green="0.9137254901960784" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Htm-aN-0nm"/>
+                                    <constraint firstAttribute="height" constant="12" id="qW3-ng-LGR"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7QI-85-Tky">
+                                <rect key="frame" x="192" y="461" width="81" height="12"/>
+                                <color key="backgroundColor" red="1" green="0.9137254901960784" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="81" id="Tzc-0A-PM8"/>
+                                    <constraint firstAttribute="height" constant="12" id="WVf-ah-mhL"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rwy-fG-Q87">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rwy-fG-Q87" secondAttribute="height" multiplier="414:400" id="6OS-OF-XZK"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qi-w9-ZH3">
+                                <rect key="frame" x="40" y="440" width="233" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="233" id="f1L-dC-rih"/>
+                                    <constraint firstAttribute="height" constant="70" id="wHL-Ur-cNc"/>
+                                </constraints>
+                                <string key="text">다양한 사람들의 실감나는
+여행경험을 들어보세요!</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="22"/>
+                                <color key="textColor" name="Gray1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amh-iQ-esR">
+                                <rect key="frame" x="40" y="528" width="271" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="271" id="0Tv-u7-kWC"/>
+                                    <constraint firstAttribute="height" constant="44" id="pl1-BE-gzp"/>
+                                </constraints>
+                                <string key="text">현지의 느낌을 한 층 더 실감나게 느낄 수 있도록
+사진과 사운드와 함께 여행경험을 들어보세요</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" name="Gray4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HCB-Ri-BQq"/>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstItem="Rwy-fG-Q87" firstAttribute="top" secondItem="9yY-Ui-6vE" secondAttribute="top" id="95g-cM-dvZ"/>
+                            <constraint firstItem="7QI-85-Tky" firstAttribute="leading" secondItem="HCB-Ri-BQq" secondAttribute="leading" constant="192" id="DnS-bp-PIK"/>
+                            <constraint firstItem="9qi-w9-ZH3" firstAttribute="leading" secondItem="HCB-Ri-BQq" secondAttribute="leading" constant="40" id="ETd-Fy-CmR"/>
+                            <constraint firstItem="9qi-w9-ZH3" firstAttribute="top" secondItem="Rwy-fG-Q87" secondAttribute="bottom" constant="40" id="GZe-0z-w8z"/>
+                            <constraint firstItem="Amh-iQ-esR" firstAttribute="leading" secondItem="9qi-w9-ZH3" secondAttribute="leading" id="Mjk-Bx-Fvc"/>
+                            <constraint firstItem="7QI-85-Tky" firstAttribute="top" secondItem="Rwy-fG-Q87" secondAttribute="bottom" constant="61" id="SrH-nz-Jjt"/>
+                            <constraint firstItem="vHq-mZ-yIZ" firstAttribute="leading" secondItem="HCB-Ri-BQq" secondAttribute="leading" constant="40" id="f9M-cy-whU"/>
+                            <constraint firstItem="Amh-iQ-esR" firstAttribute="top" secondItem="9qi-w9-ZH3" secondAttribute="bottom" constant="18" id="in9-B9-P0J"/>
+                            <constraint firstItem="Rwy-fG-Q87" firstAttribute="leading" secondItem="HCB-Ri-BQq" secondAttribute="leading" id="ma3-G4-2Fq"/>
+                            <constraint firstItem="vHq-mZ-yIZ" firstAttribute="top" secondItem="Rwy-fG-Q87" secondAttribute="bottom" constant="93" id="n7K-pI-elF"/>
+                            <constraint firstItem="Rwy-fG-Q87" firstAttribute="centerX" secondItem="9yY-Ui-6vE" secondAttribute="centerX" id="rvw-JY-aKb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="animationContainer" destination="Rwy-fG-Q87" id="6gf-Ai-Y1Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qg1-IK-gHn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3753.6231884057975" y="63.950892857142854"/>
+        </scene>
+        <!--Fourth Page View Controller-->
+        <scene sceneID="jhU-KD-ztd">
+            <objects>
+                <viewController storyboardIdentifier="FourthPageVC" id="RRe-sR-GiG" customClass="FourthPageViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BR3-pi-7Kb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="621"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0e-b1-Jfg">
+                                <rect key="frame" x="39" y="61" width="108" height="12"/>
+                                <color key="backgroundColor" red="1" green="0.85490196078431369" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="D81-f5-xw5"/>
+                                    <constraint firstAttribute="height" constant="12" id="g6M-bg-lcM"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgU-zN-bBu">
+                                <rect key="frame" x="40" y="40" width="279" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="279" id="7gu-pl-uyp"/>
+                                    <constraint firstAttribute="height" constant="70" id="DoP-I8-p39"/>
+                                </constraints>
+                                <string key="text">여행 패키지를 통해
+생생한 체험을 할 수 있어요!</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="22"/>
+                                <color key="textColor" name="Gray1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBO-9i-GzO">
+                                <rect key="frame" x="40" y="128" width="251" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="251" id="EIZ-eP-3aB"/>
+                                    <constraint firstAttribute="height" constant="44" id="vZd-PG-LgW"/>
+                                </constraints>
+                                <string key="text">다양한 종류의 음식과 AR카드를 통해
+새로운 방식의 여행경험을 즐길 수 있습니다</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" name="Gray4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LfL-eB-ndY">
+                                <rect key="frame" x="0.0" y="197" width="414" height="400"/>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="LfL-eB-ndY" secondAttribute="height" multiplier="414:400" id="YLb-p9-9kf"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hGI-Fe-sjT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dgU-zN-bBu" firstAttribute="top" secondItem="BR3-pi-7Kb" secondAttribute="top" constant="40" id="1C9-SW-F2r"/>
+                            <constraint firstItem="LfL-eB-ndY" firstAttribute="top" secondItem="SBO-9i-GzO" secondAttribute="bottom" constant="25" id="8kt-Na-pVL"/>
+                            <constraint firstItem="LfL-eB-ndY" firstAttribute="leading" secondItem="hGI-Fe-sjT" secondAttribute="leading" id="93F-9G-VRI"/>
+                            <constraint firstItem="SBO-9i-GzO" firstAttribute="top" secondItem="dgU-zN-bBu" secondAttribute="bottom" constant="18" id="Bq2-Tc-na5"/>
+                            <constraint firstItem="SBO-9i-GzO" firstAttribute="leading" secondItem="dgU-zN-bBu" secondAttribute="leading" id="FjF-bh-jg0"/>
+                            <constraint firstItem="LfL-eB-ndY" firstAttribute="centerX" secondItem="BR3-pi-7Kb" secondAttribute="centerX" id="Kfs-j8-tmM"/>
+                            <constraint firstItem="dgU-zN-bBu" firstAttribute="leading" secondItem="hGI-Fe-sjT" secondAttribute="leading" constant="40" id="PyV-N5-2hq"/>
+                            <constraint firstItem="N0e-b1-Jfg" firstAttribute="leading" secondItem="hGI-Fe-sjT" secondAttribute="leading" constant="39" id="knW-v3-bY3"/>
+                            <constraint firstItem="N0e-b1-Jfg" firstAttribute="top" secondItem="BR3-pi-7Kb" secondAttribute="top" constant="61" id="kpv-9z-8OO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="animationContainer" destination="LfL-eB-ndY" id="4Ye-84-ce6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYM-8m-qAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4396" y="64"/>
+        </scene>
+        <!--Fifth Page View Controller-->
+        <scene sceneID="g0k-sr-tz2">
+            <objects>
+                <viewController storyboardIdentifier="FifthPageVC" id="y0B-JF-JVA" customClass="FifthPageViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Peu-7z-5KI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="621"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X3p-hN-GKz">
+                                <rect key="frame" x="40" y="494" width="168" height="12"/>
+                                <color key="backgroundColor" red="0.59215686274509804" green="0.94117647058823528" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="0Mj-vR-DfR"/>
+                                    <constraint firstAttribute="width" constant="168" id="pKw-4U-Acp"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4P-uX-70D">
+                                <rect key="frame" x="40" y="440" width="282" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="282" id="3kI-db-iYf"/>
+                                    <constraint firstAttribute="height" constant="70" id="gTZ-NJ-fkw"/>
+                                </constraints>
+                                <string key="text">하나뿐인 나의 여행경험이
+패키지가되는 경험을 해보세요!</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="22"/>
+                                <color key="textColor" name="Gray1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FY2-WC-n1Q">
+                                <rect key="frame" x="40" y="528" width="261" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ESf-sa-ev4"/>
+                                    <constraint firstAttribute="width" constant="261" id="aJh-n5-rGY"/>
+                                </constraints>
+                                <string key="text">내가 작성한 여행경험이 생동감 있는 패키지로
+재구성되어 받아볼 수 있습니다</string>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" name="Gray4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YsQ-sq-l1r">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YsQ-sq-l1r" secondAttribute="height" multiplier="414:400" id="bQT-sL-gHk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5WX-Yu-CDc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FY2-WC-n1Q" firstAttribute="top" secondItem="b4P-uX-70D" secondAttribute="bottom" constant="18" id="O2K-ra-Edv"/>
+                            <constraint firstItem="FY2-WC-n1Q" firstAttribute="leading" secondItem="b4P-uX-70D" secondAttribute="leading" id="VjY-Qb-Js6"/>
+                            <constraint firstItem="YsQ-sq-l1r" firstAttribute="leading" secondItem="5WX-Yu-CDc" secondAttribute="leading" id="YgW-BQ-lpQ"/>
+                            <constraint firstItem="X3p-hN-GKz" firstAttribute="top" secondItem="YsQ-sq-l1r" secondAttribute="bottom" constant="94" id="b65-Mx-MG6"/>
+                            <constraint firstItem="b4P-uX-70D" firstAttribute="top" secondItem="YsQ-sq-l1r" secondAttribute="bottom" constant="40" id="dt0-65-Hys"/>
+                            <constraint firstItem="b4P-uX-70D" firstAttribute="leading" secondItem="5WX-Yu-CDc" secondAttribute="leading" constant="40" id="eKu-ek-Jy8"/>
+                            <constraint firstItem="X3p-hN-GKz" firstAttribute="leading" secondItem="5WX-Yu-CDc" secondAttribute="leading" constant="40" id="evG-sH-AjE"/>
+                            <constraint firstItem="YsQ-sq-l1r" firstAttribute="centerX" secondItem="Peu-7z-5KI" secondAttribute="centerX" id="nxw-ZM-YCd"/>
+                            <constraint firstItem="YsQ-sq-l1r" firstAttribute="top" secondItem="Peu-7z-5KI" secondAttribute="top" id="u32-Oz-amb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="animationContainer" destination="YsQ-sq-l1r" id="Syk-TP-beP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DUc-Xo-ygE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5064" y="64"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Gray1">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray4">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray6">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MintBlue">
+            <color red="0.19200000166893005" green="0.86699998378753662" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

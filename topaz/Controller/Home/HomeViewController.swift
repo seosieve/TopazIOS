@@ -23,30 +23,23 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        if Auth.auth().currentUser == nil {
-            print("로그인된 유저 없음")
-            instantiateVC()
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         makeNicknameLabel()
-        // Lottie
-        let animationView = AnimationView(name: "data")
+        //Lottie
+        let animationView = AnimationView(name: "Onboarding1")
         animationView.frame = CGRect(x:0, y:0, width:414, height:400)
         animationView.center = self.view.center
         animationView.contentMode = .scaleAspectFill
         view.addSubview(animationView)
-        animationView.play()
         animationView.loopMode = .loop
-
+        animationView.backgroundBehavior = .pauseAndRestore
+        animationView.play()
+        
+        print(Auth.auth().currentUser?.email)
     }
 }
 
 //MARK: - UI Functions
 extension HomeViewController {
-    
     func addMultipleFonts(_ range: String) {
         let attributedString = NSMutableAttributedString(string: IceBreakingLabel.text!)
         attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 22)!, range: (IceBreakingLabel.text! as NSString).range(of: range))
@@ -70,14 +63,6 @@ extension HomeViewController {
         default:
             nicknameConstraintW.constant = CGFloat(0)
         }
-    }
-    
-    func instantiateVC() {
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: .main)
-        let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
-        mainVC.modalPresentationStyle = .fullScreen
-        mainVC.modalTransitionStyle = .crossDissolve
-        self.present(mainVC, animated: true, completion: nil)
     }
 }
 

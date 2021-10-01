@@ -15,6 +15,7 @@ class MainDetailViewController: UIViewController {
     @IBOutlet weak var country1Tail: UIButton!
     @IBOutlet weak var country2Tail: UIButton!
     @IBOutlet weak var country3Tail: UIButton!
+    @IBOutlet weak var likeBarItem: UIBarButtonItem!
     @IBOutlet weak var detailTitle: UILabel!
     @IBOutlet weak var detailAutherImage: UIImageView!
     @IBOutlet weak var detailNickname: UILabel!
@@ -40,25 +41,31 @@ class MainDetailViewController: UIViewController {
         mainDetailImageTableView.register(MainDetailImageTableViewCell.nib(), forCellReuseIdentifier: "MainDetailImageTableViewCell")
         mainDetailImageTableView.dataSource = self
         mainDetailImageTableView.delegate = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         makeTableViewHeight()
-        
     }
     @IBAction func likesBarItemPressed(_ sender: UIBarButtonItem) {
         if sender.tintColor == UIColor(named: "Gray1") {
             sender.tintColor = UIColor(named: "MintBlue")
+            likesButton.backgroundColor = UIColor(named: "MintBlue")
         } else {
             sender.tintColor = UIColor(named: "Gray1")
+            likesButton.backgroundColor = UIColor(named: "Gray2")
         }
     }
     
     @IBAction func likesButtonPressed(_ sender: UIButton) {
-        
+        if sender.backgroundColor == UIColor(named: "Gray2") {
+            sender.backgroundColor = UIColor(named: "MintBlue")
+            likeBarItem.tintColor = UIColor(named: "MintBlue")
+        } else {
+            sender.backgroundColor = UIColor(named: "Gray2")
+            likeBarItem.tintColor = UIColor(named: "Gray1")
+        }
     }
-    
-    
-    
-    
 }
 
 //MARK: - UI Functions
@@ -106,6 +113,8 @@ extension MainDetailViewController {
             detailTailText.isHidden = true
         }
         detailTailText.text = article!.tailText
+        // Tail부분 설정
+        makeCircle(target: likesButton)
         
     }
     
@@ -147,11 +156,35 @@ extension MainDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.experienceImage.image = image
         }
         if article!.imageText[indexPath.row] == "" {
-            cell.experienceLabel.isHidden = true
+            cell.experienceLabelBorder.constraints.forEach { constraint in
+                if constraint.firstAttribute == .height {
+                    constraint.constant = 0
+                }
+                if constraint.firstAttribute == .top {
+                    constraint.constant = 0
+                }
+                if constraint.firstAttribute == .bottom {
+                    constraint.constant = 0
+                }
+            }
             cell.experienceLabelBorder.isHidden = true
+            cell.experienceLabel.text = nil
+        } else {
+            cell.experienceLabelBorder.constraints.forEach { constraint in
+                if constraint.firstAttribute == .height {
+                    constraint.constant = 50
+                }
+                if constraint.firstAttribute == .top {
+                    constraint.constant = 8
+                }
+                if constraint.firstAttribute == .bottom {
+                    constraint.constant = 16
+                }
+            }
+            cell.experienceLabelBorder.isHidden = false
+            cell.experienceLabel.text = article!.imageText[indexPath.row]
         }
-        cell.experienceLabel.text = article!.imageText[indexPath.row]
-        makeBorder(target: cell.experienceImage, radius: 12, isFilled: false)
+        makeBorder(target: cell.experienceImage, radius: 12, color: "Gray6", isFilled: false)
         return cell
     }
 }

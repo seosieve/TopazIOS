@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Regular.otf">
+            <string>NotoSansKR-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,18 +26,18 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhU-Ty-axV">
                         <rect key="frame" x="20" y="382" width="374" height="67"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kec-OR-kto">
-                                <rect key="frame" x="12" y="7" width="350" height="53.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kec-OR-kto">
+                                <rect key="frame" x="12" y="7.5" width="350" height="51.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" name="Gray2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" name="Gray7"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="kec-OR-kto" secondAttribute="bottom" constant="6.5" id="5jS-ws-kVv"/>
                             <constraint firstItem="kec-OR-kto" firstAttribute="leading" secondItem="fhU-Ty-axV" secondAttribute="leading" constant="12" id="94x-hb-3du"/>
-                            <constraint firstItem="kec-OR-kto" firstAttribute="top" secondItem="fhU-Ty-axV" secondAttribute="top" constant="7" id="E7F-GJ-nEA"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="kec-OR-kto" secondAttribute="bottom" id="WJR-bw-Vlu"/>
+                            <constraint firstItem="kec-OR-kto" firstAttribute="top" secondItem="fhU-Ty-axV" secondAttribute="topMargin" constant="-0.5" id="ir2-PN-idl"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="vy1-q8-ces"/>
                             <constraint firstItem="kec-OR-kto" firstAttribute="centerX" secondItem="fhU-Ty-axV" secondAttribute="centerX" id="wzS-rd-EaO"/>
                         </constraints>
@@ -65,6 +70,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="Gray2">
+            <color red="0.31000000238418579" green="0.31000000238418579" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Gray7">
             <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

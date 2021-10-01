@@ -17,9 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         guard let winScene = (scene as? UIWindowScene) else { return }
         
-        let homeVC = UIStoryboard(name: "Home", bundle: .main).instantiateViewController(withIdentifier: "HomeVC")
+        let SplashVC = UIStoryboard(name: "Splash", bundle: .main).instantiateViewController(withIdentifier: "SplashVC")
         let win = UIWindow(windowScene: winScene)
-        win.rootViewController = homeVC
+        win.rootViewController = SplashVC
         win.makeKeyAndVisible()
         window = win
         

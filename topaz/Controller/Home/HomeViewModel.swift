@@ -10,5 +10,4 @@ import Firebase
 
 class HomeViewModel {
     let db = Firestore.firestore()
-
 }

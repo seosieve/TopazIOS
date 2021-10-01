@@ -301,7 +301,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Zd-2S-aM0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121.73913043478262" y="800.89285714285711"/>
+            <point key="canvasLocation" x="538" y="769"/>
         </scene>
         <!--EmailPWEditVC-->
         <scene sceneID="NYg-IJ-Vsd">
@@ -334,7 +334,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sI6-Ys-4Mk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-842" y="88"/>
+            <point key="canvasLocation" x="-955" y="-163"/>
         </scene>
     </scenes>
     <resources>

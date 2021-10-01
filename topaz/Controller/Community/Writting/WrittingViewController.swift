@@ -87,10 +87,14 @@ class WrittingViewController: UIViewController {
             let imageText = viewModel.makeImageText(imageText: textArr)
             let tailText = viewModel.makeTailText(tailText: tailTextView)
             viewModel.addArticle(country: countryArr, title: titleTextView, mainText: mainTextView, imageText: imageText, tailText: tailText) { articleID in
-                self.viewModel.addUserImage(articleID: articleID, imageArr: self.imageArr) {
-                    // 현재 비동기 처리 안됨. 어짜피 이미지 포함 토스트 하나 더 넣을꺼니까 거기다가 저장
-                    // self.popUpToast("당신의 소중한 경험이 저장되었습니다!")
+                if imageText.count == 0 {
                     self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.viewModel.addUserImage(articleID: articleID, imageArr: self.imageArr) {
+                        // 현재 비동기 처리 안됨. 어짜피 이미지 포함 토스트 하나 더 넣을꺼니까 거기다가 저장
+                        // self.popUpToast("당신의 소중한 경험이 저장되었습니다!")
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 }
             }
         }
@@ -116,7 +120,6 @@ class WrittingViewController: UIViewController {
     }
     
     @IBAction func addImojiButtonPressed(_ sender: UIButton) {
-        makeTableViewHeight()
     }
     
 }
@@ -184,13 +187,11 @@ extension WrittingViewController: UITextViewDelegate {
             // Title 글자수 제한
             guard let str = titleTextView.text else { return true }
             let length = str.count + text.count - range.length
-            print(length)
             return length <= 31
         default:
             // Title 글자수 제한
             guard let str = textView.text else { return true }
             let length = str.count + text.count - range.length
-            print(length)
             return length <= 2000
         }
     }
@@ -260,12 +261,13 @@ extension WrittingViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.index = indexPath.row
-        makeBorder(target: cell.experienceImage, radius: 12, isFilled: true)
+        makeBorder(target: cell.experienceImage, radius: 12, color: "Gray6", isFilled: false)
         //삭제 델리게이트 설정
         cell.delegate = self
         
         cell.textChanged {[weak tableView, weak self] newText in
             self?.textArr[indexPath.row] = newText
+            print(self!.textArr[indexPath.row])
             DispatchQueue.main.async {
                 tableView?.beginUpdates()
                 self?.makeTableViewHeight()
