@@ -12,6 +12,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="NotoSansKR-Black.otf">
+            <string>NotoSansKR-Black</string>
+        </array>
         <array key="NotoSansKR-Bold.otf">
             <string>NotoSansKR-Bold</string>
         </array>
@@ -63,7 +66,50 @@
                                                                     <rect key="frame" x="0.0" y="45" width="207" height="244"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LuggageTag" translatesAutoresizingMaskIntoConstraints="NO" id="mta-hX-Xjx">
+                                                                    <rect key="frame" x="13" y="149" width="72" height="23"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="23" id="yBa-6h-BUw"/>
+                                                                        <constraint firstAttribute="width" constant="72" id="yoV-78-ptK"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이집트" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvV-xE-dkp">
+                                                                    <rect key="frame" x="48" y="152.5" width="30" height="14"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="30" id="T2x-7s-rAV"/>
+                                                                        <constraint firstAttribute="height" constant="14" id="tFx-Sz-oG6"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="10"/>
+                                                                    <color key="textColor" red="0.0" green="0.61960784313725492" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="투탕카멘의 무서운" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niK-F8-N6r">
+                                                                    <rect key="frame" x="29" y="98" width="110" height="41"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="41" id="9xA-FF-Grl"/>
+                                                                        <constraint firstAttribute="width" constant="110" id="Wc2-Hw-62z"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="NotoSansKR-Black" family="Noto Sans KR" pointSize="14"/>
+                                                                    <color key="textColor" name="White"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="삥빵뽕삐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w91-fu-25t">
+                                                                    <rect key="frame" x="114" y="160" width="37" height="15"/>
+                                                                    <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="10"/>
+                                                                    <color key="textColor" name="White"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="mta-hX-Xjx" firstAttribute="top" secondItem="niK-F8-N6r" secondAttribute="bottom" constant="10" id="0Xb-C4-OtH"/>
+                                                                <constraint firstItem="w91-fu-25t" firstAttribute="leading" secondItem="mta-hX-Xjx" secondAttribute="trailing" constant="29" id="E9X-nb-WDu"/>
+                                                                <constraint firstAttribute="bottom" secondItem="w91-fu-25t" secondAttribute="bottom" constant="114" id="IEn-4s-OW5"/>
+                                                                <constraint firstItem="mta-hX-Xjx" firstAttribute="leading" secondItem="2Lx-Ia-u6F" secondAttribute="leading" constant="13" id="IwX-cc-KF6"/>
+                                                                <constraint firstItem="niK-F8-N6r" firstAttribute="leading" secondItem="2Lx-Ia-u6F" secondAttribute="leading" constant="29" id="J7q-iv-6uc"/>
+                                                                <constraint firstItem="yvV-xE-dkp" firstAttribute="leading" secondItem="2Lx-Ia-u6F" secondAttribute="leading" constant="48" id="UUS-nL-hA0"/>
+                                                                <constraint firstAttribute="bottom" secondItem="yvV-xE-dkp" secondAttribute="bottom" constant="122.5" id="iy7-PQ-BPp"/>
+                                                                <constraint firstAttribute="bottom" secondItem="mta-hX-Xjx" secondAttribute="bottom" constant="117" id="tjn-34-IuE"/>
+                                                            </constraints>
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="207" height="289"/>
                                                         <connections>
@@ -1043,6 +1089,7 @@
         <image name="LikesButton" width="24" height="24"/>
         <image name="Luggage1" width="207" height="244"/>
         <image name="LuggageBackground" width="414" height="305"/>
+        <image name="LuggageTag" width="72" height="23"/>
         <image name="MusicIcon" width="16" height="16"/>
         <image name="SearchButton" width="24" height="24"/>
         <image name="ShareButton" width="24" height="24"/>

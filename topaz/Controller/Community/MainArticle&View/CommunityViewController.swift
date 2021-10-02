@@ -140,6 +140,7 @@ extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDat
 
 class luggageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var luggageImage: UIImageView!
+    
 
 }
 
