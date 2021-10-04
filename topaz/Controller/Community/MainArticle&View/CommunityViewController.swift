@@ -58,7 +58,7 @@ class CommunityViewController: UIViewController {
     }
     
     @objc func changeLuggage() {
-        UIView.animate(withDuration: 4) {
+        UIView.animate(withDuration: 4, delay: 0.0, options: [.allowUserInteraction]) {
             let index = IndexPath.init(item: self.counter, section: 0)
             self.luggageCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
             self.luggageCollectionView.layoutIfNeeded()
@@ -131,17 +131,15 @@ extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let itemToShow = luggageImgArr[indexPath.row % luggageImgArr.count]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "luggageCell", for: indexPath) as! luggageCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "luggageCell", for: indexPath) as! LuggageCollectionViewCell
         cell.luggageImage.image = itemToShow
         return cell
     }
     
-}
-
-class luggageCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var luggageImage: UIImageView!
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
     
-
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource

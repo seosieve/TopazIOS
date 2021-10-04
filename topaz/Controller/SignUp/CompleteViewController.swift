@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import Lottie
 
 class CompleteViewController: UIViewController {
     @IBOutlet weak var completeLabel: UILabel!
+    @IBOutlet weak var completeAnimationContainer: UIView!
+    @IBOutlet weak var loginButton: UIButton!
+    
     
     let viewModel = CompleteViewModel()
     
@@ -17,17 +21,20 @@ class CompleteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
+        loginButton.isEnabled = false
+        loginButton.alpha = 0
         addMultipleFonts()
-    }
-    
-    @IBAction func goToLoginPressed(_ sender: UIButton) {
-        // 애니메이션 나오니까 오래걸려도 상관없나? 오류 있으면 userdefault 바로 그냥 꽂는 것도 생각해보기.
+        lottieAnimation(json: "SignUpComplete", container: completeAnimationContainer)
+        
         viewModel.signIn(email: userEmail, password: userPW) {
             self.viewModel.addUserdefault(email: self.userEmail) {
-                self.instantiateVC()
+                self.loginButtonAnimation()
             }
         }
+    }
+    
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+        instantiateVC()
     }
 }
 
@@ -41,10 +48,28 @@ extension CompleteViewController {
         completeLabel.attributedText = attributedString
     }
     
+    func lottieAnimation(json: String, container: UIView) {
+        let lottieView = AnimationView(name: json)
+        container.addSubview(lottieView)
+        lottieView.translatesAutoresizingMaskIntoConstraints = false
+        lottieView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+        lottieView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+        lottieView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+        lottieView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+        lottieView.loopMode = .playOnce
+        lottieView.play()
+    }
+    
+    func loginButtonAnimation() {
+        UIView.animate(withDuration: 0.4) {
+            self.loginButton.isEnabled = true
+            self.loginButton.alpha = 1
+        }
+    }
+    
     func instantiateVC() {
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: .main)
         let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC")
-        
         mainVC.modalPresentationStyle = .fullScreen
         mainVC.modalTransitionStyle = .crossDissolve
         self.present(mainVC, animated: true, completion: nil)

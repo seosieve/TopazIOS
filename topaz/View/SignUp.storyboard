@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1004,7 +1005,7 @@
                                 <color key="tintColor" name="White"/>
                                 <state key="normal" title="로그인 하기"/>
                                 <connections>
-                                    <action selector="goToLoginPressed:" destination="L1N-Bx-j82" eventType="touchUpInside" id="Jho-S7-TfR"/>
+                                    <action selector="loginButtonPressed:" destination="L1N-Bx-j82" eventType="touchUpInside" id="zzE-u2-wAV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKE-p9-j7c">
@@ -1015,24 +1016,25 @@
                                 <color key="textColor" name="Gray2"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CompleteImage" translatesAutoresizingMaskIntoConstraints="NO" id="g6q-hg-T9M">
-                                <rect key="frame" x="45" y="378" width="324" height="205"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vx3-2w-sQa">
+                                <rect key="frame" x="0.0" y="350" width="414" height="352"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="205" id="LA6-Rj-xSw"/>
-                                    <constraint firstAttribute="width" constant="324" id="UjQ-3g-XJd"/>
+                                    <constraint firstAttribute="width" secondItem="vx3-2w-sQa" secondAttribute="height" multiplier="1:0.85" id="soQ-tN-fR5"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="a2v-2D-vkY"/>
                         <color key="backgroundColor" name="White"/>
                         <constraints>
+                            <constraint firstItem="vx3-2w-sQa" firstAttribute="centerX" secondItem="wGh-VE-Loz" secondAttribute="centerX" id="0xs-p3-SEp"/>
+                            <constraint firstItem="vx3-2w-sQa" firstAttribute="leading" secondItem="a2v-2D-vkY" secondAttribute="leading" id="BQg-XM-muw"/>
                             <constraint firstItem="AeX-gw-ye6" firstAttribute="top" secondItem="EKE-p9-j7c" secondAttribute="bottom" constant="22" id="Gdd-eH-68o"/>
-                            <constraint firstItem="g6q-hg-T9M" firstAttribute="centerX" secondItem="wGh-VE-Loz" secondAttribute="centerX" id="MRe-YK-bBl"/>
                             <constraint firstItem="XRu-dj-b3X" firstAttribute="centerX" secondItem="wGh-VE-Loz" secondAttribute="centerX" id="MYE-uJ-9cG"/>
                             <constraint firstItem="EKE-p9-j7c" firstAttribute="leading" secondItem="wGh-VE-Loz" secondAttribute="leading" constant="28" id="Mpq-Ch-bTy"/>
+                            <constraint firstItem="vx3-2w-sQa" firstAttribute="top" secondItem="AeX-gw-ye6" secondAttribute="bottom" constant="32" id="bEB-MG-8xJ"/>
                             <constraint firstItem="XRu-dj-b3X" firstAttribute="bottom" secondItem="a2v-2D-vkY" secondAttribute="bottom" id="g8f-U4-VDg"/>
                             <constraint firstItem="AeX-gw-ye6" firstAttribute="leading" secondItem="wGh-VE-Loz" secondAttribute="leading" constant="28" id="jra-hz-zyM"/>
-                            <constraint firstItem="g6q-hg-T9M" firstAttribute="top" secondItem="AeX-gw-ye6" secondAttribute="bottom" constant="60" id="qPr-FW-qqR"/>
                             <constraint firstItem="EKE-p9-j7c" firstAttribute="top" secondItem="a2v-2D-vkY" secondAttribute="top" constant="74" id="sRj-BM-NhZ"/>
                             <constraint firstItem="XRu-dj-b3X" firstAttribute="leading" secondItem="wGh-VE-Loz" secondAttribute="leading" id="xGz-9Q-S5o"/>
                         </constraints>
@@ -1041,7 +1043,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="8bN-Rc-RiG"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="completeAnimationContainer" destination="vx3-2w-sQa" id="0yR-ho-gg6"/>
                         <outlet property="completeLabel" destination="EKE-p9-j7c" id="LtJ-VC-5ko"/>
+                        <outlet property="loginButton" destination="XRu-dj-b3X" id="koO-tg-yMr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5yX-sy-txA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1359,7 +1363,6 @@
         <image name="AirplaneIcon" width="48" height="48"/>
         <image name="Check" width="24" height="24"/>
         <image name="Check_OFF" width="24" height="24"/>
-        <image name="CompleteImage" width="324.5" height="205"/>
         <image name="DefaultProfileImage" width="99" height="99"/>
         <namedColor name="Gray1">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1388,5 +1391,8 @@
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

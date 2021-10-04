@@ -30,9 +30,9 @@ class MainDetailViewController: UIViewController {
     @IBOutlet weak var likes: UILabel!
     @IBOutlet weak var views: UILabel!
     
-    
     var article: Article?
     let viewModel = MainDetailViewModel()
+    lazy var currentLikes = article!.likes
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +51,14 @@ class MainDetailViewController: UIViewController {
         if sender.tintColor == UIColor(named: "Gray1") {
             sender.tintColor = UIColor(named: "MintBlue")
             likesButton.backgroundColor = UIColor(named: "MintBlue")
+            likes.textColor = UIColor(named: "MintBlue")
+            viewModel.increaseLikes(currentID: article!.articleID, isIncrease: true)
+
         } else {
             sender.tintColor = UIColor(named: "Gray1")
             likesButton.backgroundColor = UIColor(named: "Gray2")
+            likes.textColor = UIColor(named: "Gray4")
+            viewModel.increaseLikes(currentID: article!.articleID, isIncrease: false)
         }
     }
     
@@ -61,9 +66,13 @@ class MainDetailViewController: UIViewController {
         if sender.backgroundColor == UIColor(named: "Gray2") {
             sender.backgroundColor = UIColor(named: "MintBlue")
             likeBarItem.tintColor = UIColor(named: "MintBlue")
+            likes.textColor = UIColor(named: "MintBlue")
+            viewModel.increaseLikes(currentID: article!.articleID, isIncrease: true)
         } else {
             sender.backgroundColor = UIColor(named: "Gray2")
             likeBarItem.tintColor = UIColor(named: "Gray1")
+            likes.textColor = UIColor(named: "Gray4")
+            viewModel.increaseLikes(currentID: article!.articleID, isIncrease: false)
         }
     }
 }
@@ -100,6 +109,17 @@ extension MainDetailViewController {
         country2Tail.setTitle(country2.currentTitle, for: .normal)
         country3Tail.setTitle(country3.currentTitle, for: .normal)
         // Head부분 설정
+        viewModel.isClickedLikes(currentID: article!.articleID) { isClicked in
+            if isClicked {
+                self.likeBarItem.tintColor = UIColor(named: "MintBlue")
+                self.likesButton.backgroundColor = UIColor(named: "MintBlue")
+                self.likes.textColor = UIColor(named: "MintBlue")
+            } else {
+                self.likeBarItem.tintColor = UIColor(named: "Gray1")
+                self.likesButton.backgroundColor = UIColor(named: "Gray2")
+                self.likes.textColor = UIColor(named: "Gray4")
+            }
+        }
         detailTitle.text = article!.title
         detailNickname.text = article!.auther
         detailstrWrittenDate.text = article!.strWrittenDate
@@ -115,7 +135,9 @@ extension MainDetailViewController {
         detailTailText.text = article!.tailText
         // Tail부분 설정
         makeCircle(target: likesButton)
-        
+        viewModel.increaseViews(currentID: article!.articleID)
+        likes.text = "\(self.article!.likes)"
+        views.text = "\(self.article!.views + 1)"
     }
     
     func setGradient() {
@@ -141,6 +163,7 @@ extension MainDetailViewController {
         }
     }
 }
+
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
 extension MainDetailViewController: UITableViewDelegate, UITableViewDataSource {

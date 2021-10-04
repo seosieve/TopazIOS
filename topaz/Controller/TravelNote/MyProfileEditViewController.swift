@@ -89,7 +89,6 @@ class MyProfileEditViewController: UIViewController {
                 }
             }
         }
-        
         if data != nil {
             makeUserGroup.enter()
             DispatchQueue.global().async {
@@ -100,7 +99,6 @@ class MyProfileEditViewController: UIViewController {
                 }
             }
         }
-        
         makeUserGroup.notify(queue: .main) {
             self.delegate?.profileChange(dataChanged, imageChanged)
             self.navigationController?.popViewController(animated: true)

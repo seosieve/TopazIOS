@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
         removeNavigationBackground(view: self)
         makeNicknameLabel()
         //Lottie
-        let animationView = AnimationView(name: "Onboarding1")
+        let animationView = AnimationView(name: "Splash")
         animationView.frame = CGRect(x:0, y:0, width:414, height:400)
         animationView.center = self.view.center
         animationView.contentMode = .scaleAspectFill
@@ -33,8 +33,6 @@ class HomeViewController: UIViewController {
         animationView.loopMode = .loop
         animationView.backgroundBehavior = .pauseAndRestore
         animationView.play()
-        
-        print(Auth.auth().currentUser?.email)
     }
 }
 
@@ -63,6 +61,7 @@ extension HomeViewController {
         default:
             nicknameConstraintW.constant = CGFloat(0)
         }
+        print("현재 로그인된 계정은 \(nickname)입니다.")
     }
 }
 

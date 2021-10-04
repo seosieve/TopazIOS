@@ -51,7 +51,7 @@ class CommunityViewModel {
                     getImageHandler(image)
                 }
             } else {
-                imageRef.getData(maxSize: 2*500*500) { data, error in
+                imageRef.getData(maxSize: 8*500*500) { data, error in
                     if let error = error {
                         print("프로필 이미지 다운로드 에러 : \(error)")
                     } else {

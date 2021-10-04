@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Lottie
 
 class FindPasswordViewController: UIViewController {
 
@@ -16,12 +17,14 @@ class FindPasswordViewController: UIViewController {
     @IBOutlet weak var sendingButton: UIButton!
     @IBOutlet weak var sendingButtonY: NSLayoutConstraint!
     @IBOutlet weak var emailWarningMessage: UILabel!
+    @IBOutlet weak var cloudAnimationContainer: UIView!
     
     let collection = Firestore.firestore().collection("UserDataBase")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
+        lottieAnimation(json: "Login", container: cloudAnimationContainer)
         makeBorder(target: emailTextFieldBorder, radius: 6, isFilled: false)
         makeBorder(target: sendingButton, radius: 12, isFilled: true)
         sendingButton.isEnabled = false
@@ -67,6 +70,19 @@ class FindPasswordViewController: UIViewController {
 }
 //MARK: - UI Functions
 extension FindPasswordViewController {
+    func lottieAnimation(json: String, container: UIView) {
+        let lottieView = AnimationView(name: json)
+        container.addSubview(lottieView)
+        lottieView.translatesAutoresizingMaskIntoConstraints = false
+        lottieView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+        lottieView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+        lottieView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+        lottieView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+        lottieView.loopMode = .loop
+        lottieView.backgroundBehavior = .pauseAndRestore
+        lottieView.play()
+    }
+    
     // email이 가입되었을 때 애니메이션
     func correctAnimation() {
         UIView.animate(withDuration: 1) {

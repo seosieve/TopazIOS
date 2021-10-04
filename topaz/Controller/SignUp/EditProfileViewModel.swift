@@ -44,7 +44,7 @@ class EditProfileViewModel {
     
     func addUserInfo(_ email: String, _ nickname: String, _ introduce: String, addInfoHandler: @escaping () -> ()) {
         collection.document(email)
-            .setData(["email": email, "nickname": nickname, "introduce": introduce]) { error in
+            .setData(["email": email, "nickname": nickname, "introduce": introduce, "likedPosts": [String]()]) { error in
             if let error = error {
                 print("Error saving user data : \(error)")
             } else {

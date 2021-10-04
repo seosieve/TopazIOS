@@ -16,7 +16,7 @@ class MyProfileEditViewModel {
     func getUserImage(email: String, getImageHandler: @escaping (UIImage) -> ()) {
         DispatchQueue.global().async {
             let imageRef = self.storage.reference(withPath: "UserProfileImages/\(email).png")
-            imageRef.getData(maxSize: 1*350*350) { data, error in
+            imageRef.getData(maxSize: 4*350*350) { data, error in
                 if let error = error {
                     print("프로필 이미지 다운로드 에러 : \(error)")
                 } else {
@@ -65,7 +65,7 @@ class MyProfileEditViewModel {
     
     func addUserInfo(_ email: String, _ nickname: String, _ introduce: String, addInfoHandler: @escaping () -> ()) {
         collection.document(email)
-            .setData(["nickname": nickname, "introduce": introduce]) { error in
+            .setData(["nickname": nickname, "introduce": introduce], merge: true) { error in
             if let error = error {
                 print("Error saving user data : \(error)")
             } else {

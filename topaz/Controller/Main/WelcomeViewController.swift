@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class WelcomeViewController: UIViewController {
 
@@ -14,12 +15,14 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var cloudAnimationContainer: UIView!
     
     let viewModel = WelcomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()        
         removeNavigationBackground(view: self)
+        lottieAnimation(json: "Login", container: cloudAnimationContainer)
         makeBorder(target: loginButton, radius: 12, isFilled: true)
         makeBorder(target: signUpButton, radius: 12, color: "MintBlue", isFilled: false)
         addMultipleFonts()
@@ -40,7 +43,6 @@ class WelcomeViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
@@ -63,6 +65,19 @@ extension WelcomeViewController {
         let attributedString = NSMutableAttributedString(string: titleLabel.text!)
         attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 20)!, range: (titleLabel.text! as NSString).range(of: "색다른 여행"))
         titleLabel.attributedText = attributedString
+    }
+    
+    func lottieAnimation(json: String, container: UIView) {
+        let lottieView = AnimationView(name: json)
+        container.addSubview(lottieView)
+        lottieView.translatesAutoresizingMaskIntoConstraints = false
+        lottieView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+        lottieView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+        lottieView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+        lottieView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+        lottieView.loopMode = .loop
+        lottieView.backgroundBehavior = .pauseAndRestore
+        lottieView.play()
     }
     
     func popUpToast(_ errorMessage: String) {

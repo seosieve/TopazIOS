@@ -40,7 +40,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U51-bX-qVs">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="705.5"/>
                                         <subviews>
-                                            <collectionView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" id="stM-QK-7KH">
+                                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" id="stM-QK-7KH">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="305"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -55,7 +55,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" reuseIdentifier="luggageCell" id="KBe-Nc-iC9" customClass="luggageCollectionViewCell" customModule="topaz" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" reuseIdentifier="luggageCell" id="KBe-Nc-iC9" customClass="LuggageCollectionViewCell" customModule="topaz" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="8" width="207" height="289"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="bottom" insetsLayoutMarginsFromSafeArea="NO" id="2Lx-Ia-u6F">
@@ -83,10 +83,9 @@
                                                                     <color key="textColor" red="0.0" green="0.61960784313725492" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="투탕카멘의 무서운" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niK-F8-N6r">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="투탕카멘의 무서운 fsefsef" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="niK-F8-N6r">
                                                                     <rect key="frame" x="29" y="98" width="110" height="41"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="41" id="9xA-FF-Grl"/>
                                                                         <constraint firstAttribute="width" constant="110" id="Wc2-Hw-62z"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" name="NotoSansKR-Black" family="Noto Sans KR" pointSize="14"/>
@@ -113,7 +112,10 @@
                                                         </collectionViewCellContentView>
                                                         <size key="customSize" width="207" height="289"/>
                                                         <connections>
-                                                            <outlet property="luggageImage" destination="MKy-td-LjS" id="wk2-SC-gsg"/>
+                                                            <outlet property="luggageAuth" destination="w91-fu-25t" id="kXM-Mg-KtW"/>
+                                                            <outlet property="luggageImage" destination="MKy-td-LjS" id="AYp-BS-Cbg"/>
+                                                            <outlet property="luggageTag" destination="yvV-xE-dkp" id="lEf-dN-CfH"/>
+                                                            <outlet property="luggageTitle" destination="niK-F8-N6r" id="Qve-fJ-IR6"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -386,7 +388,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMj-uK-vig">
                                                 <rect key="frame" x="68" y="478" width="8" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
-                                                <color key="textColor" name="MintBlue"/>
+                                                <color key="textColor" name="Gray4"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Llm-4I-mQe">
@@ -1089,7 +1091,7 @@
         <image name="LikesButton" width="24" height="24"/>
         <image name="Luggage1" width="207" height="244"/>
         <image name="LuggageBackground" width="414" height="305"/>
-        <image name="LuggageTag" width="72" height="23"/>
+        <image name="LuggageTag" width="72.5" height="23"/>
         <image name="MusicIcon" width="16" height="16"/>
         <image name="SearchButton" width="24" height="24"/>
         <image name="ShareButton" width="24" height="24"/>

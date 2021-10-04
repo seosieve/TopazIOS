@@ -42,12 +42,8 @@ class TravelNoteViewController: UIViewController {
         makeShadow(target: collection3, radius: collection3.frame.size.height/2)
         makeShadow(target: collection4, radius: collection4.frame.size.height/2)
         makeShadow(target: collection5, radius: collection5.frame.size.height/2)
-        if Auth.auth().currentUser != nil {
-            viewModel.getUserImage(email: userdefault.string(forKey: "email")!) { image in
-                self.profileImage.image = image
-            }
-            makeProfile()
-        }
+        
+        makeProfile()
     }
     
     @IBAction func mySettingPressed(_ sender: UIBarButtonItem) {
@@ -68,21 +64,27 @@ class TravelNoteViewController: UIViewController {
 //MARK: - UI Functions
 extension TravelNoteViewController {
     func makeProfile() {
-        nickname.text = userdefault.string(forKey: "nickname")!
-        email.text = userdefault.string(forKey: "email")!
-        introduce.text = userdefault.string(forKey: "introduce")!
-        let nicknameCount = nickname.text!.count
-        switch nicknameCount {
-        case 1:
-            nicknameConstraintW.constant = CGFloat(23)
-        case 2:
-            nicknameConstraintW.constant = CGFloat(45)
-        case 3:
-            nicknameConstraintW.constant = CGFloat(67)
-        case 4:
-            nicknameConstraintW.constant = CGFloat(89)
-        default:
-            nicknameConstraintW.constant = CGFloat(0)
+        if Auth.auth().currentUser != nil {
+            profileImage.image = UIImage(named: "DefaultUserImage")
+            nickname.text = userdefault.string(forKey: "nickname")!
+            email.text = userdefault.string(forKey: "email")!
+            introduce.text = userdefault.string(forKey: "introduce")!
+            let nicknameCount = nickname.text!.count
+            switch nicknameCount {
+            case 1:
+                nicknameConstraintW.constant = CGFloat(23)
+            case 2:
+                nicknameConstraintW.constant = CGFloat(45)
+            case 3:
+                nicknameConstraintW.constant = CGFloat(67)
+            case 4:
+                nicknameConstraintW.constant = CGFloat(89)
+            default:
+                nicknameConstraintW.constant = CGFloat(0)
+            }
+            viewModel.getUserImage(email: userdefault.string(forKey: "email")!) { image in
+                self.profileImage.image = image
+            }
         }
     }
 }

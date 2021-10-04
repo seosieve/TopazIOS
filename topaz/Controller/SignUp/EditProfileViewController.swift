@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Lottie
 
 class EditProfileViewController: UIViewController {
     @IBOutlet weak var PGBarComponentStack: UIStackView!
@@ -32,7 +33,7 @@ class EditProfileViewController: UIViewController {
     
     var imagePicker = UIImagePickerController()
     let viewModel = EditProfileViewModel()
-    var userImage = UIImage(named: "DefaultUserImage")!
+    var userImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,8 +100,10 @@ class EditProfileViewController: UIViewController {
     }
     
     @IBAction func goToNext(_ sender: UIButton) {
+        lottieAnimation(json: "Loading")
+        
         // 나중에 uid 필요해지면 추가
-        let data = userImage.pngData()!
+        let data = userImage?.pngData()
         let nickname = nicknameTextField.text!
         let introduce = introduceTextField.text ?? ""
         let makeUserGroup = DispatchGroup()
@@ -119,11 +122,13 @@ class EditProfileViewController: UIViewController {
                 makeUserGroup.leave()
             }
         }
-        makeUserGroup.enter()
-        DispatchQueue.global().async {
-            self.viewModel.addUserImage(userEmail: self.userEmail, data: data) {
-                print("addUserImage Success")
-                makeUserGroup.leave()
+        if data != nil {
+            makeUserGroup.enter()
+            DispatchQueue.global().async {
+                self.viewModel.addUserImage(userEmail: self.userEmail, data: data!) {
+                    print("addUserImage Success")
+                    makeUserGroup.leave()
+                }
             }
         }
         makeUserGroup.notify(queue: .main) {
@@ -164,6 +169,21 @@ extension EditProfileViewController {
         }
     }
     
+    func lottieAnimation(json: String) {
+        self.navigationController?.navigationBar.isHidden = true
+        let backgroundView = UIView()
+        backgroundView.frame = CGRect(x:0, y:0, width:view.bounds.width, height:view.bounds.height)
+        backgroundView.backgroundColor = UIColor(named: "White")
+        view.addSubview(backgroundView)
+        let lottieView = AnimationView(name: json)
+        lottieView.frame = CGRect(x:0, y:0, width:60, height:60)
+        lottieView.center = self.view.center
+        lottieView.contentMode = .scaleAspectFill
+        view.addSubview(lottieView)
+        lottieView.loopMode = .loop
+        lottieView.backgroundBehavior = .pauseAndRestore
+        lottieView.play()
+    }
 }
 
 //MARK: - UITextFieldDelegate

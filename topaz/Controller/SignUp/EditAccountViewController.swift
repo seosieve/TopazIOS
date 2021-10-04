@@ -38,6 +38,8 @@ class EditAccountController: UIViewController {
         makeBorder(target: emailTextFieldBorder, radius:6, isFilled: false)
         makeBorder(target: PWTextFieldBorder, radius:6, isFilled: false)
         makeBorder(target: PWConfirmTextFieldBorder, radius:6, isFilled: false)
+        emailTextField.isSecureTextEntry = false
+        PWTextField.isSecureTextEntry = false
         // TextField 입력 감지
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         PWTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
