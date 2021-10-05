@@ -22,7 +22,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()        
         removeNavigationBackground(view: self)
-        lottieAnimation(json: "Login", container: cloudAnimationContainer)
+        cloudsAnimation(json: "Login", container: cloudAnimationContainer)
         makeBorder(target: loginButton, radius: 12, isFilled: true)
         makeBorder(target: signUpButton, radius: 12, color: "MintBlue", isFilled: false)
         addMultipleFonts()
@@ -38,6 +38,7 @@ class WelcomeViewController: UIViewController {
             if message != nil {
                 self.popUpToast(message!)
             } else {
+                loadingAnimation(view: self.view)
                 self.viewModel.addUserdefault(email: email) {
                     self.instantiateVC()
                 }
@@ -67,7 +68,7 @@ extension WelcomeViewController {
         titleLabel.attributedText = attributedString
     }
     
-    func lottieAnimation(json: String, container: UIView) {
+    func cloudsAnimation(json: String, container: UIView) {
         let lottieView = AnimationView(name: json)
         container.addSubview(lottieView)
         lottieView.translatesAutoresizingMaskIntoConstraints = false

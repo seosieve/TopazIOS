@@ -32,7 +32,6 @@ class MainDetailViewController: UIViewController {
     
     var article: Article?
     let viewModel = MainDetailViewModel()
-    lazy var currentLikes = article!.likes
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +52,13 @@ class MainDetailViewController: UIViewController {
             likesButton.backgroundColor = UIColor(named: "MintBlue")
             likes.textColor = UIColor(named: "MintBlue")
             viewModel.increaseLikes(currentID: article!.articleID, isIncrease: true)
-
+            likes.text = "\(Int(likes.text!)! + 1)"
         } else {
             sender.tintColor = UIColor(named: "Gray1")
             likesButton.backgroundColor = UIColor(named: "Gray2")
             likes.textColor = UIColor(named: "Gray4")
             viewModel.increaseLikes(currentID: article!.articleID, isIncrease: false)
+            likes.text = "\(Int(likes.text!)! - 1)"
         }
     }
     
@@ -68,11 +68,13 @@ class MainDetailViewController: UIViewController {
             likeBarItem.tintColor = UIColor(named: "MintBlue")
             likes.textColor = UIColor(named: "MintBlue")
             viewModel.increaseLikes(currentID: article!.articleID, isIncrease: true)
+            likes.text = "\(Int(likes.text!)! + 1)"
         } else {
             sender.backgroundColor = UIColor(named: "Gray2")
             likeBarItem.tintColor = UIColor(named: "Gray1")
             likes.textColor = UIColor(named: "Gray4")
             viewModel.increaseLikes(currentID: article!.articleID, isIncrease: false)
+            likes.text = "\(Int(likes.text!)! - 1)"
         }
     }
 }

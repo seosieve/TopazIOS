@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Lottie
 
 class TravelNoteViewController: UIViewController {
 
@@ -16,34 +17,31 @@ class TravelNoteViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var introduce: UILabel!
     @IBOutlet weak var myProfileEditButton: UIButton!
-    @IBOutlet weak var collection1: UIButton!
-    @IBOutlet weak var collection2: UIButton!
-    @IBOutlet weak var collection3: UIButton!
-    @IBOutlet weak var collection4: UIButton!
-    @IBOutlet weak var collection5: UIButton!
+    @IBOutlet var collectionArray: [UIButton]! {
+        didSet {collectionArray.sort {$0.tag < $1.tag}}
+    }
     
     let viewModel = TravelNoteViewModel()
     let userdefault = UserDefaults.standard
-    //false로 바꾸고 데이터 받아오기
-    var isProfileChange = true
+    
+    let backgroundView = UIView()
+    let lottieView = AnimationView(name: "Loading")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        loadingAnimation(backgroundView, lottieView, view: self.view)
         makeCircle(target: profileImage, color: "Gray6", width: 1)
         makeBorder(target: myProfileEditButton, radius: 12, isFilled: false)
-        makeCircle(target: collection1, color: "MintBlue", width: 0)
-        makeCircle(target: collection2, color: "MintBlue", width: 0)
-        makeCircle(target: collection3, color: "MintBlue", width: 0)
-        makeCircle(target: collection4, color: "MintBlue", width: 0)
-        makeCircle(target: collection5, color: "MintBlue", width: 0)
-        makeShadow(target: collection1, radius: collection1.frame.size.height/2)
-        makeShadow(target: collection2, radius: collection2.frame.size.height/2)
-        makeShadow(target: collection3, radius: collection3.frame.size.height/2)
-        makeShadow(target: collection4, radius: collection4.frame.size.height/2)
-        makeShadow(target: collection5, radius: collection5.frame.size.height/2)
-        
-        makeProfile()
+        collectionArray.forEach { collection in
+            makeCircle(target: collection, color: "MintBlue", width: 0)
+            makeShadow(target: collection, radius: collection.frame.size.height/2)
+        }
+        makeUserProfile()
+        makeUserImage {
+            self.backgroundView.removeFromSuperview()
+            self.lottieView.removeFromSuperview()
+        }
     }
     
     @IBAction func mySettingPressed(_ sender: UIBarButtonItem) {
@@ -63,9 +61,17 @@ class TravelNoteViewController: UIViewController {
 }
 //MARK: - UI Functions
 extension TravelNoteViewController {
-    func makeProfile() {
+    func makeShadow(target view: UIView, radius: CGFloat) {
+        view.clipsToBounds = false
+        view.layer.shadowColor = UIColor(named: "Gray4")?.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 3, height: 3)
+        view.layer.shadowRadius = 2
+        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: radius).cgPath
+    }
+    
+    func makeUserProfile() {
         if Auth.auth().currentUser != nil {
-            profileImage.image = UIImage(named: "DefaultUserImage")
             nickname.text = userdefault.string(forKey: "nickname")!
             email.text = userdefault.string(forKey: "email")!
             introduce.text = userdefault.string(forKey: "introduce")!
@@ -82,8 +88,14 @@ extension TravelNoteViewController {
             default:
                 nicknameConstraintW.constant = CGFloat(0)
             }
+        }
+    }
+    
+    func makeUserImage(imageHandler: @escaping () -> ()) {
+        if Auth.auth().currentUser != nil {
             viewModel.getUserImage(email: userdefault.string(forKey: "email")!) { image in
                 self.profileImage.image = image
+                imageHandler()
             }
         }
     }
@@ -93,11 +105,13 @@ extension TravelNoteViewController {
 extension TravelNoteViewController: EditDelegate {
     func profileChange(_ dataChanged: Bool, _ imageChanged: Bool) {
         if dataChanged {
-            makeProfile()
+            makeUserProfile()
         }
         if imageChanged {
-            viewModel.getUserImage(email: userdefault.string(forKey: "email")!) { image in
-                self.profileImage.image = image
+            loadingAnimation(backgroundView, lottieView, view: self.view)
+            makeUserImage {
+                self.backgroundView.removeFromSuperview()
+                self.lottieView.removeFromSuperview()
             }
         }
     }

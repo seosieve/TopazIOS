@@ -70,16 +70,63 @@
                                     <action selector="logoutPressed:" destination="roZ-fH-Cgk" eventType="touchUpInside" id="GhU-sa-R8X"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGh-Vi-H7Y" customClass="UIControl">
+                                <rect key="frame" x="0.0" y="180" width="414" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v42-tG-D2E">
+                                        <rect key="frame" x="370" y="20" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="BFV-5o-yHd"/>
+                                            <constraint firstAttribute="width" constant="24" id="JmF-BM-oqO"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Detail"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4LZ-wG-Ffv">
+                                        <rect key="frame" x="20" y="20" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="8W9-aa-wm6"/>
+                                            <constraint firstAttribute="width" constant="24" id="jxC-NQ-s8Y"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Withdraw"/>
+                                    </button>
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 탈퇴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vo3-Au-P1f">
+                                        <rect key="frame" x="64" y="22" width="68.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
+                                        <color key="textColor" name="Gray3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstItem="v42-tG-D2E" firstAttribute="centerY" secondItem="uGh-Vi-H7Y" secondAttribute="centerY" id="6Ag-Ry-5Rz"/>
+                                    <constraint firstAttribute="height" constant="64" id="9Go-ca-heh"/>
+                                    <constraint firstItem="Vo3-Au-P1f" firstAttribute="centerY" secondItem="uGh-Vi-H7Y" secondAttribute="centerY" id="9ff-GE-FSX"/>
+                                    <constraint firstAttribute="trailing" secondItem="v42-tG-D2E" secondAttribute="trailing" constant="20" id="Sqp-C9-ahK"/>
+                                    <constraint firstItem="4LZ-wG-Ffv" firstAttribute="leading" secondItem="uGh-Vi-H7Y" secondAttribute="leading" constant="20" id="a7b-U8-rnd"/>
+                                    <constraint firstItem="Vo3-Au-P1f" firstAttribute="leading" secondItem="4LZ-wG-Ffv" secondAttribute="trailing" constant="20" id="dVt-sC-a7p"/>
+                                    <constraint firstItem="4LZ-wG-Ffv" firstAttribute="centerY" secondItem="uGh-Vi-H7Y" secondAttribute="centerY" id="nD1-Lm-Yhg"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="withdrawPressed:" destination="roZ-fH-Cgk" eventType="touchUpInside" id="vqG-ia-uDW"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Eu8-Vu-gcf"/>
                         <color key="backgroundColor" name="Gray7"/>
                         <constraints>
                             <constraint firstItem="r4C-mx-ybu" firstAttribute="centerX" secondItem="wp7-8I-aIj" secondAttribute="centerX" id="MMi-CN-Rei"/>
-                            <constraint firstItem="r4C-mx-ybu" firstAttribute="leading" secondItem="Eu8-Vu-gcf" secondAttribute="leading" id="eu0-y4-Ti9"/>
+                            <constraint firstItem="uGh-Vi-H7Y" firstAttribute="top" secondItem="r4C-mx-ybu" secondAttribute="bottom" constant="8" id="XxT-YO-h9v"/>
+                            <constraint firstItem="uGh-Vi-H7Y" firstAttribute="leading" secondItem="r4C-mx-ybu" secondAttribute="leading" id="YsY-ve-cbO"/>
+                            <constraint firstItem="r4C-mx-ybu" firstAttribute="leading" secondItem="wp7-8I-aIj" secondAttribute="leading" id="eu0-y4-Ti9"/>
                             <constraint firstItem="r4C-mx-ybu" firstAttribute="top" secondItem="Eu8-Vu-gcf" secondAttribute="top" constant="20" id="grk-gH-aal"/>
+                            <constraint firstItem="uGh-Vi-H7Y" firstAttribute="centerX" secondItem="wp7-8I-aIj" secondAttribute="centerX" id="rVQ-gh-4gr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="설정" id="G52-vB-PUQ"/>
+                    <connections>
+                        <outlet property="logoutControl" destination="r4C-mx-ybu" id="J0c-SF-2Yf"/>
+                        <outlet property="withdrawControl" destination="uGh-Vi-H7Y" id="wTI-oy-bMI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9F-UZ-hwf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -110,7 +157,7 @@
                                                             <constraint firstAttribute="height" constant="14" id="nVh-8A-d4j"/>
                                                         </constraints>
                                                     </view>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HwZ-Cn-RIX">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultUserImage" translatesAutoresizingMaskIntoConstraints="NO" id="HwZ-Cn-RIX">
                                                         <rect key="frame" x="20" y="24" width="96" height="96"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="96" id="ZLY-Ah-JIX"/>
@@ -190,7 +237,7 @@
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                         <state key="normal" title="🇰🇷"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2S-dj-n1V">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2S-dj-n1V">
                                                         <rect key="frame" x="147" y="283" width="32" height="32"/>
                                                         <color key="backgroundColor" name="White"/>
                                                         <constraints>
@@ -200,7 +247,7 @@
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                         <state key="normal" title="🇰🇷"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jo-NL-ns3">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jo-NL-ns3">
                                                         <rect key="frame" x="267" y="283" width="32" height="32"/>
                                                         <color key="backgroundColor" name="White"/>
                                                         <constraints>
@@ -210,7 +257,7 @@
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                         <state key="normal" title="🇰🇷"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n39-tH-vGC">
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n39-tH-vGC">
                                                         <rect key="frame" x="227" y="283" width="32" height="32"/>
                                                         <color key="backgroundColor" name="White"/>
                                                         <constraints>
@@ -220,7 +267,7 @@
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                         <state key="normal" title="🇰🇷"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7S-Ay-pzm">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7S-Ay-pzm">
                                                         <rect key="frame" x="187" y="283" width="32" height="32"/>
                                                         <color key="backgroundColor" name="White"/>
                                                         <constraints>
@@ -413,17 +460,17 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="collection1" destination="EV0-Oh-sWK" id="vY4-8D-BCG"/>
-                        <outlet property="collection2" destination="a2S-dj-n1V" id="QWi-bO-e4w"/>
-                        <outlet property="collection3" destination="v7S-Ay-pzm" id="587-BG-lQ7"/>
-                        <outlet property="collection4" destination="n39-tH-vGC" id="FBk-w1-6p4"/>
-                        <outlet property="collection5" destination="4jo-NL-ns3" id="aGv-4r-EZ2"/>
                         <outlet property="email" destination="Gms-iO-hhE" id="YZq-Js-niP"/>
                         <outlet property="introduce" destination="Rp9-2D-wdw" id="W9P-GK-RCh"/>
                         <outlet property="myProfileEditButton" destination="yRF-aO-lrm" id="gB1-3j-8KL"/>
                         <outlet property="nickname" destination="kfY-K6-l6J" id="nh5-aS-YB9"/>
                         <outlet property="nicknameConstraintW" destination="abZ-Wu-bUp" id="Nms-a0-sOp"/>
                         <outlet property="profileImage" destination="HwZ-Cn-RIX" id="Vy0-NH-RwR"/>
+                        <outletCollection property="collectionArray" destination="EV0-Oh-sWK" collectionClass="NSMutableArray" id="49q-Sa-vFQ"/>
+                        <outletCollection property="collectionArray" destination="a2S-dj-n1V" collectionClass="NSMutableArray" id="hO9-9c-aXw"/>
+                        <outletCollection property="collectionArray" destination="v7S-Ay-pzm" collectionClass="NSMutableArray" id="oCO-lY-acl"/>
+                        <outletCollection property="collectionArray" destination="n39-tH-vGC" collectionClass="NSMutableArray" id="obV-ed-5qr"/>
+                        <outletCollection property="collectionArray" destination="4jo-NL-ns3" collectionClass="NSMutableArray" id="fiY-AB-k60"/>
                         <segue destination="soN-xB-idz" kind="show" id="IGv-G5-d39"/>
                         <segue destination="ShL-07-c3F" kind="show" identifier="goToMyProfileEdit" id="RZa-PM-UxI"/>
                         <segue destination="roZ-fH-Cgk" kind="show" identifier="goToMySetting" id="LXQ-7S-DVS"/>
@@ -629,12 +676,14 @@
     <resources>
         <image name="Check" width="24" height="24"/>
         <image name="DefaultProfileImage" width="99" height="99"/>
+        <image name="DefaultUserImage" width="99" height="99"/>
         <image name="Detail" width="24" height="24"/>
         <image name="Logout" width="24" height="24"/>
         <image name="MypostButton" width="24" height="24"/>
         <image name="SettingButton" width="24" height="24"/>
         <image name="TravelNote_OFF" width="33" height="30"/>
         <image name="TravelNote_ON" width="33" height="30"/>
+        <image name="Withdraw" width="24" height="24"/>
         <namedColor name="Gray1">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

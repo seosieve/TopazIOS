@@ -10,7 +10,7 @@ import Firebase
 
 class MyProfileEditViewModel {
     
-    let collection = Firestore.firestore().collection("UserDataBase")
+    let database = Firestore.firestore()
     let storage = Storage.storage()
     
     func getUserImage(email: String, getImageHandler: @escaping (UIImage) -> ()) {
@@ -38,6 +38,7 @@ class MyProfileEditViewModel {
     }
     
     func isExist(nickname: String, nicknameHandler: @escaping () -> ()) {
+        let collection = database.collection("UserDataBase")
         collection.whereField("nickname", isEqualTo: nickname).getDocuments { querySnapshot, error in
             if let error = error {
                 print("닉네임 탐색 에러 : \(error)")
@@ -64,6 +65,7 @@ class MyProfileEditViewModel {
     }
     
     func addUserInfo(_ email: String, _ nickname: String, _ introduce: String, addInfoHandler: @escaping () -> ()) {
+        let collection = database.collection("UserDataBase")
         collection.document(email)
             .setData(["nickname": nickname, "introduce": introduce], merge: true) { error in
             if let error = error {
@@ -73,6 +75,39 @@ class MyProfileEditViewModel {
             }
         }
     }
+    
+    func searchArticle(_ originalNickname: String, _ changedNickname: String, searchArticleHandler: @escaping ([String], String) -> ()) {
+        let collection = database.collection("Articles")
+        var IDArray = [String]()
+        
+        collection.whereField("auther", isEqualTo: originalNickname).getDocuments { querySnapshot, error in
+            if let error = error {
+                print("Article 탐색 에러 : \(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    IDArray.append(document.get("articleID") as! String)
+                    
+                }
+                searchArticleHandler(IDArray, changedNickname)
+            }
+        }
+    }
+    
+    func replaceAuth(IDArray: [String], nickname: String, replaceAuthHandler: @escaping () -> ()) {
+        let collection = database.collection("Articles")
+        for articleID in IDArray {
+            collection.document(articleID).updateData(["auther" : nickname]) { error in
+                if let error = error {
+                    print("글쓴이 변경 에러: \(error)")
+                }
+            }
+        }
+        replaceAuthHandler()
+    }
+    
+    
+    
+    
     
     func addUserImage(userEmail: String, data: Data, addImageHandler: @escaping () -> ()) {
         let imageRef = storage.reference().child("UserProfileImages/\(userEmail).png")

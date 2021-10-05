@@ -100,7 +100,8 @@ class EditProfileViewController: UIViewController {
     }
     
     @IBAction func goToNext(_ sender: UIButton) {
-        lottieAnimation(json: "Loading")
+        self.navigationController?.navigationBar.isHidden = true
+        loadingAnimation(view: self.view)
         
         // 나중에 uid 필요해지면 추가
         let data = userImage?.pngData()
@@ -167,22 +168,6 @@ extension EditProfileViewController {
         } else {
             return false
         }
-    }
-    
-    func lottieAnimation(json: String) {
-        self.navigationController?.navigationBar.isHidden = true
-        let backgroundView = UIView()
-        backgroundView.frame = CGRect(x:0, y:0, width:view.bounds.width, height:view.bounds.height)
-        backgroundView.backgroundColor = UIColor(named: "White")
-        view.addSubview(backgroundView)
-        let lottieView = AnimationView(name: json)
-        lottieView.frame = CGRect(x:0, y:0, width:60, height:60)
-        lottieView.center = self.view.center
-        lottieView.contentMode = .scaleAspectFill
-        view.addSubview(lottieView)
-        lottieView.loopMode = .loop
-        lottieView.backgroundBehavior = .pauseAndRestore
-        lottieView.play()
     }
 }
 

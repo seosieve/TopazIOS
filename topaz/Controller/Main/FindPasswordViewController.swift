@@ -24,15 +24,13 @@ class FindPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        lottieAnimation(json: "Login", container: cloudAnimationContainer)
+        cloudsAnimation(json: "Login", container: cloudAnimationContainer)
         makeBorder(target: emailTextFieldBorder, radius: 6, isFilled: false)
         makeBorder(target: sendingButton, radius: 12, isFilled: true)
         sendingButton.isEnabled = false
         // TextField 입력 감지
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-        
         emailTextField.delegate = self
-
     }
     
     @objc func textFieldDidChange(_ sender: UITextField) {
@@ -70,7 +68,7 @@ class FindPasswordViewController: UIViewController {
 }
 //MARK: - UI Functions
 extension FindPasswordViewController {
-    func lottieAnimation(json: String, container: UIView) {
+    func cloudsAnimation(json: String, container: UIView) {
         let lottieView = AnimationView(name: json)
         container.addSubview(lottieView)
         lottieView.translatesAutoresizingMaskIntoConstraints = false

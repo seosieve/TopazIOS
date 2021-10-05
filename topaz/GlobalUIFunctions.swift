@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 //Border 생성
 func makeBorder(target view: UIView, radius: Int, color: String = "Gray5", isFilled Fill: Bool) {
@@ -40,6 +41,36 @@ func removeNavigationBackground(view: UIViewController) {
     view.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
     view.navigationController?.navigationBar.shadowImage = UIImage()
 }
+
+// Loading Animation View - 삭제불가
+func loadingAnimation(view: UIView) {
+    let backgroundView = UIView()
+    backgroundView.frame = CGRect(x:0, y:0, width:view.bounds.width, height:view.bounds.height)
+    backgroundView.backgroundColor = UIColor(named: "White")
+    view.addSubview(backgroundView)
+    let lottieView = AnimationView(name: "Loading")
+    lottieView.frame = CGRect(x:0, y:0, width:60, height:60)
+    lottieView.center = view.center
+    lottieView.contentMode = .scaleAspectFill
+    view.addSubview(lottieView)
+    lottieView.loopMode = .loop
+    lottieView.backgroundBehavior = .pauseAndRestore
+    lottieView.play()
+}
+// Loading Animation View - 삭제가능
+func loadingAnimation(_ background: UIView, _ animation: AnimationView, view: UIView) {
+    background.frame = CGRect(x:0, y:0, width:view.bounds.width, height:view.bounds.height)
+    background.backgroundColor = UIColor(named: "White")
+    view.addSubview(background)
+    animation.frame = CGRect(x:0, y:0, width:60, height:60)
+    animation.center = view.center
+    animation.contentMode = .scaleAspectFill
+    view.addSubview(animation)
+    animation.loopMode = .loop
+    animation.backgroundBehavior = .pauseAndRestore
+    animation.play()
+}
+
 
 //Button Tern ON & OFF
 func shiftButton(for button: UIButton, isOn: Bool) {

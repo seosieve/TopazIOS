@@ -12,13 +12,14 @@ class CommunityViewModel {
     let db = Firestore.firestore().collection("Articles")
     var articleArr = [Article]()
 
-    func getArticle(articleHandler: @escaping ([Article]) -> ()) {
+    func getArticle(sortMethod: String, articleHandler: @escaping ([Article]) -> ()) {
         articleArr = []
-        db.order(by: "writtenDate", descending: true).getDocuments { querySnapshot, error in
+        let convertedSortMethod = convertSortMethod(sortMethod: sortMethod)
+        db.order(by: convertedSortMethod).getDocuments { querySnapshot, error in
             if let error = error {
                 print("글 불러오기 에러 : \(error)")
             } else {
-                for document in querySnapshot!.documents {
+                for document in querySnapshot!.documents.reversed() {
                     let articleID = document.get("articleID") as! String
                     let auther = document.get("auther") as! String
                     let autherEmail = document.get("autherEmail") as! String
@@ -34,10 +35,22 @@ class CommunityViewModel {
                     
                     let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, tailText: tailText, likes: likes, views: views)
                     self.articleArr.append(article)
-                    articleHandler(self.articleArr)
                 }
-                
+                articleHandler(self.articleArr)
             }
+        }
+    }
+    
+    func convertSortMethod(sortMethod: String) -> String {
+        switch sortMethod {
+        case "조회수순":
+            return "views"
+        case "좋아요순":
+            return "likes"
+        case "업로드순":
+            return "strWrittenDate"
+        default:
+            return "strWrittenDate"
         }
     }
     

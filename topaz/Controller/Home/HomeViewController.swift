@@ -25,14 +25,14 @@ class HomeViewController: UIViewController {
         removeNavigationBackground(view: self)
         makeNicknameLabel()
         //Lottie
-        let animationView = AnimationView(name: "Splash")
-        animationView.frame = CGRect(x:0, y:0, width:414, height:400)
-        animationView.center = self.view.center
-        animationView.contentMode = .scaleAspectFill
-        view.addSubview(animationView)
-        animationView.loopMode = .loop
-        animationView.backgroundBehavior = .pauseAndRestore
-        animationView.play()
+//        let animationView = AnimationView(name: "Splash")
+//        animationView.frame = CGRect(x:0, y:0, width:414, height:400)
+//        animationView.center = self.view.center
+//        animationView.contentMode = .scaleAspectFill
+//        view.addSubview(animationView)
+//        animationView.loopMode = .loop
+//        animationView.backgroundBehavior = .pauseAndRestore
+//        animationView.play()
     }
 }
 

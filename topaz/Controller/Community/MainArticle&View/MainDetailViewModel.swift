@@ -35,6 +35,10 @@ class MainDetailViewModel {
             imageRef.getData(maxSize: 24*100*100) { data, error in
                 if let error = error {
                     print("프로필 이미지 다운로드 에러 : \(error)")
+                    let image = UIImage(named: "DefaultUserImage")!
+                    DispatchQueue.main.async {
+                        getImageHandler(image)
+                    }
                 } else {
                     if let data = data {
                         let image = UIImage(data: data)!

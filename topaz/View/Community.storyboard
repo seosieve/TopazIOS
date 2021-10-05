@@ -40,7 +40,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U51-bX-qVs">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="705.5"/>
                                         <subviews>
-                                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" id="stM-QK-7KH">
+                                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" id="stM-QK-7KH">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="305"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -126,6 +126,55 @@
                                                 <color key="textColor" name="Gray3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nir-un-6zy">
+                                                <rect key="frame" x="389" y="324.5" width="45" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="RV0-Lc-r3Q"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="좋아요순">
+                                                    <color key="titleColor" name="Gray4"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sortMethodPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="xGV-jy-ShM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ex-hf-XZd">
+                                                <rect key="frame" x="328" y="324.5" width="45" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="pxG-nF-k7u"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="조회수순">
+                                                    <color key="titleColor" name="Gray4"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sortMethodPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Rfa-ZO-ChX"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWq-mP-Fxj">
+                                                <rect key="frame" x="325" y="324.5" width="89" height="30"/>
+                                                <color key="backgroundColor" name="Gray6"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="89" id="MUb-Xb-LhH"/>
+                                                    <constraint firstAttribute="height" constant="30" id="fa9-Op-JEx"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3e-Cw-GtS">
+                                                <rect key="frame" x="329" y="324.5" width="65" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="wAF-AK-zdQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
+                                                <state key="normal" title="업로드순" image="SwipeSort">
+                                                    <color key="titleColor" name="Gray3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="swipeSortButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Frr-Uq-3f5"/>
+                                                </connections>
+                                            </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="aF8-be-zaJ">
                                                 <rect key="frame" x="0.0" y="365.5" width="414" height="300"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -136,12 +185,20 @@
                                         </subviews>
                                         <color key="backgroundColor" name="Gray6"/>
                                         <constraints>
+                                            <constraint firstItem="3Ex-hf-XZd" firstAttribute="centerY" secondItem="nir-un-6zy" secondAttribute="centerY" id="6iY-r0-lOM"/>
                                             <constraint firstItem="aF8-be-zaJ" firstAttribute="centerX" secondItem="U51-bX-qVs" secondAttribute="centerX" id="8HZ-PY-oKK"/>
+                                            <constraint firstItem="Y3e-Cw-GtS" firstAttribute="leading" secondItem="nir-un-6zy" secondAttribute="trailing" constant="-105" id="8xQ-QK-mu8"/>
                                             <constraint firstItem="aF8-be-zaJ" firstAttribute="top" secondItem="kyb-2P-kjm" secondAttribute="bottom" constant="16" id="EJB-CW-GXt"/>
                                             <constraint firstItem="kyb-2P-kjm" firstAttribute="leading" secondItem="U51-bX-qVs" secondAttribute="leading" constant="20" id="HRK-Ky-mcS"/>
+                                            <constraint firstItem="nir-un-6zy" firstAttribute="leading" secondItem="3Ex-hf-XZd" secondAttribute="trailing" constant="16" id="HuU-kE-fR8"/>
+                                            <constraint firstItem="Y3e-Cw-GtS" firstAttribute="centerY" secondItem="kyb-2P-kjm" secondAttribute="centerY" id="KRM-Hm-EKl"/>
+                                            <constraint firstAttribute="trailing" secondItem="YWq-mP-Fxj" secondAttribute="trailing" id="MJK-pH-4y3"/>
+                                            <constraint firstItem="YWq-mP-Fxj" firstAttribute="centerY" secondItem="Y3e-Cw-GtS" secondAttribute="centerY" id="RA4-vK-7sy"/>
                                             <constraint firstItem="aF8-be-zaJ" firstAttribute="leading" secondItem="U51-bX-qVs" secondAttribute="leading" id="bWo-vu-wqG"/>
                                             <constraint firstItem="kyb-2P-kjm" firstAttribute="top" secondItem="stM-QK-7KH" secondAttribute="bottom" constant="24" id="dVi-t5-A7U"/>
                                             <constraint firstAttribute="bottom" secondItem="aF8-be-zaJ" secondAttribute="bottom" constant="40" id="ly6-Ax-i82"/>
+                                            <constraint firstItem="nir-un-6zy" firstAttribute="centerY" secondItem="Y3e-Cw-GtS" secondAttribute="centerY" id="t5U-U5-eUj"/>
+                                            <constraint firstAttribute="trailing" secondItem="Y3e-Cw-GtS" secondAttribute="trailing" constant="20" id="xHo-Bl-fVH"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -244,6 +301,10 @@
                         <outlet property="fullArticleTableView" destination="aF8-be-zaJ" id="Gys-7C-YKk"/>
                         <outlet property="introduceLabel" destination="C6b-Hi-AZs" id="d84-J4-gy8"/>
                         <outlet property="luggageCollectionView" destination="stM-QK-7KH" id="YG9-xs-TNd"/>
+                        <outlet property="selectedSortMethod" destination="Y3e-Cw-GtS" id="lvv-Bn-0ez"/>
+                        <outlet property="sortMethod1" destination="nir-un-6zy" id="xiF-rg-NVi"/>
+                        <outlet property="sortMethod2" destination="3Ex-hf-XZd" id="xsE-eb-MlC"/>
+                        <outlet property="swipeSortConstraintY" destination="8xQ-QK-mu8" id="edN-sX-Q39"/>
                         <outlet property="upperBackground" destination="nIa-W7-yZK" id="RtT-Do-Zq0"/>
                         <outlet property="writeButton" destination="7oV-dz-MfB" id="uU2-NO-53a"/>
                         <segue destination="1Ng-CP-npj" kind="presentation" identifier="goToWritting" modalPresentationStyle="fullScreen" id="AzV-oq-4k8"/>
@@ -1095,6 +1156,7 @@
         <image name="MusicIcon" width="16" height="16"/>
         <image name="SearchButton" width="24" height="24"/>
         <image name="ShareButton" width="24" height="24"/>
+        <image name="SwipeSort" width="20" height="20"/>
         <image name="ViewButton" width="24" height="24"/>
         <image name="WriteIcon" width="24" height="24"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

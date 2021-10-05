@@ -25,7 +25,7 @@ class MyProfileEditViewController: UIViewController {
     
     let viewModel = MyProfileEditViewModel()
     let imagePicker = UIImagePickerController()
-    var changedImage: UIImage? = nil
+    var changedImage: UIImage?
     
     let email = UserDefaults.standard.string(forKey: "email")!
     let originalNickname = UserDefaults.standard.string(forKey: "nickname")!
@@ -69,8 +69,7 @@ class MyProfileEditViewController: UIViewController {
     
     
     @IBAction func profileEditCompletePressed(_ sender: UIBarButtonItem) {
-        //현재는 userDefault로 계속 뷰가 바뀌는데 그거 수정하기 Delegate? 등으로
-        let makeUserGroup = DispatchGroup()
+        let profileEditGroup = DispatchGroup()
         let data = changedImage?.pngData()
         let nickname = nickname.text!
         let introduce = introduce.text!
@@ -78,28 +77,42 @@ class MyProfileEditViewController: UIViewController {
         var imageChanged = false
         
         if nickname != originalNickname || introduce != originalIntroduce {
-            makeUserGroup.enter()
+            profileEditGroup.enter()
             DispatchQueue.global().async {
                 self.viewModel.addUserInfo(self.email, nickname, introduce) {
                     UserDefaults.standard.set(nickname, forKey: "nickname")
                     UserDefaults.standard.set(introduce, forKey: "introduce")
                     print("addUserInfo Success")
                     dataChanged = true
-                    makeUserGroup.leave()
+                    profileEditGroup.leave()
                 }
             }
         }
+        
+        if nickname != originalNickname {
+            profileEditGroup.enter()
+            DispatchQueue.global().async {
+                self.viewModel.searchArticle(self.originalNickname, nickname) { IDArray, nickname in
+                    print("searchArticle Success")
+                    self.viewModel.replaceAuth(IDArray: IDArray, nickname: nickname) {
+                        print("replaceAuth Success")
+                        profileEditGroup.leave()
+                    }
+                }
+            }
+        }
+        
         if data != nil {
-            makeUserGroup.enter()
+            profileEditGroup.enter()
             DispatchQueue.global().async {
                 self.viewModel.addUserImage(userEmail: self.email, data: data!) {
                     print("addUserImage Success")
                     imageChanged = true
-                    makeUserGroup.leave()
+                    profileEditGroup.leave()
                 }
             }
         }
-        makeUserGroup.notify(queue: .main) {
+        profileEditGroup.notify(queue: .main) {
             self.delegate?.profileChange(dataChanged, imageChanged)
             self.navigationController?.popViewController(animated: true)
         }
