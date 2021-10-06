@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 class MainDetailViewController: UIViewController {
     // Head
@@ -32,10 +33,12 @@ class MainDetailViewController: UIViewController {
     
     var article: Article?
     let viewModel = MainDetailViewModel()
+    let userdefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         makeArticleUI()
+        makeTableViewHeight()
         
         mainDetailImageTableView.register(MainDetailImageTableViewCell.nib(), forCellReuseIdentifier: "MainDetailImageTableViewCell")
         mainDetailImageTableView.dataSource = self
@@ -77,6 +80,15 @@ class MainDetailViewController: UIViewController {
             likes.text = "\(Int(likes.text!)! - 1)"
         }
     }
+    
+    @IBAction func detailBarButtonPressed(_ sender: UIBarButtonItem) {
+        if userdefault.string(forKey: "nickname") == article?.auther {
+            deleteAndModifyAlert()
+        } else {
+            reportAlert()
+        }
+    }
+    
 }
 
 //MARK: - UI Functions
@@ -163,6 +175,63 @@ extension MainDetailViewController {
                 constraint.constant = mainDetailImageTableView.contentSize.height
             }
         }
+    }
+    
+    func deleteAndModifyAlert() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let modify = UIAlertAction(title: "수정하기", style: .default) { action in
+            
+        }
+        let delete = UIAlertAction(title: "삭제하기", style: .default) { action in
+            self.deleteConfirmAlert()
+        }
+        let cancle = UIAlertAction(title: "취소", style: .cancel)
+        modify.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
+        delete.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
+        cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
+        alert.addAction(modify)
+        alert.addAction(delete)
+        alert.addAction(cancle)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteConfirmAlert() {
+        let alert = UIAlertController(title: "정말 글을 삭제하시겠어요?", message: "한 번 삭제된 글은 다시 되돌릴 수 없으니 신중하게 결정해주세요!", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let delete = UIAlertAction(title: "삭제", style: .default) { action in
+            let backgroundView = UIView()
+            let lottieView = AnimationView(name: "Loading")
+            loadingAnimation(backgroundView, lottieView, view: self.view)
+            
+            let articleID = self.article!.articleID
+            let imageCount = self.article!.imageText.count
+            for index in 0..<imageCount {
+                self.viewModel.deleteExperienceImage(articleID: articleID, index: index)
+            }
+            self.viewModel.deleteArticle(articleID: articleID) {
+                backgroundView.removeFromSuperview()
+                lottieView.removeFromSuperview()
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        alert.addAction(cancel)
+        alert.addAction(delete)
+        delete.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
+        alert.view.tintColor = UIColor(named: "Gray2")
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func reportAlert() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let report = UIAlertAction(title: "신고하기", style: .default) { action in
+            
+        }
+        let cancle = UIAlertAction(title: "취소", style: .cancel)
+        report.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
+        cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
+        alert.addAction(report)
+        alert.addAction(cancle)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

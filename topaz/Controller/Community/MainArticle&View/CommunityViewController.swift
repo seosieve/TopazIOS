@@ -42,6 +42,7 @@ class CommunityViewController: UIViewController {
         fullArticleTableView.register(FullArticleTableViewCell.nib(), forCellReuseIdentifier: "FullArticleTableViewCell")
         fullArticleTableView.dataSource = self
         fullArticleTableView.delegate = self
+        
         // CollectionView Animation
         viewModel.getCollectionArticle { articleArr in
             self.collectionArticleArr = articleArr
@@ -109,7 +110,6 @@ class CommunityViewController: UIViewController {
                 destinationVC.article = tableArticleArr[indexPath.row]
             }
             if let indexPath = luggageCollectionView.indexPathsForSelectedItems?.last {
-                print(luggageCollectionView.indexPathsForSelectedItems?.count)
                 let count = collectionArticleArr.count
                 destinationVC.article = collectionArticleArr[indexPath.row % count]
             }
@@ -155,6 +155,7 @@ extension CommunityViewController {
                 constraint.constant = fullArticleTableView.contentSize.height
             }
         }
+        fullArticleTableView.layoutIfNeeded()
     }
 }
 

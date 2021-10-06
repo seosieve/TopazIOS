@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
         let scene = SCNScene()
         
         let earthNode = EarthNode()
-        earthNode.position = SCNVector3(x: 0, y: -1.5, z: 0)
+        earthNode.position = SCNVector3(x: 0, y: 0, z: 0)
         scene.rootNode.addChildNode(earthNode)
         
         let lightNode1 = SCNNode()
@@ -42,12 +42,12 @@ class HomeViewController: UIViewController {
         let lightNode2 = SCNNode()
         lightNode2.light = SCNLight()
         lightNode2.light?.type = .omni
-        lightNode2.position = SCNVector3(x: 0, y: -20, z: 0)
+        lightNode2.position = SCNVector3(x: -3, y: -15, z: -3)
         scene.rootNode.addChildNode(lightNode2)
         
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
+        cameraNode.position = SCNVector3(x: 0, y: 1.5, z: 5)
         scene.rootNode.addChildNode(cameraNode)
         
 //        let lightNode = SCNNode()
@@ -57,8 +57,8 @@ class HomeViewController: UIViewController {
 //        scene.rootNode.addChildNode(lightNode)
         
         
-//        let stars = SCNParticleSystem(named: "Assets.scnassets/Stars.scnp", inDirectory: nil)!
-//        scene.rootNode.addParticleSystem(stars)
+        let stars = SCNParticleSystem(named: "Assets.scnassets/Stars.scnp", inDirectory: nil)!
+        scene.rootNode.addParticleSystem(stars)
         
 
         sceneView.scene = scene

@@ -91,7 +91,7 @@ class MainDetailViewModel {
             let imageRef = self.storage.reference(withPath: "Articles/\(articleID)/\(index).png")
             imageRef.getData(maxSize: 8*500*500) { data, error in
                 if let error = error {
-                    print("프로필 이미지 다운로드 에러 : \(error)")
+                    print("글 이미지 다운로드 에러 : \(error)")
                 } else {
                     if let data = data {
                         let image = UIImage(data: data)!
@@ -104,5 +104,26 @@ class MainDetailViewModel {
         }
     }
     
+    func deleteExperienceImage(articleID: String, index: Int) {
+        let imageRef = self.storage.reference(withPath: "Articles/\(articleID)/\(index).png")
+        imageRef.delete { error in
+            if let error = error {
+                print("글 이미지 삭제 에러 : \(error)")
+            } else {
+                print("deleteExperienceImage Success")
+            }
+        }
+    }
     
+    func deleteArticle(articleID: String, deleteArticleHandler: @escaping () -> ()) {
+        let collection = database.collection("Articles")
+        collection.document(articleID).delete { error in
+            if let error = error {
+                print("글 삭제 에러 : \(error)")
+            } else {
+                print("deleteArticle Success")
+                deleteArticleHandler()
+            }
+        }
+    }
 }
