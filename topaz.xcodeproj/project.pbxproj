@@ -84,6 +84,8 @@
 		4E9DCB3326C1781D001D218A /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0E26C177E1001D218A /* Poppins-SemiBold.ttf */; };
 		4E9DCB3426C1781F001D218A /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB1826C177E2001D218A /* Poppins-Thin.ttf */; };
 		4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0F26C177E1001D218A /* Poppins-ThinItalic.ttf */; };
+		4EA4CF81270DB203001632D4 /* EarthNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4CF80270DB203001632D4 /* EarthNode.swift */; };
+		4EA4CF92270DBDA3001632D4 /* Assets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EA4CF91270DBDA3001632D4 /* Assets.scnassets */; };
 		4ECB1691270AED36000029CB /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB1690270AED36000029CB /* Loading.json */; };
 		4ECB1693270AF292000029CB /* SignUpComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB1692270AF292000029CB /* SignUpComplete.json */; };
 		4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */; };
@@ -182,6 +184,8 @@
 		4E9DCB1C26C177E2001D218A /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
 		4E9DCB1D26C177E2001D218A /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		4E9DCB1E26C177E2001D218A /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4EA4CF80270DB203001632D4 /* EarthNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthNode.swift; sourceTree = "<group>"; };
+		4EA4CF91270DBDA3001632D4 /* Assets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = Assets.scnassets; path = Controller/Home/Assets.scnassets; sourceTree = "<group>"; };
 		4ECB1690270AED36000029CB /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		4ECB1692270AF292000029CB /* SignUpComplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpComplete.json; sourceTree = "<group>"; };
 		4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewModel.swift; sourceTree = "<group>"; };
@@ -275,6 +279,7 @@
 				4E056E0126C3B50100FDF0F3 /* GlobalUIFunctions.swift */,
 				4EFBA8DB26C137A8001F1557 /* View */,
 				4EFBA8D926C1362C001F1557 /* Assets.xcassets */,
+				4EA4CF91270DBDA3001632D4 /* Assets.scnassets */,
 				4E0FAEB526C0EE9A003D80E3 /* LaunchScreen.storyboard */,
 				4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */,
 				4E0FAEB826C0EE9A003D80E3 /* Info.plist */,
@@ -289,6 +294,7 @@
 				4E533F3326E060F500527FC2 /* HomeViewController.swift */,
 				4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */,
 				4E533F3D26E09A8E00527FC2 /* TabBarController.swift */,
+				4EA4CF80270DB203001632D4 /* EarthNode.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -540,6 +546,7 @@
 				4E9DCB2226C177F5001D218A /* NotoSansKR-Medium.otf in Resources */,
 				4E9DCB2726C17804001D218A /* Poppins-Bold.ttf in Resources */,
 				4E9DCB2C26C1780E001D218A /* Poppins-ExtraLightItalic.ttf in Resources */,
+				4EA4CF92270DBDA3001632D4 /* Assets.scnassets in Resources */,
 				4E9DCB3226C1781B001D218A /* Poppins-Regular.ttf in Resources */,
 				4ECB1691270AED36000029CB /* Loading.json in Resources */,
 				4E8A58B52705404600C8A646 /* Splash.storyboard in Resources */,
@@ -651,6 +658,7 @@
 				4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */,
 				4E0FAEAD26C0EE99003D80E3 /* SceneDelegate.swift in Sources */,
 				4E01361C26FA25D50071F31D /* CompleteViewModel.swift in Sources */,
+				4EA4CF81270DB203001632D4 /* EarthNode.swift in Sources */,
 				4E056E0226C3B50100FDF0F3 /* GlobalUIFunctions.swift in Sources */,
 				4E056DF326C25EEB00FDF0F3 /* EditAccountViewController.swift in Sources */,
 				4E9B9BBD26EDE50800ABCE87 /* TravelNoteViewModel.swift in Sources */,

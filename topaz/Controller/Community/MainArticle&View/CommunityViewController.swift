@@ -17,18 +17,17 @@ class CommunityViewController: UIViewController {
     @IBOutlet weak var selectedSortMethod: UIButton!
     @IBOutlet weak var sortMethod1: UIButton!
     @IBOutlet weak var sortMethod2: UIButton!
-    
     @IBOutlet weak var luggageCollectionView: UICollectionView!
     @IBOutlet weak var fullArticleTableView: UITableView!
     
     let viewModel = CommunityViewModel()
     
-    var sortMethod = ["조회수순", "좋아요순", "업로드순"]
     var timer = Timer()
     var counter = 0
-    let luggageImgArr = [UIImage(named: "Luggage1"), UIImage(named: "Luggage3"), UIImage(named: "Luggage2"), UIImage(named: "Luggage3"), UIImage(named: "Luggage1")]
-    
-    var articleArr = [Article]()
+    let luggageImgArr = [UIImage(named: "Luggage1"), UIImage(named: "Luggage3"), UIImage(named: "Luggage2"), UIImage(named: "Luggage1"), UIImage(named: "Luggage2")]
+    var collectionArticleArr = [Article]()
+    var tableArticleArr = [Article]()
+    var sortMethod = ["조회수순", "좋아요순", "업로드순"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,30 +42,28 @@ class CommunityViewController: UIViewController {
         fullArticleTableView.register(FullArticleTableViewCell.nib(), forCellReuseIdentifier: "FullArticleTableViewCell")
         fullArticleTableView.dataSource = self
         fullArticleTableView.delegate = self
-        
-//        DispatchQueue.main.async {
-//            self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.changeLuggage), userInfo: nil, repeats: true)
-//        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let sortMethod = selectedSortMethod.currentTitle!
-        viewModel.getArticle(sortMethod: sortMethod) { article in
-            self.articleArr = article
-            self.fullArticleTableView.reloadData()
+        // CollectionView Animation
+        viewModel.getCollectionArticle { articleArr in
+            self.collectionArticleArr = articleArr
+            self.luggageCollectionView.reloadData()
             DispatchQueue.main.async {
-                self.makeTableViewHeight()
+                self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.moveLuggage), userInfo: nil, repeats: true)
             }
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        let segmentSize = luggageImgArr.count
-        luggageCollectionView.scrollToItem(at: IndexPath(item: segmentSize, section: 0), at: .centeredHorizontally, animated: false)
+    override func viewWillAppear(_ animated: Bool) {
+        let sortMethod = selectedSortMethod.currentTitle!
+        viewModel.getTableArticle(sortMethod: sortMethod) { articleArr in
+            self.tableArticleArr = articleArr
+            self.fullArticleTableView.reloadData()
+            self.makeTableViewHeight()
+            self.makeTableViewHeight()
+        }
     }
     
-    @objc func changeLuggage() {
-        UIView.animate(withDuration: 4, delay: 0.0, options: [.allowUserInteraction]) {
+    @objc func moveLuggage() {
+        UIView.animate(withDuration: 1, delay: 0.0, options: [.allowUserInteraction]) {
             let index = IndexPath.init(item: self.counter, section: 0)
             self.luggageCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
             self.luggageCollectionView.layoutIfNeeded()
@@ -84,13 +81,14 @@ class CommunityViewController: UIViewController {
         sortMethod1.setTitle(remainSortMethod[0], for: .normal)
         sortMethod2.setTitle(remainSortMethod[1], for: .normal)
         let sortMethod = selectedSortMethod.currentTitle!
-        viewModel.getArticle(sortMethod: sortMethod) { article in
-            self.articleArr = article
+        viewModel.getTableArticle(sortMethod: sortMethod) { articleArr in
+            self.tableArticleArr = articleArr
             self.fullArticleTableView.reloadData()
             DispatchQueue.main.async {
                 self.makeTableViewHeight()
             }
         }
+        
     }
     
     @IBAction func swipeSortButtonPressed(_ sender: UIButton) {
@@ -108,7 +106,12 @@ class CommunityViewController: UIViewController {
         if segue.identifier == "goToMainDetail" {
             let destinationVC = segue.destination as! MainDetailViewController
             if let indexPath = fullArticleTableView.indexPathForSelectedRow {
-                destinationVC.article = articleArr[indexPath.row]
+                destinationVC.article = tableArticleArr[indexPath.row]
+            }
+            if let indexPath = luggageCollectionView.indexPathsForSelectedItems?.last {
+                print(luggageCollectionView.indexPathsForSelectedItems?.count)
+                let count = collectionArticleArr.count
+                destinationVC.article = collectionArticleArr[indexPath.row % count]
             }
         }
     }
@@ -116,7 +119,6 @@ class CommunityViewController: UIViewController {
 
 //MARK: - UI Functions
 extension CommunityViewController {
-    // 각각 edge에 맞는 Radius적용
     func makeCircular(target view: UIView, each: Bool) {
         view.clipsToBounds = false
         view.layer.cornerRadius = 12
@@ -139,7 +141,7 @@ extension CommunityViewController {
         view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 24).cgPath
         view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
     }
-    // 반응형 TableView height
+    
     func addMultipleFonts() {
         let attributedString = NSMutableAttributedString(string: introduceLabel.text!)
         attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 14)!, range: (introduceLabel.text! as NSString).range(of: "여행 캐리어"))
@@ -159,64 +161,53 @@ extension CommunityViewController {
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return luggageImgArr.count
+        if collectionArticleArr.count == 0 {
+            return collectionArticleArr.count
+        } else {
+            return Int.max
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let itemToShow = luggageImgArr[indexPath.row]
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "luggageCell", for: indexPath) as? LuggageCollectionViewCell {
-            cell.luggageImage.image = itemToShow
-            return cell
-        }
-        return UICollectionViewCell()
+        let count = collectionArticleArr.count == 0 ? 1 : collectionArticleArr.count
+        let luggage = luggageImgArr[indexPath.row % luggageImgArr.count]
+        let collectionArticle = collectionArticleArr[indexPath.row % count]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "luggageCell", for: indexPath) as! LuggageCollectionViewCell
+        cell.luggageImage.image = luggage
+        cell.luggageTag.text = collectionArticle.country[0]
+        cell.luggageAuther.text = collectionArticle.auther
+        cell.luggageTitle.text = collectionArticle.title
+        return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print(indexPath.row)
-//    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        var item = visibleCellIndexPath().item
-        if item == luggageImgArr.count * 3 - 2 {
-            item = luggageImgArr.count * 2
-        } else if item == 1 {
-            item = luggageImgArr.count + 1
-        }
-        luggageCollectionView.scrollToItem(at: IndexPath(item: item, section: 0), at: .centeredHorizontally, animated: false)
-        let unitCount: Int = item % luggageImgArr.count + 1
-        print(unitCount)
-    }
-    
-    private func visibleCellIndexPath() -> IndexPath {
-        return luggageCollectionView.indexPathsForVisibleItems[0]
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToMainDetail", sender: self)
+        collectionView.deselectItem(at: indexPath, animated: false)
     }
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
 extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articleArr.count
+        return tableArticleArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tableArticle = tableArticleArr[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "FullArticleTableViewCell", for: indexPath) as! FullArticleTableViewCell
         cell.selectionStyle = .none
-        let articleForRow = articleArr[indexPath.row]
-        cell.title.text = articleForRow.title
-        cell.auther.text = articleForRow.auther
-        cell.country.text = articleForRow.country[0]
-        let countryNumber = articleForRow.country.count
-        if countryNumber == 1 {
-            cell.countryNumber.isHidden = true
-        } else {
-            cell.countryNumber.isHidden = false
-            cell.countryNumber.text = "+\(countryNumber-1)"
-        }
-        cell.likes.setTitle(String(articleForRow.likes), for: .normal)
-        cell.views.setTitle(String(articleForRow.views), for: .normal)
-        
+        // make cell
+        cell.title.text = tableArticle.title
+        cell.auther.text = tableArticle.auther
+        cell.country.text = tableArticle.country[0]
+        let countryNumber = tableArticle.country.count
+        let isCountryNumberOne = countryNumber == 1 ? true : false
+        cell.countryNumber.isHidden = isCountryNumberOne
+        cell.countryNumber.text = "+\(countryNumber-1)"
+        cell.likes.setTitle(String(tableArticle.likes), for: .normal)
+        cell.views.setTitle(String(tableArticle.views), for: .normal)
         makeCircle(target: cell.countryNumber, color: "MintBlue", width: 0)
-        viewModel.getArticleImage(articleID: articleForRow.articleID, imageText: articleForRow.imageText) { image in
+        viewModel.getArticleImage(articleID: tableArticle.articleID, imageText: tableArticle.imageText) { image in
             cell.mainImage.image = image
         }
         

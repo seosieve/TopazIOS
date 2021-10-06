@@ -22,6 +22,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <sceneKitView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttP-TL-bIa">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" name="White"/>
+                            </sceneKitView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y68-KY-y6h">
                                 <rect key="frame" x="24" y="132" width="81" height="12"/>
                                 <color key="backgroundColor" name="LightMintBlue"/>
@@ -31,7 +35,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PP4-Sc-DDT">
-                                <rect key="frame" x="24" y="112" width="199.5" height="64"/>
+                                <rect key="frame" x="24" y="112" width="189.5" height="51.5"/>
                                 <string key="text">님, 꼭 멀리가야만
 좋은 여행은 아니에요!</string>
                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="22"/>
@@ -42,10 +46,14 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="White"/>
                         <constraints>
+                            <constraint firstItem="ttP-TL-bIa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Fa7-Pn-GEc"/>
+                            <constraint firstItem="ttP-TL-bIa" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" id="Fdb-pO-ePE"/>
                             <constraint firstItem="PP4-Sc-DDT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="24" id="R4b-El-TMy"/>
                             <constraint firstItem="Y68-KY-y6h" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="W7b-oe-z7a"/>
+                            <constraint firstItem="ttP-TL-bIa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Zph-5n-JdQ"/>
                             <constraint firstItem="PP4-Sc-DDT" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="sjP-LJ-yqv"/>
                             <constraint firstItem="Y68-KY-y6h" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="44" id="t7K-cm-Cl1"/>
+                            <constraint firstItem="ttP-TL-bIa" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="zqD-00-Ulv"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -64,12 +72,13 @@
                         <outlet property="alarmButton" destination="Pgy-9C-Ytg" id="Aeo-gm-Bfc"/>
                         <outlet property="friendslistButton" destination="OGz-gO-Wcz" id="exw-a0-44c"/>
                         <outlet property="nicknameConstraintW" destination="ju3-zA-OYO" id="CvJ-Vm-QCY"/>
+                        <outlet property="sceneView" destination="ttP-TL-bIa" id="8XS-wF-PyV"/>
                         <outlet property="searchButton" destination="JSe-zg-2EW" id="kwt-VD-RWD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3370" y="116"/>
+            <point key="canvasLocation" x="3369.5652173913045" y="115.84821428571428"/>
         </scene>
         <!--TravelNoteVC-->
         <scene sceneID="qIz-Ob-z0v">

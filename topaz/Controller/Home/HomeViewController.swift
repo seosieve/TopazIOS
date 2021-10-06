@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
-import Lottie
+import SceneKit
 
 class HomeViewController: UIViewController {
     
@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var alarmButton: UIBarButtonItem!
     @IBOutlet weak var friendslistButton: UIBarButtonItem!
+    @IBOutlet weak var sceneView: SCNView!
     
     let userdefault = UserDefaults.standard
     
@@ -24,15 +25,53 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
         makeNicknameLabel()
-        //Lottie
-//        let animationView = AnimationView(name: "Splash")
-//        animationView.frame = CGRect(x:0, y:0, width:414, height:400)
-//        animationView.center = self.view.center
-//        animationView.contentMode = .scaleAspectFill
-//        view.addSubview(animationView)
-//        animationView.loopMode = .loop
-//        animationView.backgroundBehavior = .pauseAndRestore
-//        animationView.play()
+        
+        
+        let scene = SCNScene()
+        
+        let earthNode = EarthNode()
+        earthNode.position = SCNVector3(x: 0, y: -1.5, z: 0)
+        scene.rootNode.addChildNode(earthNode)
+        
+        let lightNode1 = SCNNode()
+        lightNode1.light = SCNLight()
+        lightNode1.light?.type = .omni
+        lightNode1.position = SCNVector3(x: 5, y: 15, z: 5)
+        scene.rootNode.addChildNode(lightNode1)
+        
+        let lightNode2 = SCNNode()
+        lightNode2.light = SCNLight()
+        lightNode2.light?.type = .omni
+        lightNode2.position = SCNVector3(x: 0, y: -20, z: 0)
+        scene.rootNode.addChildNode(lightNode2)
+        
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 0, z: 5)
+        scene.rootNode.addChildNode(cameraNode)
+        
+//        let lightNode = SCNNode()
+//        lightNode.light = SCNLight()
+//        lightNode.light?.type = .omni
+//        lightNode.position = SCNVector3(x: 0, y: 10, z: 2)
+//        scene.rootNode.addChildNode(lightNode)
+        
+        
+//        let stars = SCNParticleSystem(named: "Assets.scnassets/Stars.scnp", inDirectory: nil)!
+//        scene.rootNode.addParticleSystem(stars)
+        
+
+        sceneView.scene = scene
+        sceneView.showsStatistics = false
+//        sceneView.backgroundColor = UIColor(named: "Gray4")
+        sceneView.allowsCameraControl = true
+        sceneView.pointOfView = cameraNode
+        
+
+        
+        
+        
+        
     }
 }
 

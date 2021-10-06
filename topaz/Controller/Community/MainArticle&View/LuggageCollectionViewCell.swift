@@ -10,9 +10,6 @@ import UIKit
 class LuggageCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var luggageImage: UIImageView!
     @IBOutlet weak var luggageTag: UILabel!
-    @IBOutlet weak var luggageAuth: UILabel!
+    @IBOutlet weak var luggageAuther: UILabel!
     @IBOutlet weak var luggageTitle: UILabel!
-    
-    
-    
 }

@@ -10,10 +10,45 @@ import Firebase
 
 class CommunityViewModel {
     let db = Firestore.firestore().collection("Articles")
-    var articleArr = [Article]()
+    var collectionArticleArr = [Article]()
+    var tableArticleArr = [Article]()
+    
+    func getCollectionArticle(articleHandler: @escaping ([Article]) -> ()) {
+        collectionArticleArr = []
+        var articleArr = [Article]()
+        let dateBound = NSDate().timeIntervalSince1970 - 604800
+        db.whereField("writtenDate", isGreaterThan: dateBound).getDocuments { querySnapshot, error in
+            if let error = error {
+                print("글 불러오기 에러 : \(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let articleID = document.get("articleID") as! String
+                    let auther = document.get("auther") as! String
+                    let autherEmail = document.get("autherEmail") as! String
+                    let writtenDate = document.get("writtenDate") as! Double
+                    let strWrittenDate = document.get("strWrittenDate") as! String
+                    let country = document.get("country") as! [String]
+                    let title = document.get("title") as! String
+                    let mainText = document.get("mainText") as! String
+                    let imageText = document.get("imageText") as! [String]
+                    let tailText = document.get("tailText") as! String
+                    let likes = document.get("likes") as! Int
+                    let views = document.get("views") as! Int
+                    
+                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, tailText: tailText, likes: likes, views: views)
+                    articleArr.append(article)
+                }
+            }
+            articleArr.sort{$0.likes > $1.likes}
+            for index in 0...4 {
+                self.collectionArticleArr.append(articleArr[index])
+            }
+            articleHandler(self.collectionArticleArr)
+        }
+    }
 
-    func getArticle(sortMethod: String, articleHandler: @escaping ([Article]) -> ()) {
-        articleArr = []
+    func getTableArticle(sortMethod: String, articleHandler: @escaping ([Article]) -> ()) {
+        tableArticleArr = []
         let convertedSortMethod = convertSortMethod(sortMethod: sortMethod)
         db.order(by: convertedSortMethod).getDocuments { querySnapshot, error in
             if let error = error {
@@ -34,9 +69,9 @@ class CommunityViewModel {
                     let views = document.get("views") as! Int
                     
                     let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, tailText: tailText, likes: likes, views: views)
-                    self.articleArr.append(article)
+                    self.tableArticleArr.append(article)
                 }
-                articleHandler(self.articleArr)
+                articleHandler(self.tableArticleArr)
             }
         }
     }
