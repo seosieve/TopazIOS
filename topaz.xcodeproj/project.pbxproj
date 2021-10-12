@@ -26,6 +26,8 @@
 		4E13D038270AE0AA00CAC6F4 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E13D037270AE0AA00CAC6F4 /* Splash.json */; };
 		4E13D03A270AE15300CAC6F4 /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E13D039270AE15200CAC6F4 /* Login.json */; };
 		4E18A57526E66050001504A9 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18A57426E66050001504A9 /* MySettingViewController.swift */; };
+		4E1C2E4D2714025400B97EB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E1C2E4C2714025400B97EB0 /* Assets.xcassets */; };
+		4E1C2E4F27154B3100B97EB0 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C2E4E27154B3100B97EB0 /* SplashViewModel.swift */; };
 		4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05026CD16FF005682E5 /* TermsViewController.swift */; };
 		4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05226CD3085005682E5 /* CompleteViewController.swift */; };
 		4E32E07926DE35FB005682E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */; };
@@ -99,7 +101,6 @@
 		4EE9A3B726F758ED00395B2F /* MainDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3B626F758ED00395B2F /* MainDetailViewController.swift */; };
 		4EE9A3B926F7684C00395B2F /* MyArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3B826F7684C00395B2F /* MyArticleViewController.swift */; };
 		4EE9A3BB26F76A6800395B2F /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9A3BA26F76A6800395B2F /* MyProfileEditViewController.swift */; };
-		4EFBA8DA26C1362C001F1557 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFBA8D926C1362C001F1557 /* Assets.xcassets */; };
 		A5A94767E83929E3AA0881CF /* Pods_topaz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44604151810CDEE526775EAB /* Pods_topaz.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +127,8 @@
 		4E13D037270AE0AA00CAC6F4 /* Splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
 		4E13D039270AE15200CAC6F4 /* Login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Login.json; sourceTree = "<group>"; };
 		4E18A57426E66050001504A9 /* MySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
+		4E1C2E4C2714025400B97EB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4E1C2E4E27154B3100B97EB0 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		4E32E05026CD16FF005682E5 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		4E32E05226CD3085005682E5 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -199,7 +202,6 @@
 		4EE9A3B626F758ED00395B2F /* MainDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetailViewController.swift; sourceTree = "<group>"; };
 		4EE9A3B826F7684C00395B2F /* MyArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleViewController.swift; sourceTree = "<group>"; };
 		4EE9A3BA26F76A6800395B2F /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
-		4EFBA8D926C1362C001F1557 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../Downloads/AppIcons (1)/Assets.xcassets"; sourceTree = "<group>"; };
 		7E3975921A6298E978E2E2DB /* Pods-topaz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-topaz.debug.xcconfig"; path = "Target Support Files/Pods-topaz/Pods-topaz.debug.xcconfig"; sourceTree = "<group>"; };
 		D0BB8C8097326A0C7F69BE6B /* Pods-topaz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-topaz.release.xcconfig"; path = "Target Support Files/Pods-topaz/Pods-topaz.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,7 +280,7 @@
 				4EFBA8DC26C137B3001F1557 /* Controller */,
 				4E056E0126C3B50100FDF0F3 /* GlobalUIFunctions.swift */,
 				4EFBA8DB26C137A8001F1557 /* View */,
-				4EFBA8D926C1362C001F1557 /* Assets.xcassets */,
+				4E1C2E4C2714025400B97EB0 /* Assets.xcassets */,
 				4EA4CF91270DBDA3001632D4 /* Assets.scnassets */,
 				4E0FAEB526C0EE9A003D80E3 /* LaunchScreen.storyboard */,
 				4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */,
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				4E8A58B72705407500C8A646 /* SplashViewController.swift */,
+				4E1C2E4E27154B3100B97EB0 /* SplashViewModel.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -539,7 +542,6 @@
 				4E64D12B26EF5BA100DB3FDB /* CountryCollectionViewCell.xib in Resources */,
 				4E9DCB2626C17803001D218A /* Poppins-BlackItalic.ttf in Resources */,
 				4E9DCB2426C177FD001D218A /* NotoSansKR-Thin.otf in Resources */,
-				4EFBA8DA26C1362C001F1557 /* Assets.xcassets in Resources */,
 				4E9DCB2A26C1780A001D218A /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				4E8A58CB270584A900C8A646 /* FourthOnboarding.json in Resources */,
 				4E9DCB2E26C17812001D218A /* Poppins-Light.ttf in Resources */,
@@ -569,6 +571,7 @@
 				4E8A58CE270584A900C8A646 /* FirstOnboarding.json in Resources */,
 				4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */,
 				4E9DCB3126C17819001D218A /* Poppins-MediumItalic.ttf in Resources */,
+				4E1C2E4D2714025400B97EB0 /* Assets.xcassets in Resources */,
 				4E9DCB3026C17816001D218A /* Poppins-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +640,7 @@
 				4E8A58C22705544300C8A646 /* FourthPageViewController.swift in Sources */,
 				4E533F3C26E08A0900527FC2 /* TravelNoteViewController.swift in Sources */,
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
+				4E1C2E4F27154B3100B97EB0 /* SplashViewModel.swift in Sources */,
 				4E8A58BC270553D600C8A646 /* FirstPageViewController.swift in Sources */,
 				4EE9A3AD26F2D97300395B2F /* WrittingViewModel.swift in Sources */,
 				4E8A58BA270548AD00C8A646 /* PageViewController.swift in Sources */,
@@ -815,6 +819,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B44YL23J9X;
 				ENABLE_BITCODE = YES;
@@ -836,6 +841,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B44YL23J9X;
 				ENABLE_BITCODE = YES;

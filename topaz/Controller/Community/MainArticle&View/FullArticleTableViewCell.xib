@@ -39,7 +39,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbD-ZA-AC1">
                         <rect key="frame" x="20" y="0.0" width="299" height="88"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kuk-G8-syU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="베트남 여행기" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kuk-G8-syU">
                                 <rect key="frame" x="16" y="12" width="230" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="230" id="yJc-kc-90D"/>
@@ -131,6 +131,7 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4YA-2P-Xph">
                         <rect key="frame" x="319" y="0.0" width="74" height="88"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="88" id="L5o-CD-7wP"/>
                             <constraint firstAttribute="width" constant="74" id="tCg-1c-46i"/>
                         </constraints>
                     </imageView>

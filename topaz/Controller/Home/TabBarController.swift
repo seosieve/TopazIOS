@@ -6,75 +6,52 @@
 //
 
 import UIKit
-import FirebaseAuth
 
-class TabBarController: UITabBarController {
+@IBDesignable class TabBarWithCorners: UITabBar {
+    @IBInspectable var color: UIColor?
+    @IBInspectable var radii: CGFloat = 20.0
     
-    var customTabBarView = UIView(frame: .zero)
-
-    // MARK: View lifecycle
+    private var shapeLayer: CALayer?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupTabBarUI()
-        self.addCustomTabBarView()
+    override func draw(_ rect: CGRect) {
+        addShape()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.setupCustomTabBarFrame()
-    }
-    
-    // MARK: Private methods
-    
-    private func setupCustomTabBarFrame() {
-        let height = self.view.safeAreaInsets.bottom + 64
-        
-        var tabFrame = self.tabBar.frame
-        tabFrame.size.height = height
-        tabFrame.origin.y = self.view.frame.size.height - height
-        
-        self.tabBar.frame = tabFrame
-        self.tabBar.setNeedsLayout()
-        self.tabBar.layoutIfNeeded()
-        customTabBarView.frame = tabBar.frame
-    }
-    
-    private func setupTabBarUI() {
-        // Setup your colors and corner radius
-        self.tabBar.backgroundColor = UIColor(named: "Gray2")
-        self.tabBar.layer.cornerRadius = 50
-        self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        self.tabBar.backgroundColor = UIColor.white
-        self.tabBar.tintColor = .black
-        self.tabBar.unselectedItemTintColor = UIColor.white
-        
-        // Remove the line
-        if #available(iOS 13.0, *) {
-            let appearance = self.tabBar.standardAppearance
-            appearance.shadowImage = nil
-            appearance.shadowColor = nil
-            self.tabBar.standardAppearance = appearance
+    private func addShape() {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = createPath()
+        shapeLayer.strokeColor = UIColor.gray.withAlphaComponent(0.1).cgColor
+        shapeLayer.fillColor = color?.cgColor ?? UIColor.white.cgColor
+        shapeLayer.lineWidth = 0
+        shapeLayer.shadowColor = UIColor.black.cgColor
+        shapeLayer.shadowOffset = CGSize(width: 0, height: -5)
+        shapeLayer.shadowRadius = 10
+        shapeLayer.shadowOpacity = 0.1
+        shapeLayer.shadowPath =  UIBezierPath(roundedRect: bounds, cornerRadius: radii).cgPath
+        if let oldShapeLayer = self.shapeLayer {
+            layer.replaceSublayer(oldShapeLayer, with: shapeLayer)
         } else {
-            self.tabBar.shadowImage = UIImage()
-            self.tabBar.backgroundImage = UIImage()
+            layer.insertSublayer(shapeLayer, at: 0)
         }
+        self.shapeLayer = shapeLayer
     }
     
-    private func addCustomTabBarView() {
-        self.customTabBarView.frame = tabBar.frame
-        
-        self.customTabBarView.backgroundColor = UIColor.white
-        self.customTabBarView.layer.cornerRadius = 30
-        self.customTabBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        self.customTabBarView.layer.masksToBounds = false
-        self.customTabBarView.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
-        self.customTabBarView.layer.shadowOffset = CGSize(width: -4, height: -6)
-        self.customTabBarView.layer.shadowOpacity = 0.5
-        self.customTabBarView.layer.shadowRadius = 20
-        
-        self.view.addSubview(customTabBarView)
-        self.view.bringSubviewToFront(self.tabBar)
+    private func createPath() -> CGPath {
+        let path = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: [.topLeft, .topRight],
+            cornerRadii: CGSize(width: radii, height: 0.0))
+        return path.cgPath
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.isTranslucent = true
+        var tabFrame = self.frame
+        tabFrame.size.height = 65 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? CGFloat.zero)
+        tabFrame.origin.y = self.frame.origin.y + (self.frame.height - 65 - (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? CGFloat.zero))
+        self.layer.cornerRadius = 20
+        self.frame = tabFrame
+        self.items?.forEach({ $0.titlePositionAdjustment = UIOffset(horizontal: 0.0, vertical: -5.0)})
     }
 }

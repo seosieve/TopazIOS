@@ -94,12 +94,11 @@ extension WelcomeViewController {
     }
     
     func instantiateVC() {
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: .main)
-        let mainVC: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC")
-        
-        mainVC.modalPresentationStyle = .fullScreen
-        mainVC.modalTransitionStyle = .crossDissolve
-        self.present(mainVC, animated: true, completion: nil)
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: .main)
+        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomeVC")
+        homeVC.modalPresentationStyle = .fullScreen
+        homeVC.modalTransitionStyle = .crossDissolve
+        self.present(homeVC, animated: true, completion: nil)
     }
 }
 

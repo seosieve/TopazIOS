@@ -29,7 +29,6 @@ class AcceptTermsViewController: UIViewController {
         makeBorder(target: acceptAllBorder, radius: 12, color: "MintBlue", isFilled: false)
         setPlane(level: 2, stack: PGBarComponentStack)
         //button 입력 감지
-        
         acceptCheck.forEach { button in
             button.addTarget(self, action: #selector(acceptCheckDidChange(_:)), for: .touchUpInside)
         }
@@ -66,19 +65,23 @@ class AcceptTermsViewController: UIViewController {
         acceptCheckDidChange(acceptCheck[tappedLabelIndex])
     }
     
-    @IBAction func Detail1Pressed(_ sender: UIButton) {
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        SignUpCancleAlert()
+    }
+    
+    @IBAction func detail1Pressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToDetail1", sender: sender)
     }
     
-    @IBAction func Detail2Pressed(_ sender: UIButton) {
+    @IBAction func detail2Pressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToDetail2", sender: sender)
     }
     
-    @IBAction func Detail3Pressed(_ sender: UIButton) {
+    @IBAction func detail3Pressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToDetail3", sender: sender)
     }
     
-    @IBAction func Detail4Pressed(_ sender: UIButton) {
+    @IBAction func detail4Pressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToDetail4", sender: sender)
     }
     
@@ -112,5 +115,26 @@ extension AcceptTermsViewController {
         } else {
             return false
         }
+    }
+    
+    func SignUpCancleAlert() {
+        let alert = UIAlertController(title: "로그인 화면으로 이동합니다.", message: "현재까지 입력한 정보가 모두 사라집니다. 그래도 취소하시겠습니까?", preferredStyle: .alert)
+        let delete = UIAlertAction(title: "예", style: .default) { action in
+            self.instantiateVC()
+        }
+        let cancle = UIAlertAction(title: "아니오", style: .cancel)
+        delete.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
+        cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
+        alert.addAction(delete)
+        alert.addAction(cancle)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func instantiateVC() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: .main)
+        let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+        mainVC.modalPresentationStyle = .fullScreen
+        mainVC.modalTransitionStyle = .crossDissolve
+        self.present(mainVC, animated: true, completion: nil)
     }
 }

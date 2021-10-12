@@ -99,11 +99,13 @@ class EditProfileViewController: UIViewController {
         shiftButton(for: goToNext, isOn: state)
     }
     
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        SignUpCancleAlert()
+    }
+    
     @IBAction func goToNext(_ sender: UIButton) {
         self.navigationController?.navigationBar.isHidden = true
         loadingAnimation(view: self.view)
-        
-        // 나중에 uid 필요해지면 추가
         let data = userImage?.pngData()
         let nickname = nicknameTextField.text!
         let introduce = introduceTextField.text ?? ""
@@ -168,6 +170,27 @@ extension EditProfileViewController {
         } else {
             return false
         }
+    }
+    
+    func SignUpCancleAlert() {
+        let alert = UIAlertController(title: "로그인 화면으로 이동합니다.", message: "현재까지 입력한 정보가 모두 사라집니다. 그래도 취소하시겠습니까?", preferredStyle: .alert)
+        let delete = UIAlertAction(title: "예", style: .default) { action in
+            self.instantiateVC()
+        }
+        let cancle = UIAlertAction(title: "아니오", style: .cancel)
+        delete.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
+        cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
+        alert.addAction(delete)
+        alert.addAction(cancle)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func instantiateVC() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: .main)
+        let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+        mainVC.modalPresentationStyle = .fullScreen
+        mainVC.modalTransitionStyle = .crossDissolve
+        self.present(mainVC, animated: true, completion: nil)
     }
 }
 

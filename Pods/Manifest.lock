@@ -474,6 +474,7 @@ PODS:
     - gRPC-Core/Interface (= 1.28.2)
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.7.0)
+  - Kingfisher (7.1.0)
   - leveldb-library (1.22.1)
   - lottie-ios (3.2.3)
   - nanopb (2.30908.0):
@@ -488,6 +489,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - Firebase/Storage
+  - Kingfisher (~> 7.0)
   - lottie-ios
 
 SPEC REPOS:
@@ -508,6 +510,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - Kingfisher
     - leveldb-library
     - lottie-ios
     - nanopb
@@ -530,11 +533,12 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 43748f93435c2aa068b1cbe39655aaf600652e91
+  Kingfisher: cdabaf49be7ee7cc124f0f276b355edf61903cf8
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
 
-PODFILE CHECKSUM: 98552e23121e0e291f547ef2be5ce9d4500d35f4
+PODFILE CHECKSUM: 569f9fbb50a327022cfc858a2bfc237fedf24561
 
 COCOAPODS: 1.10.1

@@ -12,6 +12,8 @@ import FirebaseAuth
 class SplashViewController: UIViewController {
     @IBOutlet weak var animationContainer: UIView!
     
+    let viewModel = SplashViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let user = Auth.auth().currentUser
@@ -20,10 +22,11 @@ class SplashViewController: UIViewController {
             if user == nil {
                 // Onboarding으로 이동
                 self.transferVC(storyBoard: "Onboarding", identifier: "OnboardingVC")
-//                self.transferVC(storyboard: "Main", identifier: "MainVC")
             } else {
                 // Home으로 이동
-                self.transferVC(storyBoard: "Home", identifier: "HomeVC")
+                self.viewModel.addUserdefault(email: user!.email!) {
+                    self.transferVC(storyBoard: "Home", identifier: "HomeVC")
+                }
             }
         }
     }

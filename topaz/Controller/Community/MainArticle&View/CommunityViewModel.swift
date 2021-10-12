@@ -10,6 +10,7 @@ import Firebase
 
 class CommunityViewModel {
     let db = Firestore.firestore().collection("Articles")
+    let articleUrl = "gs://topaz-a6a66.appspot.com/Articles"
     var collectionArticleArr = [Article]()
     var tableArticleArr = [Article]()
     
@@ -31,19 +32,27 @@ class CommunityViewModel {
                     let title = document.get("title") as! String
                     let mainText = document.get("mainText") as! String
                     let imageText = document.get("imageText") as! [String]
+                    let imageUrl = document.get("imageUrl") as! [String]
                     let tailText = document.get("tailText") as! String
                     let likes = document.get("likes") as! Int
                     let views = document.get("views") as! Int
                     
-                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, tailText: tailText, likes: likes, views: views)
+                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
                     articleArr.append(article)
                 }
             }
             articleArr.sort{$0.likes > $1.likes}
-            for index in 0...4 {
-                self.collectionArticleArr.append(articleArr[index])
+            if articleArr.count < 5 {
+                for index in 0...articleArr.count-1 {
+                    self.collectionArticleArr.append(articleArr[index])
+                }
+                articleHandler(self.collectionArticleArr)
+            } else {
+                for index in 0...4 {
+                    self.collectionArticleArr.append(articleArr[index])
+                }
+                articleHandler(self.collectionArticleArr)
             }
-            articleHandler(self.collectionArticleArr)
         }
     }
 
@@ -64,11 +73,12 @@ class CommunityViewModel {
                     let title = document.get("title") as! String
                     let mainText = document.get("mainText") as! String
                     let imageText = document.get("imageText") as! [String]
+                    let imageUrl = document.get("imageUrl") as! [String]
                     let tailText = document.get("tailText") as! String
                     let likes = document.get("likes") as! Int
                     let views = document.get("views") as! Int
                     
-                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, tailText: tailText, likes: likes, views: views)
+                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
                     self.tableArticleArr.append(article)
                 }
                 articleHandler(self.tableArticleArr)
@@ -83,50 +93,21 @@ class CommunityViewModel {
         case "좋아요순":
             return "likes"
         case "업로드순":
-            return "strWrittenDate"
+            return "writtenDate"
         default:
-            return "strWrittenDate"
+            return "writtenDate"
         }
     }
-    
-    func getArticleImage(articleID: String, imageText: [String], getImageHandler: @escaping (UIImage) -> ()) {
-        DispatchQueue.global().async {
-            let storage = Storage.storage()
-            let imageRef = storage.reference(withPath: "Articles/\(articleID)/\(0).png")
-            if imageText.count == 0 {
-                let image = UIImage(named: "aa")!
-                DispatchQueue.main.async {
-                    getImageHandler(image)
-                }
-            } else {
-                imageRef.getData(maxSize: 8*500*500) { data, error in
-                    if let error = error {
-                        print("프로필 이미지 다운로드 에러 : \(error)")
-                    } else {
-                        if let data = data {
-                            let image = UIImage(data: data)!
-                            let resizeImage = self.resizeImage(image: image, newWidth: 44)
-                            DispatchQueue.main.async {
-                                getImageHandler(resizeImage)
-                            }
-                        }
-                    }
-                }
-            }
+
+    func getImageUrl(imageUrl: [String], kfUrlHandler: @escaping (URL?) -> ()) {
+        if imageUrl.isEmpty {
+            kfUrlHandler(nil)
+        } else {
+            guard let url = URL(string: imageUrl[0]) else { return }
+            kfUrlHandler(url)
         }
-    }
-    
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-        let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
-        let newHeight = image.size.height * scale
-        let screenScale = 2.0 // 화면 @레티나에 따라 조정
-        let scaleWidth = screenScale * newWidth
-        let scaleHeight = screenScale * newHeight
-        UIGraphicsBeginImageContext(CGSize(width: scaleWidth, height: scaleHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: scaleWidth, height: scaleHeight))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
+        
+        
     }
 }
 

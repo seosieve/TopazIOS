@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import Kingfisher
 
 class MainDetailViewController: UIViewController {
     // Head
@@ -25,6 +26,7 @@ class MainDetailViewController: UIViewController {
     // Body
     @IBOutlet weak var detailMainText: UILabel!
     @IBOutlet weak var mainDetailImageTableView: UITableView!
+    @IBOutlet weak var mainDetailImageTableViewConstraintY: NSLayoutConstraint!
     @IBOutlet weak var detailTailText: UILabel!
     // Tail
     @IBOutlet weak var likesButton: UIButton!
@@ -37,18 +39,13 @@ class MainDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeArticleUI()
-        makeTableViewHeight()
-        
         mainDetailImageTableView.register(MainDetailImageTableViewCell.nib(), forCellReuseIdentifier: "MainDetailImageTableViewCell")
         mainDetailImageTableView.dataSource = self
         mainDetailImageTableView.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        makeArticleUI()
         makeTableViewHeight()
     }
+    
     @IBAction func likesBarItemPressed(_ sender: UIBarButtonItem) {
         if sender.tintColor == UIColor(named: "Gray1") {
             sender.tintColor = UIColor(named: "MintBlue")
@@ -88,7 +85,6 @@ class MainDetailViewController: UIViewController {
             reportAlert()
         }
     }
-    
 }
 
 //MARK: - UI Functions
@@ -169,18 +165,23 @@ extension MainDetailViewController {
     }
     
     func makeTableViewHeight() {
+        // Maximum Size Constraint 설정
+        let cellCount = CGFloat(article?.imageText.count ?? 0)
+        let cellHeight = view.frame.height
+        mainDetailImageTableViewConstraintY.constant = cellCount * cellHeight
+        // VisibleCells를 통해 Constraint 재설정
         mainDetailImageTableView.layoutIfNeeded()
-        mainDetailImageTableView.constraints.forEach { constraint in
-            if constraint.firstAttribute == .height {
-                constraint.constant = mainDetailImageTableView.contentSize.height
-            }
+        let cells = mainDetailImageTableView.visibleCells
+        var contentSizeHeight: CGFloat = 0.0
+        for cell in cells {
+            contentSizeHeight += cell.frame.height
         }
+        mainDetailImageTableViewConstraintY.constant = contentSizeHeight
     }
     
     func deleteAndModifyAlert() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let modify = UIAlertAction(title: "수정하기", style: .default) { action in
-            
         }
         let delete = UIAlertAction(title: "삭제하기", style: .default) { action in
             self.deleteConfirmAlert()
@@ -246,9 +247,13 @@ extension MainDetailViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainDetailImageTableViewCell", for: indexPath) as! MainDetailImageTableViewCell
         cell.selectionStyle = .none
         makeBorder(target: cell.experienceLabelBorder, radius: 12, isFilled: true)
-        viewModel.getExperienceImage(articleID: article!.articleID, index: indexPath.row) { image in
-            cell.experienceImage.image = image
-        }
+        
+        let url = article!.imageUrl[indexPath.row]
+        cell.experienceImage.kf.setima
+//        cell.mainImage.kf.setImage(with: url, options: [.processor(processor)])
+//        viewModel.getExperienceImage(articleID: article!.articleID, index: indexPath.row) { image in
+//            cell.experienceImage.image = image
+//        }
         if article!.imageText[indexPath.row] == "" {
             cell.experienceLabelBorder.constraints.forEach { constraint in
                 if constraint.firstAttribute == .height {
@@ -282,3 +287,4 @@ extension MainDetailViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+

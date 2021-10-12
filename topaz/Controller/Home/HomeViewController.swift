@@ -25,53 +25,16 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
         makeNicknameLabel()
+        makeEarthScene()
         
-        
-        let scene = SCNScene()
-        
-        let earthNode = EarthNode()
-        earthNode.position = SCNVector3(x: 0, y: 0, z: 0)
-        scene.rootNode.addChildNode(earthNode)
-        
-        let lightNode1 = SCNNode()
-        lightNode1.light = SCNLight()
-        lightNode1.light?.type = .omni
-        lightNode1.position = SCNVector3(x: 5, y: 15, z: 5)
-        scene.rootNode.addChildNode(lightNode1)
-        
-        let lightNode2 = SCNNode()
-        lightNode2.light = SCNLight()
-        lightNode2.light?.type = .omni
-        lightNode2.position = SCNVector3(x: -3, y: -15, z: -3)
-        scene.rootNode.addChildNode(lightNode2)
-        
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 1.5, z: 5)
-        scene.rootNode.addChildNode(cameraNode)
-        
-//        let lightNode = SCNNode()
-//        lightNode.light = SCNLight()
-//        lightNode.light?.type = .omni
-//        lightNode.position = SCNVector3(x: 0, y: 10, z: 2)
-//        scene.rootNode.addChildNode(lightNode)
-        
-        
-        let stars = SCNParticleSystem(named: "Assets.scnassets/Stars.scnp", inDirectory: nil)!
-        scene.rootNode.addParticleSystem(stars)
-        
-
-        sceneView.scene = scene
-        sceneView.showsStatistics = false
-//        sceneView.backgroundColor = UIColor(named: "Gray4")
-        sceneView.allowsCameraControl = true
-        sceneView.pointOfView = cameraNode
-        
-
-        
-        
-        
-        
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
+        sceneView.addGestureRecognizer(pinchRecognizer)
+    }
+    
+    @objc func pinchGesture(_ sender: UIPinchGestureRecognizer) {
+        if sender.numberOfTouches == 1 {
+            print("pinch recognize")
+        }
     }
 }
 
@@ -102,5 +65,42 @@ extension HomeViewController {
         }
         print("현재 로그인된 계정은 \(nickname)입니다.")
     }
+    
+    func makeEarthScene() {
+        let scene = SCNScene()
+        
+        let earthNode = EarthNode()
+        earthNode.position = SCNVector3(x: 0, y: 0, z: 0)
+        scene.rootNode.addChildNode(earthNode)
+        
+        let lightNode1 = SCNNode()
+        lightNode1.light = SCNLight()
+        lightNode1.light?.type = .omni
+        lightNode1.position = SCNVector3(x: 5, y: 15, z: 5)
+        scene.rootNode.addChildNode(lightNode1)
+        
+        let lightNode2 = SCNNode()
+        lightNode2.light = SCNLight()
+        lightNode2.light?.type = .omni
+        lightNode2.position = SCNVector3(x: -3, y: -15, z: -3)
+        scene.rootNode.addChildNode(lightNode2)
+        
+        let lightNode3 = SCNNode()
+        lightNode3.light = SCNLight()
+        lightNode3.light?.type = .omni
+        lightNode3.light?.intensity = 200
+        lightNode3.position = SCNVector3(x: 10, y: 5, z: 10)
+        scene.rootNode.addChildNode(lightNode3)
+        
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 1.5, z: 5)
+        scene.rootNode.addChildNode(cameraNode)
+    
+        sceneView.scene = scene
+        sceneView.showsStatistics = false
+        sceneView.pointOfView = cameraNode
+    }
 }
+
 

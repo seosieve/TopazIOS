@@ -12,18 +12,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        if #available(iOS 13.0, *) {
-            window?.overrideUserInterfaceStyle = .light
-        }
         guard let winScene = (scene as? UIWindowScene) else { return }
-        
+        // RootViewController 설정
         let SplashVC = UIStoryboard(name: "Splash", bundle: .main).instantiateViewController(withIdentifier: "SplashVC")
         let win = UIWindow(windowScene: winScene)
         win.rootViewController = SplashVC
         win.makeKeyAndVisible()
+        // DarkMode 비활성화
+        if #available(iOS 13.0, *) {
+            win.overrideUserInterfaceStyle = .light
+        }
         window = win
-        
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

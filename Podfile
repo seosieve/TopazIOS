@@ -8,6 +8,7 @@ target 'topaz' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  pod 'lottie-ios' 
+  pod 'lottie-ios'
+  pod 'Kingfisher', '~> 7.0' 
 
 end

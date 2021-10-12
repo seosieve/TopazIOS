@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Lottie
 
 class WrittingViewController: UIViewController {
 
@@ -25,6 +26,9 @@ class WrittingViewController: UIViewController {
     
     let viewModel = WrittingViewModel()
     private let imagePicker = UIImagePickerController()
+    
+    let backgroundView = UIView()
+    let lottieView = AnimationView(name: "Loading")
     
     var countryName1: String!
     var countryName2: String!
@@ -77,6 +81,7 @@ class WrittingViewController: UIViewController {
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
         let countryArr = viewModel.makeCountry(country1:country1, country2:country2, country3:country3)
+        // 실패일 때 ToastMessage
         if countryArr.count == 0 {
             popUpToast("어느 나라에 대한 여행경험인가요? 궁금해요.")
         } else if titleTextView.textColor == UIColor(named: "Gray4") {
@@ -84,16 +89,35 @@ class WrittingViewController: UIViewController {
         } else if mainTextView.textColor == UIColor(named: "Gray4") {
             popUpToast("좀 더 자세한 여행경험을 듣고싶어요!")
         } else {
+            // 성공일 때 Animation
+            loadingAnimation(backgroundView, lottieView, view: self.view)
+            sender.isEnabled = false
+            self.view.endEditing(true)
+            let document = Firestore.firestore().collection("Articles").document()
+            let articleID = document.documentID
             let imageText = viewModel.makeImageText(imageText: textArr)
             let tailText = viewModel.makeTailText(tailText: tailTextView)
-            viewModel.addArticle(country: countryArr, title: titleTextView, mainText: mainTextView, imageText: imageText, tailText: tailText) { articleID in
-                if imageText.count == 0 {
+            
+            self.viewModel.addArticle(document: document, articleID: articleID, country: countryArr, title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, tailText: tailText) { articleID in
+                if self.imageArr.count == 0 {
+                    // 이미지가 없을 때 이미지 저장하지 않고 dismiss
+                    self.backgroundView.removeFromSuperview()
+                    self.lottieView.removeFromSuperview()
                     self.dismiss(animated: true, completion: nil)
                 } else {
-                    self.viewModel.addUserImage(articleID: articleID, imageArr: self.imageArr) {
-                        // 현재 비동기 처리 안됨. 어짜피 이미지 포함 토스트 하나 더 넣을꺼니까 거기다가 저장
-                        // self.popUpToast("당신의 소중한 경험이 저장되었습니다!")
-                        self.dismiss(animated: true, completion: nil)
+                    // 이미지가 있을 때 이미지 저장하고 dismiss
+                    DispatchQueue.global().async {
+                        for (index, image) in self.imageArr.enumerated() {
+                            self.viewModel.addExperienceImage(articleID: articleID, image: image, index: index) { url in
+                                self.viewModel.addImageUrl(articleID: articleID, url: url) {
+                                    DispatchQueue.main.async {
+                                        self.backgroundView.removeFromSuperview()
+                                        self.lottieView.removeFromSuperview()
+                                        self.dismiss(animated: true, completion: nil)
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -159,8 +183,7 @@ extension WrittingViewController {
         alert.setValue(NSAttributedString(string: string, attributes: [NSAttributedString.Key.font : UIFont(name: "NotoSansKR-Regular", size: 12)!,NSAttributedString.Key.foregroundColor : UIColor(named: "White")!]), forKey: "attributedTitle")
         alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         present(alert, animated: true)
-        let when = DispatchTime.now() + 1
-        DispatchQueue.main.asyncAfter(deadline: when){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
             alert.dismiss(animated: true, completion: nil)
         }
     }

@@ -15,6 +15,10 @@ class EarthNode: SCNNode {
         earthArr.forEach { childNode in
             self.addChildNode(childNode as SCNNode)
         }
+        
+        let action = SCNAction.rotate(by: 360 * CGFloat(Double.pi / 360), around: SCNVector3(x: 0, y: 1, z: 0), duration: 8)
+        let repeatAction = SCNAction.repeatForever(action)
+        self.runAction(repeatAction)
     }
     
     required init?(coder aDecoder: NSCoder) {

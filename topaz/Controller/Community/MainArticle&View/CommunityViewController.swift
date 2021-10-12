@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class CommunityViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class CommunityViewController: UIViewController {
     @IBOutlet weak var sortMethod2: UIButton!
     @IBOutlet weak var luggageCollectionView: UICollectionView!
     @IBOutlet weak var fullArticleTableView: UITableView!
+    @IBOutlet weak var fullArticleTableViewConstraintY: NSLayoutConstraint!
     
     let viewModel = CommunityViewModel()
     
@@ -42,7 +44,6 @@ class CommunityViewController: UIViewController {
         fullArticleTableView.register(FullArticleTableViewCell.nib(), forCellReuseIdentifier: "FullArticleTableViewCell")
         fullArticleTableView.dataSource = self
         fullArticleTableView.delegate = self
-        
         // CollectionView Animation
         viewModel.getCollectionArticle { articleArr in
             self.collectionArticleArr = articleArr
@@ -58,7 +59,6 @@ class CommunityViewController: UIViewController {
         viewModel.getTableArticle(sortMethod: sortMethod) { articleArr in
             self.tableArticleArr = articleArr
             self.fullArticleTableView.reloadData()
-            self.makeTableViewHeight()
             self.makeTableViewHeight()
         }
     }
@@ -93,7 +93,8 @@ class CommunityViewController: UIViewController {
     }
     
     @IBAction func swipeSortButtonPressed(_ sender: UIButton) {
-        swipeSortConstraintY.constant = 16
+        let constraint: CGFloat = swipeSortConstraintY.constant == 16 ? -105 : 16
+        swipeSortConstraintY.constant = constraint
         UIView.animate(withDuration: 0.4) {
             self.view.layoutIfNeeded()
         }
@@ -101,6 +102,10 @@ class CommunityViewController: UIViewController {
     
     @IBAction func writeButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToWritting", sender: sender)
+    }
+    
+    @IBAction func selectCountryPressed(_ sender: UIButton) {
+        print("aa")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,8 +128,8 @@ extension CommunityViewController {
         view.clipsToBounds = false
         view.layer.cornerRadius = 12
         view.layer.shadowColor = UIColor(named: "Gray4")?.cgColor
-        view.layer.shadowOpacity = 0.4
-        view.layer.shadowOffset = CGSize.zero
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
         view.layer.shadowRadius = 4
         view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 12).cgPath
         if each {
@@ -150,12 +155,9 @@ extension CommunityViewController {
     
     func makeTableViewHeight() {
         fullArticleTableView.layoutIfNeeded()
-        fullArticleTableView.constraints.forEach { constraint in
-            if constraint.firstAttribute == .height {
-                constraint.constant = fullArticleTableView.contentSize.height
-            }
-        }
-        fullArticleTableView.layoutIfNeeded()
+        let cellCount = tableArticleArr.count
+        let cellHeight = 100
+        fullArticleTableViewConstraintY.constant = CGFloat(cellCount * cellHeight)
     }
 }
 
@@ -208,15 +210,23 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         cell.likes.setTitle(String(tableArticle.likes), for: .normal)
         cell.views.setTitle(String(tableArticle.views), for: .normal)
         makeCircle(target: cell.countryNumber, color: "MintBlue", width: 0)
-        viewModel.getArticleImage(articleID: tableArticle.articleID, imageText: tableArticle.imageText) { image in
-            cell.mainImage.image = image
+        // Image Set
+        viewModel.getImageUrl(imageUrl: tableArticle.imageUrl) { url in
+            if let url = url {
+                // 이미지가 있을 때 이미지 설정
+                let processor = DownsamplingImageProcessor(size: CGSize(width: 200, height: 200))
+                cell.mainImage.kf.setImage(with: url, options: [.processor(processor)])
+            } else {
+                // 이미지가 없을 때 default이미지 설정
+                cell.mainImage.image = UIImage(named: "DefaultArticleImage")
+            }
         }
-        
         DispatchQueue.main.async {
             self.makeShadow(target: cell.shadowView)
             cell.mainView.roundCorners(topLeft: 6, bottomLeft: 24)
             cell.mainImage.roundCorners(topRight: 24, bottomRight: 6)
         }
+        cell.layoutIfNeeded()
         return cell
     }
     
@@ -224,4 +234,3 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         performSegue(withIdentifier: "goToMainDetail", sender: self)
     }
 }
-

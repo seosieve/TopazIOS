@@ -39,7 +39,7 @@ class WrittingViewModel {
         var imageTextOutput = [String]()
         let spaceholder = "사진에 대한 여행경험을 적어주세요."
         for text in imageText {
-            let output = (text == spaceholder ? "" : text)
+            let output = text == spaceholder ? "" : text
             imageTextOutput.append(output)
         }
         return imageTextOutput
@@ -55,43 +55,43 @@ class WrittingViewModel {
         }
     }
     
-    func addArticle(country: [String], title: UITextView, mainText: UITextView, imageText: [String], tailText: String, makeArticleHandler: @escaping (String) -> ()) {
-        let document = Firestore.firestore().collection("Articles").document()
-        let articleID = document.documentID
-        let nickname = UserDefaults.standard.string(forKey: "nickname")!
-        let email = UserDefaults.standard.string(forKey: "email")!
-        let writtenDate = NSDate().timeIntervalSince1970
-        let strWrittenDate = makeDate()
-        let title = title.text ?? ""
-        let mainText = mainText.text ?? ""
-        let imageText = imageText
-        let tailText = tailText
-        let country = country
-        
-        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, tailText: tailText, likes: 0, views: 0)
-        document.setData(article.dicDataType){ error in
-            if let error = error {
-                print("FireStore 저장 에러 : \(error)")
-            } else {
-                makeArticleHandler(articleID)
-            }
-        }
-    }
-    
-    func addUserImage(articleID: String, imageArr: [UIImage], addImageHandler: @escaping () -> ()) {
-        let reference = Storage.storage().reference()
-        for (index, image) in imageArr.enumerated() {
-            let imageRef = reference.child("Articles/\(articleID)/\(index).png")
-            let data = image.pngData()
-            imageRef.putData(data!, metadata: nil) { _, error in
-                if let error = error {
-                    print("프로필 사진 저장 에러 : \(error)")
-                } else {
-                    addImageHandler()
-                }
-            }
-        }
-    }
+//    func addArticle(country: [String], title: UITextView, mainText: UITextView, imageText: [String], tailText: String, makeArticleHandler: @escaping (String) -> ()) {
+//        let document = Firestore.firestore().collection("Articles").document()
+//        let articleID = document.documentID
+//        let nickname = UserDefaults.standard.string(forKey: "nickname")!
+//        let email = UserDefaults.standard.string(forKey: "email")!
+//        let writtenDate = NSDate().timeIntervalSince1970
+//        let strWrittenDate = makeDate()
+//        let title = title.text ?? ""
+//        let mainText = mainText.text ?? ""
+//        let imageText = imageText
+//        let tailText = tailText
+//        let country = country
+//
+//        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, tailText: tailText, likes: 0, views: 0)
+//        document.setData(article.dicDataType){ error in
+//            if let error = error {
+//                print("FireStore 저장 에러 : \(error)")
+//            } else {
+//                makeArticleHandler(articleID)
+//            }
+//        }
+//    }
+//
+//    func addExperienceImage(articleID: String, imageArr: [UIImage], addImageHandler: @escaping () -> ()) {
+//        let reference = Storage.storage().reference()
+//        for (index, image) in imageArr.enumerated() {
+//            let imageRef = reference.child("Articles/\(articleID)/\(index).png")
+//            let data = image.pngData()
+//            imageRef.putData(data!, metadata: nil) { _, error in
+//                if let error = error {
+//                    print("프로필 사진 저장 에러 : \(error)")
+//                } else {
+//                    addImageHandler()
+//                }
+//            }
+//        }
+//    }
 
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         let scale = newWidth / image.size.width // 새 이미지 확대/축소 비율
@@ -104,5 +104,51 @@ class WrittingViewModel {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage!
+    }
+    
+    
+    func addArticle(document: DocumentReference, articleID: String, country: [String], title: UITextView, mainText: UITextView, imageText: [String], tailText: String, makeArticleHandler: @escaping (String) -> ()) {
+        let nickname = UserDefaults.standard.string(forKey: "nickname")!
+        let email = UserDefaults.standard.string(forKey: "email")!
+        let writtenDate = NSDate().timeIntervalSince1970
+        let strWrittenDate = makeDate()
+        let title = title.text ?? ""
+        let mainText = mainText.text ?? ""
+        let imageText = imageText
+        let imageUrl = [String]()
+        let tailText = tailText
+        let country = country
+        
+        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageUrl: imageUrl ,tailText: tailText, likes: 0, views: 0)
+        document.setData(article.dicDataType){ error in
+            if let error = error {
+                print("FireStore 저장 에러 : \(error)")
+            } else {
+                makeArticleHandler(articleID)
+            }
+        }
+    }
+    
+    func addExperienceImage(articleID: String, image: UIImage, index: Int, addExperienceImageHandler: @escaping (URL) -> ()) {
+        let reference = Storage.storage().reference()
+            let imageRef = reference.child("Articles/\(articleID)/\(index).png")
+            let data = image.pngData()
+            imageRef.putData(data!, metadata: nil) { _, error in
+                if let error = error {
+                    print("프로필 사진 저장 에러 : \(error)")
+                } else {
+                    imageRef.downloadURL { url, error in
+                        guard let url = url else { return }
+                        addExperienceImageHandler(url)
+                    }
+                }
+            }
+    }
+    
+    func addImageUrl(articleID: String, url: URL, addImageUrlHandler: @escaping () -> ()) {
+        let urlString = "\(url)"
+        let document = Firestore.firestore().collection("Articles").document(articleID)
+        document.updateData(["imageUrl" : FieldValue.arrayUnion([urlString])])
+        addImageUrlHandler()
     }
 }

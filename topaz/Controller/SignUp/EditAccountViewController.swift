@@ -112,6 +112,10 @@ class EditAccountController: UIViewController {
         shiftButton(for: goToNext, isOn: state)
     }
     
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        SignUpCancleAlert()
+    }
+    
     @IBAction func goToNextPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToAcceptTerms", sender: sender)
     }
@@ -120,12 +124,6 @@ class EditAccountController: UIViewController {
         let destinationVC = segue.destination as! AcceptTermsViewController
         destinationVC.userEmail = emailTextField.text!
         destinationVC.userPW = PWTextField.text!
-    }
-
-    
-    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        // Custom ToastMessage 구현하기
-        print("bb")
     }
 }
 
@@ -170,6 +168,27 @@ extension EditAccountController {
         } else {
             return false
         }
+    }
+    
+    func SignUpCancleAlert() {
+        let alert = UIAlertController(title: "로그인 화면으로 이동합니다.", message: "현재까지 입력한 정보가 모두 사라집니다. 그래도 취소하시겠습니까?", preferredStyle: .alert)
+        let delete = UIAlertAction(title: "예", style: .default) { action in
+            self.instantiateVC()
+        }
+        let cancle = UIAlertAction(title: "아니오", style: .cancel)
+        delete.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
+        cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
+        alert.addAction(delete)
+        alert.addAction(cancle)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func instantiateVC() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: .main)
+        let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC")
+        mainVC.modalPresentationStyle = .fullScreen
+        mainVC.modalTransitionStyle = .crossDissolve
+        self.present(mainVC, animated: true, completion: nil)
     }
 }
 

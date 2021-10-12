@@ -382,7 +382,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <action selector="Detail1Pressed:" destination="1eI-5t-tqX" eventType="touchUpInside" id="xN6-Pk-NPr"/>
+                                            <action selector="detail1Pressed:" destination="1eI-5t-tqX" eventType="touchUpInside" id="HbK-zi-ZUW"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -434,7 +434,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <action selector="Detail2Pressed:" destination="1eI-5t-tqX" eventType="touchUpInside" id="laI-Ae-x4Q"/>
+                                            <action selector="detail2Pressed:" destination="1eI-5t-tqX" eventType="touchUpInside" id="JZx-fP-gF3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -486,7 +486,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <action selector="Detail3Pressed:" destination="1eI-5t-tqX" eventType="touchUpInside" id="6IN-TO-HPh"/>
+                                            <action selector="detail3Pressed:" destination="1eI-5t-tqX" eventType="touchUpInside" id="cHQ-kh-tHM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -538,7 +538,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <action selector="Detail4Pressed:" destination="1eI-5t-tqX" eventType="touchUpInside" id="bb7-el-z0j"/>
+                                            <action selector="detail4Pressed:" destination="1eI-5t-tqX" eventType="touchUpInside" id="9Mb-eV-b1w"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -623,6 +623,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="vMX-Xb-tZ5"/>
                         <barButtonItem key="rightBarButtonItem" title="취소" id="GgT-UP-ErC">
                             <color key="tintColor" name="Gray3"/>
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="1eI-5t-tqX" id="B67-7n-oV2"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -955,6 +958,9 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="1tC-Na-X52"/>
                         <barButtonItem key="rightBarButtonItem" title="취소" id="Wbv-Ct-HIp">
                             <color key="tintColor" name="Gray3"/>
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="8ic-Sb-9ud" id="Wes-aj-NhQ"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1365,28 +1371,28 @@
         <image name="Check_OFF" width="24" height="24"/>
         <image name="DefaultProfileImage" width="99" height="99"/>
         <namedColor name="Gray1">
-            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Gray2">
-            <color red="0.31000000238418579" green="0.31000000238418579" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.30980392156862746" green="0.30980392156862746" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Gray3">
-            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Gray4">
-            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Gray6">
-            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightMintBlue">
-            <color red="0.76099997758865356" green="0.96100002527236938" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.67450980392156867" green="0.96862745098039216" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MintBlue">
-            <color red="0.19200000166893005" green="0.86699998378753662" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19215686274509802" green="0.8666666666666667" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="WarningRed">
-            <color red="0.95300000905990601" green="0.28600001335144043" blue="0.36500000953674316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.95294117647058818" green="0.28627450980392155" blue="0.36470588235294116" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

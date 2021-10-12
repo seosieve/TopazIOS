@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Navigation Controller Item Spacing
         let stackViewAppearance = UIStackView.appearance(whenContainedInInstancesOf: [UINavigationBar.self])
         stackViewAppearance.spacing = -5
-        
         return true
     }
 

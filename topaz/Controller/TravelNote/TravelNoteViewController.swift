@@ -30,18 +30,18 @@ class TravelNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        loadingAnimation(backgroundView, lottieView, view: self.view)
-        makeCircle(target: profileImage, color: "Gray6", width: 1)
-        makeBorder(target: myProfileEditButton, radius: 12, isFilled: false)
-        collectionArray.forEach { collection in
-            makeCircle(target: collection, color: "MintBlue", width: 0)
-            makeShadow(target: collection, radius: collection.frame.size.height/2)
-        }
-        makeUserProfile()
-        makeUserImage {
-            self.backgroundView.removeFromSuperview()
-            self.lottieView.removeFromSuperview()
-        }
+//        loadingAnimation(backgroundView, lottieView, view: self.view)
+//        makeCircle(target: profileImage, color: "Gray6", width: 1)
+//        makeBorder(target: myProfileEditButton, radius: 12, isFilled: false)
+//        collectionArray.forEach { collection in
+//            makeCircle(target: collection, color: "MintBlue", width: 0)
+//            makeShadow(target: collection, radius: collection.frame.size.height/2)
+//        }
+//        makeUserProfile()
+//        makeUserImage {
+//            self.backgroundView.removeFromSuperview()
+//            self.lottieView.removeFromSuperview()
+//        }
     }
     
     @IBAction func mySettingPressed(_ sender: UIBarButtonItem) {
@@ -94,7 +94,9 @@ extension TravelNoteViewController {
     func makeUserImage(imageHandler: @escaping () -> ()) {
         if Auth.auth().currentUser != nil {
             viewModel.getUserImage(email: userdefault.string(forKey: "email")!) { image in
-                self.profileImage.image = image
+                if let image = image {
+                    self.profileImage.image = image
+                }
                 imageHandler()
             }
         }
