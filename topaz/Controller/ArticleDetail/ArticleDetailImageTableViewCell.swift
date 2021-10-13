@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainDetailImageTableViewCell: UITableViewCell {
+class ArticleDetailImageTableViewCell: UITableViewCell {
     @IBOutlet weak var experienceImage: UIImageView!
     @IBOutlet weak var experienceLabel: UILabel!
     @IBOutlet weak var experienceLabelBorder: UIView!
@@ -21,6 +21,6 @@ class MainDetailImageTableViewCell: UITableViewCell {
     }
     
     static func nib() -> UINib {
-        return UINib(nibName: "MainDetailImageTableViewCell", bundle: nil)
+        return UINib(nibName: "ArticleDetailImageTableViewCell", bundle: nil)
     }
 }

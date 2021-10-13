@@ -106,8 +106,6 @@ class CommunityViewModel {
             guard let url = URL(string: imageUrl[0]) else { return }
             kfUrlHandler(url)
         }
-        
-        
     }
 }
 

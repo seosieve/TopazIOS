@@ -16,8 +16,8 @@ class MySettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeShadow(target: logoutControl)
-        makeShadow(target: withdrawControl)
+        makeShadow(target: logoutControl, height: 5, opacity: 0.1, shadowRadius: 5)
+        makeShadow(target: withdrawControl, height: 5, opacity: 0.1, shadowRadius: 5)
     }
     
     @IBAction func logoutPressed(_ sender: UIControl) {
@@ -30,14 +30,6 @@ class MySettingViewController: UIViewController {
 
 //MARK: - UI Functions
 extension MySettingViewController {
-    func makeShadow(target view: UIView) {
-        view.clipsToBounds = false
-        view.layer.shadowColor = UIColor(named: "Gray4")?.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 5)
-        view.layer.shadowRadius = 5
-    }
-    
     func logoutAlert() {
         let alert = UIAlertController(title: "로그아웃 하시겠어요?", message: "로그아웃 후 topaz를 이용하시려면 다시 로그인을 해 주세요!", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)

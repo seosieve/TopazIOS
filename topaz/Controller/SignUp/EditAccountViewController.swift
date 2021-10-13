@@ -113,7 +113,7 @@ class EditAccountController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        SignUpCancleAlert()
+        signUpCancleAlert()
     }
     
     @IBAction func goToNextPressed(_ sender: UIButton) {
@@ -170,16 +170,16 @@ extension EditAccountController {
         }
     }
     
-    func SignUpCancleAlert() {
+    func signUpCancleAlert() {
         let alert = UIAlertController(title: "로그인 화면으로 이동합니다.", message: "현재까지 입력한 정보가 모두 사라집니다. 그래도 취소하시겠습니까?", preferredStyle: .alert)
+        let cancle = UIAlertAction(title: "아니오", style: .cancel)
         let delete = UIAlertAction(title: "예", style: .default) { action in
             self.instantiateVC()
         }
-        let cancle = UIAlertAction(title: "아니오", style: .cancel)
-        delete.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
         cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
-        alert.addAction(delete)
+        delete.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
         alert.addAction(cancle)
+        alert.addAction(delete)
         self.present(alert, animated: true, completion: nil)
     }
     

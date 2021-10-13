@@ -1,25 +1,24 @@
 //
-//  AddImageTableViewCell.swift
+//  ModifyImageTableViewCell.swift
 //  topaz
 //
-//  Created by 서충원 on 2021/09/26.
+//  Created by 서충원 on 2021/10/13.
 //
 
 import UIKit
 
-protocol DeleteImageDelegate {
-    func deleteImage(index: Int)
+protocol ModifyImageDelegate {
+    func modifyImage(index: Int)
 }
 
-class AddImageTableViewCell: UITableViewCell {
-    
+class ModifyImageTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var experienceImage: UIImageView!
     @IBOutlet weak var experienceTextView: UITextView!
     @IBOutlet weak var experienceTextViewBorder: UIView!
     
     var textChanged: ((String) -> Void)?
-    var delegate: DeleteImageDelegate?
+    var delegate: ModifyImageDelegate?
     var index: Int?
     
     override func awakeFromNib() {
@@ -35,11 +34,11 @@ class AddImageTableViewCell: UITableViewCell {
     }
     
     static func nib() -> UINib {
-        return UINib(nibName: "AddImageTableViewCell", bundle: nil)
+        return UINib(nibName: "ModifyImageTableViewCell", bundle: nil)
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
-        self.delegate?.deleteImage(index: index!)
+        self.delegate?.modifyImage(index: index!)
     }
     
     func textChanged(action: @escaping (String) -> Void) {
@@ -53,7 +52,7 @@ class AddImageTableViewCell: UITableViewCell {
     
 }
 
-extension AddImageTableViewCell: UITextViewDelegate {
+extension ModifyImageTableViewCell: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         textChanged?(textView.text)
     }

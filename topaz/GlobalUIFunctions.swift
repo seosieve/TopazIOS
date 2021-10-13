@@ -9,13 +9,13 @@ import UIKit
 import Lottie
 
 //Border 생성
-func makeBorder(target view: UIView, radius: Int, color: String = "Gray5", isFilled Fill: Bool) {
+func makeBorder(target view: UIView, radius: Int, width: Int = 1, color: String = "Gray5", isFilled Fill: Bool) {
     if Fill {
         view.layer.cornerRadius = CGFloat(radius)
         view.layer.masksToBounds = true
     } else {
         view.layer.cornerRadius = CGFloat(radius)
-        view.layer.borderWidth = 1
+        view.layer.borderWidth = CGFloat(width)
         view.layer.borderColor = UIColor(named: color)?.cgColor
     }
 }
@@ -27,12 +27,12 @@ func makeCircle(target view: UIView, color: String = "MintBlue", width: Int = 0)
     view.layer.borderColor = UIColor(named: color)?.cgColor
 }
 
-func makeShadow(target view: UIView, radius: CGFloat) {
+func makeShadow(target view: UIView, radius: CGFloat = 0, width: Int = 0, height: Int = 0, opacity: Float = 0.5, shadowRadius: Int = 2) {
     view.clipsToBounds = false
     view.layer.shadowColor = UIColor(named: "Gray4")?.cgColor
-    view.layer.shadowOpacity = 0.5
-    view.layer.shadowOffset = CGSize.zero
-    view.layer.shadowRadius = 2
+    view.layer.shadowOpacity = opacity
+    view.layer.shadowOffset = CGSize(width: width, height: height)
+    view.layer.shadowRadius = CGFloat(shadowRadius)
     view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: radius).cgPath
 }
 

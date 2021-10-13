@@ -30,18 +30,18 @@ class TravelNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
-//        loadingAnimation(backgroundView, lottieView, view: self.view)
-//        makeCircle(target: profileImage, color: "Gray6", width: 1)
-//        makeBorder(target: myProfileEditButton, radius: 12, isFilled: false)
-//        collectionArray.forEach { collection in
-//            makeCircle(target: collection, color: "MintBlue", width: 0)
-//            makeShadow(target: collection, radius: collection.frame.size.height/2)
-//        }
-//        makeUserProfile()
-//        makeUserImage {
-//            self.backgroundView.removeFromSuperview()
-//            self.lottieView.removeFromSuperview()
-//        }
+        loadingAnimation(backgroundView, lottieView, view: self.view)
+        makeCircle(target: profileImage, color: "Gray6", width: 1)
+        makeBorder(target: myProfileEditButton, radius: 12, isFilled: false)
+        collectionArray.forEach { collection in
+            makeCircle(target: collection, color: "MintBlue", width: 0)
+            makeShadow(target: collection, radius: collection.frame.size.height/2, width: 3, height: 3, opacity: 0.2)
+        }
+        makeUserProfile()
+        makeUserImage {
+            self.backgroundView.removeFromSuperview()
+            self.lottieView.removeFromSuperview()
+        }
     }
     
     @IBAction func mySettingPressed(_ sender: UIBarButtonItem) {
@@ -61,15 +61,6 @@ class TravelNoteViewController: UIViewController {
 }
 //MARK: - UI Functions
 extension TravelNoteViewController {
-    func makeShadow(target view: UIView, radius: CGFloat) {
-        view.clipsToBounds = false
-        view.layer.shadowColor = UIColor(named: "Gray4")?.cgColor
-        view.layer.shadowOpacity = 0.2
-        view.layer.shadowOffset = CGSize(width: 3, height: 3)
-        view.layer.shadowRadius = 2
-        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: radius).cgPath
-    }
-    
     func makeUserProfile() {
         if Auth.auth().currentUser != nil {
             nickname.text = userdefault.string(forKey: "nickname")!

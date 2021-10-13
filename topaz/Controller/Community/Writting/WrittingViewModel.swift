@@ -10,15 +10,11 @@ import Firebase
 
 class WrittingViewModel {
     
-    func makeCountry(country1: UIButton, country2: UIButton, country3: UIButton) -> [String] {
+    func makeCountry(_ countryButton: [UIButton]) -> [String] {
         var countryArr = [String]()
-        if let country1 = country1.currentTitle {
-            countryArr.append(country1)
-            if let country2 = country2.currentTitle {
-                countryArr.append(country2)
-                if let country3 = country3.currentTitle {
-                    countryArr.append(country3)
-                }
+        for country in countryButton {
+            if let countryName = country.currentTitle {
+                countryArr.append(countryName)
             }
         }
         return countryArr

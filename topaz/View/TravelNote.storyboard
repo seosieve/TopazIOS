@@ -552,7 +552,7 @@
                                 <rect key="frame" x="20" y="420" width="374" height="80"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="소개" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8SB-0c-xZ5">
-                                        <rect key="frame" x="10" y="8" width="354" height="64"/>
+                                        <rect key="frame" x="7" y="8" width="360" height="64"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="bqc-Oy-bmm"/>
@@ -564,7 +564,7 @@
                                 </subviews>
                                 <color key="backgroundColor" name="White"/>
                                 <constraints>
-                                    <constraint firstItem="8SB-0c-xZ5" firstAttribute="leading" secondItem="h7K-ii-iu0" secondAttribute="leading" constant="10" id="7E9-Li-srM"/>
+                                    <constraint firstItem="8SB-0c-xZ5" firstAttribute="leading" secondItem="h7K-ii-iu0" secondAttribute="leading" constant="7" id="7E9-Li-srM"/>
                                     <constraint firstItem="8SB-0c-xZ5" firstAttribute="centerY" secondItem="h7K-ii-iu0" secondAttribute="centerY" id="Gpz-y5-4Yp"/>
                                     <constraint firstItem="8SB-0c-xZ5" firstAttribute="centerX" secondItem="h7K-ii-iu0" secondAttribute="centerX" id="J0T-kp-ih8"/>
                                     <constraint firstAttribute="height" constant="80" id="OLb-HR-lky"/>

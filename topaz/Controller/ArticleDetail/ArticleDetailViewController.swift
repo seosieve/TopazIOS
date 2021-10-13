@@ -9,14 +9,11 @@ import UIKit
 import Lottie
 import Kingfisher
 
-class MainDetailViewController: UIViewController {
+class ArticleDetailViewController: UIViewController {
     // Head
-    @IBOutlet weak var country1: UIButton!
-    @IBOutlet weak var country2: UIButton!
-    @IBOutlet weak var country3: UIButton!
-    @IBOutlet weak var country1Tail: UIButton!
-    @IBOutlet weak var country2Tail: UIButton!
-    @IBOutlet weak var country3Tail: UIButton!
+    @IBOutlet var countryHead: [UIButton]! {
+        didSet {countryHead.sort {$0.tag < $1.tag}}
+    }
     @IBOutlet weak var likeBarItem: UIBarButtonItem!
     @IBOutlet weak var detailTitle: UILabel!
     @IBOutlet weak var detailAutherImage: UIImageView!
@@ -29,17 +26,20 @@ class MainDetailViewController: UIViewController {
     @IBOutlet weak var mainDetailImageTableViewConstraintY: NSLayoutConstraint!
     @IBOutlet weak var detailTailText: UILabel!
     // Tail
+    @IBOutlet var countryTail: [UIButton]! {
+        didSet {countryTail.sort {$0.tag < $1.tag}}
+    }
     @IBOutlet weak var likesButton: UIButton!
     @IBOutlet weak var likes: UILabel!
     @IBOutlet weak var views: UILabel!
     
     var article: Article?
-    let viewModel = MainDetailViewModel()
+    let viewModel = ArticleDetailViewModel()
     let userdefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainDetailImageTableView.register(MainDetailImageTableViewCell.nib(), forCellReuseIdentifier: "MainDetailImageTableViewCell")
+        mainDetailImageTableView.register(ArticleDetailImageTableViewCell.nib(), forCellReuseIdentifier: "MainDetailImageTableViewCell")
         mainDetailImageTableView.dataSource = self
         mainDetailImageTableView.delegate = self
         makeArticleUI()
@@ -85,39 +85,26 @@ class MainDetailViewController: UIViewController {
             reportAlert()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToModify" {
+            let destinationVC = segue.destination as! ModifyViewController
+            destinationVC.article = article
+        }
+    }
 }
 
 //MARK: - UI Functions
-extension MainDetailViewController {
+extension ArticleDetailViewController {
     func makeArticleUI() {
         // 여행국가 설정
-        let countryCount = article?.country.count
-        switch countryCount {
-        case 1:
-            country1.setTitle(article!.country[0], for: .normal)
-            makeCircle(target: country1, width: 1)
-            makeCircle(target: country1Tail, width: 1)
-        case 2:
-            country1.setTitle(article!.country[0], for: .normal)
-            country2.setTitle(article!.country[1], for: .normal)
-            makeCircle(target: country1, width: 1)
-            makeCircle(target: country2, width: 1)
-            makeCircle(target: country1Tail, width: 1)
-            makeCircle(target: country2Tail, width: 1)
-        default:
-            country1.setTitle(article!.country[0], for: .normal)
-            country2.setTitle(article!.country[1], for: .normal)
-            country3.setTitle(article!.country[2], for: .normal)
-            makeCircle(target: country1, width: 1)
-            makeCircle(target: country2, width: 1)
-            makeCircle(target: country3, width: 1)
-            makeCircle(target: country1Tail, width: 1)
-            makeCircle(target: country2Tail, width: 1)
-            makeCircle(target: country3Tail, width: 1)
+        let countryCount = article!.country.count
+        for index in 0...countryCount-1 {
+            countryHead[index].setTitle(article!.country[index], for: .normal)
+            makeCircle(target: countryHead[index], width: 1)
+            countryTail[index].setTitle(countryHead[index].currentTitle, for: .normal)
+            makeCircle(target: countryTail[index], width: 1)
         }
-        country1Tail.setTitle(country1.currentTitle, for: .normal)
-        country2Tail.setTitle(country2.currentTitle, for: .normal)
-        country3Tail.setTitle(country3.currentTitle, for: .normal)
         // Head부분 설정
         viewModel.isClickedLikes(currentID: article!.articleID) { isClicked in
             if isClicked {
@@ -182,6 +169,7 @@ extension MainDetailViewController {
     func deleteAndModifyAlert() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let modify = UIAlertAction(title: "수정하기", style: .default) { action in
+            self.performSegue(withIdentifier: "goToModify", sender: action)
         }
         let delete = UIAlertAction(title: "삭제하기", style: .default) { action in
             self.deleteConfirmAlert()
@@ -238,23 +226,22 @@ extension MainDetailViewController {
 
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
-extension MainDetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return article!.imageText.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MainDetailImageTableViewCell", for: indexPath) as! MainDetailImageTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MainDetailImageTableViewCell", for: indexPath) as! ArticleDetailImageTableViewCell
         cell.selectionStyle = .none
         makeBorder(target: cell.experienceLabelBorder, radius: 12, isFilled: true)
-        
-        let url = article!.imageUrl[indexPath.row]
-        cell.experienceImage.kf.setima
-//        cell.mainImage.kf.setImage(with: url, options: [.processor(processor)])
-//        viewModel.getExperienceImage(articleID: article!.articleID, index: indexPath.row) { image in
-//            cell.experienceImage.image = image
-//        }
+        makeBorder(target: cell.experienceImage, radius: 12, color: "Gray6", isFilled: false)
+        // image load
+        viewModel.getImageUrl(url: article!.imageUrl[indexPath.row]) { url in
+            cell.experienceImage.kf.setImage(with: url)
+        }
         if article!.imageText[indexPath.row] == "" {
+            // imageText에 아무런 글자도 없을 때 셀 간 간격 좁힘
             cell.experienceLabelBorder.constraints.forEach { constraint in
                 if constraint.firstAttribute == .height {
                     constraint.constant = 0
@@ -269,6 +256,7 @@ extension MainDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.experienceLabelBorder.isHidden = true
             cell.experienceLabel.text = nil
         } else {
+            // imageText에 글자가 있을 때
             cell.experienceLabelBorder.constraints.forEach { constraint in
                 if constraint.firstAttribute == .height {
                     constraint.constant = 50
@@ -283,7 +271,6 @@ extension MainDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.experienceLabelBorder.isHidden = false
             cell.experienceLabel.text = article!.imageText[indexPath.row]
         }
-        makeBorder(target: cell.experienceImage, radius: 12, color: "Gray6", isFilled: false)
         return cell
     }
 }

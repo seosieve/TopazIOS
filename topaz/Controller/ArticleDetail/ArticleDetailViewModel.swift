@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-class MainDetailViewModel {
+class ArticleDetailViewModel {
     let storage = Storage.storage()
     let database = Firestore.firestore()
     var email = UserDefaults.standard.string(forKey: "email")!
@@ -113,6 +113,11 @@ class MainDetailViewModel {
                 print("deleteExperienceImage Success")
             }
         }
+    }
+    
+    func getImageUrl(url: String, kfUrlHandler: @escaping (URL) -> ()) {
+        guard let url = URL(string: url) else { return }
+        kfUrlHandler(url)
     }
     
     func deleteArticle(articleID: String, deleteArticleHandler: @escaping () -> ()) {

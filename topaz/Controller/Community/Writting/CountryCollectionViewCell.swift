@@ -28,8 +28,12 @@ class CountryCollectionViewCell: UICollectionViewCell {
     
     func configure(image: UIImage, text: String) {
         countryImage.image = image
-        makeBorder(target: countryImage, radius: 6, color: "Gray6", isFilled: false)
         countryName.text = text
+        if isSelected {
+            makeBorder(target: countryImage, radius: 6, width: 2, color: "MintBlue", isFilled: false)
+        } else {
+            makeBorder(target: countryImage, radius: 6, color: "Gray6", isFilled: false)
+        }
     }
     
     static func nib() -> UINib {

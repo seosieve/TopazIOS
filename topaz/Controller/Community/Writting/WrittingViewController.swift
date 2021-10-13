@@ -12,11 +12,11 @@ import Lottie
 class WrittingViewController: UIViewController {
 
     @IBOutlet weak var writtingScrollView: UIScrollView!
-    @IBOutlet weak var resisterButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var countryQuestionButton: UIButton!
-    @IBOutlet weak var country1: UIButton!
-    @IBOutlet weak var country2: UIButton!
-    @IBOutlet weak var country3: UIButton!
+    @IBOutlet var countryButton: [UIButton]! {
+        didSet {countryButton.sort {$0.tag < $1.tag}}
+    }
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var mainTextView: UITextView!
     @IBOutlet weak var tailTextView: UITextView!
@@ -30,20 +30,18 @@ class WrittingViewController: UIViewController {
     let backgroundView = UIView()
     let lottieView = AnimationView(name: "Loading")
     
-    var countryName1: String!
-    var countryName2: String!
-    var countryName3: String!
+    var selectedCountryArr = [String]()
     var imageArr = [UIImage]()
     var textArr = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        makeCircle(target: resisterButton, color: "MintBlue", width: 0)
+        makeCircle(target: registerButton, color: "MintBlue", width: 0)
         makeCircle(target: addImageButton, color: "MintBlue", width: 0)
         makeCircle(target: addEmojiButton, color: "MintBlue", width: 0)
-        makeShadow(target: addImageButton, radius: addImageButton.frame.size.height/2)
-        makeShadow(target: addEmojiButton, radius: addImageButton.frame.size.height/2)
+        makeShadow(target: addImageButton, radius: addImageButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
+        makeShadow(target: addEmojiButton, radius: addEmojiButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         
         let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tabScrollView))
         writtingScrollView.addGestureRecognizer(tapGestureReconizer)
@@ -52,7 +50,7 @@ class WrittingViewController: UIViewController {
         mainTextView.delegate = self
         tailTextView.delegate = self
         
-        addImageTableView.register(AddImageTableViewCell.nib(), forCellReuseIdentifier: "AddImageTableViewCell")
+        addImageTableView.register(WrittingAddImageTableViewCell.nib(), forCellReuseIdentifier: "WrittingAddImageTableViewCell")
         addImageTableView.delegate = self
         addImageTableView.dataSource = self
         
@@ -63,11 +61,6 @@ class WrittingViewController: UIViewController {
         tailTextView.isHidden = true
     }
     
-    // 다녀온 나라 정보값 받아오기
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setCountryButton()
-    }
     //touchesBegan을 대신해서 쓰임
     @objc func tabScrollView() {
         titleTextView.endEditing(true)
@@ -80,7 +73,7 @@ class WrittingViewController: UIViewController {
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-        let countryArr = viewModel.makeCountry(country1:country1, country2:country2, country3:country3)
+        let countryArr = viewModel.makeCountry(countryButton)
         // 실패일 때 ToastMessage
         if countryArr.count == 0 {
             popUpToast("어느 나라에 대한 여행경험인가요? 궁금해요.")
@@ -89,38 +82,8 @@ class WrittingViewController: UIViewController {
         } else if mainTextView.textColor == UIColor(named: "Gray4") {
             popUpToast("좀 더 자세한 여행경험을 듣고싶어요!")
         } else {
-            // 성공일 때 Animation
-            loadingAnimation(backgroundView, lottieView, view: self.view)
-            sender.isEnabled = false
-            self.view.endEditing(true)
-            let document = Firestore.firestore().collection("Articles").document()
-            let articleID = document.documentID
-            let imageText = viewModel.makeImageText(imageText: textArr)
-            let tailText = viewModel.makeTailText(tailText: tailTextView)
-            
-            self.viewModel.addArticle(document: document, articleID: articleID, country: countryArr, title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, tailText: tailText) { articleID in
-                if self.imageArr.count == 0 {
-                    // 이미지가 없을 때 이미지 저장하지 않고 dismiss
-                    self.backgroundView.removeFromSuperview()
-                    self.lottieView.removeFromSuperview()
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    // 이미지가 있을 때 이미지 저장하고 dismiss
-                    DispatchQueue.global().async {
-                        for (index, image) in self.imageArr.enumerated() {
-                            self.viewModel.addExperienceImage(articleID: articleID, image: image, index: index) { url in
-                                self.viewModel.addImageUrl(articleID: articleID, url: url) {
-                                    DispatchQueue.main.async {
-                                        self.backgroundView.removeFromSuperview()
-                                        self.lottieView.removeFromSuperview()
-                                        self.dismiss(animated: true, completion: nil)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            // 재확인 AlertMessage
+            confirmRegisterAlert()
         }
     }
     
@@ -144,27 +107,36 @@ class WrittingViewController: UIViewController {
     }
     
     @IBAction func addImojiButtonPressed(_ sender: UIButton) {
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToAddCountry" {
+            let destinationVC = segue.destination as! CountryAddViewController
+            destinationVC.selectedCountryArr = selectedCountryArr
+            destinationVC.countryDelegate = self
+        }
     }
     
 }
 
 //MARK: - UI Functions
 extension WrittingViewController {
-    func setCountryButton() {
-        country1.setTitle(countryName1, for: .normal)
-        country2.setTitle(countryName2, for: .normal)
-        country3.setTitle(countryName3, for: .normal)
-        let width1 = countryName1 != nil ? 1 : 0
-        let width2 = countryName2 != nil ? 1 : 0
-        let width3 = countryName3 != nil ? 1 : 0
-        makeCircle(target: country1, color: "MintBlue", width: width1)
-        makeCircle(target: country2, color: "MintBlue", width: width2)
-        makeCircle(target: country3, color: "MintBlue", width: width3)
-        if countryName1 == nil && countryName2 == nil && countryName3 == nil {
+    func setCountryButton(selectedCountryArr: [String]) {
+        let countryArrCount = selectedCountryArr.count
+        countryButton.forEach { button in
+            makeCircle(target: button, width: 0)
+            button.setTitle(nil, for: .normal)
+        }
+        if countryArrCount == 0 {
             countryQuestionButton.isHidden = false
         } else {
             countryQuestionButton.isHidden = true
-        }
+            for index in 0...countryArrCount-1 {
+                countryButton[index].setTitle(selectedCountryArr[index], for: .normal)
+                makeCircle(target: countryButton[index], width: 1)
+            }
+        }        
     }
     
     func placeholderSetting() {
@@ -186,6 +158,49 @@ extension WrittingViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1){
             alert.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func confirmRegisterAlert() {
+        let alert = UIAlertController(title: "여행경험을 등록할까요?", message: nil, preferredStyle: .alert)
+        let cancle = UIAlertAction(title: "아니오", style: .cancel)
+        let register = UIAlertAction(title: "예", style: .default) { action in
+            // 성공일 때 Animation
+            loadingAnimation(self.backgroundView, self.lottieView, view: self.view)
+            self.registerButton.isEnabled = false
+            self.view.endEditing(true)
+            let document = Firestore.firestore().collection("Articles").document()
+            let articleID = document.documentID
+            let imageText = self.viewModel.makeImageText(imageText: self.textArr)
+            let tailText = self.viewModel.makeTailText(tailText: self.tailTextView)
+            
+            self.viewModel.addArticle(document: document, articleID: articleID, country: self.viewModel.makeCountry(self.countryButton), title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, tailText: tailText) { articleID in
+                if self.imageArr.count == 0 {
+                    // 이미지가 없을 때 이미지 저장하지 않고 dismiss
+                    self.backgroundView.removeFromSuperview()
+                    self.lottieView.removeFromSuperview()
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    // 이미지가 있을 때 이미지 저장하고 dismiss
+                    DispatchQueue.global().async {
+                        for (index, image) in self.imageArr.enumerated() {
+                            self.viewModel.addExperienceImage(articleID: articleID, image: image, index: index) { url in
+                                self.viewModel.addImageUrl(articleID: articleID, url: url) {
+                                    DispatchQueue.main.async {
+                                        self.backgroundView.removeFromSuperview()
+                                        self.lottieView.removeFromSuperview()
+                                        self.dismiss(animated: true, completion: nil)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
+        alert.addAction(cancle)
+        alert.addAction(register)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func makeTableViewHeight() {
@@ -271,7 +286,7 @@ extension WrittingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddImageTableViewCell", for: indexPath) as! AddImageTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WrittingAddImageTableViewCell", for: indexPath) as! WrittingAddImageTableViewCell
         cell.selectionStyle = .none
         makeBorder(target: cell.experienceTextViewBorder, radius: 12, isFilled: true)
         cell.experienceImage.image = imageArr[indexPath.row]
@@ -343,5 +358,15 @@ extension WrittingViewController: UIImagePickerControllerDelegate, UINavigationC
             self.tailTextView.isHidden = false
             self.imagePicker.dismiss(animated: true, completion: nil)
         }
+    }
+}
+
+//MARK: - transferCountryDelegate
+extension WrittingViewController: transferCountryDelegate {
+    // 다녀온 나라 정보값 받아오기
+    func transferCountry(selectedCountryArr: [String], transferCountryHandler: @escaping () -> ()) {
+        self.selectedCountryArr = selectedCountryArr
+        setCountryButton(selectedCountryArr: selectedCountryArr)
+        transferCountryHandler()
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Lottie
 import Kingfisher
 
 class CommunityViewController: UIViewController {
@@ -107,19 +108,6 @@ class CommunityViewController: UIViewController {
     @IBAction func selectCountryPressed(_ sender: UIButton) {
         print("aa")
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToMainDetail" {
-            let destinationVC = segue.destination as! MainDetailViewController
-            if let indexPath = fullArticleTableView.indexPathForSelectedRow {
-                destinationVC.article = tableArticleArr[indexPath.row]
-            }
-            if let indexPath = luggageCollectionView.indexPathsForSelectedItems?.last {
-                let count = collectionArticleArr.count
-                destinationVC.article = collectionArticleArr[indexPath.row % count]
-            }
-        }
-    }
 }
 
 //MARK: - UI Functions
@@ -184,7 +172,13 @@ extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToMainDetail", sender: self)
+        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+        let articleDetailVC = storyboard.instantiateViewController(withIdentifier: "ArticleDetail") as! ArticleDetailViewController
+        if let indexPath = luggageCollectionView.indexPathsForSelectedItems?.last {
+            let count = collectionArticleArr.count
+            articleDetailVC.article = collectionArticleArr[indexPath.row % count]
+        }
+        self.navigationController?.pushViewController(articleDetailVC, animated: true)
         collectionView.deselectItem(at: indexPath, animated: false)
     }
 }
@@ -193,6 +187,10 @@ extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDat
 extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableArticleArr.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -231,6 +229,11 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToMainDetail", sender: self)
+        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+        let articleDetailVC = storyboard.instantiateViewController(withIdentifier: "ArticleDetail") as! ArticleDetailViewController
+        if let indexPath = fullArticleTableView.indexPathForSelectedRow {
+            articleDetailVC.article = tableArticleArr[indexPath.row]
+        }
+        self.navigationController?.pushViewController(articleDetailVC, animated: true)
     }
 }
