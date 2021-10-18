@@ -185,7 +185,7 @@ extension WrittingViewController {
                         for (index, image) in self.imageArr.enumerated() {
                             self.viewModel.addExperienceImage(articleID: articleID, image: image, index: index) { url in
                                 self.viewModel.addImageUrl(articleID: articleID, url: url) {
-                                    DispatchQueue.main.async {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                         self.backgroundView.removeFromSuperview()
                                         self.lottieView.removeFromSuperview()
                                         self.dismiss(animated: true, completion: nil)
@@ -323,6 +323,8 @@ extension WrittingViewController: DeleteImageDelegate {
         textArr.remove(at: index)
         if textArr.count == 0 {
             tailTextView.isHidden = true
+            tailTextView.text = "당신의 이야기의 끝맺음을 듣고싶어요."
+            tailTextView.textColor = UIColor(named: "Gray4")
         }
         addImageTableView.reloadData()
         makeTableViewHeight()
@@ -362,11 +364,11 @@ extension WrittingViewController: UIImagePickerControllerDelegate, UINavigationC
 }
 
 //MARK: - transferCountryDelegate
-extension WrittingViewController: transferCountryDelegate {
+extension WrittingViewController: AddCountryDelegate {
     // 다녀온 나라 정보값 받아오기
-    func transferCountry(selectedCountryArr: [String], transferCountryHandler: @escaping () -> ()) {
+    func addCountry(selectedCountryArr: [String], addCountryHandler: @escaping () -> ()) {
         self.selectedCountryArr = selectedCountryArr
         setCountryButton(selectedCountryArr: selectedCountryArr)
-        transferCountryHandler()
+        addCountryHandler()
     }
 }

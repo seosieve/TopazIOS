@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CountryCollectionViewCell: UICollectionViewCell {
+class CountryAddCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var countryImage: UIImageView!
     @IBOutlet weak var countryName: UILabel!
@@ -37,13 +37,13 @@ class CountryCollectionViewCell: UICollectionViewCell {
     }
     
     static func nib() -> UINib {
-        return UINib(nibName: "CountryCollectionViewCell", bundle: nil)
+        return UINib(nibName: "CountryAddCollectionViewCell", bundle: nil)
     }
 
 }
 
 //MARK: - UI Functions
-extension CountryCollectionViewCell {
+extension CountryAddCollectionViewCell {
     func selected() {
         let selectedView = UIView()
         selectedView.backgroundColor = UIColor(named: "MintBlue")?.withAlphaComponent(0.4)

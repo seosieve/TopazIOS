@@ -13,24 +13,6 @@ class MyProfileEditViewModel {
     let database = Firestore.firestore()
     let storage = Storage.storage()
     
-    func getUserImage(email: String, getImageHandler: @escaping (UIImage) -> ()) {
-        DispatchQueue.global().async {
-            let imageRef = self.storage.reference(withPath: "UserProfileImages/\(email).png")
-            imageRef.getData(maxSize: 4*350*350) { data, error in
-                if let error = error {
-                    print("프로필 이미지 다운로드 에러 : \(error)")
-                } else {
-                    if let data = data {
-                        let image = UIImage(data: data)!
-                        DispatchQueue.main.async {
-                            getImageHandler(image)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
     func isNicknameValid(_ nickname: String?) -> Bool {
         let nicknameReg = "^[가-힣]{1,4}$"
         let nicknameTest = NSPredicate(format: "SELF MATCHES %@", nicknameReg)
@@ -67,7 +49,7 @@ class MyProfileEditViewModel {
     func addUserInfo(_ email: String, _ nickname: String, _ introduce: String, addInfoHandler: @escaping () -> ()) {
         let collection = database.collection("UserDataBase")
         collection.document(email)
-            .setData(["nickname": nickname, "introduce": introduce], merge: true) { error in
+            .updateData(["nickname": nickname, "introduce": introduce]) { error in
             if let error = error {
                 print("Error saving user data : \(error)")
             } else {
@@ -105,19 +87,26 @@ class MyProfileEditViewModel {
         replaceAuthHandler()
     }
     
-    
-    
-    
-    
-    func addUserImage(userEmail: String, data: Data, addImageHandler: @escaping () -> ()) {
-        let imageRef = storage.reference().child("UserProfileImages/\(userEmail).png")
+    func addUserImage(email: String, data: Data, addImageHandler: @escaping (String) -> ()) {
+        let imageRef = storage.reference().child("UserProfileImages/\(email).png")
         imageRef.putData(data, metadata: nil) {
             _, error in
             if let error = error {
                 print("프로필 사진 저장 에러 : \(error)")
             } else {
-                addImageHandler()
+                imageRef.downloadURL { url, error in
+                    guard let url = url else { return }
+                    self.addImageUrl(email: email, url: url)
+                    let urlString = "\(url)"
+                    addImageHandler(urlString)
+                }
             }
         }
+    }
+    
+    func addImageUrl(email: String, url: URL) {
+        let urlString = "\(url)"
+        let document = database.collection("UserDataBase").document(email)
+        document.updateData(["imageUrl": urlString])
     }
 }

@@ -9,24 +9,20 @@ import Foundation
 import Firebase
 
 class TravelNoteViewModel {
-    let storage = Storage.storage()
+    let database = Firestore.firestore()
     
-    func getUserImage(email: String, getImageHandler: @escaping (UIImage?) -> ()) {
-        DispatchQueue.global().async {
-            let imageRef = self.storage.reference(withPath: "UserProfileImages/\(email).png")
-            imageRef.getData(maxSize: 4*300*300) { data, error in
-                if let error = error {
-                    print("프로필 이미지 다운로드 에러 : \(error)")
-                    DispatchQueue.main.async {
-                        getImageHandler(nil)
-                    }
-                } else {
-                    if let data = data {
-                        let image = UIImage(data: data)!
-                        DispatchQueue.main.async {
-                            getImageHandler(image) 
-                        }
-                    }
+    func getUserDataBase(email: String, userDataBaseHandler: @escaping (String, Int, [String], [String]) -> ()) {
+        let collection = database.collection("UserDataBase")
+        collection.document(email).getDocument { document, error in
+            if let error = error {
+                print("유저 불러오기 에러 : \(error)")
+            } else {
+                if let document = document {
+                    let imageUrl = document.get("imageUrl") as! String
+                    let exp = document.get("exp") as! Int
+                    let collectibles = document.get("collectibles") as! [String]
+                    let topazAlbumUrl = document.get("topazAlbumUrl") as! [String]
+                    userDataBaseHandler(imageUrl, exp, collectibles, topazAlbumUrl)
                 }
             }
         }

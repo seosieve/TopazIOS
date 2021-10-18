@@ -810,10 +810,10 @@
                     <navigationItem key="navigationItem" id="lzN-g7-dsF"/>
                     <connections>
                         <outlet property="countryCollectionView" destination="lmg-Bs-tSp" id="TTJ-Ui-ifA"/>
-                        <outlet property="countryPageControl" destination="fhK-G0-qKQ" id="DAR-kH-Utt"/>
-                        <outletCollection property="countryButton" destination="1dB-3c-XdI" collectionClass="NSMutableArray" id="RNW-6x-5Kd"/>
-                        <outletCollection property="countryButton" destination="U2h-zF-N1l" collectionClass="NSMutableArray" id="5jA-nM-tsw"/>
-                        <outletCollection property="countryButton" destination="mL1-Ed-5j2" collectionClass="NSMutableArray" id="WOd-ew-BIQ"/>
+                        <outlet property="countryPageControl" destination="fhK-G0-qKQ" id="yas-Zp-8hA"/>
+                        <outletCollection property="countryButton" destination="1dB-3c-XdI" collectionClass="NSMutableArray" id="8JW-jg-Ds0"/>
+                        <outletCollection property="countryButton" destination="U2h-zF-N1l" collectionClass="NSMutableArray" id="0qo-3Y-m3v"/>
+                        <outletCollection property="countryButton" destination="mL1-Ed-5j2" collectionClass="NSMutableArray" id="VjP-6A-OSy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yb-53-5ld" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

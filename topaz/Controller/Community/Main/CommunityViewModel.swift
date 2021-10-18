@@ -9,16 +9,16 @@ import Foundation
 import Firebase
 
 class CommunityViewModel {
-    let db = Firestore.firestore().collection("Articles")
-    let articleUrl = "gs://topaz-a6a66.appspot.com/Articles"
+    let database = Firestore.firestore()
     var collectionArticleArr = [Article]()
     var tableArticleArr = [Article]()
     
     func getCollectionArticle(articleHandler: @escaping ([Article]) -> ()) {
         collectionArticleArr = []
         var articleArr = [Article]()
+        let collection = database.collection("Articles")
         let dateBound = NSDate().timeIntervalSince1970 - 604800
-        db.whereField("writtenDate", isGreaterThan: dateBound).getDocuments { querySnapshot, error in
+        collection.whereField("writtenDate", isGreaterThan: dateBound).getDocuments { querySnapshot, error in
             if let error = error {
                 print("글 불러오기 에러 : \(error)")
             } else {
@@ -58,8 +58,9 @@ class CommunityViewModel {
 
     func getTableArticle(sortMethod: String, articleHandler: @escaping ([Article]) -> ()) {
         tableArticleArr = []
+        let collection = database.collection("Articles")
         let convertedSortMethod = convertSortMethod(sortMethod: sortMethod)
-        db.order(by: convertedSortMethod).getDocuments { querySnapshot, error in
+        collection.order(by: convertedSortMethod).getDocuments { querySnapshot, error in
             if let error = error {
                 print("글 불러오기 에러 : \(error)")
             } else {

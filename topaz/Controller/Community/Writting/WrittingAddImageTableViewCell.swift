@@ -28,10 +28,6 @@ class WrittingAddImageTableViewCell: UITableViewCell {
         containerView.addGestureRecognizer(tapGestureReconizer)
         experienceTextView.delegate = self
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
     static func nib() -> UINib {
         return UINib(nibName: "WrittingAddImageTableViewCell", bundle: nil)

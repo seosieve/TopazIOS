@@ -127,18 +127,18 @@ class WrittingViewModel {
     
     func addExperienceImage(articleID: String, image: UIImage, index: Int, addExperienceImageHandler: @escaping (URL) -> ()) {
         let reference = Storage.storage().reference()
-            let imageRef = reference.child("Articles/\(articleID)/\(index).png")
-            let data = image.pngData()
-            imageRef.putData(data!, metadata: nil) { _, error in
-                if let error = error {
-                    print("프로필 사진 저장 에러 : \(error)")
-                } else {
-                    imageRef.downloadURL { url, error in
-                        guard let url = url else { return }
-                        addExperienceImageHandler(url)
-                    }
+        let imageRef = reference.child("Articles/\(articleID)/\(index).png")
+        let data = image.pngData()!
+        imageRef.putData(data, metadata: nil) { _, error in
+            if let error = error {
+                print("프로필 사진 저장 에러 : \(error)")
+            } else {
+                imageRef.downloadURL { url, error in
+                    guard let url = url else { return }
+                    addExperienceImageHandler(url)
                 }
             }
+        }
     }
     
     func addImageUrl(articleID: String, url: URL, addImageUrlHandler: @escaping () -> ()) {

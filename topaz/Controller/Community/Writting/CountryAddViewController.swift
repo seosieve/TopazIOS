@@ -7,25 +7,26 @@
 
 import UIKit
 
-protocol transferCountryDelegate {
-    func transferCountry(selectedCountryArr: [String], transferCountryHandler: @escaping () -> ())
+protocol AddCountryDelegate {
+    func addCountry(selectedCountryArr: [String], addCountryHandler: @escaping () -> ())
 }
 
 class CountryAddViewController: UIViewController {
     @IBOutlet weak var countryCollectionView: UICollectionView!
+    
     @IBOutlet weak var countryPageControl: UIPageControl!
     @IBOutlet var countryButton: [UIButton]! {
         didSet {countryButton.sort {$0.tag < $1.tag}}
     }
     
-    var countryDelegate: transferCountryDelegate?
+    var countryDelegate: AddCountryDelegate?
     
     let country = Country()
     var selectedCountryArr = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        countryCollectionView.register(CountryCollectionViewCell.nib(), forCellWithReuseIdentifier: "CountryCollectionViewCell")
+        countryCollectionView.register(CountryAddCollectionViewCell.nib(), forCellWithReuseIdentifier: "CountryAddCollectionViewCell")
         countryCollectionView.allowsMultipleSelection = true
         countryCollectionView.dataSource = self
         countryCollectionView.delegate = self
@@ -40,7 +41,7 @@ class CountryAddViewController: UIViewController {
     }
     
     @IBAction func completeButtonPressed(_ sender: UIButton) {
-        countryDelegate?.transferCountry(selectedCountryArr: selectedCountryArr) {
+        countryDelegate?.addCountry(selectedCountryArr: selectedCountryArr) {
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -111,10 +112,10 @@ extension CountryAddViewController {
 extension CountryAddViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return country.countryName.count
-    }
+    } 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CountryCollectionViewCell", for: indexPath) as! CountryCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CountryAddCollectionViewCell", for: indexPath) as! CountryAddCollectionViewCell
         cell.configure(image: country.countryImage[indexPath.row]!, text: country.countryName[indexPath.row])
         return cell
     }

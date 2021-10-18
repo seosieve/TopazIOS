@@ -360,7 +360,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9PD-ox-Lt5">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="784"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="785"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhJ-Kg-cx8">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -440,44 +440,44 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="제목" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vW3-4Z-f8C">
-                                                <rect key="frame" x="20" y="85" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="85" width="374" height="51"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="vFR-7o-FR8"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="vFR-7o-FR8"/>
                                                 </constraints>
-                                                <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="24"/>
+                                                <color key="textColor" name="Gray1"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3o-cG-dEe">
-                                                <rect key="frame" x="0.0" y="159" width="414" height="1"/>
+                                                <rect key="frame" x="0.0" y="160" width="414" height="1"/>
                                                 <color key="backgroundColor" name="Gray5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="Ltw-FJ-ymw"/>
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="본문" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gSa-6b-72r">
-                                                <rect key="frame" x="20" y="180" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="181" width="374" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="oR1-aU-Ms5"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="oR1-aU-Ms5"/>
                                                 </constraints>
-                                                <color key="textColor" systemColor="labelColor"/>
+                                                <color key="textColor" name="Gray2"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6cJ-z9-FIY">
-                                                <rect key="frame" x="0.0" y="250" width="414" height="184"/>
+                                                <rect key="frame" x="0.0" y="251" width="414" height="184"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="184" id="bDZ-Sv-lCd"/>
                                                 </constraints>
                                             </tableView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="본문" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-e7-BIl">
-                                                <rect key="frame" x="20" y="434" width="374" height="50"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="꼬리말" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-e7-BIl">
+                                                <rect key="frame" x="20" y="435" width="374" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="Mla-ls-p7Q"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Mla-ls-p7Q"/>
                                                 </constraints>
-                                                <color key="textColor" systemColor="labelColor"/>
+                                                <color key="textColor" name="Gray2"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -620,9 +620,10 @@
                     <connections>
                         <outlet property="addEmojiButton" destination="J9S-1d-CpU" id="Fqu-mT-woB"/>
                         <outlet property="addImageButton" destination="TZX-xd-9Q9" id="Tly-th-rfT"/>
-                        <outlet property="addImageTableView" destination="6cJ-z9-FIY" id="QMg-fM-8ms"/>
                         <outlet property="countryQuestionButton" destination="2zc-NZ-GUs" id="1OS-Yh-xgt"/>
                         <outlet property="mainTextView" destination="gSa-6b-72r" id="WmU-wb-rMZ"/>
+                        <outlet property="modifyImageTableView" destination="6cJ-z9-FIY" id="k65-IO-fy7"/>
+                        <outlet property="modifyImageTableViewConstraintY" destination="bDZ-Sv-lCd" id="vx2-Rb-OWa"/>
                         <outlet property="registerButton" destination="qDJ-cL-SCy" id="bax-gb-zp5"/>
                         <outlet property="tailTextView" destination="Ajz-e7-BIl" id="oIB-zg-Lzl"/>
                         <outlet property="titleTextView" destination="vW3-4Z-f8C" id="bNR-51-BwP"/>
@@ -692,7 +693,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행경험 글쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyR-Qv-dhl">
-                                        <rect key="frame" x="156.5" y="12.5" width="101.5" height="19"/>
+                                        <rect key="frame" x="153" y="10.5" width="108" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="16"/>
                                         <color key="textColor" name="Gray1"/>
                                         <nil key="highlightedColor"/>
@@ -830,8 +831,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="wOW-pH-Y9o"/>
                     <connections>
-                        <outlet property="countryCollectionView" destination="jki-ws-EAw" id="SqO-i0-XZ8"/>
-                        <outlet property="countryPageControl" destination="tM8-6X-ImO" id="CbM-SJ-R0t"/>
+                        <outlet property="countryCollectionView" destination="jki-ws-EAw" id="o2t-11-tZU"/>
+                        <outlet property="countryPageControl" destination="tM8-6X-ImO" id="T38-J0-Ubt"/>
                         <outletCollection property="countryButton" destination="8zu-qm-hka" collectionClass="NSMutableArray" id="7NI-Jp-KHn"/>
                         <outletCollection property="countryButton" destination="uz5-zC-DkH" collectionClass="NSMutableArray" id="LNd-zr-IJH"/>
                         <outletCollection property="countryButton" destination="c9R-Sw-6Kp" collectionClass="NSMutableArray" id="cYk-IQ-Bla"/>
@@ -876,9 +877,6 @@
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

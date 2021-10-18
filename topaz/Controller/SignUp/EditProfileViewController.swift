@@ -33,7 +33,7 @@ class EditProfileViewController: UIViewController {
     
     var imagePicker = UIImagePickerController()
     let viewModel = EditProfileViewModel()
-    var userImage: UIImage?
+    var userImage = UIImage(named: "DefaultUserImage")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,6 @@ class EditProfileViewController: UIViewController {
         makeBorder(target: introduceTextFieldBorder, radius: 6, isFilled: false)
         makeCircle(target: profileAdd, color: "MintBlue", width: 3)
         makeCircle(target: nicknameDot, color: "WarningRed", width: 0)
-        profileAdd.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         imagePicker.delegate = self
         // TextField 입력 감지
         self.nicknameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -106,7 +105,6 @@ class EditProfileViewController: UIViewController {
     @IBAction func goToNext(_ sender: UIButton) {
         self.navigationController?.navigationBar.isHidden = true
         loadingAnimation(view: self.view)
-        let data = userImage?.pngData()
         let nickname = nicknameTextField.text!
         let introduce = introduceTextField.text ?? ""
         let makeUserGroup = DispatchGroup()
@@ -125,13 +123,11 @@ class EditProfileViewController: UIViewController {
                 makeUserGroup.leave()
             }
         }
-        if data != nil {
-            makeUserGroup.enter()
-            DispatchQueue.global().async {
-                self.viewModel.addUserImage(userEmail: self.userEmail, data: data!) {
-                    print("addUserImage Success")
-                    makeUserGroup.leave()
-                }
+        makeUserGroup.enter()
+        DispatchQueue.global().async {
+            self.viewModel.addUserImage(email: self.userEmail, image: self.userImage) {
+                print("addUserImage Success")
+                makeUserGroup.leave()
             }
         }
         makeUserGroup.notify(queue: .main) {
@@ -146,8 +142,6 @@ class EditProfileViewController: UIViewController {
             destinationVC.userPW = userPW
         }
     }
-    
-
 }
 
 //MARK: - UI Functions
@@ -230,5 +224,4 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
-    
 }

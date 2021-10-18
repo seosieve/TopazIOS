@@ -10,8 +10,7 @@ import Firebase
 import FirebaseFirestore
 
 class EditProfileViewModel {
-    
-    let collection = Firestore.firestore().collection("UserDataBase")
+    let database = Firestore.firestore()
     let storage = Storage.storage()
     
     func isNicknameValid(_ nickname: String?) -> Bool {
@@ -21,6 +20,7 @@ class EditProfileViewModel {
     }
     
     func isExist(nickname: String, nicknameHandler: @escaping () -> ()) {
+        let collection = database.collection("UserDataBase")
         collection.whereField("nickname", isEqualTo: nickname).getDocuments { querySnapshot, error in
             if let error = error {
                 print("닉네임 탐색 에러 : \(error)")
@@ -43,8 +43,9 @@ class EditProfileViewModel {
     }
     
     func addUserInfo(_ email: String, _ nickname: String, _ introduce: String, addInfoHandler: @escaping () -> ()) {
-        collection.document(email)
-            .setData(["email": email, "nickname": nickname, "introduce": introduce, "likedPosts": [String]()]) { error in
+        let user = User(email: email, nickname: nickname, introduce: introduce, imageUrl: "", likedPosts: [String](), friends: [String](), exp: 0, collectibles: [String](), topazAlbumUrl: [String]())
+        let collection = database.collection("UserDataBase")
+        collection.document(email).setData(user.dicDataType) { error in
             if let error = error {
                 print("Error saving user data : \(error)")
             } else {
@@ -53,16 +54,26 @@ class EditProfileViewModel {
         }
     }
     
-    func addUserImage(userEmail: String, data: Data, addImageHandler: @escaping () -> ()) {
-        let imageRef = storage.reference().child("UserProfileImages/\(userEmail).png")
-        imageRef.putData(data, metadata: nil) {
-            _, error in
+    func addUserImage(email: String, image: UIImage, addUserImageHandler: @escaping () -> ()) {
+        let imageRef = storage.reference().child("UserProfileImages/\(email).png")
+        let data = image.pngData()!
+        imageRef.putData(data, metadata: nil) { _, error in
             if let error = error {
                 print("프로필 사진 저장 에러 : \(error)")
             } else {
-                addImageHandler()
+                imageRef.downloadURL { url, error in
+                    guard let url = url else { return }
+                    self.addImageUrl(email: email, url: url)
+                    addUserImageHandler()
+                }
             }
         }
+    }
+    
+    func addImageUrl(email: String, url: URL) {
+        let urlString = "\(url)"
+        let document = database.collection("UserDataBase").document(email)
+        document.updateData(["imageUrl": urlString])
     }
     
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {

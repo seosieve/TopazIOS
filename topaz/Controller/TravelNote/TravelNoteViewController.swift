@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import Lottie
+import Kingfisher
 
 class TravelNoteViewController: UIViewController {
 
@@ -24,6 +25,10 @@ class TravelNoteViewController: UIViewController {
     let viewModel = TravelNoteViewModel()
     let userdefault = UserDefaults.standard
     
+    var imageUrl: String?
+    var exp: Int?
+    var collectibles: [String]?
+    var topazAlbumUrl: [String]?
     let backgroundView = UIView()
     let lottieView = AnimationView(name: "Loading")
     
@@ -37,10 +42,16 @@ class TravelNoteViewController: UIViewController {
             makeCircle(target: collection, color: "MintBlue", width: 0)
             makeShadow(target: collection, radius: collection.frame.size.height/2, width: 3, height: 3, opacity: 0.2)
         }
-        makeUserProfile()
-        makeUserImage {
-            self.backgroundView.removeFromSuperview()
-            self.lottieView.removeFromSuperview()
+        viewModel.getUserDataBase(email: userdefault.string(forKey: "email")!) { imageUrl, exp, collectibles, topazAlbumUrl in
+            self.imageUrl = imageUrl
+            self.exp = exp
+            self.collectibles = collectibles
+            self.topazAlbumUrl = topazAlbumUrl
+            self.makeUserProfile()
+            self.makeUserImage {
+                self.backgroundView.removeFromSuperview()
+                self.lottieView.removeFromSuperview()
+            }
         }
     }
     
@@ -55,10 +66,12 @@ class TravelNoteViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMyProfileEdit" {
             let destinationVC = segue.destination as! MyProfileEditViewController
+            destinationVC.imageUrl = imageUrl
             destinationVC.delegate = self
         }
     }
 }
+
 //MARK: - UI Functions
 extension TravelNoteViewController {
     func makeUserProfile() {
@@ -66,43 +79,44 @@ extension TravelNoteViewController {
             nickname.text = userdefault.string(forKey: "nickname")!
             email.text = userdefault.string(forKey: "email")!
             introduce.text = userdefault.string(forKey: "introduce")!
-            let nicknameCount = nickname.text!.count
-            switch nicknameCount {
-            case 1:
-                nicknameConstraintW.constant = CGFloat(23)
-            case 2:
-                nicknameConstraintW.constant = CGFloat(45)
-            case 3:
-                nicknameConstraintW.constant = CGFloat(67)
-            case 4:
-                nicknameConstraintW.constant = CGFloat(89)
-            default:
-                nicknameConstraintW.constant = CGFloat(0)
-            }
+            makeNicknameLabel()
         }
     }
     
-    func makeUserImage(imageHandler: @escaping () -> ()) {
-        if Auth.auth().currentUser != nil {
-            viewModel.getUserImage(email: userdefault.string(forKey: "email")!) { image in
-                if let image = image {
-                    self.profileImage.image = image
-                }
-                imageHandler()
-            }
+    func makeNicknameLabel() {
+        let nicknameCount = nickname.text!.count
+        switch nicknameCount {
+        case 1:
+            nicknameConstraintW.constant = CGFloat(23)
+        case 2:
+            nicknameConstraintW.constant = CGFloat(45)
+        case 3:
+            nicknameConstraintW.constant = CGFloat(67)
+        case 4:
+            nicknameConstraintW.constant = CGFloat(89)
+        default:
+            nicknameConstraintW.constant = CGFloat(0)
         }
+    }
+    
+    func makeUserImage(userImageHandler: @escaping () -> ()) {
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 96, height: 96))
+        let url = URL(string: imageUrl!)!
+        profileImage.kf.setImage(with:url, options: [.processor(processor)])
+        userImageHandler()
     }
 }
 
 //MARK: - EditDelegate
 extension TravelNoteViewController: EditDelegate {
-    func profileChange(_ dataChanged: Bool, _ imageChanged: Bool) {
+    func profileChange(url: String, _ dataChanged: Bool, _ imageChanged: Bool) {
+        self.imageUrl = url
         if dataChanged {
             makeUserProfile()
         }
         if imageChanged {
             loadingAnimation(backgroundView, lottieView, view: self.view)
-            makeUserImage {
+            makeUserImage{
                 self.backgroundView.removeFromSuperview()
                 self.lottieView.removeFromSuperview()
             }

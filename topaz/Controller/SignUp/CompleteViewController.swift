@@ -13,7 +13,6 @@ class CompleteViewController: UIViewController {
     @IBOutlet weak var completeAnimationContainer: UIView!
     @IBOutlet weak var loginButton: UIButton!
     
-    
     let viewModel = CompleteViewModel()
     
     var userEmail: String = ""

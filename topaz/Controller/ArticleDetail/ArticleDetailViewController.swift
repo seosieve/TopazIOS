@@ -42,6 +42,9 @@ class ArticleDetailViewController: UIViewController {
         mainDetailImageTableView.register(ArticleDetailImageTableViewCell.nib(), forCellReuseIdentifier: "MainDetailImageTableViewCell")
         mainDetailImageTableView.dataSource = self
         mainDetailImageTableView.delegate = self
+        
+        viewModel.increaseViews(currentID: article!.articleID)
+        views.text = "\(self.article!.views + 1)"
         makeArticleUI()
         makeTableViewHeight()
     }
@@ -90,6 +93,7 @@ class ArticleDetailViewController: UIViewController {
         if segue.identifier == "goToModify" {
             let destinationVC = segue.destination as! ModifyViewController
             destinationVC.article = article
+            destinationVC.modifyDelegate = self
         }
     }
 }
@@ -99,10 +103,16 @@ extension ArticleDetailViewController {
     func makeArticleUI() {
         // 여행국가 설정
         let countryCount = article!.country.count
+        for index in 0...2 {
+            countryHead[index].setTitle(nil, for: .normal)
+            countryTail[index].setTitle(nil, for: .normal)
+            makeCircle(target: countryHead[index], width: 0)
+            makeCircle(target: countryTail[index], width: 0)
+        }
         for index in 0...countryCount-1 {
             countryHead[index].setTitle(article!.country[index], for: .normal)
-            makeCircle(target: countryHead[index], width: 1)
             countryTail[index].setTitle(countryHead[index].currentTitle, for: .normal)
+            makeCircle(target: countryHead[index], width: 1)
             makeCircle(target: countryTail[index], width: 1)
         }
         // Head부분 설정
@@ -132,9 +142,7 @@ extension ArticleDetailViewController {
         detailTailText.text = article!.tailText
         // Tail부분 설정
         makeCircle(target: likesButton)
-        viewModel.increaseViews(currentID: article!.articleID)
         likes.text = "\(self.article!.likes)"
-        views.text = "\(self.article!.views + 1)"
     }
     
     func setGradient() {
@@ -169,7 +177,10 @@ extension ArticleDetailViewController {
     func deleteAndModifyAlert() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let modify = UIAlertAction(title: "수정하기", style: .default) { action in
-            self.performSegue(withIdentifier: "goToModify", sender: action)
+            self.viewModel.getArticle(articleID: self.article!.articleID) { article in
+                self.article = article
+                self.performSegue(withIdentifier: "goToModify", sender: action)
+            }
         }
         let delete = UIAlertAction(title: "삭제하기", style: .default) { action in
             self.deleteConfirmAlert()
@@ -275,3 +286,15 @@ extension ArticleDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
 }
 
+//MARK: - ModifyArticleDelegate
+extension ArticleDetailViewController: ModifyArticleDelegate {
+    func modifyArticle(modifyArticleHandler: @escaping () -> ()) {
+        viewModel.getArticle(articleID: article!.articleID) { article in
+            self.article = article
+            self.makeArticleUI()
+            self.mainDetailImageTableView.reloadData()
+            self.makeTableViewHeight()
+            modifyArticleHandler()
+        }
+    }
+}

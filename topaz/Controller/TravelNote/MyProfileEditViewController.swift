@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Lottie
+import Kingfisher
 
 protocol EditDelegate {
-    func profileChange(_ dataChanged: Bool, _ imageChanged: Bool)
+    func profileChange(url: String, _ dataChanged: Bool, _ imageChanged: Bool)
 }
 
 class MyProfileEditViewController: UIViewController {
@@ -25,13 +27,15 @@ class MyProfileEditViewController: UIViewController {
     
     let viewModel = MyProfileEditViewModel()
     let imagePicker = UIImagePickerController()
-    var changedImage: UIImage?
+    var delegate: EditDelegate?
     
+    var changedImage: UIImage?
+    var imageUrl: String?
     let email = UserDefaults.standard.string(forKey: "email")!
     let originalNickname = UserDefaults.standard.string(forKey: "nickname")!
     let originalIntroduce = UserDefaults.standard.string(forKey: "introduce")!
-    
-    var delegate: EditDelegate?
+    let backgroundView = UIView()
+    let lottieView = AnimationView(name: "Loading")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,17 +43,20 @@ class MyProfileEditViewController: UIViewController {
         makeCircle(target: profileAdd, color: "MintBlue", width: 3)
         makeBorder(target: nicknameBorder, radius: 6, isFilled: false)
         makeBorder(target: introduceBorder, radius: 6, isFilled: false)
-        nickname.text = originalNickname
-        introduce.text = originalIntroduce
-        viewModel.getUserImage(email: email) { image in
-            self.profileAdd.setImage(image, for: .normal)
-        }
         
         imagePicker.delegate = self
         nickname.delegate = self
         introduce.delegate = self
         //nickname 입력감지
         nickname.addTarget(self, action: #selector(nicknameDidChange), for: .editingChanged)
+        
+        loadingAnimation(backgroundView, lottieView, view: self.view)
+        nickname.text = originalNickname
+        introduce.text = originalIntroduce
+        makeUserImage{
+            self.backgroundView.removeFromSuperview()
+            self.lottieView.removeFromSuperview()
+        }
     }
     
     @IBAction func profileAddPressed(_ sender: UIButton) {
@@ -69,12 +76,12 @@ class MyProfileEditViewController: UIViewController {
     
     
     @IBAction func profileEditCompletePressed(_ sender: UIBarButtonItem) {
-        let profileEditGroup = DispatchGroup()
         let data = changedImage?.pngData()
         let nickname = nickname.text!
         let introduce = introduce.text!
         var dataChanged = false
         var imageChanged = false
+        let profileEditGroup = DispatchGroup()
         
         if nickname != originalNickname || introduce != originalIntroduce {
             profileEditGroup.enter()
@@ -88,7 +95,6 @@ class MyProfileEditViewController: UIViewController {
                 }
             }
         }
-        
         if nickname != originalNickname {
             profileEditGroup.enter()
             DispatchQueue.global().async {
@@ -101,19 +107,19 @@ class MyProfileEditViewController: UIViewController {
                 }
             }
         }
-        
         if data != nil {
             profileEditGroup.enter()
             DispatchQueue.global().async {
-                self.viewModel.addUserImage(userEmail: self.email, data: data!) {
+                self.viewModel.addUserImage(email: self.email, data: data!) { url in
                     print("addUserImage Success")
                     imageChanged = true
+                    self.imageUrl = url
                     profileEditGroup.leave()
                 }
             }
         }
         profileEditGroup.notify(queue: .main) {
-            self.delegate?.profileChange(dataChanged, imageChanged)
+            self.delegate?.profileChange(url: self.imageUrl!, dataChanged, imageChanged)
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -151,6 +157,13 @@ class MyProfileEditViewController: UIViewController {
 
 //MARK: - UI Functions
 extension MyProfileEditViewController {
+    func makeUserImage(userImageHandler: @escaping () -> ()) {
+        let processor = DownsamplingImageProcessor(size: CGSize(width: 99, height: 99))
+        let url = URL(string: imageUrl!)!
+        profileAdd.kf.setImage(with:url, for: .normal, options: [.processor(processor)])
+        userImageHandler()
+    }
+    
     func correctAnimation() {
         self.nicknameWarning.alpha = 0
         self.nicknameWarningY.constant = -9.5
@@ -228,5 +241,4 @@ extension MyProfileEditViewController: UIImagePickerControllerDelegate, UINaviga
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
-    
 }
