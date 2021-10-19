@@ -29,12 +29,13 @@ class ArticleDetailViewModel {
                     let title = document.get("title") as! String
                     let mainText = document.get("mainText") as! String
                     let imageText = document.get("imageText") as! [String]
+                    let imageName = document.get("imageName") as! [Int]
                     let imageUrl = document.get("imageUrl") as! [String]
                     let tailText = document.get("tailText") as! String
                     let likes = document.get("likes") as! Int
                     let views = document.get("views") as! Int
                     
-                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
+                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
                     
                     articleHandler(article)
                 }
@@ -59,22 +60,17 @@ class ArticleDetailViewModel {
         }
     }
     
-    func getUserImage(email: String, getImageHandler: @escaping (UIImage) -> ()) {
+    func getUserImage(email: String, getImageHandler: @escaping (URL) -> ()) {
         DispatchQueue.global().async {
-            let imageRef = self.storage.reference(withPath: "UserProfileImages/\(email).png")
-            imageRef.getData(maxSize: 24*100*100) { data, error in
+            let collection = self.database.collection("UserDataBase")
+            collection.document(email).getDocument { document, error in
                 if let error = error {
-                    print("프로필 이미지 다운로드 에러 : \(error)")
-                    let image = UIImage(named: "DefaultUserImage")!
-                    DispatchQueue.main.async {
-                        getImageHandler(image)
-                    }
+                    print("글쓴이 프로필 이미지 다운로드 에러 : \(error)")
                 } else {
-                    if let data = data {
-                        let image = UIImage(data: data)!
-                        DispatchQueue.main.async {
-                            getImageHandler(image)
-                        }
+                    if let document = document {
+                        let imageUrl = document.get("imageUrl") as! String
+                        let url = URL(string: imageUrl)!
+                        getImageHandler(url)
                     }
                 }
             }
@@ -112,24 +108,6 @@ class ArticleDetailViewModel {
             database.collection("Articles").document(currentID).updateData(["likes" : FieldValue.increment(-1.0)]) { error in
                 if let error = error {
                     print("likes 업데이트 에러: \(error)")
-                }
-            }
-        }
-    }
-    
-    func getExperienceImage(articleID: String, index: Int, getImageHandler: @escaping (UIImage) -> ()) {
-        DispatchQueue.global().async {
-            let imageRef = self.storage.reference(withPath: "Articles/\(articleID)/\(index).png")
-            imageRef.getData(maxSize: 8*500*500) { data, error in
-                if let error = error {
-                    print("글 이미지 다운로드 에러 : \(error)")
-                } else {
-                    if let data = data {
-                        let image = UIImage(data: data)!
-                        DispatchQueue.main.async {
-                            getImageHandler(image)
-                        }
-                    }
                 }
             }
         }

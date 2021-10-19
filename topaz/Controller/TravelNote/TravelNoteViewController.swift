@@ -48,10 +48,9 @@ class TravelNoteViewController: UIViewController {
             self.collectibles = collectibles
             self.topazAlbumUrl = topazAlbumUrl
             self.makeUserProfile()
-            self.makeUserImage {
-                self.backgroundView.removeFromSuperview()
-                self.lottieView.removeFromSuperview()
-            }
+            self.makeUserImage()
+            self.backgroundView.removeFromSuperview()
+            self.lottieView.removeFromSuperview()
         }
     }
     
@@ -99,11 +98,9 @@ extension TravelNoteViewController {
         }
     }
     
-    func makeUserImage(userImageHandler: @escaping () -> ()) {
-        let processor = DownsamplingImageProcessor(size: CGSize(width: 96, height: 96))
+    func makeUserImage() {
         let url = URL(string: imageUrl!)!
-        profileImage.kf.setImage(with:url, options: [.processor(processor)])
-        userImageHandler()
+        profileImage.kf.setImage(with: url)
     }
 }
 
@@ -115,11 +112,7 @@ extension TravelNoteViewController: EditDelegate {
             makeUserProfile()
         }
         if imageChanged {
-            loadingAnimation(backgroundView, lottieView, view: self.view)
-            makeUserImage{
-                self.backgroundView.removeFromSuperview()
-                self.lottieView.removeFromSuperview()
-            }
+            makeUserImage()
         }
     }
 }

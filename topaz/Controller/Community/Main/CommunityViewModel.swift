@@ -32,17 +32,20 @@ class CommunityViewModel {
                     let title = document.get("title") as! String
                     let mainText = document.get("mainText") as! String
                     let imageText = document.get("imageText") as! [String]
+                    let imageName = document.get("imageName") as! [Int]
                     let imageUrl = document.get("imageUrl") as! [String]
                     let tailText = document.get("tailText") as! String
                     let likes = document.get("likes") as! Int
                     let views = document.get("views") as! Int
                     
-                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
+                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
                     articleArr.append(article)
                 }
             }
             articleArr.sort{$0.likes > $1.likes}
-            if articleArr.count < 5 {
+            if articleArr.count == 0 {
+                articleHandler(self.collectionArticleArr)
+            } else if articleArr.count < 5 {
                 for index in 0...articleArr.count-1 {
                     self.collectionArticleArr.append(articleArr[index])
                 }
@@ -74,12 +77,13 @@ class CommunityViewModel {
                     let title = document.get("title") as! String
                     let mainText = document.get("mainText") as! String
                     let imageText = document.get("imageText") as! [String]
+                    let imageName = document.get("imageName") as! [Int]
                     let imageUrl = document.get("imageUrl") as! [String]
                     let tailText = document.get("tailText") as! String
                     let likes = document.get("likes") as! Int
                     let views = document.get("views") as! Int
                     
-                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
+                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
                     self.tableArticleArr.append(article)
                 }
                 articleHandler(self.tableArticleArr)

@@ -24,11 +24,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        makeNicknameLabel()
         makeEarthScene()
-        
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
         sceneView.addGestureRecognizer(pinchRecognizer)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 닉네임 변경하면 바로 바꾸기 위해 viewWillAppear에 배치
+        makeNicknameLabel()
     }
     
     @objc func pinchGesture(_ sender: UIPinchGestureRecognizer) {

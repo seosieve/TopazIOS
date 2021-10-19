@@ -83,6 +83,10 @@ class MyProfileEditViewController: UIViewController {
         var imageChanged = false
         let profileEditGroup = DispatchGroup()
         
+        self.view.endEditing(true)
+        self.navigationController?.isNavigationBarHidden = true
+        loadingAnimation(backgroundView, lottieView, view: self.view)
+        
         if nickname != originalNickname || introduce != originalIntroduce {
             profileEditGroup.enter()
             DispatchQueue.global().async {
@@ -120,6 +124,9 @@ class MyProfileEditViewController: UIViewController {
         }
         profileEditGroup.notify(queue: .main) {
             self.delegate?.profileChange(url: self.imageUrl!, dataChanged, imageChanged)
+            self.navigationController?.isNavigationBarHidden = false
+            self.backgroundView.removeFromSuperview()
+            self.lottieView.removeFromSuperview()
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -158,9 +165,8 @@ class MyProfileEditViewController: UIViewController {
 //MARK: - UI Functions
 extension MyProfileEditViewController {
     func makeUserImage(userImageHandler: @escaping () -> ()) {
-        let processor = DownsamplingImageProcessor(size: CGSize(width: 99, height: 99))
         let url = URL(string: imageUrl!)!
-        profileAdd.kf.setImage(with:url, for: .normal, options: [.processor(processor)])
+        profileAdd.kf.setImage(with:url, for: .normal)
         userImageHandler()
     }
     
@@ -182,7 +188,6 @@ extension MyProfileEditViewController: UITextFieldDelegate {
         if string == " " { return false }
         guard let str = nickname.text else { return true }
         let length = str.count + string.count - range.length
-        print(length)
         return length <= 5
     }
     
@@ -199,7 +204,6 @@ extension MyProfileEditViewController: UITextViewDelegate {
         }
         guard let str = introduce.text else { return true }
         let length = str.count + text.count - range.length
-        print(length)
         return length <= 30
     }
     

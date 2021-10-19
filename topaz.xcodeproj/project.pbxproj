@@ -51,6 +51,11 @@
 		4E64D12A26EF5BA100DB3FDB /* CountryAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E64D12826EF5BA100DB3FDB /* CountryAddCollectionViewCell.swift */; };
 		4E64D12B26EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E64D12926EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib */; };
 		4E7FD100271D83DA00867F16 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FD0FF271D83DA00867F16 /* UserModel.swift */; };
+		4E7FD102271EAB2B00867F16 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FD101271EAB2B00867F16 /* ReportViewController.swift */; };
+		4E7FD104271EAB3B00867F16 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FD103271EAB3B00867F16 /* ReportViewModel.swift */; };
+		4E7FD109271ECEBA00867F16 /* ReportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FD107271ECEBA00867F16 /* ReportTableViewCell.swift */; };
+		4E7FD10A271ECEBA00867F16 /* ReportTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E7FD108271ECEBA00867F16 /* ReportTableViewCell.xib */; };
+		4E7FD10C271ED29600867F16 /* ReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FD10B271ED29600867F16 /* ReportModel.swift */; };
 		4E8A589F2703215C00C8A646 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A589E2703215C00C8A646 /* ArticleDetailViewModel.swift */; };
 		4E8A58A527034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A58A327034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift */; };
 		4E8A58A627034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A58A427034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib */; };
@@ -162,6 +167,11 @@
 		4E64D12826EF5BA100DB3FDB /* CountryAddCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E64D12926EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryAddCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E7FD0FF271D83DA00867F16 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		4E7FD101271EAB2B00867F16 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		4E7FD103271EAB3B00867F16 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
+		4E7FD107271ECEBA00867F16 /* ReportTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTableViewCell.swift; sourceTree = "<group>"; };
+		4E7FD108271ECEBA00867F16 /* ReportTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportTableViewCell.xib; sourceTree = "<group>"; };
+		4E7FD10B271ED29600867F16 /* ReportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportModel.swift; sourceTree = "<group>"; };
 		4E8A589E2703215C00C8A646 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		4E8A58A327034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		4E8A58A427034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleDetailImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -324,6 +334,10 @@
 				4E1C2E5D2717240700B97EB0 /* CountryModifyViewController.swift */,
 				4E1C2E5F27172FDF00B97EB0 /* CountryModifyCollectionViewCell.swift */,
 				4E1C2E6027172FDF00B97EB0 /* CountryModifyCollectionViewCell.xib */,
+				4E7FD101271EAB2B00867F16 /* ReportViewController.swift */,
+				4E7FD103271EAB3B00867F16 /* ReportViewModel.swift */,
+				4E7FD107271ECEBA00867F16 /* ReportTableViewCell.swift */,
+				4E7FD108271ECEBA00867F16 /* ReportTableViewCell.xib */,
 			);
 			path = ArticleDetail;
 			sourceTree = "<group>";
@@ -493,6 +507,7 @@
 				4EE9A3AA26F2D1BA00395B2F /* ArticleModel.swift */,
 				4E1C2E572716C72200B97EB0 /* CountryModel.swift */,
 				4E7FD0FF271D83DA00867F16 /* UserModel.swift */,
+				4E7FD10B271ED29600867F16 /* ReportModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -572,6 +587,7 @@
 				4E9DCB3426C1781F001D218A /* Poppins-Thin.ttf in Resources */,
 				4E9DCB2326C177FB001D218A /* NotoSansKR-Regular.otf in Resources */,
 				4E8A58A627034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib in Resources */,
+				4E7FD10A271ECEBA00867F16 /* ReportTableViewCell.xib in Resources */,
 				4E9DCB2D26C17810001D218A /* Poppins-Italic.ttf in Resources */,
 				4E9DCB2126C177F3001D218A /* NotoSansKR-Light.otf in Resources */,
 				4E8A58CA270584A900C8A646 /* FifthOnboarding.json in Resources */,
@@ -681,6 +697,7 @@
 				4E1C2E5B2717210700B97EB0 /* ModifyImageTableViewCell.swift in Sources */,
 				4E8A58C22705544300C8A646 /* FourthPageViewController.swift in Sources */,
 				4E533F3C26E08A0900527FC2 /* TravelNoteViewController.swift in Sources */,
+				4E7FD10C271ED29600867F16 /* ReportModel.swift in Sources */,
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
 				4E7FD100271D83DA00867F16 /* UserModel.swift in Sources */,
 				4E1C2E6127172FDF00B97EB0 /* CountryModifyCollectionViewCell.swift in Sources */,
@@ -706,7 +723,9 @@
 				4E1C2E562716808400B97EB0 /* ModifyViewModel.swift in Sources */,
 				4E8A58C42705545700C8A646 /* FifthPageViewController.swift in Sources */,
 				4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */,
+				4E7FD104271EAB3B00867F16 /* ReportViewModel.swift in Sources */,
 				4E0FAEAB26C0EE99003D80E3 /* AppDelegate.swift in Sources */,
+				4E7FD109271ECEBA00867F16 /* ReportTableViewCell.swift in Sources */,
 				4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */,
 				4E0FAEAD26C0EE99003D80E3 /* SceneDelegate.swift in Sources */,
 				4E01361C26FA25D50071F31D /* CompleteViewModel.swift in Sources */,
@@ -714,6 +733,7 @@
 				4E056E0226C3B50100FDF0F3 /* GlobalUIFunctions.swift in Sources */,
 				4E056DF326C25EEB00FDF0F3 /* EditAccountViewController.swift in Sources */,
 				4E9B9BBD26EDE50800ABCE87 /* TravelNoteViewModel.swift in Sources */,
+				4E7FD102271EAB2B00867F16 /* ReportViewController.swift in Sources */,
 				4E533F3426E060F500527FC2 /* HomeViewController.swift in Sources */,
 				4E8A58A527034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift in Sources */,
 				4EE9A3B726F758ED00395B2F /* ArticleDetailViewController.swift in Sources */,

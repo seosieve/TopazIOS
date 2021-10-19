@@ -128,13 +128,11 @@ extension CountryAddViewController: UICollectionViewDelegate, UICollectionViewDa
             collectionView.deselectItem(at: indexPath, animated: true)
             popUpToast()
         }
-        print(selectedCountryArr)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         selectedCountryArr = selectedCountryArr.filter{$0 != country.countryName[indexPath.row]}
         drawSelectedCountry()
-        print(selectedCountryArr)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

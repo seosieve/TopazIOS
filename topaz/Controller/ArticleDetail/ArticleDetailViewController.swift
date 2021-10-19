@@ -44,6 +44,7 @@ class ArticleDetailViewController: UIViewController {
         mainDetailImageTableView.delegate = self
         
         viewModel.increaseViews(currentID: article!.articleID)
+        article?.views += 1
         views.text = "\(self.article!.views + 1)"
         makeArticleUI()
         makeTableViewHeight()
@@ -55,12 +56,14 @@ class ArticleDetailViewController: UIViewController {
             likesButton.backgroundColor = UIColor(named: "MintBlue")
             likes.textColor = UIColor(named: "MintBlue")
             viewModel.increaseLikes(currentID: article!.articleID, isIncrease: true)
+            article?.likes += 1
             likes.text = "\(Int(likes.text!)! + 1)"
         } else {
             sender.tintColor = UIColor(named: "Gray1")
             likesButton.backgroundColor = UIColor(named: "Gray2")
             likes.textColor = UIColor(named: "Gray4")
             viewModel.increaseLikes(currentID: article!.articleID, isIncrease: false)
+            article?.likes -= 1
             likes.text = "\(Int(likes.text!)! - 1)"
         }
     }
@@ -71,12 +74,14 @@ class ArticleDetailViewController: UIViewController {
             likeBarItem.tintColor = UIColor(named: "MintBlue")
             likes.textColor = UIColor(named: "MintBlue")
             viewModel.increaseLikes(currentID: article!.articleID, isIncrease: true)
+            article?.likes += 1
             likes.text = "\(Int(likes.text!)! + 1)"
         } else {
             sender.backgroundColor = UIColor(named: "Gray2")
             likeBarItem.tintColor = UIColor(named: "Gray1")
             likes.textColor = UIColor(named: "Gray4")
             viewModel.increaseLikes(currentID: article!.articleID, isIncrease: false)
+            article?.likes -= 1
             likes.text = "\(Int(likes.text!)! - 1)"
         }
     }
@@ -130,8 +135,8 @@ extension ArticleDetailViewController {
         detailTitle.text = article!.title
         detailNickname.text = article!.auther
         detailstrWrittenDate.text = article!.strWrittenDate
-        viewModel.getUserImage(email: article!.autherEmail) { image in
-            self.detailAutherImage.image = image
+        viewModel.getUserImage(email: article!.autherEmail) { url in
+            self.detailAutherImage.kf.setImage(with: url)
             makeCircle(target: self.detailAutherImage)
         }
         // Body부분 설정
@@ -177,10 +182,7 @@ extension ArticleDetailViewController {
     func deleteAndModifyAlert() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let modify = UIAlertAction(title: "수정하기", style: .default) { action in
-            self.viewModel.getArticle(articleID: self.article!.articleID) { article in
-                self.article = article
-                self.performSegue(withIdentifier: "goToModify", sender: action)
-            }
+            self.performSegue(withIdentifier: "goToModify", sender: action)
         }
         let delete = UIAlertAction(title: "삭제하기", style: .default) { action in
             self.deleteConfirmAlert()
@@ -224,7 +226,7 @@ extension ArticleDetailViewController {
     func reportAlert() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let report = UIAlertAction(title: "신고하기", style: .default) { action in
-            
+            self.performSegue(withIdentifier: "goToReport", sender: action)
         }
         let cancle = UIAlertAction(title: "취소", style: .cancel)
         report.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")

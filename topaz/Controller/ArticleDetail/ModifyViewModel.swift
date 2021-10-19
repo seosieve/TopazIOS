@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 
 class ModifyViewModel {
-    let collection = Firestore.firestore().collection("Articles")
+    let database = Firestore.firestore()
     
     func makeCountry(_ countryButton: [UIButton]) -> [String] {
         var countryArr = [String]()
@@ -66,51 +66,53 @@ class ModifyViewModel {
     }
     
     
-    func modifyArticle(articleID: String, country: [String], title: UITextView, mainText: UITextView, imageText: [String], tailText: String, likes: Int, views: Int, modifyArticleHandler: @escaping (String) -> ()) {
-        let document = collection.document(articleID)
-        
+    func modifyArticle(articleID: String, country: [String], title: UITextView, mainText: UITextView, imageText: [String], imageName: [Int], imageUrl: [String], tailText: String, likes: Int, views: Int, modifyArticleHandler: @escaping () -> ()) {
+        let document = database.collection("Articles").document(articleID)
         let nickname = UserDefaults.standard.string(forKey: "nickname")!
         let email = UserDefaults.standard.string(forKey: "email")!
         let writtenDate = NSDate().timeIntervalSince1970
         let strWrittenDate = makeDate()
         let title = title.text ?? ""
         let mainText = mainText.text ?? ""
-        let imageText = imageText
-        let imageUrl = [String]()
-        let tailText = tailText
-        let country = country
         
-        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageUrl: imageUrl ,tailText: tailText, likes: likes, views: views)
+        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl ,tailText: tailText, likes: likes, views: views)
         document.setData(article.dicDataType){ error in
             if let error = error {
                 print("FireStore 저장 에러 : \(error)")
             } else {
-                modifyArticleHandler(articleID)
+                modifyArticleHandler()
             }
         }
     }
     
-    func modifyExperienceImage(articleID: String, image: UIImage, index: Int, modifyExperienceImageHandler: @escaping (URL) -> ()) {
+    func modifyExperienceImage(_ articleID: String, _ image: UIImage, modifyExperienceImageHandler: @escaping (String, Int) -> ()) {
         let reference = Storage.storage().reference()
-            let imageRef = reference.child("Articles/\(articleID)/\(index).png")
-            let data = image.pngData()
-            imageRef.putData(data!, metadata: nil) { _, error in
-                if let error = error {
-                    print("프로필 사진 저장 에러 : \(error)")
-                } else {
-                    imageRef.downloadURL { url, error in
-                        guard let url = url else { return }
-                        modifyExperienceImageHandler(url)
-                    }
+        let timeStamp = Int(NSDate().timeIntervalSince1970)
+        let imageRef = reference.child("Articles/\(articleID)/\(timeStamp).png")
+        let data = image.pngData()!
+        imageRef.putData(data, metadata: nil) { _, error in
+            if let error = error {
+                print("프로필 사진 저장 에러 : \(error)")
+            } else {
+                imageRef.downloadURL { url, error in
+                    guard let url = url else { return }
+                    let urlString = "\(url)"
+                    modifyExperienceImageHandler(urlString, timeStamp)
                 }
             }
+        }
     }
     
-    func modifyImageUrl(articleID: String, url: URL, modifyImageUrlHandler: @escaping () -> ()) {
-        let urlString = "\(url)"
-        let document = collection.document(articleID)
-        document.updateData(["imageUrl" : FieldValue.arrayUnion([urlString])])
-        modifyImageUrlHandler()
+    func deleteExperienceImage(_ articleID: String, _ timeStamp: Int, deleteExperienceImageHandler: @escaping () -> ()) {
+        let reference = Storage.storage().reference()
+        let imageRef = reference.child("Articles/\(articleID)/\(timeStamp).png")
+        imageRef.delete { error in
+            if let error = error {
+                print("프로필 사진 저장 에러 : \(error)")
+            } else {
+                deleteExperienceImageHandler()
+            }
+        }
     }
 }
 

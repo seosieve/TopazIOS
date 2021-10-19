@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import Lottie
+import Kingfisher
 
 class WrittingViewController: UIViewController {
 
@@ -27,12 +28,13 @@ class WrittingViewController: UIViewController {
     let viewModel = WrittingViewModel()
     private let imagePicker = UIImagePickerController()
     
+    let articleID = Firestore.firestore().collection("Articles").document().documentID
+    var selectedCountryArr = [String]()
+    var imageUrlArr = [String]()
+    var imageNameArr = [Int]()
+    var textArr = [String]()
     let backgroundView = UIView()
     let lottieView = AnimationView(name: "Loading")
-    
-    var selectedCountryArr = [String]()
-    var imageArr = [UIImage]()
-    var textArr = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +71,10 @@ class WrittingViewController: UIViewController {
     }
 
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        for timeStamp in imageNameArr {
+            viewModel.deleteExperienceImage(articleID, timeStamp) {
+            }
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -168,33 +174,13 @@ extension WrittingViewController {
             loadingAnimation(self.backgroundView, self.lottieView, view: self.view)
             self.registerButton.isEnabled = false
             self.view.endEditing(true)
-            let document = Firestore.firestore().collection("Articles").document()
-            let articleID = document.documentID
             let imageText = self.viewModel.makeImageText(imageText: self.textArr)
             let tailText = self.viewModel.makeTailText(tailText: self.tailTextView)
             
-            self.viewModel.addArticle(document: document, articleID: articleID, country: self.viewModel.makeCountry(self.countryButton), title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, tailText: tailText) { articleID in
-                if self.imageArr.count == 0 {
-                    // 이미지가 없을 때 이미지 저장하지 않고 dismiss
-                    self.backgroundView.removeFromSuperview()
-                    self.lottieView.removeFromSuperview()
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    // 이미지가 있을 때 이미지 저장하고 dismiss
-                    DispatchQueue.global().async {
-                        for (index, image) in self.imageArr.enumerated() {
-                            self.viewModel.addExperienceImage(articleID: articleID, image: image, index: index) { url in
-                                self.viewModel.addImageUrl(articleID: articleID, url: url) {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                        self.backgroundView.removeFromSuperview()
-                                        self.lottieView.removeFromSuperview()
-                                        self.dismiss(animated: true, completion: nil)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            self.viewModel.addArticle(articleID: self.articleID, country: self.viewModel.makeCountry(self.countryButton), title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, imageName: self.imageNameArr, imageUrl: self.imageUrlArr, tailText: tailText) {
+                self.backgroundView.removeFromSuperview()
+                self.lottieView.removeFromSuperview()
+                self.dismiss(animated: true, completion: nil)
             }
         }
         cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
@@ -282,14 +268,15 @@ extension WrittingViewController: UITextViewDelegate {
 extension WrittingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imageArr.count
+        return imageUrlArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WrittingAddImageTableViewCell", for: indexPath) as! WrittingAddImageTableViewCell
         cell.selectionStyle = .none
         makeBorder(target: cell.experienceTextViewBorder, radius: 12, isFilled: true)
-        cell.experienceImage.image = imageArr[indexPath.row]
+        let url = URL(string: imageUrlArr[indexPath.row])!
+        cell.experienceImage.kf.setImage(with: url)
         cell.experienceTextView.text = textArr[indexPath.row]
         // Image 지웠을 때 기존 cell색 따라가는 이슈 대응
         if cell.experienceTextView.text == "사진에 대한 여행경험을 적어주세요." {
@@ -305,7 +292,6 @@ extension WrittingViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.textChanged {[weak tableView, weak self] newText in
             self?.textArr[indexPath.row] = newText
-            print(self!.textArr[indexPath.row])
             DispatchQueue.main.async {
                 tableView?.beginUpdates()
                 self?.makeTableViewHeight()
@@ -319,15 +305,18 @@ extension WrittingViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - DeleteImageDelegate
 extension WrittingViewController: DeleteImageDelegate {
     func deleteImage(index: Int) {
-        imageArr.remove(at: index)
-        textArr.remove(at: index)
-        if textArr.count == 0 {
-            tailTextView.isHidden = true
-            tailTextView.text = "당신의 이야기의 끝맺음을 듣고싶어요."
-            tailTextView.textColor = UIColor(named: "Gray4")
+        viewModel.deleteExperienceImage(articleID, imageNameArr[index]) {
+            self.imageNameArr.remove(at: index)
+            self.imageUrlArr.remove(at: index)
+            self.textArr.remove(at: index)
+            if self.textArr.count == 0 {
+                self.tailTextView.isHidden = true
+                self.tailTextView.text = "당신의 이야기의 끝맺음을 듣고싶어요."
+                self.tailTextView.textColor = UIColor(named: "Gray4")
+            }
+            self.addImageTableView.reloadData()
+            self.makeTableViewHeight()
         }
-        addImageTableView.reloadData()
-        makeTableViewHeight()
     }
 }
 
@@ -350,15 +339,18 @@ extension WrittingViewController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             let image = viewModel.resizeImage(image: img, newWidth: 150)
-            imageArr.append(image)
-            textArr.append("사진에 대한 여행경험을 적어주세요.")
-            addImageTableView.reloadData()
-            makeTableViewHeight()
-        }
-        DispatchQueue.main.async {
-            self.makeTableViewHeight()
-            self.tailTextView.isHidden = false
-            self.imagePicker.dismiss(animated: true, completion: nil)
+            viewModel.addExperienceImage(articleID, image) { url, timeStamp in
+                self.imageUrlArr.append(url)
+                self.imageNameArr.append(timeStamp)
+                self.textArr.append("사진에 대한 여행경험을 적어주세요.")
+                self.addImageTableView.reloadData()
+                self.makeTableViewHeight()
+                DispatchQueue.main.async {
+                    self.makeTableViewHeight()
+                    self.tailTextView.isHidden = false
+                    self.imagePicker.dismiss(animated: true, completion: nil)
+                }
+            }
         }
     }
 }

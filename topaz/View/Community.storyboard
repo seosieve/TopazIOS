@@ -667,7 +667,6 @@
                                         </state>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="xsB-hf-6Jj" eventType="touchUpInside" id="2bl-oo-6ah"/>
-                                            <action selector="backButtonPressed:" destination="1Ng-CP-npj" eventType="touchUpInside" id="d3g-Pl-9HS"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행경험 글쓰기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sma-uU-y6S">

@@ -33,15 +33,20 @@ class ModifyViewController: UIViewController {
     let viewModel = ModifyViewModel()
     private let imagePicker = UIImagePickerController()
     var modifyDelegate: ModifyArticleDelegate?
+    
     var article: Article?
     var selectedCountryArr = [String]()
-    var imageArr = [UIImage]()
+    var imageUrlArr = [String]()
+    var imageNameArr = [Int]()
     var textArr = [String]()
     let backgroundView = UIView()
     let lottieView = AnimationView(name: "Loading")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageUrlArr = article!.imageUrl
+        imageNameArr = article!.imageName
+        
         makeCircle(target: registerButton, color: "MintBlue", width: 0)
         makeCircle(target: addImageButton, color: "MintBlue", width: 0)
         makeCircle(target: addEmojiButton, color: "MintBlue", width: 0)
@@ -148,19 +153,6 @@ extension ModifyViewController {
                 tailTextView.text = article!.tailText
             }
         }
-        // 사진 부분 설정
-        for imageUrl in article!.imageUrl {
-            guard let url = URL(string: imageUrl) else { return }
-            KingfisherManager.shared.retrieveImage(with: url, options: nil, progressBlock: nil) { result in
-                switch result {
-                case .success(let result):
-                    let image = result.image as UIImage
-                    self.imageArr.append(image)
-                case .failure(let error):
-                    print("KingFisher imageUrl 다운로드 에러 : \(error)")
-                }
-            }
-        }
         for imageText in article!.imageText {
             if imageText == "" {
                 textArr.append("사진에 대한 여행경험을 적어주세요.")
@@ -224,31 +216,11 @@ extension ModifyViewController {
             let likes = self.article!.likes
             let views = self.article!.views
             
-            self.viewModel.modifyArticle(articleID: articleID, country: self.viewModel.makeCountry(self.countryButton), title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, tailText: tailText, likes: likes, views: views) { articleID in
-                if self.imageArr.count == 0 {
-                    // 이미지가 없을 때 이미지 저장하지 않고 dismiss
-                    self.modifyDelegate?.modifyArticle() {
-                        self.backgroundView.removeFromSuperview()
-                        self.lottieView.removeFromSuperview()
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                } else {
-                    // 이미지가 있을 때 이미지 저장하고 dismiss
-                    DispatchQueue.global().async {
-                        for (index, image) in self.imageArr.enumerated() {
-                            self.viewModel.modifyExperienceImage(articleID: articleID, image: image, index: index) { url in
-                                self.viewModel.modifyImageUrl(articleID: articleID, url: url) {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                                        self.modifyDelegate?.modifyArticle() {
-                                            self.backgroundView.removeFromSuperview()
-                                            self.lottieView.removeFromSuperview()
-                                            self.dismiss(animated: true, completion: nil)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+            self.viewModel.modifyArticle(articleID: articleID, country: self.viewModel.makeCountry(self.countryButton), title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, imageName: self.imageNameArr, imageUrl: self.imageUrlArr, tailText: tailText, likes: likes, views: views) {
+                self.modifyDelegate?.modifyArticle {
+                    self.backgroundView.removeFromSuperview()
+                    self.lottieView.removeFromSuperview()
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }
@@ -338,14 +310,15 @@ extension ModifyViewController: UITextViewDelegate {
 extension ModifyViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imageArr.count
+        return imageUrlArr.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ModifyImageTableViewCell", for: indexPath) as! ModifyImageTableViewCell
         cell.selectionStyle = .none
         makeBorder(target: cell.experienceTextViewBorder, radius: 12, isFilled: true)
-        cell.experienceImage.image = imageArr[indexPath.row]
+        let url = URL(string: imageUrlArr[indexPath.row])!
+        cell.experienceImage.kf.setImage(with: url)
         cell.experienceTextView.text = textArr[indexPath.row]
         // Image 지웠을 때 기존 cell색 따라가는 이슈 대응
         if cell.experienceTextView.text == "사진에 대한 여행경험을 적어주세요." {
@@ -375,15 +348,18 @@ extension ModifyViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - DeleteImageDelegate
 extension ModifyViewController: ModifyImageDelegate {
     func modifyImage(index: Int) {
-        imageArr.remove(at: index)
-        textArr.remove(at: index)
-        if textArr.count == 0 {
-            tailTextView.isHidden = true
-            tailTextView.text = "당신의 이야기의 끝맺음을 듣고싶어요."
-            tailTextView.textColor = UIColor(named: "Gray4")
+        viewModel.deleteExperienceImage(article!.articleID, imageNameArr[index]) {
+            self.imageNameArr.remove(at: index)
+            self.imageUrlArr.remove(at: index)
+            self.textArr.remove(at: index)
+            if self.textArr.count == 0 {
+                self.tailTextView.isHidden = true
+                self.tailTextView.text = "당신의 이야기의 끝맺음을 듣고싶어요."
+                self.tailTextView.textColor = UIColor(named: "Gray4")
+            }
+            self.modifyImageTableView.reloadData()
+            self.makeTableViewHeight()
         }
-        modifyImageTableView.reloadData()
-        makeTableViewHeight()
     }
 }
 
@@ -406,15 +382,18 @@ extension ModifyViewController: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let img = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             let image = viewModel.resizeImage(image: img, newWidth: 150)
-            imageArr.append(image)
-            textArr.append("사진에 대한 여행경험을 적어주세요.")
-            modifyImageTableView.reloadData()
-            makeTableViewHeight()
-        }
-        DispatchQueue.main.async {
-            self.makeTableViewHeight()
-            self.tailTextView.isHidden = false
-            self.imagePicker.dismiss(animated: true, completion: nil)
+            viewModel.modifyExperienceImage(article!.articleID, image) { url, timeStamp in
+                self.imageUrlArr.append(url)
+                self.imageNameArr.append(timeStamp)
+                self.textArr.append("사진에 대한 여행경험을 적어주세요.")
+                self.modifyImageTableView.reloadData()
+                self.makeTableViewHeight()
+                DispatchQueue.main.async {
+                    self.makeTableViewHeight()
+                    self.tailTextView.isHidden = false
+                    self.imagePicker.dismiss(animated: true, completion: nil)
+                }
+            }
         }
     }
 }

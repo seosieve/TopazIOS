@@ -47,10 +47,12 @@ class CommunityViewController: UIViewController {
         fullArticleTableView.delegate = self
         // CollectionView Animation
         viewModel.getCollectionArticle { articleArr in
-            self.collectionArticleArr = articleArr
-            self.luggageCollectionView.reloadData()
-            DispatchQueue.main.async {
-                self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.moveLuggage), userInfo: nil, repeats: true)
+            if articleArr.count != 0 {
+                self.collectionArticleArr = articleArr
+                self.luggageCollectionView.reloadData()
+                DispatchQueue.main.async {
+                    self.timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.moveLuggage), userInfo: nil, repeats: true)
+                }
             }
         }
     }

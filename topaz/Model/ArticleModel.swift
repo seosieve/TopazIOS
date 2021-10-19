@@ -17,13 +17,14 @@ struct Article {
     let title: String
     let mainText: String
     let imageText: [String]
+    let imageName: [Int]
     let imageUrl: [String]
     let tailText: String
-    let likes: Int
-    let views: Int
+    var likes: Int
+    var views: Int
     
     // [String:Any] 타입으로 변환
     var dicDataType: [String: Any] {
-        return ["articleID": articleID, "auther": auther, "autherEmail": autherEmail, "writtenDate": writtenDate, "strWrittenDate": strWrittenDate, "country": country, "title": title, "mainText": mainText, "imageText": imageText, "imageUrl": imageUrl, "tailText": tailText, "likes": likes, "views": views]
+        return ["articleID": articleID, "auther": auther, "autherEmail": autherEmail, "writtenDate": writtenDate, "strWrittenDate": strWrittenDate, "country": country, "title": title, "mainText": mainText, "imageText": imageText, "imageName": imageName, "imageUrl": imageUrl, "tailText": tailText, "likes": likes, "views": views]
     }
 }
