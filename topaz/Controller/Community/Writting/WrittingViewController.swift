@@ -23,7 +23,6 @@ class WrittingViewController: UIViewController {
     @IBOutlet weak var tailTextView: UITextView!
     @IBOutlet weak var addImageTableView: UITableView!
     @IBOutlet weak var addImageButton: UIButton!
-    @IBOutlet weak var addEmojiButton: UIButton!
     
     let viewModel = WrittingViewModel()
     private let imagePicker = UIImagePickerController()
@@ -41,9 +40,7 @@ class WrittingViewController: UIViewController {
         removeNavigationBackground(view: self)
         makeCircle(target: registerButton, color: "MintBlue", width: 0)
         makeCircle(target: addImageButton, color: "MintBlue", width: 0)
-        makeCircle(target: addEmojiButton, color: "MintBlue", width: 0)
         makeShadow(target: addImageButton, radius: addImageButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
-        makeShadow(target: addEmojiButton, radius: addEmojiButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         
         let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tabScrollView))
         writtingScrollView.addGestureRecognizer(tapGestureReconizer)
@@ -110,10 +107,6 @@ class WrittingViewController: UIViewController {
         alert.addAction(camera)
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    @IBAction func addImojiButtonPressed(_ sender: UIButton) {
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -12,12 +12,15 @@ class EachCountryViewModel {
     let database = Firestore.firestore()
     var tableArticleArr = [Article]()
     
-    func getHitArticle(country: String, hitArticleHandler: @escaping (Article) -> ()) {
+    func getHitArticle(country: String, hitArticleHandler: @escaping (Article?) -> ()) {
         let collection = database.collection("Articles")
         collection.whereField("country", arrayContainsAny: [country]).order(by: "likes", descending: true).limit(to: 1).getDocuments { querySnapshot, error in
             if let error = error {
                 print("힛갤 불러오기 에러 : \(error)")
             } else {
+                if querySnapshot!.documents.count == 0 {
+                    hitArticleHandler(nil)
+                }
                 for document in querySnapshot!.documents {
                     let articleID = document.get("articleID") as! String
                     let auther = document.get("auther") as! String

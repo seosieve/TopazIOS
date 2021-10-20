@@ -28,7 +28,6 @@ class ModifyViewController: UIViewController {
     @IBOutlet weak var modifyImageTableView: UITableView!
     @IBOutlet weak var modifyImageTableViewConstraintY: NSLayoutConstraint!
     @IBOutlet weak var addImageButton: UIButton!
-    @IBOutlet weak var addEmojiButton: UIButton!
     
     let viewModel = ModifyViewModel()
     private let imagePicker = UIImagePickerController()
@@ -49,9 +48,7 @@ class ModifyViewController: UIViewController {
         
         makeCircle(target: registerButton, color: "MintBlue", width: 0)
         makeCircle(target: addImageButton, color: "MintBlue", width: 0)
-        makeCircle(target: addEmojiButton, color: "MintBlue", width: 0)
         makeShadow(target: addImageButton, radius: addImageButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
-        makeShadow(target: addEmojiButton, radius: addEmojiButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         
         let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tabScrollView))
         writtingScrollView.addGestureRecognizer(tapGestureReconizer)
@@ -112,10 +109,6 @@ class ModifyViewController: UIViewController {
         alert.addAction(camera)
         alert.addAction(cancel)
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    @IBAction func addEmojiButtonPressed(_ sender: UIButton) {
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

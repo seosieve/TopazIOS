@@ -87,6 +87,10 @@ class CommunityViewController: UIViewController {
         }
     }
     
+    @objc func tabDimView() {
+        countryCollectionViewSlideAnimation()
+    }
+    
     @IBAction func sortMethodPressed(_ sender: UIButton) {
         swipeSortConstraintY.constant = -105
         UIView.animate(withDuration: 0.4) {
@@ -192,6 +196,8 @@ extension CommunityViewController {
             dimView.frame = CGRect(x: 0, y: navBarY, width: width, height: height-navBarY)
             dimView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
             dimView.tag = 100
+            let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tabDimView))
+            dimView.addGestureRecognizer(tapGestureReconizer)
             UIView.transition(with: self.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
                 self.view.insertSubview(dimView, belowSubview: self.countryContainer)
             }, completion: nil)

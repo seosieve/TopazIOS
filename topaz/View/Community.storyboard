@@ -160,7 +160,7 @@
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWq-mP-Fxj">
                                                 <rect key="frame" x="325" y="324.5" width="89" height="30"/>
-                                                <color key="backgroundColor" name="Gray6"/>
+                                                <color key="backgroundColor" name="Gray7"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="89" id="MUb-Xb-LhH"/>
                                                     <constraint firstAttribute="height" constant="30" id="fa9-Op-JEx"/>
@@ -187,7 +187,7 @@
                                                 </constraints>
                                             </tableView>
                                         </subviews>
-                                        <color key="backgroundColor" name="Gray6"/>
+                                        <color key="backgroundColor" name="Gray7"/>
                                         <constraints>
                                             <constraint firstItem="3Ex-hf-XZd" firstAttribute="centerY" secondItem="nir-un-6zy" secondAttribute="centerY" id="6iY-r0-lOM"/>
                                             <constraint firstItem="aF8-be-zaJ" firstAttribute="centerX" secondItem="U51-bX-qVs" secondAttribute="centerX" id="8HZ-PY-oKK"/>
@@ -266,7 +266,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" name="White"/>
+                        <color key="backgroundColor" name="Gray7"/>
                         <constraints>
                             <constraint firstItem="nIa-W7-yZK" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="1Al-z6-DVL"/>
                             <constraint firstItem="1G4-Nd-kbC" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="HmQ-ts-o4c"/>
@@ -314,7 +314,6 @@
                                 </button>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="SearchButton" id="4FP-YW-sGI"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -474,6 +473,7 @@
                                             </attributedString>
                                         </state>
                                         <connections>
+                                            <action selector="writeButtonPressed:" destination="pJb-Rc-hJ4" eventType="touchUpInside" id="EXD-SY-XYg"/>
                                             <action selector="writeButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YAd-64-FoZ"/>
                                         </connections>
                                     </button>
@@ -510,6 +510,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Cw9-7L-mqm">
+                        <barButtonItem key="backBarButtonItem" title=" " id="aqR-S1-T2e"/>
                         <leftBarButtonItems>
                             <barButtonItem style="plain" id="dhP-5v-g9Z">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Lcs-0c-ZC1">
@@ -540,7 +541,6 @@
                                 </button>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="SearchButton" id="1Vl-L9-v7H"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -557,6 +557,7 @@
                         <outlet property="selectCountryButton" destination="d9u-cp-kDD" id="gua-Nb-n20"/>
                         <outlet property="upperBackgroundView" destination="TyH-G4-2mr" id="IMf-cv-8Vv"/>
                         <outlet property="writeButton" destination="njW-5F-j16" id="aUg-u8-noa"/>
+                        <segue destination="1Ng-CP-npj" kind="presentation" identifier="goToWritting" modalPresentationStyle="fullScreen" id="RPR-So-E0G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XqJ-2R-reh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -605,7 +606,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4621.739130434783" y="-668.30357142857144"/>
+            <point key="canvasLocation" x="4607" y="-668"/>
         </scene>
         <!--Writting View Controller-->
         <scene sceneID="dxt-Vg-bqO">
@@ -778,13 +779,8 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="4Nj-Oi-y85"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="FIM-EC-rZU"/>
                             </scrollView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iqK-Y7-yJ3">
-                                <rect key="frame" x="20" y="807" width="51" height="31"/>
-                                <color key="onTintColor" name="MintBlue"/>
-                                <color key="thumbTintColor" name="White"/>
-                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyQ-iV-dKH">
-                                <rect key="frame" x="282" y="790" width="48" height="48"/>
+                                <rect key="frame" x="346" y="790" width="48" height="48"/>
                                 <color key="backgroundColor" name="MintBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="5RN-Mk-m5N"/>
@@ -793,18 +789,6 @@
                                 <state key="normal" image="AddImageButton"/>
                                 <connections>
                                     <action selector="addImageButtonPressed:" destination="1Ng-CP-npj" eventType="touchUpInside" id="VYU-dK-fUl"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AK5-al-9b1">
-                                <rect key="frame" x="346" y="790" width="48" height="48"/>
-                                <color key="backgroundColor" name="MintBlue"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="Quf-xr-DL4"/>
-                                    <constraint firstAttribute="height" constant="48" id="r7V-oy-Cr2"/>
-                                </constraints>
-                                <state key="normal" image="AddEmojiButton"/>
-                                <connections>
-                                    <action selector="addImojiButtonPressed:" destination="1Ng-CP-npj" eventType="touchUpInside" id="rPB-Wg-EGB"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-Sm-4j8">
@@ -862,24 +846,19 @@
                         <viewLayoutGuide key="safeArea" id="tuo-7c-HBP"/>
                         <color key="backgroundColor" name="White"/>
                         <constraints>
-                            <constraint firstItem="iqK-Y7-yJ3" firstAttribute="leading" secondItem="ecu-eh-5qT" secondAttribute="leading" constant="20" id="2ez-1A-8pz"/>
-                            <constraint firstItem="tuo-7c-HBP" firstAttribute="bottom" secondItem="AK5-al-9b1" secondAttribute="bottom" constant="24" id="2fg-xX-L7K"/>
                             <constraint firstItem="wLi-Xu-Ldg" firstAttribute="trailing" secondItem="ecu-eh-5qT" secondAttribute="trailing" id="5dQ-Rn-uTg"/>
-                            <constraint firstItem="tuo-7c-HBP" firstAttribute="bottom" secondItem="iqK-Y7-yJ3" secondAttribute="bottom" constant="24" id="CHn-Iy-j7U"/>
                             <constraint firstItem="fLV-Sm-4j8" firstAttribute="top" secondItem="tuo-7c-HBP" secondAttribute="top" id="JYA-nW-Qsk"/>
                             <constraint firstItem="fLV-Sm-4j8" firstAttribute="leading" secondItem="ecu-eh-5qT" secondAttribute="leading" id="Rkv-gb-YtW"/>
-                            <constraint firstItem="AK5-al-9b1" firstAttribute="bottom" secondItem="jyQ-iV-dKH" secondAttribute="bottom" id="TkT-A3-hdl"/>
-                            <constraint firstAttribute="trailing" secondItem="AK5-al-9b1" secondAttribute="trailing" constant="20" id="aMq-y9-iB6"/>
+                            <constraint firstItem="tuo-7c-HBP" firstAttribute="bottom" secondItem="jyQ-iV-dKH" secondAttribute="bottom" constant="24" id="YHD-au-7ea"/>
                             <constraint firstItem="fLV-Sm-4j8" firstAttribute="centerX" secondItem="ecu-eh-5qT" secondAttribute="centerX" id="b52-jY-P9l"/>
                             <constraint firstItem="wLi-Xu-Ldg" firstAttribute="leading" secondItem="ecu-eh-5qT" secondAttribute="leading" id="e2k-Df-IPh"/>
                             <constraint firstItem="wLi-Xu-Ldg" firstAttribute="top" secondItem="fLV-Sm-4j8" secondAttribute="bottom" id="qZ2-pw-zee"/>
                             <constraint firstItem="wLi-Xu-Ldg" firstAttribute="bottom" secondItem="tuo-7c-HBP" secondAttribute="bottom" id="sYu-lM-rjk"/>
-                            <constraint firstItem="AK5-al-9b1" firstAttribute="leading" secondItem="jyQ-iV-dKH" secondAttribute="trailing" constant="16" id="w7k-wv-UtB"/>
+                            <constraint firstItem="tuo-7c-HBP" firstAttribute="trailing" secondItem="jyQ-iV-dKH" secondAttribute="trailing" constant="20" id="tG7-Vc-P6s"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lAc-sO-zV1"/>
                     <connections>
-                        <outlet property="addEmojiButton" destination="AK5-al-9b1" id="S5a-Pf-8hC"/>
                         <outlet property="addImageButton" destination="jyQ-iV-dKH" id="I8K-Ff-GNw"/>
                         <outlet property="addImageTableView" destination="83g-CD-qfm" id="w6L-Sb-k4e"/>
                         <outlet property="countryQuestionButton" destination="KHQ-xF-3hf" id="B5u-7y-lGN"/>
@@ -896,7 +875,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zk9-Ld-wf2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4542.0289855072469" y="774.77678571428567"/>
+            <point key="canvasLocation" x="5700" y="-239"/>
         </scene>
         <!--Country Add View Controller-->
         <scene sceneID="wtG-JB-Fo0">
@@ -1100,7 +1079,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yb-53-5ld" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5310" y="775"/>
+            <point key="canvasLocation" x="6467" y="-239"/>
         </scene>
         <!--커뮤니티-->
         <scene sceneID="fth-4z-Qg4">
@@ -1147,9 +1126,11 @@
             <point key="canvasLocation" x="3713" y="-668"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="RPR-So-E0G"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name=" " width="128" height="128"/>
-        <image name="AddEmojiButton" width="24" height="24"/>
         <image name="AddImageButton" width="24" height="24"/>
         <image name="CancelButton" width="24" height="24"/>
         <image name="Community_OFF" width="33" height="31"/>
@@ -1159,7 +1140,6 @@
         <image name="Luggage1" width="207" height="244"/>
         <image name="LuggageBackground" width="414" height="305"/>
         <image name="LuggageTag" width="72.5" height="23"/>
-        <image name="SearchButton" width="24" height="24"/>
         <image name="SwipeSortButton" width="20" height="20"/>
         <image name="WriteIcon" width="24" height="24"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

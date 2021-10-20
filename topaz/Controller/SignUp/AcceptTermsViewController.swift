@@ -110,7 +110,7 @@ extension AcceptTermsViewController {
     }
     
     func checkState() -> Bool {
-        if acceptCheck.allSatisfy(\.isSelected) {
+        if acceptCheck[0].isSelected == true && acceptCheck[1].isSelected == true && acceptCheck[2].isSelected == true {
             return true
         } else {
             return false

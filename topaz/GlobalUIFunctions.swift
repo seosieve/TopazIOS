@@ -80,7 +80,6 @@ func shiftButton(for button: UIButton, isOn: Bool) {
             button.setTitleColor(UIColor(named: "White"), for: .normal)
             button.isEnabled = true
         }
-        
     } else {
         UIView.animate(withDuration: 0.4) {
             button.backgroundColor = UIColor(named: "Gray6")

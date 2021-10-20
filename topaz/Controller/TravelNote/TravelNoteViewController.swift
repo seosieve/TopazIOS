@@ -49,7 +49,6 @@ class TravelNoteViewController: UIViewController {
         }
     }
     
-    
     @IBAction func myArticlePressed(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "goToMyArticle", sender: sender)
     }

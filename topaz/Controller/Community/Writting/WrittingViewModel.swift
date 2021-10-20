@@ -64,7 +64,6 @@ class WrittingViewModel {
         return newImage!
     }
     
-    
     func addArticle(articleID: String, country: [String], title: UITextView, mainText: UITextView, imageText: [String], imageName: [Int] , imageUrl: [String], tailText: String, makeArticleHandler: @escaping () -> ()) {
         let document = Firestore.firestore().collection("Articles").document(articleID)
         let nickname = UserDefaults.standard.string(forKey: "nickname")!
@@ -78,7 +77,7 @@ class WrittingViewModel {
         
         document.setData(article.dicDataType){ error in
             if let error = error {
-                print("FireStore 저장 에러 : \(error)")
+                print("Article 저장 에러 : \(error)")
             } else {
                 makeArticleHandler()
             }

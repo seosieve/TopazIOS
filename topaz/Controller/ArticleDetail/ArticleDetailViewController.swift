@@ -19,7 +19,6 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var detailAutherImage: UIImageView!
     @IBOutlet weak var detailNickname: UILabel!
     @IBOutlet weak var detailstrWrittenDate: UILabel!
-    @IBOutlet weak var backgroundMusicButton: UIButton!
     // Body
     @IBOutlet weak var detailMainText: UILabel!
     @IBOutlet weak var mainDetailImageTableView: UITableView!
@@ -99,6 +98,9 @@ class ArticleDetailViewController: UIViewController {
             let destinationVC = segue.destination as! ModifyViewController
             destinationVC.article = article
             destinationVC.modifyDelegate = self
+        } else if segue.identifier == "goToReport" {
+            let destinationVC = segue.destination as! ReportViewController
+            destinationVC.article = article
         }
     }
 }
@@ -158,10 +160,6 @@ extension ArticleDetailViewController {
         gradient.locations = [0.0 , 1.0]
         gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
         gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
-        gradient.frame = backgroundMusicButton.bounds
-        backgroundMusicButton.layer.addSublayer(gradient)
-        backgroundMusicButton.setImage(UIImage(named: "MusicIcon"), for: .normal)
-        makeCircle(target: backgroundMusicButton, color: "MintBlue", width: 0)
     }
     
     func makeTableViewHeight() {

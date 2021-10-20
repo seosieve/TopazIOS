@@ -50,8 +50,7 @@ class EditAccountController: UIViewController {
         PWConfirmTextField.delegate = self
         
         setPlane(level: 1, stack: PGBarComponentStack)
-        goToNext.isEnabled = true
-        //goToNext.isEnabled = false 나중에 바꾸기 꼭
+        goToNext.isEnabled = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

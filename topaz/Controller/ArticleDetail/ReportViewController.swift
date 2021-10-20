@@ -16,10 +16,13 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var reportTextViewContainer: UIView!
     @IBOutlet weak var completeButton: UIButton!
     
+    var article: Article?
     var reportReasonArr = [String]()
+    let viewModel = ReportViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        completeButton.isEnabled = false
         makeBorder(target: reportTextViewBorder, radius: 12, isFilled: true)
         makeBorder(target: completeButton, radius: 12, isFilled: true)
         makeShadow(target: reportTextViewContainer, height: 5, opacity: 0.1, shadowRadius: 10)
@@ -43,11 +46,15 @@ class ReportViewController: UIViewController {
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func completeButtonPressed(_ sender: UIButton) {
+        confirmReportAlert()
+    }
+    
 }
 
 //MARK: - UI Functions
 extension ReportViewController {
-    
     func popUpToast() {
         // Make Custom Alert Toast
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
@@ -58,6 +65,35 @@ extension ReportViewController {
         DispatchQueue.main.asyncAfter(deadline: when){
             alert.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func reportCompleteToast() {
+        // Make Custom Alert Toast
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.setValue(NSAttributedString(string: "신고가 완료되었습니다. 빠른 시일 내에 검토 후 조치하도록 하겠습니다.", attributes: [NSAttributedString.Key.font : UIFont(name: "NotoSansKR-Regular", size: 12)!,NSAttributedString.Key.foregroundColor : UIColor(named: "White")!]), forKey: "attributedTitle")
+        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        present(alert, animated: true)
+        let when = DispatchTime.now() + 2
+        DispatchQueue.main.asyncAfter(deadline: when){
+            alert.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func confirmReportAlert() {
+        let alert = UIAlertController(title: "신고를 제출할까요?", message: nil, preferredStyle: .alert)
+        let cancle = UIAlertAction(title: "아니오", style: .cancel)
+        let report = UIAlertAction(title: "예", style: .default) { action in
+            self.viewModel.addReport(articleID: self.article!.articleID, auther: self.article!.auther, autherEmail: self.article!.autherEmail, reportReason: self.reportReasonArr, reportDetailStr: self.reportTextView.text) {
+                self.reportCompleteToast()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
+        cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
+        alert.addAction(cancle)
+        alert.addAction(report)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -72,6 +108,9 @@ extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if completeButton.isEnabled == false {
+            shiftButton(for: completeButton, isOn: true)
+        }
         if reportReasonArr.count < 3 {
             let selectedReaseon = reportReasonBundle[indexPath.row]
             reportReasonArr.append(selectedReaseon)
@@ -83,6 +122,9 @@ extension ReportViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         reportReasonArr = reportReasonArr.filter{$0 != reportReasonBundle[indexPath.row]}
+        if reportReasonArr.count == 0 {
+            shiftButton(for: completeButton, isOn: false)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

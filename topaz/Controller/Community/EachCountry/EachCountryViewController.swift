@@ -52,6 +52,10 @@ class EachCountryViewController: UIViewController {
         eachArticleTableView.dataSource = self
         eachArticleTableView.delegate = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.getHitArticle(country: currentCountry) { article in
             self.hitArticle = article
             self.hitArticleTableView.reloadData()
@@ -63,17 +67,19 @@ class EachCountryViewController: UIViewController {
                 self.makeTableViewHeight()
             }
         }
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    @objc func tabDimView() {
+        countryCollectionViewSlideAnimation()
     }
     
     @IBAction func selectCountryPressed(_ sender: UIButton) {
         countryCollectionViewSlideAnimation()
     }
     
+    @IBAction func writeButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToWritting", sender: sender)
+    }
 }
 
 //MARK: - UI Functions
@@ -121,8 +127,12 @@ extension EachCountryViewController {
     func makeTableViewHeight() {
         eachArticleTableView.layoutIfNeeded()
         let cellCount = eachArticleArr.count
-        let cellHeight = 100
-        eachArticleTableViewConstraintY.constant = CGFloat(cellCount * cellHeight)
+        if cellCount == 0 {
+            eachArticleTableViewConstraintY.constant = 300
+        } else {
+            let cellHeight = 100
+            eachArticleTableViewConstraintY.constant = CGFloat(cellCount * cellHeight)
+        }
     }
     
     func countryCollectionViewSlideAnimation() {
@@ -150,6 +160,8 @@ extension EachCountryViewController {
             dimView.frame = CGRect(x: 0, y: safeAreaY, width: width, height: height-safeAreaY)
             dimView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
             dimView.tag = 100
+            let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tabDimView))
+            dimView.addGestureRecognizer(tapGestureReconizer)
             UIView.transition(with: self.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
                 self.view.insertSubview(dimView, belowSubview: self.countryContainer)
             }, completion: nil)
@@ -195,9 +207,7 @@ extension EachCountryViewController: UICollectionViewDelegate, UICollectionViewD
             viewModel.getEachArticle(country: currentCountry) { articleArr in
                 self.eachArticleArr = articleArr
                 self.eachArticleTableView.reloadData()
-                if articleArr.count != 0 {
-                    self.makeTableViewHeight()
-                }
+                self.makeTableViewHeight()
             }
             countryCollectionViewSlideAnimation()
         }
@@ -308,7 +318,14 @@ extension EachCountryViewController: UITableViewDelegate, UITableViewDataSource 
             articleDetailVC.article = hitArticle!
             self.navigationController?.pushViewController(articleDetailVC, animated: true)
         } else {
-            
+            if eachArticleArr.count != 0 {
+                let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+                let articleDetailVC = storyboard.instantiateViewController(withIdentifier: "ArticleDetailVC") as! ArticleDetailViewController
+                if let indexPath = eachArticleTableView.indexPathForSelectedRow {
+                    articleDetailVC.article = eachArticleArr[indexPath.row]
+                }
+                self.navigationController?.pushViewController(articleDetailVC, animated: true)
+            }
         }
     }
 }

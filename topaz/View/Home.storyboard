@@ -60,20 +60,12 @@
                     <navigationItem key="navigationItem" id="tF8-QG-nvf">
                         <barButtonItem key="backBarButtonItem" title=" " id="Y9y-Gb-GtM"/>
                         <barButtonItem key="leftBarButtonItem" title="Item" image="TopazLogo-Home" id="tzM-Ra-vOb"/>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Item" image="FriendsListButton" id="OGz-gO-Wcz"/>
-                            <barButtonItem title="Item" image="AlarmButton" id="Pgy-9C-Ytg"/>
-                            <barButtonItem title="Item" image="SearchButton" id="JSe-zg-2EW"/>
-                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="IceBreakingLabel" destination="PP4-Sc-DDT" id="CMd-i1-Aqd"/>
-                        <outlet property="alarmButton" destination="Pgy-9C-Ytg" id="Aeo-gm-Bfc"/>
-                        <outlet property="friendslistButton" destination="OGz-gO-Wcz" id="exw-a0-44c"/>
                         <outlet property="nicknameConstraintW" destination="ju3-zA-OYO" id="CvJ-Vm-QCY"/>
                         <outlet property="sceneView" destination="ttP-TL-bIa" id="8XS-wF-PyV"/>
-                        <outlet property="searchButton" destination="JSe-zg-2EW" id="kwt-VD-RWD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -151,11 +143,8 @@
         </designable>
     </designables>
     <resources>
-        <image name="AlarmButton" width="24" height="24"/>
-        <image name="FriendsListButton" width="24" height="24"/>
         <image name="Home_OFF" width="29" height="34"/>
         <image name="Home_ON" width="29" height="34"/>
-        <image name="SearchButton" width="24" height="24"/>
         <image name="TopazLogo-Home" width="110" height="24"/>
         <namedColor name="Gray1">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

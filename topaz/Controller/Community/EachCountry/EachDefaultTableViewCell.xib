@@ -30,8 +30,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 작성된 여행경험이 없어요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adK-ep-0wZ">
-                        <rect key="frame" x="92" y="250.5" width="230.5" height="26.5"/>
-                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="18"/>
+                        <rect key="frame" x="117.5" y="250.5" width="179.5" height="20.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
                         <color key="textColor" name="Gray4"/>
                         <nil key="highlightedColor"/>
                     </label>
