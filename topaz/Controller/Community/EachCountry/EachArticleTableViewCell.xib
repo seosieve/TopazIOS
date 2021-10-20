@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Medium.otf">
+            <string>NotoSansKR-Medium</string>
+        </array>
+        <array key="NotoSansKR-Regular.otf">
+            <string>NotoSansKR-Regular</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EachArticleTableViewCell" rowHeight="0.0" id="6FO-no-gre" customClass="EachArticleTableViewCell" customModule="topaz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="413" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6FO-no-gre" id="lxC-s1-IeQ">
+                <rect key="frame" x="0.0" y="0.0" width="413" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OYU-F0-lRd">
+                        <rect key="frame" x="20" y="0.0" width="373" height="88"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Faq-IA-bZb">
+                        <rect key="frame" x="20" y="0.0" width="299" height="88"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="베트남 여행기" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uw4-3R-gp8">
+                                <rect key="frame" x="16" y="12" width="230" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="JVG-Rp-dnT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" name="Gray1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifg-cd-aea">
+                                <rect key="frame" x="243" y="58" width="40" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="os6-L5-Pnn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="100" image="ViewsIcon">
+                                    <color key="titleColor" name="Gray4"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvi-wU-wVL">
+                                <rect key="frame" x="199" y="58" width="40" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Fxv-Xb-Hcn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="100" image="LikesIcon">
+                                    <color key="titleColor" name="Gray4"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PASSENGER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-W7-5XU">
+                                <rect key="frame" x="16" y="45" width="45" height="12"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="8"/>
+                                <color key="textColor" name="Gray4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOARDING TIME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwo-9x-QLG">
+                                <rect key="frame" x="77" y="45" width="60.5" height="12"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="8"/>
+                                <color key="textColor" name="Gray4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33U-5N-Mb9">
+                                <rect key="frame" x="16" y="56.5" width="33.5" height="17.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="12"/>
+                                <color key="textColor" name="MintBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AUG 17, 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbZ-8e-4lo">
+                                <rect key="frame" x="77" y="56.5" width="74.5" height="17.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="12"/>
+                                <color key="textColor" name="MintBlue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="33U-5N-Mb9" secondAttribute="bottom" constant="14" id="2NF-gM-fxX"/>
+                            <constraint firstAttribute="bottom" secondItem="ifg-cd-aea" secondAttribute="bottom" constant="14" id="9OY-Mg-mK4"/>
+                            <constraint firstItem="Wn2-W7-5XU" firstAttribute="leading" secondItem="Faq-IA-bZb" secondAttribute="leading" constant="16" id="Bpz-c7-qii"/>
+                            <constraint firstAttribute="trailing" secondItem="ifg-cd-aea" secondAttribute="trailing" constant="16" id="NhW-oB-J2l"/>
+                            <constraint firstItem="jwo-9x-QLG" firstAttribute="centerY" secondItem="Wn2-W7-5XU" secondAttribute="centerY" id="WfD-Sr-EY8"/>
+                            <constraint firstItem="Uw4-3R-gp8" firstAttribute="leading" secondItem="Faq-IA-bZb" secondAttribute="leading" constant="16" id="aNk-wQ-0LO"/>
+                            <constraint firstItem="CbZ-8e-4lo" firstAttribute="top" secondItem="jwo-9x-QLG" secondAttribute="bottom" constant="-0.5" id="bh2-dG-ES4"/>
+                            <constraint firstItem="ifg-cd-aea" firstAttribute="leading" secondItem="kvi-wU-wVL" secondAttribute="trailing" constant="4" id="dfj-5h-Og1"/>
+                            <constraint firstItem="CbZ-8e-4lo" firstAttribute="leading" secondItem="jwo-9x-QLG" secondAttribute="leading" id="faX-z5-IH4"/>
+                            <constraint firstAttribute="bottom" secondItem="CbZ-8e-4lo" secondAttribute="bottom" constant="14" id="fiz-DZ-spi"/>
+                            <constraint firstItem="33U-5N-Mb9" firstAttribute="leading" secondItem="Wn2-W7-5XU" secondAttribute="leading" id="lBc-Rv-hU8"/>
+                            <constraint firstItem="kvi-wU-wVL" firstAttribute="centerY" secondItem="ifg-cd-aea" secondAttribute="centerY" id="maj-Xv-QGl"/>
+                            <constraint firstItem="33U-5N-Mb9" firstAttribute="top" secondItem="Wn2-W7-5XU" secondAttribute="bottom" constant="-0.5" id="qFB-uq-HjY"/>
+                            <constraint firstItem="jwo-9x-QLG" firstAttribute="leading" secondItem="Wn2-W7-5XU" secondAttribute="trailing" constant="16" id="xK4-fu-qGV"/>
+                            <constraint firstItem="Wn2-W7-5XU" firstAttribute="top" secondItem="Uw4-3R-gp8" secondAttribute="bottom" constant="12" id="xhq-zh-1Ug"/>
+                            <constraint firstItem="Uw4-3R-gp8" firstAttribute="top" secondItem="Faq-IA-bZb" secondAttribute="top" constant="12" id="z7D-GZ-cWE"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HDn-hy-TKI">
+                        <rect key="frame" x="319" y="0.0" width="74" height="88"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="88" id="PYP-JZ-YF0"/>
+                            <constraint firstAttribute="width" constant="74" id="X3a-PT-wbo"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" name="Gray7"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Faq-IA-bZb" secondAttribute="bottom" constant="12" id="6dp-BR-nyk"/>
+                    <constraint firstAttribute="trailing" secondItem="OYU-F0-lRd" secondAttribute="trailing" constant="20" id="7mE-GC-ipP"/>
+                    <constraint firstItem="Faq-IA-bZb" firstAttribute="leading" secondItem="lxC-s1-IeQ" secondAttribute="leading" constant="20" id="G5N-P7-7me"/>
+                    <constraint firstAttribute="trailing" secondItem="HDn-hy-TKI" secondAttribute="trailing" constant="20" id="KAe-Yx-f6W"/>
+                    <constraint firstItem="OYU-F0-lRd" firstAttribute="top" secondItem="lxC-s1-IeQ" secondAttribute="top" id="VLK-LL-a7o"/>
+                    <constraint firstItem="OYU-F0-lRd" firstAttribute="leading" secondItem="lxC-s1-IeQ" secondAttribute="leading" constant="20" id="bt3-1g-iFv"/>
+                    <constraint firstAttribute="bottom" secondItem="OYU-F0-lRd" secondAttribute="bottom" constant="12" id="eWH-hM-O17"/>
+                    <constraint firstItem="Faq-IA-bZb" firstAttribute="top" secondItem="lxC-s1-IeQ" secondAttribute="top" id="nEM-9U-Hci"/>
+                    <constraint firstAttribute="bottom" secondItem="HDn-hy-TKI" secondAttribute="bottom" constant="12" id="tjA-h3-Coj"/>
+                    <constraint firstItem="HDn-hy-TKI" firstAttribute="leading" secondItem="Faq-IA-bZb" secondAttribute="trailing" id="wXS-Gx-qGr"/>
+                    <constraint firstItem="HDn-hy-TKI" firstAttribute="top" secondItem="lxC-s1-IeQ" secondAttribute="top" id="y1j-5p-WLY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="bSL-Hl-8Z5"/>
+            <color key="backgroundColor" name="Gray7"/>
+            <connections>
+                <outlet property="auther" destination="33U-5N-Mb9" id="TiW-OW-oOc"/>
+                <outlet property="boardingTime" destination="CbZ-8e-4lo" id="TOL-fx-ZhD"/>
+                <outlet property="likes" destination="kvi-wU-wVL" id="lom-x3-LWf"/>
+                <outlet property="mainImage" destination="HDn-hy-TKI" id="YrJ-dx-0Zi"/>
+                <outlet property="mainView" destination="Faq-IA-bZb" id="DF9-FO-6jw"/>
+                <outlet property="shadowView" destination="OYU-F0-lRd" id="JAM-zb-zEK"/>
+                <outlet property="title" destination="Uw4-3R-gp8" id="QJ0-LW-4Qz"/>
+                <outlet property="views" destination="ifg-cd-aea" id="sXX-cG-eaz"/>
+            </connections>
+            <point key="canvasLocation" x="165.94202898550725" y="211.60714285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="LikesIcon" width="16" height="16"/>
+        <image name="ViewsIcon" width="16" height="16"/>
+        <namedColor name="Gray1">
+            <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray4">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray7">
+            <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MintBlue">
+            <color red="0.19200000166893005" green="0.86699998378753662" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

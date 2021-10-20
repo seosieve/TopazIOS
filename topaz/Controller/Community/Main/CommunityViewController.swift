@@ -11,8 +11,9 @@ import Lottie
 import Kingfisher
 
 class CommunityViewController: UIViewController {
-
-    @IBOutlet weak var upperBackground: UIView!
+    @IBOutlet weak var upperBackgroundView: UIView!
+    @IBOutlet weak var selectCountryButton: UIButton!
+    @IBOutlet weak var lowerBackgroundView: UIView!
     @IBOutlet weak var introduceLabel: UILabel!
     @IBOutlet weak var writeButton: UIButton!
     @IBOutlet weak var swipeSortConstraintY: NSLayoutConstraint!
@@ -23,8 +24,13 @@ class CommunityViewController: UIViewController {
     @IBOutlet weak var fullArticleTableView: UITableView!
     @IBOutlet weak var fullArticleTableViewConstraintY: NSLayoutConstraint!
     
-    let viewModel = CommunityViewModel()
+    @IBOutlet var countryContainer: UIView!
+    @IBOutlet var countryCollectionView: UICollectionView!
+    @IBOutlet weak var countryPageControl: UIPageControl!
     
+    let viewModel = CommunityViewModel()
+    let mainCountry = MainCountry()
+    var selectOn = false
     var timer = Timer()
     var counter = 0
     let luggageImgArr = [UIImage(named: "Luggage1"), UIImage(named: "Luggage3"), UIImage(named: "Luggage2"), UIImage(named: "Luggage1"), UIImage(named: "Luggage2")]
@@ -35,10 +41,16 @@ class CommunityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        makeCircular(target: upperBackground, each: true)
-        makeCircular(target: writeButton, each: false)
         addMultipleFonts()
-        // CollectionView
+        addCountryCollectionView()
+        makeCircular(target: countryContainer, each: true)
+        makeCircular(target: lowerBackgroundView, each: true)
+        makeCircular(target: writeButton, each: false)
+        // CountryCollectionView
+        countryCollectionView.register(CountrySelectCollectionViewCell.nib(), forCellWithReuseIdentifier: "CountrySelectCollectionViewCell")
+        countryCollectionView.dataSource = self
+        countryCollectionView.delegate = self
+        // LuggageCollectionView
         luggageCollectionView.dataSource = self
         luggageCollectionView.delegate = self
         // TableView
@@ -92,7 +104,6 @@ class CommunityViewController: UIViewController {
                 self.makeTableViewHeight()
             }
         }
-        
     }
     
     @IBAction func swipeSortButtonPressed(_ sender: UIButton) {
@@ -108,12 +119,18 @@ class CommunityViewController: UIViewController {
     }
     
     @IBAction func selectCountryPressed(_ sender: UIButton) {
-        print("aa")
+        countryCollectionViewSlideAnimation()
     }
 }
 
 //MARK: - UI Functions
 extension CommunityViewController {
+    func addCountryCollectionView() {
+        let width = self.view.bounds.width
+        countryContainer.frame = CGRect(x: 0, y: -246, width: width, height: 246)
+        self.view.insertSubview(countryContainer, belowSubview: upperBackgroundView)
+    }
+    
     func makeCircular(target view: UIView, each: Bool) {
         view.clipsToBounds = false
         view.layer.cornerRadius = 12
@@ -149,39 +166,114 @@ extension CommunityViewController {
         let cellHeight = 100
         fullArticleTableViewConstraintY.constant = CGFloat(cellCount * cellHeight)
     }
+    
+    func countryCollectionViewSlideAnimation() {
+        if selectOn {
+            // Background Dim
+            guard let dimView = self.view.viewWithTag(100) else { return }
+            UIView.transition(with: self.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                dimView.removeFromSuperview()
+            }, completion: nil)
+            // CountryCollectionView
+            UIView.animate(withDuration: 0.5) {
+                self.countryContainer.frame.origin.y = -246
+            }
+            // selectCountryButton
+            UIView.animate(withDuration: 0.6) {
+                self.selectCountryButton.transform = self.selectCountryButton.transform.rotated(by: .pi)
+            }
+            selectOn = false
+        } else {
+            // Background Dim
+            let navBarY = self.navigationController!.navigationBar.frame.maxY
+            let width = self.view.bounds.width
+            let height = self.view.bounds.height
+            let dimView = UIView()
+            dimView.frame = CGRect(x: 0, y: navBarY, width: width, height: height-navBarY)
+            dimView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
+            dimView.tag = 100
+            UIView.transition(with: self.view, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.view.insertSubview(dimView, belowSubview: self.countryContainer)
+            }, completion: nil)
+            // CountryCollectionView
+            UIView.animate(withDuration: 0.5) {
+                let safeAreaY = self.view.safeAreaLayoutGuide.layoutFrame.minY
+                self.countryContainer.frame.origin.y = safeAreaY
+            }
+            // selectCountryButton
+            UIView.animate(withDuration: 0.6) {
+                self.selectCountryButton.transform = self.selectCountryButton.transform.rotated(by: .pi)
+            }
+            selectOn = true
+        }
+    }
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionArticleArr.count == 0 {
-            return collectionArticleArr.count
+        if collectionView == countryCollectionView {
+            return mainCountry.countryName.count
         } else {
-            return Int.max
+            if collectionArticleArr.count == 0 {
+                return collectionArticleArr.count
+            } else {
+                return Int.max
+            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let count = collectionArticleArr.count == 0 ? 1 : collectionArticleArr.count
-        let luggage = luggageImgArr[indexPath.row % luggageImgArr.count]
-        let collectionArticle = collectionArticleArr[indexPath.row % count]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "luggageCell", for: indexPath) as! LuggageCollectionViewCell
-        cell.luggageImage.image = luggage
-        cell.luggageTag.text = collectionArticle.country[0]
-        cell.luggageAuther.text = collectionArticle.auther
-        cell.luggageTitle.text = collectionArticle.title
-        return cell
+        if collectionView == countryCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CountrySelectCollectionViewCell", for: indexPath) as! CountrySelectCollectionViewCell
+            cell.countryImage.image = mainCountry.countryImage[indexPath.row]!
+            cell.CountryName.text = mainCountry.countryName[indexPath.row]
+            makeBorder(target: cell.countryImage, radius: 6, color: "Gray6", isFilled: false)
+            return cell
+        } else {
+            let count = collectionArticleArr.count == 0 ? 1 : collectionArticleArr.count
+            let luggage = luggageImgArr[indexPath.row % luggageImgArr.count]
+            let collectionArticle = collectionArticleArr[indexPath.row % count]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "luggageCell", for: indexPath) as! LuggageCollectionViewCell
+            cell.luggageImage.image = luggage
+            cell.luggageTag.text = collectionArticle.country[0]
+            cell.luggageAuther.text = collectionArticle.auther
+            cell.luggageTitle.text = collectionArticle.title
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
-        let articleDetailVC = storyboard.instantiateViewController(withIdentifier: "ArticleDetail") as! ArticleDetailViewController
-        if let indexPath = luggageCollectionView.indexPathsForSelectedItems?.last {
-            let count = collectionArticleArr.count
-            articleDetailVC.article = collectionArticleArr[indexPath.row % count]
+        if collectionView == countryCollectionView {
+            if mainCountry.countryName[indexPath.row] == "메인" {
+                countryCollectionViewSlideAnimation()
+            } else {
+                let storyboard = UIStoryboard(name: "Community", bundle: nil)
+                let eachCountryVC = storyboard.instantiateViewController(withIdentifier: "EachCountryVC") as! EachCountryViewController
+                eachCountryVC.currentCountry = mainCountry.countryName[indexPath.row]
+                self.navigationController?.pushViewController(eachCountryVC, animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.countryCollectionViewSlideAnimation()
+                }
+            }
+        } else {
+            let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
+            let articleDetailVC = storyboard.instantiateViewController(withIdentifier: "ArticleDetailVC") as! ArticleDetailViewController
+            if let indexPath = luggageCollectionView.indexPathsForSelectedItems?.last {
+                let count = collectionArticleArr.count
+                articleDetailVC.article = collectionArticleArr[indexPath.row % count]
+            }
+            self.navigationController?.pushViewController(articleDetailVC, animated: true)
+            collectionView.deselectItem(at: indexPath, animated: false)
         }
-        self.navigationController?.pushViewController(articleDetailVC, animated: true)
-        collectionView.deselectItem(at: indexPath, animated: false)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x != 0.0 {
+            self.countryPageControl.currentPage = 1
+        } else {
+            self.countryPageControl.currentPage = 0
+        }
     }
 }
 
@@ -232,7 +324,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ArticleDetail", bundle: nil)
-        let articleDetailVC = storyboard.instantiateViewController(withIdentifier: "ArticleDetail") as! ArticleDetailViewController
+        let articleDetailVC = storyboard.instantiateViewController(withIdentifier: "ArticleDetailVC") as! ArticleDetailViewController
         if let indexPath = fullArticleTableView.indexPathForSelectedRow {
             articleDetailVC.article = tableArticleArr[indexPath.row]
         }

@@ -26,7 +26,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="Vto-a7-W3V">
             <objects>
-                <viewController storyboardIdentifier="ArticleDetail" id="p5a-QX-pBa" customClass="ArticleDetailViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleDetailVC" id="p5a-QX-pBa" customClass="ArticleDetailViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bzf-QI-XAi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,29 +365,29 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zk6-L1-VPI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="763"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="105-fr-bXm">
-                                                <rect key="frame" x="0.0" y="57" width="414" height="396"/>
+                                                <rect key="frame" x="0.0" y="56.5" width="414" height="396"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="396" id="2Q0-2o-21c"/>
                                                 </constraints>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신고 사유" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyN-Lb-wSu">
-                                                <rect key="frame" x="20" y="20" width="55.5" height="21"/>
+                                                <rect key="frame" x="20" y="20" width="55.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="14"/>
                                                 <color key="textColor" name="Gray3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="세부 내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1G-wg-kpH">
-                                                <rect key="frame" x="20" y="473" width="56" height="21"/>
+                                                <rect key="frame" x="20" y="472.5" width="55.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="14"/>
                                                 <color key="textColor" name="Gray3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpG-mt-gdD">
-                                                <rect key="frame" x="0.0" y="514" width="414" height="189"/>
+                                                <rect key="frame" x="0.0" y="513" width="414" height="189"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wuq-He-6Go">
                                                         <rect key="frame" x="20" y="16" width="374" height="157"/>

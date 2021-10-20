@@ -18,9 +18,7 @@ class TravelNoteViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var introduce: UILabel!
     @IBOutlet weak var myProfileEditButton: UIButton!
-    @IBOutlet var collectionArray: [UIButton]! {
-        didSet {collectionArray.sort {$0.tag < $1.tag}}
-    }
+    @IBOutlet weak var myProfileContainer: UIView!
     
     let viewModel = TravelNoteViewModel()
     let userdefault = UserDefaults.standard
@@ -36,12 +34,9 @@ class TravelNoteViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
         loadingAnimation(backgroundView, lottieView, view: self.view)
+        makeCircular(target: myProfileContainer, each: true)
         makeCircle(target: profileImage, color: "Gray6", width: 1)
         makeBorder(target: myProfileEditButton, radius: 12, isFilled: false)
-        collectionArray.forEach { collection in
-            makeCircle(target: collection, color: "MintBlue", width: 0)
-            makeShadow(target: collection, radius: collection.frame.size.height/2, width: 3, height: 3, opacity: 0.2)
-        }
         viewModel.getUserDataBase(email: userdefault.string(forKey: "email")!) { imageUrl, exp, collectibles, topazAlbumUrl in
             self.imageUrl = imageUrl
             self.exp = exp
@@ -52,6 +47,11 @@ class TravelNoteViewController: UIViewController {
             self.backgroundView.removeFromSuperview()
             self.lottieView.removeFromSuperview()
         }
+    }
+    
+    
+    @IBAction func myArticlePressed(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "goToMyArticle", sender: sender)
     }
     
     @IBAction func mySettingPressed(_ sender: UIBarButtonItem) {
@@ -73,6 +73,19 @@ class TravelNoteViewController: UIViewController {
 
 //MARK: - UI Functions
 extension TravelNoteViewController {
+    func makeCircular(target view: UIView, each: Bool) {
+        view.clipsToBounds = false
+        view.layer.cornerRadius = 12
+        view.layer.shadowColor = UIColor(named: "Gray4")?.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset = CGSize(width: 0, height: 6)
+        view.layer.shadowRadius = 4
+        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 12).cgPath
+        if each {
+            view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        }
+    }
+    
     func makeUserProfile() {
         if Auth.auth().currentUser != nil {
             nickname.text = userdefault.string(forKey: "nickname")!
