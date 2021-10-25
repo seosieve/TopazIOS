@@ -42,6 +42,20 @@ func removeNavigationBackground(view: UIViewController) {
     view.navigationController?.navigationBar.shadowImage = UIImage()
 }
 
+// 움직이지 않는 loop Animation Set
+func setLoopAnimation(json: String, container: UIView) {
+    let lottieView = AnimationView(name: json)
+    container.addSubview(lottieView)
+    lottieView.translatesAutoresizingMaskIntoConstraints = false
+    lottieView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
+    lottieView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
+    lottieView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
+    lottieView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
+    lottieView.loopMode = .loop
+    lottieView.backgroundBehavior = .pauseAndRestore
+    lottieView.play()
+}
+
 // Loading Animation View - 삭제불가
 func loadingAnimation(view: UIView) {
     let backgroundView = UIView()

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Regular.otf">
+            <string>NotoSansKR-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MusicCollectionViewCell" id="gOZ-NH-rwj" customClass="MusicCollectionViewCell" customModule="topaz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="82" height="106"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="82" height="106"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조용한 해변가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNm-Yc-daK">
+                        <rect key="frame" x="8" y="88" width="66" height="18"/>
+                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
+                        <color key="textColor" name="Gray3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3T-s5-0Cg">
+                        <rect key="frame" x="0.0" y="0.0" width="82" height="82"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ibk-Tl-pC5">
+                                <rect key="frame" x="9" y="9" width="64" height="64"/>
+                                <color key="tintColor" name="Gray6"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="89r-IL-WHZ"/>
+                                    <constraint firstAttribute="height" constant="64" id="ZSo-pN-Rcc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstItem="ibk-Tl-pC5" firstAttribute="centerX" secondItem="e3T-s5-0Cg" secondAttribute="centerX" id="Itk-Ad-7NB"/>
+                            <constraint firstAttribute="width" constant="82" id="Vs2-FT-vfn"/>
+                            <constraint firstAttribute="height" constant="82" id="hWL-mR-4TX"/>
+                            <constraint firstItem="ibk-Tl-pC5" firstAttribute="centerY" secondItem="e3T-s5-0Cg" secondAttribute="centerY" id="kUn-a0-Okj"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="DxP-YO-hlw"/>
+            <constraints>
+                <constraint firstItem="hNm-Yc-daK" firstAttribute="centerX" secondItem="gOZ-NH-rwj" secondAttribute="centerX" id="8EY-e9-yrL"/>
+                <constraint firstItem="e3T-s5-0Cg" firstAttribute="leading" secondItem="gOZ-NH-rwj" secondAttribute="leading" id="Prn-y1-klM"/>
+                <constraint firstItem="e3T-s5-0Cg" firstAttribute="centerX" secondItem="gOZ-NH-rwj" secondAttribute="centerX" id="fWy-ji-mhO"/>
+                <constraint firstAttribute="bottom" secondItem="hNm-Yc-daK" secondAttribute="bottom" id="hxu-RG-Qwa"/>
+                <constraint firstItem="e3T-s5-0Cg" firstAttribute="top" secondItem="gOZ-NH-rwj" secondAttribute="top" id="m0v-pb-Sgf"/>
+                <constraint firstItem="hNm-Yc-daK" firstAttribute="top" secondItem="e3T-s5-0Cg" secondAttribute="bottom" constant="6" id="qmG-3W-8SX"/>
+            </constraints>
+            <size key="customSize" width="82" height="104"/>
+            <connections>
+                <outlet property="musicBackground" destination="e3T-s5-0Cg" id="SH8-iB-4OF"/>
+                <outlet property="musicIcon" destination="ibk-Tl-pC5" id="ezW-9P-dPf"/>
+                <outlet property="musicName" destination="hNm-Yc-daK" id="los-ET-vgt"/>
+            </connections>
+            <point key="canvasLocation" x="82.608695652173921" y="159.375"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="BeachSoundEffectIcon" width="64" height="64"/>
+        <namedColor name="Gray3">
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray6">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

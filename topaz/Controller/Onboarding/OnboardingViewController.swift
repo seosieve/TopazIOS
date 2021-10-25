@@ -48,7 +48,6 @@ extension OnboardingViewController {
 //MARK: - transferPageDelegate
 extension OnboardingViewController: transferPageDelegate {
     func transferPage(currentPage: Int) {
-        print(currentPage)
         progressConstraintY.constant = 23*CGFloat(currentPage)
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()

@@ -8,7 +8,6 @@
 import UIKit
 
 class CountrySelectCollectionViewCell: UICollectionViewCell {
-
     @IBOutlet weak var countryImage: UIImageView!
     @IBOutlet weak var CountryName: UILabel!
     

@@ -13,7 +13,6 @@ protocol AddCountryDelegate {
 
 class CountryAddViewController: UIViewController {
     @IBOutlet weak var countryCollectionView: UICollectionView!
-    
     @IBOutlet weak var countryPageControl: UIPageControl!
     @IBOutlet var countryButton: [UIButton]! {
         didSet {countryButton.sort {$0.tag < $1.tag}}
@@ -109,7 +108,7 @@ extension CountryAddViewController {
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource
-extension CountryAddViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CountryAddViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return country.countryName.count
     } 

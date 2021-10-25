@@ -20,7 +20,6 @@ class PageViewController: UIPageViewController {
         let VC3 = self.viewInstance(identifier: "ThirdPageVC")
         let VC4 = self.viewInstance(identifier: "FourthPageVC")
         let VC5 = self.viewInstance(identifier: "FifthPageVC")
-        
         return [VC1, VC2, VC3, VC4, VC5]
     }()
     
@@ -60,10 +59,9 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
-            guard let currentVC = pageViewController.viewControllers?.first else {return}
-            guard let currentIndex = pageList.firstIndex(of: currentVC) else {return}
+            guard let currentVC = pageViewController.viewControllers?.first else { return }
+            guard let currentIndex = pageList.firstIndex(of: currentVC) else { return }
             pageDelegate?.transferPage(currentPage: currentIndex)
-            
         }
     }
 }

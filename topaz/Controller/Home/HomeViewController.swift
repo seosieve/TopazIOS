@@ -38,8 +38,19 @@ class HomeViewController: UIViewController {
     @objc func pinchGesture(_ sender: UIPinchGestureRecognizer) {
         if sender.numberOfTouches == 1 {
             print("pinch recognize")
+            let push = UNMutableNotificationContent()
+            push.title = "test Title"
+            push.subtitle = "test subTitle"
+            push.body = "test body"
+            push.badge = 1
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+            let request = UNNotificationRequest(identifier: "test", content: push, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         }
     }
+    
+    
 }
 
 //MARK: - UI Functions

@@ -113,6 +113,14 @@
 		4ECFB6CE272045EC00890C04 /* EachCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6CD272045EC00890C04 /* EachCountryViewModel.swift */; };
 		4ECFB6D327205A5700890C04 /* EachDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6D127205A5700890C04 /* EachDefaultTableViewCell.swift */; };
 		4ECFB6D427205A5700890C04 /* EachDefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6D227205A5700890C04 /* EachDefaultTableViewCell.xib */; };
+		4ECFB6D92725BFC900890C04 /* MusicAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6D82725BFC900890C04 /* MusicAddViewController.swift */; };
+		4ECFB6DB2725DBD000890C04 /* MusicPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6DA2725DBD000890C04 /* MusicPageViewController.swift */; };
+		4ECFB6DD2725DC4700890C04 /* BackgroundMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6DC2725DC4700890C04 /* BackgroundMusicViewController.swift */; };
+		4ECFB6DF2725DC5A00890C04 /* SoundEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6DE2725DC5A00890C04 /* SoundEffectViewController.swift */; };
+		4ECFB6E22725EA3500890C04 /* MusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E02725EA3500890C04 /* MusicCollectionViewCell.swift */; };
+		4ECFB6E32725EA3500890C04 /* MusicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E12725EA3500890C04 /* MusicCollectionViewCell.xib */; };
+		4ECFB6E52725EFF100890C04 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E42725EFF100890C04 /* MusicModel.swift */; };
+		4ECFB6E72726A99100890C04 /* Music.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E62726A99100890C04 /* Music.json */; };
 		4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */; };
 		4EDA40282700B57E00B5E80B /* WrittingAddImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA40262700B57E00B5E80B /* WrittingAddImageTableViewCell.swift */; };
 		4EDA40292700B57E00B5E80B /* WrittingAddImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA40272700B57E00B5E80B /* WrittingAddImageTableViewCell.xib */; };
@@ -237,6 +245,15 @@
 		4ECFB6CD272045EC00890C04 /* EachCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachCountryViewModel.swift; sourceTree = "<group>"; };
 		4ECFB6D127205A5700890C04 /* EachDefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachDefaultTableViewCell.swift; sourceTree = "<group>"; };
 		4ECFB6D227205A5700890C04 /* EachDefaultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EachDefaultTableViewCell.xib; sourceTree = "<group>"; };
+		4ECFB6D52720C80100890C04 /* topaz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = topaz.entitlements; sourceTree = "<group>"; };
+		4ECFB6D82725BFC900890C04 /* MusicAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAddViewController.swift; sourceTree = "<group>"; };
+		4ECFB6DA2725DBD000890C04 /* MusicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPageViewController.swift; sourceTree = "<group>"; };
+		4ECFB6DC2725DC4700890C04 /* BackgroundMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusicViewController.swift; sourceTree = "<group>"; };
+		4ECFB6DE2725DC5A00890C04 /* SoundEffectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectViewController.swift; sourceTree = "<group>"; };
+		4ECFB6E02725EA3500890C04 /* MusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewCell.swift; sourceTree = "<group>"; };
+		4ECFB6E12725EA3500890C04 /* MusicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicCollectionViewCell.xib; sourceTree = "<group>"; };
+		4ECFB6E42725EFF100890C04 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		4ECFB6E62726A99100890C04 /* Music.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Music.json; path = ../../../../../Desktop/Music.json; sourceTree = "<group>"; };
 		4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewModel.swift; sourceTree = "<group>"; };
 		4EDA40262700B57E00B5E80B /* WrittingAddImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingAddImageTableViewCell.swift; sourceTree = "<group>"; };
 		4EDA40272700B57E00B5E80B /* WrittingAddImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WrittingAddImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -319,6 +336,7 @@
 		4E0FAEA926C0EE99003D80E3 /* topaz */ = {
 			isa = PBXGroup;
 			children = (
+				4ECFB6D52720C80100890C04 /* topaz.entitlements */,
 				4E0FAEAA26C0EE99003D80E3 /* AppDelegate.swift */,
 				4E0FAEAC26C0EE99003D80E3 /* SceneDelegate.swift */,
 				4E8A58A0270336CD00C8A646 /* Json */,
@@ -409,6 +427,7 @@
 		4E8A58A0270336CD00C8A646 /* Json */ = {
 			isa = PBXGroup;
 			children = (
+				4ECFB6E62726A99100890C04 /* Music.json */,
 				4E13D037270AE0AA00CAC6F4 /* Splash.json */,
 				4ECB1690270AED36000029CB /* Loading.json */,
 				4E13D039270AE15200CAC6F4 /* Login.json */,
@@ -485,6 +504,12 @@
 				4E9B9BC026EE673200ABCE87 /* CountryAddViewController.swift */,
 				4E64D12826EF5BA100DB3FDB /* CountryAddCollectionViewCell.swift */,
 				4E64D12926EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib */,
+				4ECFB6D82725BFC900890C04 /* MusicAddViewController.swift */,
+				4ECFB6DA2725DBD000890C04 /* MusicPageViewController.swift */,
+				4ECFB6DC2725DC4700890C04 /* BackgroundMusicViewController.swift */,
+				4ECFB6DE2725DC5A00890C04 /* SoundEffectViewController.swift */,
+				4ECFB6E02725EA3500890C04 /* MusicCollectionViewCell.swift */,
+				4ECFB6E12725EA3500890C04 /* MusicCollectionViewCell.xib */,
 			);
 			path = Writting;
 			sourceTree = "<group>";
@@ -540,6 +565,7 @@
 				4E1C2E572716C72200B97EB0 /* CountryModel.swift */,
 				4E7FD0FF271D83DA00867F16 /* UserModel.swift */,
 				4E7FD10B271ED29600867F16 /* ReportModel.swift */,
+				4ECFB6E42725EFF100890C04 /* MusicModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -617,6 +643,7 @@
 				4E9DCB2926C17808001D218A /* Poppins-ExtraBold.ttf in Resources */,
 				4E8A58CC270584A900C8A646 /* SecondOnboarding.json in Resources */,
 				4E9DCB3426C1781F001D218A /* Poppins-Thin.ttf in Resources */,
+				4ECFB6E72726A99100890C04 /* Music.json in Resources */,
 				4E9DCB2326C177FB001D218A /* NotoSansKR-Regular.otf in Resources */,
 				4E8A58A627034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib in Resources */,
 				4E7FD10A271ECEBA00867F16 /* ReportTableViewCell.xib in Resources */,
@@ -644,6 +671,7 @@
 				4E533F3026DFD9A700527FC2 /* Community.storyboard in Resources */,
 				4EDA40292700B57E00B5E80B /* WrittingAddImageTableViewCell.xib in Resources */,
 				4E9DCB2826C17806001D218A /* Poppins-BoldItalic.ttf in Resources */,
+				4ECFB6E32725EA3500890C04 /* MusicCollectionViewCell.xib in Resources */,
 				4E9DCB1F26C177EF001D218A /* NotoSansKR-Black.otf in Resources */,
 				4E13D038270AE0AA00CAC6F4 /* Splash.json in Resources */,
 				4E9DCB2526C17801001D218A /* Poppins-Black.ttf in Resources */,
@@ -717,9 +745,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECFB6D92725BFC900890C04 /* MusicAddViewController.swift in Sources */,
 				4E8A58BE2705541D00C8A646 /* SecondPageViewController.swift in Sources */,
 				4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */,
 				4E01361A26FA24600071F31D /* MySettingViewModel.swift in Sources */,
+				4ECFB6DD2725DC4700890C04 /* BackgroundMusicViewController.swift in Sources */,
 				4E8A58C02705542E00C8A646 /* ThirdPageViewController.swift in Sources */,
 				4E01361826FA1B710071F31D /* WelcomeViewModel.swift in Sources */,
 				4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */,
@@ -735,6 +765,7 @@
 				4E7FD10C271ED29600867F16 /* ReportModel.swift in Sources */,
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
 				4E7FD100271D83DA00867F16 /* UserModel.swift in Sources */,
+				4ECFB6E22725EA3500890C04 /* MusicCollectionViewCell.swift in Sources */,
 				4E1C2E6127172FDF00B97EB0 /* CountryModifyCollectionViewCell.swift in Sources */,
 				4E1C2E4F27154B3100B97EB0 /* SplashViewModel.swift in Sources */,
 				4E8A58BC270553D600C8A646 /* FirstPageViewController.swift in Sources */,
@@ -746,6 +777,7 @@
 				4E8A589F2703215C00C8A646 /* ArticleDetailViewModel.swift in Sources */,
 				4E13D0362709A06700CAC6F4 /* LuggageCollectionViewCell.swift in Sources */,
 				4E1C2E582716C72200B97EB0 /* CountryModel.swift in Sources */,
+				4ECFB6E52725EFF100890C04 /* MusicModel.swift in Sources */,
 				4E0FAEAF26C0EE99003D80E3 /* WelcomeViewController.swift in Sources */,
 				4ECFB6CE272045EC00890C04 /* EachCountryViewModel.swift in Sources */,
 				4E9B9BC126EE673200ABCE87 /* CountryAddViewController.swift in Sources */,
@@ -759,6 +791,7 @@
 				4E1C2E562716808400B97EB0 /* ModifyViewModel.swift in Sources */,
 				4E8A58C42705545700C8A646 /* FifthPageViewController.swift in Sources */,
 				4ECFB6D327205A5700890C04 /* EachDefaultTableViewCell.swift in Sources */,
+				4ECFB6DB2725DBD000890C04 /* MusicPageViewController.swift in Sources */,
 				4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */,
 				4E7FD104271EAB3B00867F16 /* ReportViewModel.swift in Sources */,
 				4ECFB6CB2720445E00890C04 /* EachArticleTableViewCell.swift in Sources */,
@@ -777,6 +810,7 @@
 				4E533F3426E060F500527FC2 /* HomeViewController.swift in Sources */,
 				4E8A58A527034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift in Sources */,
 				4EE9A3B726F758ED00395B2F /* ArticleDetailViewController.swift in Sources */,
+				4ECFB6DF2725DC5A00890C04 /* SoundEffectViewController.swift in Sources */,
 				4EE9A3B926F7684C00395B2F /* MyArticleViewController.swift in Sources */,
 				4E056E0026C39AD200FDF0F3 /* EditProfileViewController.swift in Sources */,
 				4E64D12A26EF5BA100DB3FDB /* CountryAddCollectionViewCell.swift in Sources */,
@@ -928,7 +962,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = topaz/topaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = B44YL23J9X;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = topaz/Info.plist;
@@ -936,6 +972,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.seosieve.topaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -950,7 +987,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = topaz/topaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = B44YL23J9X;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = topaz/Info.plist;
@@ -958,6 +997,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.seosieve.topaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

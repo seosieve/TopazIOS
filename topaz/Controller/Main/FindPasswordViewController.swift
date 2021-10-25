@@ -24,7 +24,7 @@ class FindPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        cloudsAnimation(json: "Login", container: cloudAnimationContainer)
+        setLoopAnimation(json: "Login", container: cloudAnimationContainer)
         makeBorder(target: emailTextFieldBorder, radius: 6, isFilled: false)
         makeBorder(target: sendingButton, radius: 12, isFilled: true)
         sendingButton.isEnabled = false
@@ -48,7 +48,7 @@ class FindPasswordViewController: UIViewController {
     @IBAction func emailSendingButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "메일이 전송되었습니다. 비밀번호 변경 후 다시 로그인해주세요.", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "확인", style: .default) { (action) in
-            Auth.auth().sendPasswordReset(withEmail: "royalcircle97@naver.com") { error in
+            Auth.auth().sendPasswordReset(withEmail: self.emailTextField.text!) { error in
                 if let error = error {
                     print("패스워드 재설정 메일 송신 에러 : \(error)")
                 }
@@ -68,19 +68,6 @@ class FindPasswordViewController: UIViewController {
 }
 //MARK: - UI Functions
 extension FindPasswordViewController {
-    func cloudsAnimation(json: String, container: UIView) {
-        let lottieView = AnimationView(name: json)
-        container.addSubview(lottieView)
-        lottieView.translatesAutoresizingMaskIntoConstraints = false
-        lottieView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
-        lottieView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
-        lottieView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
-        lottieView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-        lottieView.loopMode = .loop
-        lottieView.backgroundBehavior = .pauseAndRestore
-        lottieView.play()
-    }
-    
     // email이 가입되었을 때 애니메이션
     func correctAnimation() {
         UIView.animate(withDuration: 1) {

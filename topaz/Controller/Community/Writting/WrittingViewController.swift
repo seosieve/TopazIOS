@@ -22,6 +22,7 @@ class WrittingViewController: UIViewController {
     @IBOutlet weak var mainTextView: UITextView!
     @IBOutlet weak var tailTextView: UITextView!
     @IBOutlet weak var addImageTableView: UITableView!
+    @IBOutlet weak var addMusicButton: UIButton!
     @IBOutlet weak var addImageButton: UIButton!
     
     let viewModel = WrittingViewModel()
@@ -39,7 +40,9 @@ class WrittingViewController: UIViewController {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
         makeCircle(target: registerButton, color: "MintBlue", width: 0)
+        makeCircle(target: addMusicButton, color: "MintBlue", width: 0)
         makeCircle(target: addImageButton, color: "MintBlue", width: 0)
+        makeShadow(target: addMusicButton, radius: addImageButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         makeShadow(target: addImageButton, radius: addImageButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         
         let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tabScrollView))
@@ -94,6 +97,10 @@ class WrittingViewController: UIViewController {
         self.performSegue(withIdentifier: "goToAddCountry", sender: sender)
     }
     
+    @IBAction func addMusicButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToAddMusic", sender: sender)
+    }
+    
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "삽입할 이미지를 선택해주세요", message: "앨범에서 선택 또는 카메라 사용이 가능합니다.", preferredStyle: .actionSheet)
         let album = UIAlertAction(title: "앨범에서 선택", style: .default) { (action) in
@@ -115,8 +122,10 @@ class WrittingViewController: UIViewController {
             destinationVC.selectedCountryArr = selectedCountryArr
             destinationVC.countryDelegate = self
         }
+        if segue.identifier == "goToAddMusic" {
+            
+        }
     }
-    
 }
 
 //MARK: - UI Functions
