@@ -10,5 +10,6 @@ target 'topaz' do
   pod 'Firebase/Storage'
   pod 'lottie-ios'
   pod 'Kingfisher', '~> 7.0' 
+  pod 'SwiftySound'
 
 end

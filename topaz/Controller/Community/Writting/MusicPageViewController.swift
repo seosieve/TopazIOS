@@ -33,8 +33,12 @@ class MusicPageViewController: UIPageViewController {
         moveFromIndex(index: 0)
     }
     
-    func moveFromIndex(index: Int) {
-        self.setViewControllers([pageList[index]], direction: .forward, animated: true, completion: nil)
+    func moveFromIndex(index: Int, forward: Bool = true) {
+        if forward {
+            self.setViewControllers([pageList[index]], direction: .forward, animated: true, completion: nil)
+        } else {
+            self.setViewControllers([pageList[index]], direction: .reverse, animated: true, completion: nil)
+        }
     }
 }
 

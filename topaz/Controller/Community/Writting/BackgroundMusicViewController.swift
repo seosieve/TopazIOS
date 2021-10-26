@@ -7,8 +7,16 @@
 
 import UIKit
 
+protocol deliverBackgroundMusicDelegate {
+    func deliverBackgroundMusic(backgroundMusic: String)
+}
+
 class BackgroundMusicViewController: UIViewController {
     @IBOutlet weak var backgroundMusicCollectionView: UICollectionView!
+    
+    var backgroundMusicDelegate: deliverBackgroundMusicDelegate?
+    let backgroundMusic = BackgroundMusic()
+    var selectedBackgroundMusic = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,19 +25,37 @@ class BackgroundMusicViewController: UIViewController {
         backgroundMusicCollectionView.dataSource = self
         backgroundMusicCollectionView.delegate = self
     }
-
 }
 
 extension BackgroundMusicViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return backgroundMusic.backgroundMusicName.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MusicCollectionViewCell", for: indexPath) as! MusicCollectionViewCell
-        makeBorder(target: cell.musicBackground, radius: 12, width: 3, color: "Gray6", isFilled: false)
+        let image = backgroundMusic.backgroundMusicImage[indexPath.row]!
+        let text = backgroundMusic.backgroundMusicName[indexPath.row]
+        cell.configure(image: image, text: text)
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if selectedBackgroundMusic == "" {
+            let selectedFileName = backgroundMusic.backgroundMusicFileName[indexPath.row]
+            selectedBackgroundMusic = selectedFileName
+            backgroundMusicDelegate?.deliverBackgroundMusic(backgroundMusic: selectedFileName)
+        } else {
+            let index = backgroundMusic.backgroundMusicFileName.firstIndex(of: selectedBackgroundMusic)!
+            collectionView.deselectItem(at: [0,index], animated: true)
+            let selectedFileName = backgroundMusic.backgroundMusicFileName[indexPath.row]
+            selectedBackgroundMusic = selectedFileName
+            backgroundMusicDelegate?.deliverBackgroundMusic(backgroundMusic: selectedFileName)
+        }
+    }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        selectedBackgroundMusic = ""
+        backgroundMusicDelegate?.deliverBackgroundMusic(backgroundMusic: "")
+    }
 }

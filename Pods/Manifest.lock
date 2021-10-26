@@ -483,6 +483,7 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - SwiftySound (1.2.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -491,6 +492,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Kingfisher (~> 7.0)
   - lottie-ios
+  - SwiftySound
 
 SPEC REPOS:
   trunk:
@@ -515,6 +517,7 @@ SPEC REPOS:
     - lottie-ios
     - nanopb
     - PromisesObjC
+    - SwiftySound
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -538,7 +541,8 @@ SPEC CHECKSUMS:
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  SwiftySound: 9eb28bb14edb601b40027e44319e0ef8383f88bf
 
-PODFILE CHECKSUM: 569f9fbb50a327022cfc858a2bfc237fedf24561
+PODFILE CHECKSUM: 47614b5a1922b7645ff469e454fb24fdd6efea08
 
 COCOAPODS: 1.10.1

@@ -8,18 +8,21 @@
 import UIKit
 
 protocol deliverSoundEffectDelegate {
-    func deliverSoundEffect(arr: [String])
+    func deliverSoundEffect(soundEffect: String, add: Bool)
 }
 
 class SoundEffectViewController: UIViewController {
     @IBOutlet weak var soundEffectCollectionView: UICollectionView!
     
-    var soundEffectDelegate = deliverSoundEffectDelegate?
+    var soundEffectDelegate: deliverSoundEffectDelegate?
     let soundEffect = SoundEffect()
     var selectedSoundEffectArr = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let musicAddViewController = self.parent?.parent as! MusicAddViewController
+        musicAddViewController.deleteMusicDelegate = self
+        
         soundEffectCollectionView.register(MusicCollectionViewCell.nib(), forCellWithReuseIdentifier: "MusicCollectionViewCell")
         soundEffectCollectionView.allowsMultipleSelection = true
         soundEffectCollectionView.dataSource = self
@@ -45,7 +48,7 @@ extension SoundEffectViewController {
 //MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension SoundEffectViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return soundEffect.soundEffectName.count
+        return soundEffect.soundEffectFileName.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,8 +61,9 @@ extension SoundEffectViewController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedSoundEffectArr.count <= 2 {
-            selectedSoundEffectArr.append(soundEffect.soundEffectName[indexPath.row])
-            // delegate
+            let selectedFileName = soundEffect.soundEffectFileName[indexPath.row]
+            selectedSoundEffectArr.append(selectedFileName)
+            soundEffectDelegate?.deliverSoundEffect(soundEffect: selectedFileName, add: true)
         } else {
             collectionView.deselectItem(at: indexPath, animated: true)
             popUpToast()
@@ -67,9 +71,15 @@ extension SoundEffectViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        selectedSoundEffectArr = selectedSoundEffectArr.filter{$0 != soundEffect.soundEffectName[indexPath.row]}
-        // delegate
+        let deselectedFileName = soundEffect.soundEffectFileName[indexPath.row]
+        selectedSoundEffectArr = selectedSoundEffectArr.filter{$0 != deselectedFileName}
+        soundEffectDelegate?.deliverSoundEffect(soundEffect: deselectedFileName, add: false)
     }
-    
-    
+}
+
+//MARK: - deleteMusicDelegate
+extension SoundEffectViewController: deleteMusicDelegate {
+    func deleteSoundEffect() {
+        print("Success")
+    }
 }

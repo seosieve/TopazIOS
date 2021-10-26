@@ -121,6 +121,8 @@
 		4ECFB6E32725EA3500890C04 /* MusicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E12725EA3500890C04 /* MusicCollectionViewCell.xib */; };
 		4ECFB6E52725EFF100890C04 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E42725EFF100890C04 /* MusicModel.swift */; };
 		4ECFB6E72726A99100890C04 /* Music.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E62726A99100890C04 /* Music.json */; };
+		4ECFB6EA2727503D00890C04 /* music1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E92727503D00890C04 /* music1.mp3 */; };
+		4ECFB6EC2727522100890C04 /* music2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6EB2727522100890C04 /* music2.mp3 */; };
 		4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */; };
 		4EDA40282700B57E00B5E80B /* WrittingAddImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA40262700B57E00B5E80B /* WrittingAddImageTableViewCell.swift */; };
 		4EDA40292700B57E00B5E80B /* WrittingAddImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA40272700B57E00B5E80B /* WrittingAddImageTableViewCell.xib */; };
@@ -254,6 +256,8 @@
 		4ECFB6E12725EA3500890C04 /* MusicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicCollectionViewCell.xib; sourceTree = "<group>"; };
 		4ECFB6E42725EFF100890C04 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
 		4ECFB6E62726A99100890C04 /* Music.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Music.json; path = ../../../../../Desktop/Music.json; sourceTree = "<group>"; };
+		4ECFB6E92727503D00890C04 /* music1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = music1.mp3; path = ../../../../../Downloads/music1.mp3; sourceTree = "<group>"; };
+		4ECFB6EB2727522100890C04 /* music2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = music2.mp3; path = ../../../../../Downloads/music2.mp3; sourceTree = "<group>"; };
 		4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewModel.swift; sourceTree = "<group>"; };
 		4EDA40262700B57E00B5E80B /* WrittingAddImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingAddImageTableViewCell.swift; sourceTree = "<group>"; };
 		4EDA40272700B57E00B5E80B /* WrittingAddImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WrittingAddImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 				4ECFB6D52720C80100890C04 /* topaz.entitlements */,
 				4E0FAEAA26C0EE99003D80E3 /* AppDelegate.swift */,
 				4E0FAEAC26C0EE99003D80E3 /* SceneDelegate.swift */,
+				4ECFB6E82727500A00890C04 /* Music */,
 				4E8A58A0270336CD00C8A646 /* Json */,
 				4EFBA8DD26C137C9001F1557 /* Model */,
 				4EFBA8DC26C137B3001F1557 /* Controller */,
@@ -492,6 +497,15 @@
 				4E9DCB0F26C177E1001D218A /* Poppins-ThinItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4ECFB6E82727500A00890C04 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				4ECFB6E92727503D00890C04 /* music1.mp3 */,
+				4ECFB6EB2727522100890C04 /* music2.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 		4EE9A3B426F7582800395B2F /* Writting */ = {
@@ -667,6 +681,7 @@
 				4E9DCB3226C1781B001D218A /* Poppins-Regular.ttf in Resources */,
 				4ECB1691270AED36000029CB /* Loading.json in Resources */,
 				4E8A58B52705404600C8A646 /* Splash.storyboard in Resources */,
+				4ECFB6EA2727503D00890C04 /* music1.mp3 in Resources */,
 				4E9DCB2F26C17814001D218A /* Poppins-Medium.ttf in Resources */,
 				4E533F3026DFD9A700527FC2 /* Community.storyboard in Resources */,
 				4EDA40292700B57E00B5E80B /* WrittingAddImageTableViewCell.xib in Resources */,
@@ -687,6 +702,7 @@
 				4E9DCB2026C177F1001D218A /* NotoSansKR-Bold.otf in Resources */,
 				4E0FAEB226C0EE99003D80E3 /* Main.storyboard in Resources */,
 				4E13D03A270AE15300CAC6F4 /* Login.json in Resources */,
+				4ECFB6EC2727522100890C04 /* music2.mp3 in Resources */,
 				4E8A58CE270584A900C8A646 /* FirstOnboarding.json in Resources */,
 				4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */,
 				4E9DCB3126C17819001D218A /* Poppins-MediumItalic.ttf in Resources */,

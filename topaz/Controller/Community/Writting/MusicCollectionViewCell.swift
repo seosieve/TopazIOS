@@ -35,29 +35,36 @@ class MusicCollectionViewCell: UICollectionViewCell {
     static func nib() -> UINib {
         return UINib(nibName: "MusicCollectionViewCell", bundle: nil)
     }
-
 }
 
 //MARK: - UI Functions
 extension MusicCollectionViewCell {
     func selected() {
-        musicBackground.setGradient(viewBelow: musicIcon)
-        musicBackground.layer.borderWidth = 0
-        musicIcon.tintColor = UIColor(named: "White")
-        musicName.textColor = UIColor(named: "Gray2")
-        musicName.font = UIFont(name: "NotoSansKR-Medium", size: 12)
+        UIView.animate(withDuration: 0.2) {
+            self.musicBackground.layer.borderWidth = 0
+            self.musicIcon.tintColor = UIColor(named: "White")
+            self.musicName.textColor = UIColor(named: "Gray2")
+            self.musicName.font = UIFont(name: "NotoSansKR-Medium", size: 12)
+        }
+        UIView.transition(with: self, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            self.musicBackground.setGradient(viewBelow: self.musicIcon)
+        }, completion: nil)
     }
     
     func deselected() {
-        for layer in musicBackground.layer.sublayers! {
-            if layer.name == "gradient" {
-                layer.removeFromSuperlayer()
+        UIView.transition(with: self, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            for layer in self.musicBackground.layer.sublayers! {
+                if layer.name == "gradient" {
+                    layer.removeFromSuperlayer()
+                }
             }
+        }, completion: nil)
+        UIView.animate(withDuration: 0.2) {
+            self.musicBackground.layer.borderWidth = 3
+            self.musicIcon.tintColor = UIColor(named: "Gray6")
+            self.musicName.textColor = UIColor(named: "Gray3")
+            self.musicName.font = UIFont(name: "NotoSansKR-Regular", size: 12)
         }
-        musicBackground.layer.borderWidth = 3
-        musicIcon.tintColor = UIColor(named: "Gray6")
-        musicName.textColor = UIColor(named: "Gray3")
-        musicName.font = UIFont(name: "NotoSansKR-Regular", size: 12)
     }
 }
 
