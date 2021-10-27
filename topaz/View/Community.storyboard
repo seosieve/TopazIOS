@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -905,7 +905,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배경음악 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT2-qU-4Gs">
-                                        <rect key="frame" x="28" y="16" width="93" height="20"/>
+                                        <rect key="frame" x="28" y="16" width="99" height="25"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="17"/>
                                         <color key="textColor" name="Gray2"/>
                                         <nil key="highlightedColor"/>
@@ -917,19 +917,19 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="301" height="233"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배경음악" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5y-Ym-UEl">
-                                                        <rect key="frame" x="34" y="16" width="42" height="14"/>
+                                                        <rect key="frame" x="34" y="16" width="44.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
                                                         <color key="textColor" name="White"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="효과음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukB-rR-R1l">
-                                                        <rect key="frame" x="132" y="16" width="31.5" height="14"/>
+                                                        <rect key="frame" x="134.5" y="16" width="33.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
                                                         <color key="textColor" name="White"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1a-VV-lc7" userLabel="progressBar">
-                                                        <rect key="frame" x="46" y="50" width="20" height="128"/>
+                                                        <rect key="frame" x="46" y="53.5" width="20" height="128"/>
                                                         <subviews>
                                                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSp-JB-y0M">
                                                                 <rect key="frame" x="0.0" y="58" width="20" height="70"/>
@@ -956,6 +956,7 @@
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectMini" translatesAutoresizingMaskIntoConstraints="NO" id="z85-rh-hE9" userLabel="thumbnail">
                                                                         <rect key="frame" x="2" y="2" width="20" height="20"/>
+                                                                        <color key="tintColor" name="MintBlue"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="20" id="PXy-Tl-h57"/>
                                                                             <constraint firstAttribute="height" constant="20" id="mXk-Gp-Ytv"/>
@@ -980,7 +981,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giE-mH-sMW">
-                                                        <rect key="frame" x="104" y="50" width="1" height="162"/>
+                                                        <rect key="frame" x="104" y="53.5" width="1" height="162"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="162" id="hX8-u3-1U4"/>
@@ -988,7 +989,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qv3-eT-cPV" userLabel="progressBar">
-                                                        <rect key="frame" x="143" y="50" width="20" height="128"/>
+                                                        <rect key="frame" x="143" y="53.5" width="20" height="128"/>
                                                         <subviews>
                                                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96p-AQ-e6R">
                                                                 <rect key="frame" x="0.0" y="58" width="20" height="70"/>
@@ -1013,8 +1014,9 @@
                                                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voP-aZ-7dV" userLabel="cover">
                                                                 <rect key="frame" x="13" y="5" width="24" height="24"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectMini" translatesAutoresizingMaskIntoConstraints="NO" id="Nyf-K7-bej" userLabel="thumbnail">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Nyf-K7-bej" userLabel="thumbnail">
                                                                         <rect key="frame" x="2" y="2" width="20" height="20"/>
+                                                                        <color key="tintColor" name="MintBlue"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="Ild-xf-Hlo"/>
                                                                             <constraint firstAttribute="width" constant="20" id="iyg-0V-6dm"/>
@@ -1039,7 +1041,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VJ-kh-kMp" userLabel="progressBar">
-                                                        <rect key="frame" x="203" y="50" width="20" height="128"/>
+                                                        <rect key="frame" x="203" y="53.5" width="20" height="128"/>
                                                         <subviews>
                                                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISi-pK-vmS">
                                                                 <rect key="frame" x="0.0" y="58" width="20" height="70"/>
@@ -1066,6 +1068,7 @@
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectMini" translatesAutoresizingMaskIntoConstraints="NO" id="iGE-0n-IqB" userLabel="thumbnail">
                                                                         <rect key="frame" x="2" y="2" width="20" height="20"/>
+                                                                        <color key="tintColor" name="MintBlue"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="20" id="Kcz-UX-fow"/>
                                                                             <constraint firstAttribute="height" constant="20" id="Wqk-SJ-XPp"/>
@@ -1090,7 +1093,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qL1-4d-560" userLabel="progressBar">
-                                                        <rect key="frame" x="263" y="50" width="20" height="128"/>
+                                                        <rect key="frame" x="263" y="53.5" width="20" height="128"/>
                                                         <subviews>
                                                             <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="et2-YI-1RZ">
                                                                 <rect key="frame" x="0.0" y="58" width="20" height="70"/>
@@ -1117,6 +1120,7 @@
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectMini" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-yf-fpc" userLabel="thumbnail">
                                                                         <rect key="frame" x="2" y="2" width="20" height="20"/>
+                                                                        <color key="tintColor" name="MintBlue"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="20" id="HgQ-li-ZTn"/>
                                                                             <constraint firstAttribute="width" constant="20" id="trq-1o-ElI"/>
@@ -1141,40 +1145,52 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrg-as-KuV" userLabel="delete">
-                                                        <rect key="frame" x="44" y="190" width="24" height="24"/>
+                                                        <rect key="frame" x="44" y="193.5" width="24" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="A8O-R1-q8K"/>
                                                             <constraint firstAttribute="width" constant="24" id="zqq-0V-ugo"/>
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="MusicDeleteButton"/>
+                                                        <connections>
+                                                            <action selector="musicDeleteButtonPressed:" destination="lwI-47-ybn" eventType="touchUpInside" id="0UW-g6-WDu"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICB-K1-Oy7" userLabel="delete">
-                                                        <rect key="frame" x="141" y="190" width="24" height="24"/>
+                                                        <rect key="frame" x="141" y="193.5" width="24" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="24" id="bgM-Ro-Cyx"/>
                                                             <constraint firstAttribute="height" constant="24" id="wTt-un-aSq"/>
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="MusicDeleteButton"/>
+                                                        <connections>
+                                                            <action selector="musicDeleteButtonPressed:" destination="lwI-47-ybn" eventType="touchUpInside" id="n4V-2n-7GR"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khb-uG-8KH" userLabel="delete">
-                                                        <rect key="frame" x="201" y="190" width="24" height="24"/>
+                                                        <rect key="frame" x="201" y="193.5" width="24" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="mkC-id-mi4"/>
                                                             <constraint firstAttribute="width" constant="24" id="tDr-yn-qZh"/>
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="MusicDeleteButton"/>
+                                                        <connections>
+                                                            <action selector="musicDeleteButtonPressed:" destination="lwI-47-ybn" eventType="touchUpInside" id="ega-ci-gVL"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdl-6c-G1H" userLabel="delete">
-                                                        <rect key="frame" x="261" y="190" width="24" height="24"/>
+                                                        <rect key="frame" x="261" y="193.5" width="24" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="48Q-Ky-B1Y"/>
                                                             <constraint firstAttribute="width" constant="24" id="FO6-mW-1jd"/>
                                                         </constraints>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="MusicDeleteButton"/>
+                                                        <connections>
+                                                            <action selector="musicDeleteButtonPressed:" destination="lwI-47-ybn" eventType="touchUpInside" id="E63-O7-v2I"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1743,6 +1759,7 @@
         <image name=" " width="128" height="128"/>
         <image name="AddImageButton" width="24" height="24"/>
         <image name="AddMusicButton" width="24" height="24"/>
+        <image name="BeachSoundEffectIcon" width="64" height="64"/>
         <image name="BeachSoundEffectMini" width="20" height="20"/>
         <image name="CancelButton" width="24" height="24"/>
         <image name="Community_OFF" width="33" height="31"/>

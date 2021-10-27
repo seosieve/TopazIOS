@@ -25,8 +25,15 @@ class BackgroundMusicViewController: UIViewController {
         backgroundMusicCollectionView.dataSource = self
         backgroundMusicCollectionView.delegate = self
     }
+    
+    func deleteBackgroundMusic(name: String) {
+        let index = backgroundMusic.backgroundMusicFileName.firstIndex(of: name)!
+        backgroundMusicCollectionView.deselectItem(at: [0,index], animated: true)
+        selectedBackgroundMusic = ""
+    }
 }
 
+//MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension BackgroundMusicViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return backgroundMusic.backgroundMusicName.count

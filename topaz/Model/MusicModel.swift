@@ -10,7 +10,7 @@ import UIKit
 struct BackgroundMusic {
     let backgroundMusicImage = [UIImage(named: "BeachSoundEffectIcon"), UIImage(named: "LoadSoundEffectIcon"), UIImage(named: "FireplaceSoundEffectIcon")]
     let backgroundMusicName = ["배경음악 1", "배경음악 2", "배경음악 3"]
-    let backgroundMusicFileName = ["firstBackgroundMusic", "secondBackgroundMusic", "thirdBackgroundMusic"]
+    let backgroundMusicFileName = ["BeachSoundEffect", "LoadSoundEffect", "FireplaceSoundEffect"]
 }
 
 struct SoundEffect {

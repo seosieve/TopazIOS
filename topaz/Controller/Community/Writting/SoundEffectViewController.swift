@@ -20,9 +20,6 @@ class SoundEffectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let musicAddViewController = self.parent?.parent as! MusicAddViewController
-        musicAddViewController.deleteMusicDelegate = self
-        
         soundEffectCollectionView.register(MusicCollectionViewCell.nib(), forCellWithReuseIdentifier: "MusicCollectionViewCell")
         soundEffectCollectionView.allowsMultipleSelection = true
         soundEffectCollectionView.dataSource = self
@@ -74,12 +71,5 @@ extension SoundEffectViewController: UICollectionViewDataSource, UICollectionVie
         let deselectedFileName = soundEffect.soundEffectFileName[indexPath.row]
         selectedSoundEffectArr = selectedSoundEffectArr.filter{$0 != deselectedFileName}
         soundEffectDelegate?.deliverSoundEffect(soundEffect: deselectedFileName, add: false)
-    }
-}
-
-//MARK: - deleteMusicDelegate
-extension SoundEffectViewController: deleteMusicDelegate {
-    func deleteSoundEffect() {
-        print("Success")
     }
 }

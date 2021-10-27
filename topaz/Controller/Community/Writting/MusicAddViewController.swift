@@ -8,10 +8,6 @@
 import UIKit
 import SwiftySound
 
-protocol deleteMusicDelegate {
-    func deleteSoundEffect()
-}
-
 class MusicAddViewController: UIViewController {
     @IBOutlet weak var musicAddViewContainer: UIView!
     @IBOutlet weak var musicSettingContainer: UIView!
@@ -41,11 +37,11 @@ class MusicAddViewController: UIViewController {
     @IBOutlet weak var soundEffectButton: UIButton!
     @IBOutlet weak var soundEffectUnderLine: UIView!
     
-    var deleteMusicDelegate: deleteMusicDelegate?
     var musicPageViewController: MusicPageViewController!
     var backgroundMusicFileName = ""
     var soundEffectFileName = [String]()
-    var sound1: Sound?
+    var backgroundMusic: Sound?
+    var soundEffect = [Sound]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +51,7 @@ class MusicAddViewController: UIViewController {
         makeSettingBackground()
         setLoopAnimation(json: "Music", container: musicAnimationContainer)
         
-        makeMusic1()
+//        makeMusic1()
     }
     
     @objc func drag(sender: UIPanGestureRecognizer) {
@@ -75,14 +71,33 @@ class MusicAddViewController: UIViewController {
                 constraint.constant = 1.1 * (180 - sender.view!.center.y)
             }
         }
+        
+        
         print(1.1 * (180 - sender.view!.center.y))
         print(100/(1.1 * (180 - sender.view!.center.y)))
         
-        sound1!.volume = Float(100/(1.1 * (180 - sender.view!.center.y)))
+//        sound1!.volume = Float(100/(1.1 * (180 - sender.view!.center.y)))
+    }
+    
+    @IBAction func musicDeleteButtonPressed(_ sender: UIButton) {
+        if sender.tag == 1 {
+            // backgroundMusic Delete
+            let VC = musicPageViewController.pageList[0] as! BackgroundMusicViewController
+            VC.deleteBackgroundMusic(name: backgroundMusicFileName)
+            UIView.animate(withDuration: 0.3) {
+                self.progressBarContainer[0].alpha = 0
+                self.progressBarCover[0].alpha = 0
+                self.progressBarProgress[0].alpha = 0
+                self.musicDeleteButton[0].alpha = 0
+                self.musicDeleteButton[0].isEnabled = false
+            }
+        } else {
+            // soundEffect Delete
+            
+        }
     }
     
     @IBAction func backgroundMusicButtonPressed(_ sender: UIButton) {
-        deleteMusicDelegate?.deleteSoundEffect()
         musicPageViewController.moveFromIndex(index: 0, forward: false)
         transferMusic(index: 0)
     }
@@ -119,6 +134,7 @@ extension MusicAddViewController {
     func makeSettingBackground() {
         progressBarContainer.forEach { container in
             container.layer.cornerRadius = container.frame.size.width/2
+            container.alpha = 0
         }
         progressBarHandle.forEach { handle in
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.drag))
@@ -127,19 +143,20 @@ extension MusicAddViewController {
         progressBarCover.forEach { cover in
             makeCircle(target: cover)
             makeShadow(target: cover, radius: 12, height: 2)
-            cover.isHidden = true
+            cover.alpha = 0
         }
         progressBarProgress.forEach { progress in
             progress.layer.cornerRadius = progress.frame.size.width/2
-            progress.isHidden = true
+            progress.alpha = 0
         }
         musicDeleteButton.forEach { button in
-            button.isHidden = true
+            button.isEnabled = false
+            button.alpha = 0
         }
         splitDashLine.createDottedLine()
     }
     
-    func coverAnimation(backgroundMusic: String, soundEffect: [String]) {
+    func coverAnimation(_ backgroundMusic: String, _ soundEffect: [String]) {
         if backgroundMusic == "" && soundEffect.count == 0 {
             musicAnimationContainerConstraintY.constant = -187
             UIView.animate(withDuration: 0.3) {
@@ -147,23 +164,22 @@ extension MusicAddViewController {
                 self.musicSettingContainer.alpha = 0
             }
         } else {
-            musicAnimationContainerConstraintY.constant = 0
-            UIView.animate(withDuration: 0.3) {
-                self.view.layoutIfNeeded()
-                self.musicSettingContainer.alpha = 1
+            // constant가 이미 0이어도 계속 실행되지 않게 처리
+            if musicAnimationContainerConstraintY.constant != 0 {
+                musicAnimationContainerConstraintY.constant = 0
+                UIView.animate(withDuration: 0.3) {
+                    self.view.layoutIfNeeded()
+                    self.musicSettingContainer.alpha = 1
+                }
             }
         }
     }
     
     func makeMusic1() {
-        let sound = Bundle.main.url(forResource: "music1", withExtension: "mp3")
-        sound1 = Sound(url: sound!)
-        sound1!.play()
-        
-        
+        let sound = Bundle.main.url(forResource: "music1", withExtension: "mp3")!
+        backgroundMusic = Sound(url: sound)
+        backgroundMusic!.play()
     }
-    
- 
 }
 
 //MARK: - transferMusicDelegate
@@ -187,30 +203,87 @@ extension MusicAddViewController: transferMusicDelegate {
 extension MusicAddViewController: deliverBackgroundMusicDelegate {
     func deliverBackgroundMusic(backgroundMusic: String) {
         backgroundMusicFileName = backgroundMusic
-        coverAnimation(backgroundMusic: backgroundMusicFileName, soundEffect: soundEffectFileName)
-        if backgroundMusic == "" {
-            progressBarCover[0].isHidden = true
-            progressBarProgress[0].isHidden = true
-            musicDeleteButton[0].isHidden = true
-        } else {
-            progressBarHandle[0].center = CGPoint(x: 56.0, y: 114.0)
+        coverAnimation(backgroundMusicFileName, soundEffectFileName)
+        if backgroundMusic != "" {
+            let originX = progressBarContainer[0].center.x
+            progressBarHandle[0].center = CGPoint(x: originX, y: 114.0)
             progressBarProgress[0].constraints.forEach { constraint in
                 if constraint.firstAttribute == .height {
                     constraint.constant = 70
                 }
             }
-            progressBarCover[0].isHidden = false
-            progressBarProgress[0].isHidden = false
-            musicDeleteButton[0].isHidden = false
+            progressBarThumbnail[0].image = UIImage(named: "\(backgroundMusic)Icon")
+            UIView.animate(withDuration: 0.3) {
+                self.progressBarContainer[0].alpha = 1
+                self.progressBarCover[0].alpha = 1
+                self.progressBarProgress[0].alpha = 1
+                self.musicDeleteButton[0].alpha = 1
+                self.musicDeleteButton[0].isEnabled = true
+            }
+        } else {
+            UIView.animate(withDuration: 0.3) {
+                self.progressBarContainer[0].alpha = 0
+                self.progressBarCover[0].alpha = 0
+                self.progressBarProgress[0].alpha = 0
+                self.musicDeleteButton[0].alpha = 0
+                self.musicDeleteButton[0].isEnabled = false
+            }
         }
-        
+        print(backgroundMusicFileName)
     }
 }
 
 //MARK: - deliverSoundEffectDelegate
 extension MusicAddViewController: deliverSoundEffectDelegate {
     func deliverSoundEffect(soundEffect: String, add: Bool) {
-        print(soundEffect, add)
+        if add {
+            soundEffectFileName.append(soundEffect)
+            coverAnimation(backgroundMusicFileName, soundEffectFileName)
+            let index = soundEffectFileName.count
+            let originX = progressBarContainer[index].center.x
+            progressBarHandle[index].center = CGPoint(x: originX, y: 114.0)
+            progressBarProgress[index].constraints.forEach { constraint in
+                if constraint.firstAttribute == .height {
+                    constraint.constant = 70
+                }
+            }
+            progressBarThumbnail[index].image = UIImage(named: "\(soundEffect)Icon")
+            UIView.animate(withDuration: 0.3) {
+                self.progressBarContainer[index].alpha = 1
+                self.progressBarCover[index].alpha = 1
+                self.progressBarProgress[index].alpha = 1
+                self.musicDeleteButton[index].alpha = 1
+                self.musicDeleteButton[index].isEnabled = true
+            }
+        } else {
+            let removedIndex = soundEffectFileName.firstIndex(of: soundEffect)!
+            soundEffectFileName.remove(at: removedIndex)
+            coverAnimation(backgroundMusicFileName, soundEffectFileName)
+            let index = soundEffectFileName.count
+            UIView.animate(withDuration: 0.3) {
+                self.progressBarContainer[index+1].alpha = 0
+                self.progressBarCover[index+1].alpha = 0
+                self.progressBarProgress[index+1].alpha = 0
+                self.musicDeleteButton[index+1].alpha = 0
+                self.musicDeleteButton[index+1].isEnabled = false
+            }
+            redrawSoundEffect(removedIndex: removedIndex, index: index)
+        }
+        print(soundEffectFileName)
+    }
+    
+    func redrawSoundEffect(removedIndex: Int, index: Int) {
+        if removedIndex == index { return }
+        for index in removedIndex+1...index {
+            progressBarHandle[index].center.y = progressBarHandle[index+1].center.y
+            progressBarProgress[index].constraints.forEach { constraint in
+                if constraint.firstAttribute == .height {
+                    constraint.constant = progressBarProgress[index+1].bounds.height
+                }
+            }
+            progressBarThumbnail[index].image = progressBarThumbnail[index+1].image
+        }
+        
     }
 }
 
