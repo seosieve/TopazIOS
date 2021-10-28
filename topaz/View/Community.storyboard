@@ -791,6 +791,10 @@
                                     <action selector="addMusicButtonPressed:" destination="1Ng-CP-npj" eventType="touchUpInside" id="whf-ev-QE2"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpP-Q7-bXF">
+                                <rect key="frame" x="80" y="798.5" width="51" height="31"/>
+                                <color key="onTintColor" name="LightMintBlue"/>
+                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyQ-iV-dKH">
                                 <rect key="frame" x="346" y="790" width="48" height="48"/>
                                 <color key="backgroundColor" name="MintBlue"/>
@@ -866,9 +870,11 @@
                             <constraint firstItem="fLV-Sm-4j8" firstAttribute="centerX" secondItem="ecu-eh-5qT" secondAttribute="centerX" id="b52-jY-P9l"/>
                             <constraint firstItem="wLi-Xu-Ldg" firstAttribute="leading" secondItem="ecu-eh-5qT" secondAttribute="leading" id="e2k-Df-IPh"/>
                             <constraint firstItem="O5X-ur-TgD" firstAttribute="leading" secondItem="ecu-eh-5qT" secondAttribute="leading" constant="20" id="hsb-dv-alF"/>
+                            <constraint firstItem="cpP-Q7-bXF" firstAttribute="centerY" secondItem="O5X-ur-TgD" secondAttribute="centerY" id="ldA-VE-fwL"/>
                             <constraint firstItem="wLi-Xu-Ldg" firstAttribute="top" secondItem="fLV-Sm-4j8" secondAttribute="bottom" id="qZ2-pw-zee"/>
                             <constraint firstItem="wLi-Xu-Ldg" firstAttribute="bottom" secondItem="tuo-7c-HBP" secondAttribute="bottom" id="sYu-lM-rjk"/>
                             <constraint firstAttribute="trailing" secondItem="jyQ-iV-dKH" secondAttribute="trailing" constant="20" id="tG7-Vc-P6s"/>
+                            <constraint firstItem="cpP-Q7-bXF" firstAttribute="leading" secondItem="O5X-ur-TgD" secondAttribute="trailing" constant="12" id="tK5-cQ-CxT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lAc-sO-zV1"/>
@@ -886,7 +892,6 @@
                         <outletCollection property="countryButton" destination="p5a-RA-r2d" collectionClass="NSMutableArray" id="2Lo-Jb-Pvd"/>
                         <outletCollection property="countryButton" destination="4TU-qx-vlI" collectionClass="NSMutableArray" id="Y7A-Ih-Dal"/>
                         <segue destination="xsB-hf-6Jj" kind="presentation" identifier="goToAddCountry" modalPresentationStyle="fullScreen" id="xgX-6s-tz6"/>
-                        <segue destination="lwI-47-ybn" kind="presentation" identifier="goToAddMusic" id="huw-YD-snJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zk9-Ld-wf2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -896,13 +901,13 @@
         <!--Music Add View Controller-->
         <scene sceneID="niY-eb-rrM">
             <objects>
-                <viewController id="lwI-47-ybn" customClass="MusicAddViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MusicVC" id="lwI-47-ybn" customClass="MusicAddViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xnv-3g-Yt2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbO-MQ-GnF">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="배경음악 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT2-qU-4Gs">
                                         <rect key="frame" x="28" y="16" width="99" height="25"/>
@@ -1294,7 +1299,7 @@
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMb-9h-p7R">
-                                        <rect key="frame" x="0.0" y="372" width="414" height="436"/>
+                                        <rect key="frame" x="0.0" y="372" width="414" height="446"/>
                                         <connections>
                                             <segue destination="6zW-qW-WqS" kind="embed" identifier="goToPageVC" id="CTN-XT-YdL"/>
                                         </connections>
@@ -1339,7 +1344,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CW-Og-fQd">
-                                <rect key="frame" x="0.0" y="808" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -1394,7 +1399,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3F-hp-4Ra" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6544.9275362318849" y="130.58035714285714"/>
+            <point key="canvasLocation" x="6545" y="252"/>
         </scene>
         <!--Country Add View Controller-->
         <scene sceneID="wtG-JB-Fo0">
@@ -1662,11 +1667,11 @@
             <objects>
                 <viewController storyboardIdentifier="BackgroundMusicVC" id="83A-nP-n1s" customClass="BackgroundMusicViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="heX-0s-EHn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="436"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="446"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fxz-bg-KS8">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="436"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="446"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fgB-Bz-cCJ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1709,14 +1714,15 @@
             <objects>
                 <viewController storyboardIdentifier="SoundEffectVC" id="Eoj-Op-psi" customClass="SoundEffectViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ybc-FK-5J4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="436"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="446"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uaz-ws-o1b">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="436"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="446"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="22" minimumInteritemSpacing="10" id="qUL-GI-MWA">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="22" minimumInteritemSpacing="10" id="qUL-GI-MWA">
                                     <size key="itemSize" width="82" height="106"/>
+                                    <size key="estimatedItemSize" width="82" height="106"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="48" minY="0.0" maxX="48" maxY="0.0"/>
@@ -1793,6 +1799,9 @@
         </namedColor>
         <namedColor name="Gray7">
             <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightMintBlue">
+            <color red="0.67500001192092896" green="0.96899998188018799" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MintBlue">
             <color red="0.19200000166893005" green="0.86699998378753662" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol deliverSoundEffectDelegate {
+protocol DeliverSoundEffectDelegate {
     func deliverSoundEffect(soundEffect: String, add: Bool)
 }
 
 class SoundEffectViewController: UIViewController {
     @IBOutlet weak var soundEffectCollectionView: UICollectionView!
     
-    var soundEffectDelegate: deliverSoundEffectDelegate?
+    var soundEffectDelegate: DeliverSoundEffectDelegate?
     let soundEffect = SoundEffect()
     var selectedSoundEffectArr = [String]()
     
@@ -29,6 +29,12 @@ class SoundEffectViewController: UIViewController {
 
 //MARK: - UI Functions
 extension SoundEffectViewController {
+    func deleteSoundEffect(name: String) {
+        let index = soundEffect.soundEffectFileName.firstIndex(of: name)!
+        soundEffectCollectionView.deselectItem(at: [0,index], animated: true)
+        selectedSoundEffectArr = selectedSoundEffectArr.filter{ $0 != name }
+    }
+    
     func popUpToast() {
         // Make Custom Alert Toast
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)

@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol deliverBackgroundMusicDelegate {
+protocol DeliverBackgroundMusicDelegate {
     func deliverBackgroundMusic(backgroundMusic: String)
 }
 
 class BackgroundMusicViewController: UIViewController {
     @IBOutlet weak var backgroundMusicCollectionView: UICollectionView!
     
-    var backgroundMusicDelegate: deliverBackgroundMusicDelegate?
+    var backgroundMusicDelegate: DeliverBackgroundMusicDelegate?
     let backgroundMusic = BackgroundMusic()
     var selectedBackgroundMusic = ""
     
@@ -25,13 +25,17 @@ class BackgroundMusicViewController: UIViewController {
         backgroundMusicCollectionView.dataSource = self
         backgroundMusicCollectionView.delegate = self
     }
-    
+}
+
+//MARK: - UI Functions
+extension BackgroundMusicViewController {
     func deleteBackgroundMusic(name: String) {
         let index = backgroundMusic.backgroundMusicFileName.firstIndex(of: name)!
         backgroundMusicCollectionView.deselectItem(at: [0,index], animated: true)
         selectedBackgroundMusic = ""
     }
 }
+
 
 //MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 extension BackgroundMusicViewController: UICollectionViewDataSource, UICollectionViewDelegate {

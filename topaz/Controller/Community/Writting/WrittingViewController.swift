@@ -36,6 +36,9 @@ class WrittingViewController: UIViewController {
     let backgroundView = UIView()
     let lottieView = AnimationView(name: "Loading")
     
+    var musicArr = ["", "", "", ""]
+    var volumeArr: [Float] = [0, 0, 0, 0]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
@@ -98,7 +101,11 @@ class WrittingViewController: UIViewController {
     }
     
     @IBAction func addMusicButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "goToAddMusic", sender: sender)
+        
+        
+        
+        
+        instantiateVC()
     }
     
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
@@ -121,9 +128,6 @@ class WrittingViewController: UIViewController {
             let destinationVC = segue.destination as! CountryAddViewController
             destinationVC.selectedCountryArr = selectedCountryArr
             destinationVC.countryDelegate = self
-        }
-        if segue.identifier == "goToAddMusic" {
-            
         }
     }
 }
@@ -198,6 +202,18 @@ extension WrittingViewController {
                 constraint.constant = addImageTableView.contentSize.height
             }
         }
+    }
+    
+    func instantiateVC() {
+        let storyboard = UIStoryboard(name: "Community", bundle: .main)
+        let MusicVC = storyboard.instantiateViewController(withIdentifier: "MusicVC")
+        let destinationVC = MusicVC as! MusicAddViewController
+        destinationVC.musicAddDelegate = self
+        destinationVC.musicArr = musicArr
+        destinationVC.volumeArr = volumeArr
+        MusicVC.modalPresentationStyle = .automatic
+        MusicVC.modalTransitionStyle = .coverVertical
+        self.present(MusicVC, animated: true, completion: nil)
     }
 }
 
@@ -364,5 +380,14 @@ extension WrittingViewController: AddCountryDelegate {
         self.selectedCountryArr = selectedCountryArr
         setCountryButton(selectedCountryArr: selectedCountryArr)
         addCountryHandler()
+    }
+}
+
+extension WrittingViewController: MusicAddDelegate {
+    func musicAdd(musicArr: [String], volumeArr: [Float], musicHandler: @escaping () -> ()) {
+        self.musicArr = musicArr
+        self.volumeArr = volumeArr
+        print(volumeArr)
+        musicHandler()
     }
 }

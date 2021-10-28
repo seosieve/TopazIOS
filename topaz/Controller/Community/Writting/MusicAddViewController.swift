@@ -8,6 +8,10 @@
 import UIKit
 import SwiftySound
 
+protocol MusicAddDelegate {
+    func musicAdd(musicArr: [String], volumeArr: [Float], musicHandler: @escaping () -> ())
+}
+
 class MusicAddViewController: UIViewController {
     @IBOutlet weak var musicAddViewContainer: UIView!
     @IBOutlet weak var musicSettingContainer: UIView!
@@ -37,11 +41,14 @@ class MusicAddViewController: UIViewController {
     @IBOutlet weak var soundEffectButton: UIButton!
     @IBOutlet weak var soundEffectUnderLine: UIView!
     
+    var musicAddDelegate: MusicAddDelegate?
     var musicPageViewController: MusicPageViewController!
     var backgroundMusicFileName = ""
     var soundEffectFileName = [String]()
     var backgroundMusic: Sound?
-    var soundEffect = [Sound]()
+    var soundEffectArr = [Sound?]()
+    var musicArr = ["", "", "", ""]
+    var volumeArr: [Float] = [0, 0, 0, 0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,33 +57,58 @@ class MusicAddViewController: UIViewController {
         musicAnimationContainerConstraintY.constant = -187
         makeSettingBackground()
         setLoopAnimation(json: "Music", container: musicAnimationContainer)
-        
-//        makeMusic1()
+        soundEffectArr.forEach { soundEffect in
+            print(soundEffect?.volume)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        makeMusicInput()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        soundEffectArr.forEach { soundEffect in
+            print(soundEffect?.volume)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        backgroundMusic?.stop()
+        soundEffectArr.forEach { soundEffect in
+            soundEffect?.stop()
+        }
     }
     
     @objc func drag(sender: UIPanGestureRecognizer) {
+        // sender make draggable
         let translation = sender.translation(in: self.view)
+        let x = sender.view!.center.x
         if sender.view!.center.y + translation.y > 170 {
-            sender.view!.center = CGPoint(x: sender.view!.center.x, y: 170)
+            sender.view!.center = CGPoint(x: x, y: 170)
         } else if sender.view!.center.y + translation.y < 60 {
-            sender.view!.center = CGPoint(x: sender.view!.center.x, y: 60)
+            sender.view!.center = CGPoint(x: x, y: 60)
         } else {
-            sender.view!.center = CGPoint(x: sender.view!.center.x, y: sender.view!.center.y + translation.y)
+            sender.view!.center = CGPoint(x: x, y: sender.view!.center.y + translation.y)
         }
         sender.setTranslation(.zero, in: self.view)
-       
+        // 부가요소들 또한 같이 움직이게 설정
         let index = sender.view!.tag
         progressBarProgress[index-1].constraints.forEach { constraint in
             if constraint.firstAttribute == .height {
                 constraint.constant = 1.1 * (180 - sender.view!.center.y)
             }
         }
-        
-        
-        print(1.1 * (180 - sender.view!.center.y))
-        print(100/(1.1 * (180 - sender.view!.center.y)))
-        
-//        sound1!.volume = Float(100/(1.1 * (180 - sender.view!.center.y)))
+        // 소수점값에 따라 Sound volume 조절
+        let volumeFloat = Float(0.009 * (170 - sender.view!.center.y))
+        if index == 1 {
+            backgroundMusic?.volume = volumeFloat
+        } else {
+            if sender.view?.subviews.first?.alpha != 0 {
+                soundEffectArr[index-2]?.volume = volumeFloat
+            }
+        }
     }
     
     @IBAction func musicDeleteButtonPressed(_ sender: UIButton) {
@@ -84,16 +116,13 @@ class MusicAddViewController: UIViewController {
             // backgroundMusic Delete
             let VC = musicPageViewController.pageList[0] as! BackgroundMusicViewController
             VC.deleteBackgroundMusic(name: backgroundMusicFileName)
-            UIView.animate(withDuration: 0.3) {
-                self.progressBarContainer[0].alpha = 0
-                self.progressBarCover[0].alpha = 0
-                self.progressBarProgress[0].alpha = 0
-                self.musicDeleteButton[0].alpha = 0
-                self.musicDeleteButton[0].isEnabled = false
-            }
+            self.deleteBackgroundMusic()
         } else {
             // soundEffect Delete
-            
+            let VC = musicPageViewController.pageList[1] as! SoundEffectViewController
+            let soundEffectFileName = soundEffectFileName[sender.tag - 2]
+            VC.deleteSoundEffect(name: soundEffectFileName)
+            self.deleteSoundEffect(soundEffectFileName)
         }
     }
     
@@ -108,7 +137,10 @@ class MusicAddViewController: UIViewController {
     }
     
     @IBAction func completeButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        makeMusicOutput()
+        musicAddDelegate?.musicAdd(musicArr: musicArr, volumeArr: volumeArr) {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -123,6 +155,7 @@ class MusicAddViewController: UIViewController {
         }
     }
 }
+
 //MARK: - UI Functions
 extension MusicAddViewController {
     func makeModalCircular(target view: UIView) {
@@ -156,6 +189,24 @@ extension MusicAddViewController {
         splitDashLine.createDottedLine()
     }
     
+    func makeMusicInput() {
+        if musicArr[0] != "" {
+            addBackgroundMusic(musicArr[0], isFirst: true)
+        }
+        if musicArr[1] != "" {
+            addSoundEffect(musicArr[1], isFirst: true)
+        }
+        if musicArr[2] != "" {
+            addSoundEffect(musicArr[2], isFirst: true)
+        }
+        if musicArr[3] != "" {
+            addSoundEffect(musicArr[3], isFirst: true)
+        }
+        
+        print(volumeArr)
+        
+    }
+    
     func coverAnimation(_ backgroundMusic: String, _ soundEffect: [String]) {
         if backgroundMusic == "" && soundEffect.count == 0 {
             musicAnimationContainerConstraintY.constant = -187
@@ -175,10 +226,44 @@ extension MusicAddViewController {
         }
     }
     
-    func makeMusic1() {
-        let sound = Bundle.main.url(forResource: "music1", withExtension: "mp3")!
-        backgroundMusic = Sound(url: sound)
-        backgroundMusic!.play()
+    func playBackgroundMusic(fileName: String, isFirst: Bool = false) {
+        DispatchQueue.global().async {
+            let url = Bundle.main.url(forResource: fileName, withExtension: "mp3")!
+            self.backgroundMusic = Sound(url: url)
+            self.backgroundMusic!.play(numberOfLoops: -1)
+            let volume = isFirst ? self.volumeArr[0] : 0.5
+            self.backgroundMusic?.volume = volume
+        }
+    }
+    
+    func playSoundEffect(fileName: String, index: Int, isFirst: Bool) {
+        DispatchQueue.global().async {
+            let url = Bundle.main.url(forResource: fileName, withExtension: "mp3")!
+            let sound = Sound(url: url)
+            self.soundEffectArr.append(sound)
+            self.soundEffectArr[index-1]!.play(numberOfLoops: -1)
+            let volume = isFirst ? self.volumeArr[index] : 0.5
+            self.soundEffectArr[index-1]?.volume = volume
+        }
+    }
+    
+    func makeMusicOutput() {
+        musicArr = ["", "", "", ""]
+        volumeArr = [0, 0, 0, 0]
+        musicArr[0] = backgroundMusicFileName
+        for (index, soundEffect) in soundEffectFileName.enumerated() {
+            musicArr[index+1] = soundEffect
+        }
+        if musicArr[0] != "" {
+            volumeArr[0] = backgroundMusic?.volume ?? 0
+        }
+        for (index, soundEffect) in soundEffectArr.enumerated() {
+            volumeArr[index+1] = soundEffect?.volume ?? 0
+        }
+        
+        soundEffectArr.forEach { soundEffect in
+            print(soundEffect?.volume)
+        }
     }
 }
 
@@ -200,90 +285,112 @@ extension MusicAddViewController: transferMusicDelegate {
 }
 
 //MARK: - deliverBackgroundMusicDelegate
-extension MusicAddViewController: deliverBackgroundMusicDelegate {
+extension MusicAddViewController: DeliverBackgroundMusicDelegate {
     func deliverBackgroundMusic(backgroundMusic: String) {
-        backgroundMusicFileName = backgroundMusic
-        coverAnimation(backgroundMusicFileName, soundEffectFileName)
         if backgroundMusic != "" {
-            let originX = progressBarContainer[0].center.x
-            progressBarHandle[0].center = CGPoint(x: originX, y: 114.0)
-            progressBarProgress[0].constraints.forEach { constraint in
-                if constraint.firstAttribute == .height {
-                    constraint.constant = 70
-                }
-            }
-            progressBarThumbnail[0].image = UIImage(named: "\(backgroundMusic)Icon")
-            UIView.animate(withDuration: 0.3) {
-                self.progressBarContainer[0].alpha = 1
-                self.progressBarCover[0].alpha = 1
-                self.progressBarProgress[0].alpha = 1
-                self.musicDeleteButton[0].alpha = 1
-                self.musicDeleteButton[0].isEnabled = true
-            }
+            addBackgroundMusic(backgroundMusic)
         } else {
-            UIView.animate(withDuration: 0.3) {
-                self.progressBarContainer[0].alpha = 0
-                self.progressBarCover[0].alpha = 0
-                self.progressBarProgress[0].alpha = 0
-                self.musicDeleteButton[0].alpha = 0
-                self.musicDeleteButton[0].isEnabled = false
-            }
+            deleteBackgroundMusic()
         }
         print(backgroundMusicFileName)
+    }
+    
+    func addBackgroundMusic(_ backgroundMusic: String, isFirst: Bool = false) {
+        backgroundMusicFileName = backgroundMusic
+        coverAnimation(backgroundMusicFileName, soundEffectFileName)
+        let originX = progressBarContainer[0].center.x
+        let originY = isFirst ? (-111 * volumeArr[0]) + 170 : 114.0
+        let progressBarConstant = isFirst ? 1.1 * (180 - originY) : 70
+        progressBarHandle[0].center = CGPoint(x: originX, y: CGFloat(originY))
+        progressBarProgress[0].constraints.forEach { constraint in
+            if constraint.firstAttribute == .height {
+                constraint.constant = CGFloat(progressBarConstant)
+            }
+        }
+        progressBarThumbnail[0].image = UIImage(named: "\(backgroundMusic)Icon")
+        UIView.animate(withDuration: 0.3) {
+            self.progressBarContainer[0].alpha = 1
+            self.progressBarCover[0].alpha = 1
+            self.progressBarProgress[0].alpha = 1
+            self.musicDeleteButton[0].alpha = 1
+            self.musicDeleteButton[0].isEnabled = true
+        }
+        playBackgroundMusic(fileName: backgroundMusic, isFirst: isFirst)
+    }
+    
+    func deleteBackgroundMusic() {
+        backgroundMusic?.stop()
+        backgroundMusicFileName = ""
+        coverAnimation(backgroundMusicFileName, soundEffectFileName)
+        UIView.animate(withDuration: 0.3) {
+            self.progressBarContainer[0].alpha = 0
+            self.progressBarCover[0].alpha = 0
+            self.progressBarProgress[0].alpha = 0
+            self.musicDeleteButton[0].alpha = 0
+            self.musicDeleteButton[0].isEnabled = false
+        }
     }
 }
 
 //MARK: - deliverSoundEffectDelegate
-extension MusicAddViewController: deliverSoundEffectDelegate {
+extension MusicAddViewController: DeliverSoundEffectDelegate {
     func deliverSoundEffect(soundEffect: String, add: Bool) {
         if add {
-            soundEffectFileName.append(soundEffect)
-            coverAnimation(backgroundMusicFileName, soundEffectFileName)
-            let index = soundEffectFileName.count
-            let originX = progressBarContainer[index].center.x
-            progressBarHandle[index].center = CGPoint(x: originX, y: 114.0)
-            progressBarProgress[index].constraints.forEach { constraint in
-                if constraint.firstAttribute == .height {
-                    constraint.constant = 70
-                }
-            }
-            progressBarThumbnail[index].image = UIImage(named: "\(soundEffect)Icon")
-            UIView.animate(withDuration: 0.3) {
-                self.progressBarContainer[index].alpha = 1
-                self.progressBarCover[index].alpha = 1
-                self.progressBarProgress[index].alpha = 1
-                self.musicDeleteButton[index].alpha = 1
-                self.musicDeleteButton[index].isEnabled = true
-            }
+            addSoundEffect(soundEffect)
         } else {
-            let removedIndex = soundEffectFileName.firstIndex(of: soundEffect)!
-            soundEffectFileName.remove(at: removedIndex)
-            coverAnimation(backgroundMusicFileName, soundEffectFileName)
-            let index = soundEffectFileName.count
-            UIView.animate(withDuration: 0.3) {
-                self.progressBarContainer[index+1].alpha = 0
-                self.progressBarCover[index+1].alpha = 0
-                self.progressBarProgress[index+1].alpha = 0
-                self.musicDeleteButton[index+1].alpha = 0
-                self.musicDeleteButton[index+1].isEnabled = false
-            }
-            redrawSoundEffect(removedIndex: removedIndex, index: index)
+            deleteSoundEffect(soundEffect)
         }
         print(soundEffectFileName)
     }
     
-    func redrawSoundEffect(removedIndex: Int, index: Int) {
-        if removedIndex == index { return }
-        for index in removedIndex+1...index {
-            progressBarHandle[index].center.y = progressBarHandle[index+1].center.y
-            progressBarProgress[index].constraints.forEach { constraint in
-                if constraint.firstAttribute == .height {
-                    constraint.constant = progressBarProgress[index+1].bounds.height
-                }
+    func addSoundEffect(_ soundEffect: String, isFirst: Bool = false) {
+        soundEffectFileName.append(soundEffect)
+        coverAnimation(backgroundMusicFileName, soundEffectFileName)
+        let index = soundEffectFileName.count
+        let originX = progressBarContainer[index].center.x
+        let originY = isFirst ? (-111 * volumeArr[index]) + 170 : 114.0
+        let progressBarConstant = isFirst ? 1.1 * (180 - originY) : 70
+        progressBarHandle[index].center = CGPoint(x: originX, y: CGFloat(originY))
+        progressBarProgress[index].constraints.forEach { constraint in
+            if constraint.firstAttribute == .height {
+                constraint.constant = CGFloat(progressBarConstant)
             }
-            progressBarThumbnail[index].image = progressBarThumbnail[index+1].image
         }
-        
+        progressBarThumbnail[index].image = UIImage(named: "\(soundEffect)Icon")
+        UIView.animate(withDuration: 0.3) {
+            self.progressBarContainer[index].alpha = 1
+            self.progressBarCover[index].alpha = 1
+            self.progressBarProgress[index].alpha = 1
+            self.musicDeleteButton[index].alpha = 1
+            self.musicDeleteButton[index].isEnabled = true
+        }
+        playSoundEffect(fileName: soundEffect, index: index, isFirst: isFirst)
+    }
+    
+    func deleteSoundEffect(_ soundEffect: String) {
+        let removedIndex = soundEffectFileName.firstIndex(of: soundEffect)!
+        soundEffectArr.remove(at: removedIndex)
+        soundEffectFileName.remove(at: removedIndex)
+        coverAnimation(backgroundMusicFileName, soundEffectFileName)
+        let index = soundEffectFileName.count
+        UIView.animate(withDuration: 0.3) {
+            self.progressBarContainer[index+1].alpha = 0
+            self.progressBarCover[index+1].alpha = 0
+            self.progressBarProgress[index+1].alpha = 0
+            self.musicDeleteButton[index+1].alpha = 0
+            self.musicDeleteButton[index+1].isEnabled = false
+        }
+        if removedIndex != index {
+            for index in removedIndex+1...index {
+                progressBarHandle[index].center.y = progressBarHandle[index+1].center.y
+                progressBarProgress[index].constraints.forEach { constraint in
+                    if constraint.firstAttribute == .height {
+                        constraint.constant = progressBarProgress[index+1].bounds.height
+                    }
+                }
+                progressBarThumbnail[index].image = progressBarThumbnail[index+1].image
+            }
+        }
     }
 }
 

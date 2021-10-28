@@ -69,6 +69,9 @@
 		4E8A02D227295F1400E3AB63 /* DowntownSoundEffect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02C927295F1300E3AB63 /* DowntownSoundEffect.mp3 */; };
 		4E8A02D327295F1400E3AB63 /* BeachSoundEffect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02CA27295F1300E3AB63 /* BeachSoundEffect.mp3 */; };
 		4E8A02D427295F1400E3AB63 /* RestaurantSoundEffect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02CB27295F1400E3AB63 /* RestaurantSoundEffect.mp3 */; };
+		4E8A02D72729BB9B00E3AB63 /* Music3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02D52729BB9B00E3AB63 /* Music3.mp3 */; };
+		4E8A02D82729BB9B00E3AB63 /* Music2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02D62729BB9B00E3AB63 /* Music2.mp3 */; };
+		4E8A02DA2729BD0F00E3AB63 /* Music1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02D92729BD0F00E3AB63 /* Music1.mp3 */; };
 		4E8A589F2703215C00C8A646 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A589E2703215C00C8A646 /* ArticleDetailViewModel.swift */; };
 		4E8A58A527034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A58A327034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift */; };
 		4E8A58A627034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A58A427034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib */; };
@@ -130,8 +133,6 @@
 		4ECFB6E22725EA3500890C04 /* MusicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E02725EA3500890C04 /* MusicCollectionViewCell.swift */; };
 		4ECFB6E32725EA3500890C04 /* MusicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E12725EA3500890C04 /* MusicCollectionViewCell.xib */; };
 		4ECFB6E52725EFF100890C04 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E42725EFF100890C04 /* MusicModel.swift */; };
-		4ECFB6EA2727503D00890C04 /* music1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6E92727503D00890C04 /* music1.mp3 */; };
-		4ECFB6EC2727522100890C04 /* music2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4ECFB6EB2727522100890C04 /* music2.mp3 */; };
 		4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */; };
 		4EDA40282700B57E00B5E80B /* WrittingAddImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA40262700B57E00B5E80B /* WrittingAddImageTableViewCell.swift */; };
 		4EDA40292700B57E00B5E80B /* WrittingAddImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EDA40272700B57E00B5E80B /* WrittingAddImageTableViewCell.xib */; };
@@ -212,6 +213,9 @@
 		4E8A02C927295F1300E3AB63 /* DowntownSoundEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DowntownSoundEffect.mp3; sourceTree = "<group>"; };
 		4E8A02CA27295F1300E3AB63 /* BeachSoundEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BeachSoundEffect.mp3; sourceTree = "<group>"; };
 		4E8A02CB27295F1400E3AB63 /* RestaurantSoundEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RestaurantSoundEffect.mp3; sourceTree = "<group>"; };
+		4E8A02D52729BB9B00E3AB63 /* Music3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Music3.mp3; sourceTree = "<group>"; };
+		4E8A02D62729BB9B00E3AB63 /* Music2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Music2.mp3; sourceTree = "<group>"; };
+		4E8A02D92729BD0F00E3AB63 /* Music1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Music1.mp3; sourceTree = "<group>"; };
 		4E8A589E2703215C00C8A646 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		4E8A58A327034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		4E8A58A427034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleDetailImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -274,8 +278,6 @@
 		4ECFB6E02725EA3500890C04 /* MusicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCollectionViewCell.swift; sourceTree = "<group>"; };
 		4ECFB6E12725EA3500890C04 /* MusicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicCollectionViewCell.xib; sourceTree = "<group>"; };
 		4ECFB6E42725EFF100890C04 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
-		4ECFB6E92727503D00890C04 /* music1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = music1.mp3; path = ../../../../../Downloads/music1.mp3; sourceTree = "<group>"; };
-		4ECFB6EB2727522100890C04 /* music2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = music2.mp3; path = ../../../../../Downloads/music2.mp3; sourceTree = "<group>"; };
 		4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewModel.swift; sourceTree = "<group>"; };
 		4EDA40262700B57E00B5E80B /* WrittingAddImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingAddImageTableViewCell.swift; sourceTree = "<group>"; };
 		4EDA40272700B57E00B5E80B /* WrittingAddImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WrittingAddImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -529,8 +531,9 @@
 				4E8A02CB27295F1400E3AB63 /* RestaurantSoundEffect.mp3 */,
 				4E8A02C327295F1100E3AB63 /* WaterfallSoundEffect.mp3 */,
 				4E8A02C827295F1300E3AB63 /* WindSoundEffect.mp3 */,
-				4ECFB6E92727503D00890C04 /* music1.mp3 */,
-				4ECFB6EB2727522100890C04 /* music2.mp3 */,
+				4E8A02D92729BD0F00E3AB63 /* Music1.mp3 */,
+				4E8A02D62729BB9B00E3AB63 /* Music2.mp3 */,
+				4E8A02D52729BB9B00E3AB63 /* Music3.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -697,6 +700,8 @@
 				4E056DFA26C392F500FDF0F3 /* Home.storyboard in Resources */,
 				4E8A58CD270584A900C8A646 /* ThirdOnboarding.json in Resources */,
 				4E8A02D427295F1400E3AB63 /* RestaurantSoundEffect.mp3 in Resources */,
+				4E8A02D82729BB9B00E3AB63 /* Music2.mp3 in Resources */,
+				4E8A02DA2729BD0F00E3AB63 /* Music1.mp3 in Resources */,
 				4E1C2E512715EBB600B97EB0 /* ArticleDetail.storyboard in Resources */,
 				4E64D12B26EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib in Resources */,
 				4E9DCB2626C17803001D218A /* Poppins-BlackItalic.ttf in Resources */,
@@ -706,12 +711,12 @@
 				4E9DCB2E26C17812001D218A /* Poppins-Light.ttf in Resources */,
 				4E9DCB2226C177F5001D218A /* NotoSansKR-Medium.otf in Resources */,
 				4E9DCB2726C17804001D218A /* Poppins-Bold.ttf in Resources */,
+				4E8A02D72729BB9B00E3AB63 /* Music3.mp3 in Resources */,
 				4E9DCB2C26C1780E001D218A /* Poppins-ExtraLightItalic.ttf in Resources */,
 				4EA4CF92270DBDA3001632D4 /* Assets.scnassets in Resources */,
 				4E9DCB3226C1781B001D218A /* Poppins-Regular.ttf in Resources */,
 				4ECB1691270AED36000029CB /* Loading.json in Resources */,
 				4E8A58B52705404600C8A646 /* Splash.storyboard in Resources */,
-				4ECFB6EA2727503D00890C04 /* music1.mp3 in Resources */,
 				4E9DCB2F26C17814001D218A /* Poppins-Medium.ttf in Resources */,
 				4E533F3026DFD9A700527FC2 /* Community.storyboard in Resources */,
 				4EDA40292700B57E00B5E80B /* WrittingAddImageTableViewCell.xib in Resources */,
@@ -733,7 +738,6 @@
 				4E9DCB2026C177F1001D218A /* NotoSansKR-Bold.otf in Resources */,
 				4E0FAEB226C0EE99003D80E3 /* Main.storyboard in Resources */,
 				4E13D03A270AE15300CAC6F4 /* Login.json in Resources */,
-				4ECFB6EC2727522100890C04 /* music2.mp3 in Resources */,
 				4E8A02CD27295F1400E3AB63 /* LoadSoundEffect.mp3 in Resources */,
 				4E8A02CC27295F1400E3AB63 /* WaterfallSoundEffect.mp3 in Resources */,
 				4E8A02C2272942B100E3AB63 /* Music.json in Resources */,
