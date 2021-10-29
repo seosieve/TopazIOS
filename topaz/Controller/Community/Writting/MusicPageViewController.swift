@@ -30,7 +30,8 @@ class MusicPageViewController: UIPageViewController {
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
-        moveFromIndex(index: 0)
+        moveFromIndex(index: 1)
+        moveFromIndex(index: 0, forward: false)
     }
     
     func moveFromIndex(index: Int, forward: Bool = true) {

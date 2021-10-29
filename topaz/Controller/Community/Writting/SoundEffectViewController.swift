@@ -29,6 +29,12 @@ class SoundEffectViewController: UIViewController {
 
 //MARK: - UI Functions
 extension SoundEffectViewController {
+    func addSoundEffect(name: String) {
+        let index = soundEffect.soundEffectFileName.firstIndex(of: name)!
+        soundEffectCollectionView.selectItem(at: [0,index], animated: true, scrollPosition: .centeredHorizontally)
+        selectedSoundEffectArr.append(name)
+    }
+    
     func deleteSoundEffect(name: String) {
         let index = soundEffect.soundEffectFileName.firstIndex(of: name)!
         soundEffectCollectionView.deselectItem(at: [0,index], animated: true)

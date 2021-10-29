@@ -9,7 +9,7 @@ import UIKit
 import SwiftySound
 
 protocol MusicAddDelegate {
-    func musicAdd(musicArr: [String], volumeArr: [Float], musicHandler: @escaping () -> ())
+    func musicAdd(musicNameArr: [String], volumeArr: [Float], musicHandler: @escaping () -> ())
 }
 
 class MusicAddViewController: UIViewController {
@@ -20,7 +20,7 @@ class MusicAddViewController: UIViewController {
         didSet {progressBarContainer.sort {$0.tag < $1.tag}}
     }
     @IBOutlet var progressBarProgress: [UIView]! {
-        didSet {progressBarContainer.sort {$0.tag < $1.tag}}
+        didSet {progressBarProgress.sort {$0.tag < $1.tag}}
     }
     @IBOutlet var progressBarHandle: [UIView]! {
         didSet {progressBarHandle.sort {$0.tag < $1.tag}}
@@ -47,38 +47,22 @@ class MusicAddViewController: UIViewController {
     var soundEffectFileName = [String]()
     var backgroundMusic: Sound?
     var soundEffectArr = [Sound?]()
-    var musicArr = ["", "", "", ""]
+    var musicNameArr = ["", "", "", ""]
     var volumeArr: [Float] = [0, 0, 0, 0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.isModalInPresentation = true
         makeModalCircular(target: musicAddViewContainer)
         musicSettingContainer.alpha = 0
         musicAnimationContainerConstraintY.constant = -187
         makeSettingBackground()
         setLoopAnimation(json: "Music", container: musicAnimationContainer)
-        soundEffectArr.forEach { soundEffect in
-            print(soundEffect?.volume)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         makeMusicInput()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        soundEffectArr.forEach { soundEffect in
-            print(soundEffect?.volume)
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        backgroundMusic?.stop()
-        soundEffectArr.forEach { soundEffect in
-            soundEffect?.stop()
-        }
     }
     
     @objc func drag(sender: UIPanGestureRecognizer) {
@@ -113,12 +97,12 @@ class MusicAddViewController: UIViewController {
     
     @IBAction func musicDeleteButtonPressed(_ sender: UIButton) {
         if sender.tag == 1 {
-            // backgroundMusic Delete
+            // backgroundMusicDeleteButton 클릭시 전달
             let VC = musicPageViewController.pageList[0] as! BackgroundMusicViewController
             VC.deleteBackgroundMusic(name: backgroundMusicFileName)
             self.deleteBackgroundMusic()
         } else {
-            // soundEffect Delete
+            // soundEffectDeleteButton 클릭시 전달
             let VC = musicPageViewController.pageList[1] as! SoundEffectViewController
             let soundEffectFileName = soundEffectFileName[sender.tag - 2]
             VC.deleteSoundEffect(name: soundEffectFileName)
@@ -138,7 +122,9 @@ class MusicAddViewController: UIViewController {
     
     @IBAction func completeButtonPressed(_ sender: UIButton) {
         makeMusicOutput()
-        musicAddDelegate?.musicAdd(musicArr: musicArr, volumeArr: volumeArr) {
+        backgroundMusic = nil
+        soundEffectArr = [Sound?]()
+        musicAddDelegate?.musicAdd(musicNameArr: musicNameArr, volumeArr: volumeArr) {
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -190,21 +176,18 @@ extension MusicAddViewController {
     }
     
     func makeMusicInput() {
-        if musicArr[0] != "" {
-            addBackgroundMusic(musicArr[0], isFirst: true)
+        if musicNameArr[0] != "" {
+            let VC = musicPageViewController.pageList[0] as! BackgroundMusicViewController
+            VC.addBackgroundMusic(name: musicNameArr[0])
+            addBackgroundMusic(musicNameArr[0], isFirst: true)
         }
-        if musicArr[1] != "" {
-            addSoundEffect(musicArr[1], isFirst: true)
+        let VC = musicPageViewController.pageList[1] as! SoundEffectViewController
+        for index in 1...3 {
+            if musicNameArr[index] != "" {
+                VC.addSoundEffect(name: musicNameArr[index])
+                addSoundEffect(musicNameArr[index], isFirst: true)
+            }
         }
-        if musicArr[2] != "" {
-            addSoundEffect(musicArr[2], isFirst: true)
-        }
-        if musicArr[3] != "" {
-            addSoundEffect(musicArr[3], isFirst: true)
-        }
-        
-        print(volumeArr)
-        
     }
     
     func coverAnimation(_ backgroundMusic: String, _ soundEffect: [String]) {
@@ -239,30 +222,26 @@ extension MusicAddViewController {
     func playSoundEffect(fileName: String, index: Int, isFirst: Bool) {
         DispatchQueue.global().async {
             let url = Bundle.main.url(forResource: fileName, withExtension: "mp3")!
-            let sound = Sound(url: url)
+            let sound = Sound(url: url)!
+            sound.play(numberOfLoops: -1)
             self.soundEffectArr.append(sound)
-            self.soundEffectArr[index-1]!.play(numberOfLoops: -1)
             let volume = isFirst ? self.volumeArr[index] : 0.5
-            self.soundEffectArr[index-1]?.volume = volume
+            sound.volume = volume
         }
     }
     
     func makeMusicOutput() {
-        musicArr = ["", "", "", ""]
+        musicNameArr = ["", "", "", ""]
         volumeArr = [0, 0, 0, 0]
-        musicArr[0] = backgroundMusicFileName
+        musicNameArr[0] = backgroundMusicFileName
         for (index, soundEffect) in soundEffectFileName.enumerated() {
-            musicArr[index+1] = soundEffect
+            musicNameArr[index+1] = soundEffect
         }
-        if musicArr[0] != "" {
+        if musicNameArr[0] != "" {
             volumeArr[0] = backgroundMusic?.volume ?? 0
         }
         for (index, soundEffect) in soundEffectArr.enumerated() {
             volumeArr[index+1] = soundEffect?.volume ?? 0
-        }
-        
-        soundEffectArr.forEach { soundEffect in
-            print(soundEffect?.volume)
         }
     }
 }
@@ -286,13 +265,13 @@ extension MusicAddViewController: transferMusicDelegate {
 
 //MARK: - deliverBackgroundMusicDelegate
 extension MusicAddViewController: DeliverBackgroundMusicDelegate {
+    // BackgroundMusicCollectionView 클릭시 전달
     func deliverBackgroundMusic(backgroundMusic: String) {
         if backgroundMusic != "" {
             addBackgroundMusic(backgroundMusic)
         } else {
             deleteBackgroundMusic()
         }
-        print(backgroundMusicFileName)
     }
     
     func addBackgroundMusic(_ backgroundMusic: String, isFirst: Bool = false) {
@@ -319,7 +298,7 @@ extension MusicAddViewController: DeliverBackgroundMusicDelegate {
     }
     
     func deleteBackgroundMusic() {
-        backgroundMusic?.stop()
+        backgroundMusic = nil
         backgroundMusicFileName = ""
         coverAnimation(backgroundMusicFileName, soundEffectFileName)
         UIView.animate(withDuration: 0.3) {
@@ -334,16 +313,17 @@ extension MusicAddViewController: DeliverBackgroundMusicDelegate {
 
 //MARK: - deliverSoundEffectDelegate
 extension MusicAddViewController: DeliverSoundEffectDelegate {
+    // SoundEffectCollectionView 클릭시 전달
     func deliverSoundEffect(soundEffect: String, add: Bool) {
         if add {
             addSoundEffect(soundEffect)
         } else {
             deleteSoundEffect(soundEffect)
         }
-        print(soundEffectFileName)
     }
     
     func addSoundEffect(_ soundEffect: String, isFirst: Bool = false) {
+        if soundEffectFileName.count == 3 { return }
         soundEffectFileName.append(soundEffect)
         coverAnimation(backgroundMusicFileName, soundEffectFileName)
         let index = soundEffectFileName.count

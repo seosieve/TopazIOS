@@ -29,6 +29,11 @@ class BackgroundMusicViewController: UIViewController {
 
 //MARK: - UI Functions
 extension BackgroundMusicViewController {
+    func addBackgroundMusic(name: String) {
+        let index = backgroundMusic.backgroundMusicFileName.firstIndex(of: name)!
+        backgroundMusicCollectionView.selectItem(at: [0,index], animated: true, scrollPosition: .centeredHorizontally)
+        selectedBackgroundMusic = name
+    }
     func deleteBackgroundMusic(name: String) {
         let index = backgroundMusic.backgroundMusicFileName.firstIndex(of: name)!
         backgroundMusicCollectionView.deselectItem(at: [0,index], animated: true)

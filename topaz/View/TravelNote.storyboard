@@ -296,11 +296,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="내 여행 수첩" id="bCC-04-Ddu">
                         <barButtonItem key="backBarButtonItem" title=" " id="S99-nZ-JN8"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="SettingButton" id="sAN-pS-v3g">
-                            <connections>
-                                <action selector="mySettingPressed:" destination="Y6W-OH-hqX" id="Ap6-8g-Uum"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="SettingButton" id="sAN-pS-v3g">
+                                <connections>
+                                    <action selector="mySettingPressed:" destination="Y6W-OH-hqX" id="Ap6-8g-Uum"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="MypostButton" id="n0J-Nn-qqR"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="email" destination="Gms-iO-hhE" id="YZq-Js-niP"/>
@@ -567,6 +570,7 @@
         <image name="DefaultUserImage" width="99" height="99"/>
         <image name="Detail" width="24" height="24"/>
         <image name="Logout" width="24" height="24"/>
+        <image name="MypostButton" width="24" height="24"/>
         <image name="SettingButton" width="24" height="24"/>
         <image name="TravelNote_OFF" width="33" height="30"/>
         <image name="TravelNote_ON" width="33" height="30"/>

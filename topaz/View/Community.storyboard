@@ -794,6 +794,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpP-Q7-bXF">
                                 <rect key="frame" x="80" y="798.5" width="51" height="31"/>
                                 <color key="onTintColor" name="LightMintBlue"/>
+                                <connections>
+                                    <action selector="musicSwitchChanged:" destination="1Ng-CP-npj" eventType="valueChanged" id="nIq-cw-NWP"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyQ-iV-dKH">
                                 <rect key="frame" x="346" y="790" width="48" height="48"/>
@@ -884,6 +887,7 @@
                         <outlet property="addMusicButton" destination="O5X-ur-TgD" id="day-9L-EG0"/>
                         <outlet property="countryQuestionButton" destination="KHQ-xF-3hf" id="B5u-7y-lGN"/>
                         <outlet property="mainTextView" destination="Gxp-hw-o25" id="RWG-k1-klI"/>
+                        <outlet property="musicSwitch" destination="cpP-Q7-bXF" id="g87-kc-FcO"/>
                         <outlet property="registerButton" destination="cxX-Jl-PgI" id="ydE-C9-a7q"/>
                         <outlet property="tailTextView" destination="IAg-GB-9aF" id="L2A-eA-DBD"/>
                         <outlet property="titleTextView" destination="9H7-CG-Lcr" id="wUi-I6-Ls6"/>

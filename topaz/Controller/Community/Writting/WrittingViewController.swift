@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import Lottie
 import Kingfisher
+import SwiftySound
 
 class WrittingViewController: UIViewController {
 
@@ -23,6 +24,7 @@ class WrittingViewController: UIViewController {
     @IBOutlet weak var tailTextView: UITextView!
     @IBOutlet weak var addImageTableView: UITableView!
     @IBOutlet weak var addMusicButton: UIButton!
+    @IBOutlet weak var musicSwitch: UISwitch!
     @IBOutlet weak var addImageButton: UIButton!
     
     let viewModel = WrittingViewModel()
@@ -33,15 +35,18 @@ class WrittingViewController: UIViewController {
     var imageUrlArr = [String]()
     var imageNameArr = [Int]()
     var textArr = [String]()
+    var musicNameArr = ["", "", "", ""]
+    var volumeArr: [Float] = [0, 0, 0, 0]
+    var musicPlayArr = [Sound?]()
     let backgroundView = UIView()
     let lottieView = AnimationView(name: "Loading")
-    
-    var musicArr = ["", "", "", ""]
-    var volumeArr: [Float] = [0, 0, 0, 0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
+        musicSwitch.isHidden = false
+        musicSwitch.isEnabled = true
+        setSwitchThumbNail()
         makeCircle(target: registerButton, color: "MintBlue", width: 0)
         makeCircle(target: addMusicButton, color: "MintBlue", width: 0)
         makeCircle(target: addImageButton, color: "MintBlue", width: 0)
@@ -101,11 +106,15 @@ class WrittingViewController: UIViewController {
     }
     
     @IBAction func addMusicButtonPressed(_ sender: UIButton) {
-        
-        
-        
-        
         instantiateVC()
+    }
+    
+    @IBAction func musicSwitchChanged(_ sender: UISwitch) {
+        if sender.isOn == true {
+            playMusic()
+        } else {
+            pauseMusic()
+        }
     }
     
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
@@ -149,6 +158,12 @@ extension WrittingViewController {
                 makeCircle(target: countryButton[index], width: 1)
             }
         }        
+    }
+    
+    func setSwitchThumbNail() {
+        
+//        musicSwitch.thumbTintColor = UIColor(patternImage: UIImage(named: "AddMusicButton")!)
+        
     }
     
     func placeholderSetting() {
@@ -205,15 +220,47 @@ extension WrittingViewController {
     }
     
     func instantiateVC() {
+        pauseMusic()
         let storyboard = UIStoryboard(name: "Community", bundle: .main)
         let MusicVC = storyboard.instantiateViewController(withIdentifier: "MusicVC")
         let destinationVC = MusicVC as! MusicAddViewController
         destinationVC.musicAddDelegate = self
-        destinationVC.musicArr = musicArr
+        destinationVC.musicNameArr = musicNameArr
         destinationVC.volumeArr = volumeArr
         MusicVC.modalPresentationStyle = .automatic
         MusicVC.modalTransitionStyle = .coverVertical
         self.present(MusicVC, animated: true, completion: nil)
+    }
+    
+    func setMusic() {
+        DispatchQueue.global().async {
+            self.musicPlayArr = [Sound?]()
+            for (index,musicName) in self.musicNameArr.enumerated() {
+                if musicName != "" {
+                    let url = Bundle.main.url(forResource: musicName, withExtension: "mp3")!
+                    let sound = Sound(url: url)!
+                    self.musicPlayArr.append(sound)
+                    sound.play(numberOfLoops: -1)
+                    sound.volume = self.volumeArr[index]
+                }
+            }
+        }
+    }
+    
+    func playMusic() {
+        DispatchQueue.global().async {
+            for sound in self.musicPlayArr {
+                sound?.resume()
+            }
+        }
+    }
+    
+    func pauseMusic() {
+        DispatchQueue.global().async {
+            for sound in self.musicPlayArr {
+                sound?.pause()
+            }
+        }
     }
 }
 
@@ -384,10 +431,20 @@ extension WrittingViewController: AddCountryDelegate {
 }
 
 extension WrittingViewController: MusicAddDelegate {
-    func musicAdd(musicArr: [String], volumeArr: [Float], musicHandler: @escaping () -> ()) {
-        self.musicArr = musicArr
+    func musicAdd(musicNameArr: [String], volumeArr: [Float], musicHandler: @escaping () -> ()) {
+        self.musicNameArr = musicNameArr
         self.volumeArr = volumeArr
-        print(volumeArr)
+        if musicNameArr == ["", "", "", ""] {
+            musicPlayArr = [Sound?]()
+            musicSwitch.isOn = false
+            musicSwitch.isHidden = true
+            musicSwitch.isEnabled = false
+        } else {
+            setMusic()
+            musicSwitch.isHidden = false
+            musicSwitch.isEnabled = true
+            musicSwitch.isOn = true
+        }
         musicHandler()
     }
 }
