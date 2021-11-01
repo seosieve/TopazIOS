@@ -63,9 +63,7 @@ class EachCountryViewController: UIViewController {
         viewModel.getEachArticle(country: currentCountry) { articleArr in
             self.eachArticleArr = articleArr
             self.eachArticleTableView.reloadData()
-            if articleArr.count != 0 {
-                self.makeTableViewHeight()
-            }
+            self.makeTableViewHeight()
         }
     }
     

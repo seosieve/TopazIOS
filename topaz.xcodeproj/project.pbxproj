@@ -47,7 +47,7 @@
 		4E533F3426E060F500527FC2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3326E060F500527FC2 /* HomeViewController.swift */; };
 		4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3826E0612000527FC2 /* CommunityViewController.swift */; };
 		4E533F3C26E08A0900527FC2 /* TravelNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */; };
-		4E533F3E26E09A8E00527FC2 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3D26E09A8E00527FC2 /* TabBarController.swift */; };
+		4E533F3E26E09A8E00527FC2 /* TabBarWithCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3D26E09A8E00527FC2 /* TabBarWithCorners.swift */; };
 		4E64D12A26EF5BA100DB3FDB /* CountryAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E64D12826EF5BA100DB3FDB /* CountryAddCollectionViewCell.swift */; };
 		4E64D12B26EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E64D12926EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib */; };
 		4E7FD100271D83DA00867F16 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FD0FF271D83DA00867F16 /* UserModel.swift */; };
@@ -69,9 +69,6 @@
 		4E8A02D227295F1400E3AB63 /* DowntownSoundEffect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02C927295F1300E3AB63 /* DowntownSoundEffect.mp3 */; };
 		4E8A02D327295F1400E3AB63 /* BeachSoundEffect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02CA27295F1300E3AB63 /* BeachSoundEffect.mp3 */; };
 		4E8A02D427295F1400E3AB63 /* RestaurantSoundEffect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02CB27295F1400E3AB63 /* RestaurantSoundEffect.mp3 */; };
-		4E8A02D72729BB9B00E3AB63 /* Music3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02D52729BB9B00E3AB63 /* Music3.mp3 */; };
-		4E8A02D82729BB9B00E3AB63 /* Music2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02D62729BB9B00E3AB63 /* Music2.mp3 */; };
-		4E8A02DA2729BD0F00E3AB63 /* Music1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A02D92729BD0F00E3AB63 /* Music1.mp3 */; };
 		4E8A589F2703215C00C8A646 /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A589E2703215C00C8A646 /* ArticleDetailViewModel.swift */; };
 		4E8A58A527034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A58A327034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift */; };
 		4E8A58A627034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A58A427034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib */; };
@@ -90,6 +87,13 @@
 		4E8A58CC270584A900C8A646 /* SecondOnboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A58C7270584A900C8A646 /* SecondOnboarding.json */; };
 		4E8A58CD270584A900C8A646 /* ThirdOnboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A58C8270584A900C8A646 /* ThirdOnboarding.json */; };
 		4E8A58CE270584A900C8A646 /* FirstOnboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E8A58C9270584A900C8A646 /* FirstOnboarding.json */; };
+		4E93ED31272FA48700272A06 /* MyArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93ED30272FA48700272A06 /* MyArticleViewModel.swift */; };
+		4E93ED382730330100272A06 /* FestivalBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED32273032FF00272A06 /* FestivalBackgroundMusic.mp3 */; };
+		4E93ED392730330100272A06 /* TeatimeBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED33273032FF00272A06 /* TeatimeBackgroundMusic.mp3 */; };
+		4E93ED3A2730330100272A06 /* VacationBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED342730330000272A06 /* VacationBackgroundMusic.mp3 */; };
+		4E93ED3B2730330100272A06 /* NightBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED352730330000272A06 /* NightBackgroundMusic.mp3 */; };
+		4E93ED3C2730330100272A06 /* PlaceBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED362730330000272A06 /* PlaceBackgroundMusic.mp3 */; };
+		4E93ED3D2730330100272A06 /* ContemplationBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED372730330100272A06 /* ContemplationBackgroundMusic.mp3 */; };
 		4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */; };
 		4E9B9BBD26EDE50800ABCE87 /* TravelNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */; };
 		4E9B9BBF26EDE87600ABCE87 /* WrittingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */; };
@@ -191,7 +195,7 @@
 		4E533F3326E060F500527FC2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4E533F3826E0612000527FC2 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelNoteViewController.swift; sourceTree = "<group>"; };
-		4E533F3D26E09A8E00527FC2 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		4E533F3D26E09A8E00527FC2 /* TabBarWithCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarWithCorners.swift; sourceTree = "<group>"; };
 		4E64D12826EF5BA100DB3FDB /* CountryAddCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAddCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E64D12926EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryAddCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E7FD0FF271D83DA00867F16 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -213,9 +217,6 @@
 		4E8A02C927295F1300E3AB63 /* DowntownSoundEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DowntownSoundEffect.mp3; sourceTree = "<group>"; };
 		4E8A02CA27295F1300E3AB63 /* BeachSoundEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BeachSoundEffect.mp3; sourceTree = "<group>"; };
 		4E8A02CB27295F1400E3AB63 /* RestaurantSoundEffect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = RestaurantSoundEffect.mp3; sourceTree = "<group>"; };
-		4E8A02D52729BB9B00E3AB63 /* Music3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Music3.mp3; sourceTree = "<group>"; };
-		4E8A02D62729BB9B00E3AB63 /* Music2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Music2.mp3; sourceTree = "<group>"; };
-		4E8A02D92729BD0F00E3AB63 /* Music1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Music1.mp3; sourceTree = "<group>"; };
 		4E8A589E2703215C00C8A646 /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		4E8A58A327034B1F00C8A646 /* ArticleDetailImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailImageTableViewCell.swift; sourceTree = "<group>"; };
 		4E8A58A427034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleDetailImageTableViewCell.xib; sourceTree = "<group>"; };
@@ -234,6 +235,13 @@
 		4E8A58C7270584A900C8A646 /* SecondOnboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SecondOnboarding.json; sourceTree = "<group>"; };
 		4E8A58C8270584A900C8A646 /* ThirdOnboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ThirdOnboarding.json; sourceTree = "<group>"; };
 		4E8A58C9270584A900C8A646 /* FirstOnboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FirstOnboarding.json; sourceTree = "<group>"; };
+		4E93ED30272FA48700272A06 /* MyArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleViewModel.swift; sourceTree = "<group>"; };
+		4E93ED32273032FF00272A06 /* FestivalBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FestivalBackgroundMusic.mp3; sourceTree = "<group>"; };
+		4E93ED33273032FF00272A06 /* TeatimeBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TeatimeBackgroundMusic.mp3; sourceTree = "<group>"; };
+		4E93ED342730330000272A06 /* VacationBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = VacationBackgroundMusic.mp3; sourceTree = "<group>"; };
+		4E93ED352730330000272A06 /* NightBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NightBackgroundMusic.mp3; sourceTree = "<group>"; };
+		4E93ED362730330000272A06 /* PlaceBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PlaceBackgroundMusic.mp3; sourceTree = "<group>"; };
+		4E93ED372730330100272A06 /* ContemplationBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ContemplationBackgroundMusic.mp3; sourceTree = "<group>"; };
 		4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelNoteViewModel.swift; sourceTree = "<group>"; };
 		4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingViewController.swift; sourceTree = "<group>"; };
@@ -406,7 +414,7 @@
 			children = (
 				4E533F3326E060F500527FC2 /* HomeViewController.swift */,
 				4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */,
-				4E533F3D26E09A8E00527FC2 /* TabBarController.swift */,
+				4E533F3D26E09A8E00527FC2 /* TabBarWithCorners.swift */,
 				4EA4CF80270DB203001632D4 /* EarthNode.swift */,
 			);
 			path = Home;
@@ -428,6 +436,7 @@
 				4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */,
 				4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */,
 				4EE9A3B826F7684C00395B2F /* MyArticleViewController.swift */,
+				4E93ED30272FA48700272A06 /* MyArticleViewModel.swift */,
 				4EE9A3BA26F76A6800395B2F /* MyProfileEditViewController.swift */,
 				4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */,
 				4E18A57426E66050001504A9 /* MySettingViewController.swift */,
@@ -522,18 +531,21 @@
 		4ECFB6E82727500A00890C04 /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				4E8A02C527295F1200E3AB63 /* AirplaneSoundEffect.mp3 */,
 				4E8A02CA27295F1300E3AB63 /* BeachSoundEffect.mp3 */,
+				4E8A02C627295F1200E3AB63 /* ForestSoundEffect.mp3 */,
+				4E8A02C827295F1300E3AB63 /* WindSoundEffect.mp3 */,
+				4E8A02C327295F1100E3AB63 /* WaterfallSoundEffect.mp3 */,
+				4E8A02C427295F1200E3AB63 /* LoadSoundEffect.mp3 */,
 				4E8A02C927295F1300E3AB63 /* DowntownSoundEffect.mp3 */,
 				4E8A02C727295F1200E3AB63 /* FireplaceSoundEffect.mp3 */,
-				4E8A02C627295F1200E3AB63 /* ForestSoundEffect.mp3 */,
-				4E8A02C427295F1200E3AB63 /* LoadSoundEffect.mp3 */,
+				4E8A02C527295F1200E3AB63 /* AirplaneSoundEffect.mp3 */,
 				4E8A02CB27295F1400E3AB63 /* RestaurantSoundEffect.mp3 */,
-				4E8A02C327295F1100E3AB63 /* WaterfallSoundEffect.mp3 */,
-				4E8A02C827295F1300E3AB63 /* WindSoundEffect.mp3 */,
-				4E8A02D92729BD0F00E3AB63 /* Music1.mp3 */,
-				4E8A02D62729BB9B00E3AB63 /* Music2.mp3 */,
-				4E8A02D52729BB9B00E3AB63 /* Music3.mp3 */,
+				4E93ED32273032FF00272A06 /* FestivalBackgroundMusic.mp3 */,
+				4E93ED342730330000272A06 /* VacationBackgroundMusic.mp3 */,
+				4E93ED362730330000272A06 /* PlaceBackgroundMusic.mp3 */,
+				4E93ED352730330000272A06 /* NightBackgroundMusic.mp3 */,
+				4E93ED372730330100272A06 /* ContemplationBackgroundMusic.mp3 */,
+				4E93ED33273032FF00272A06 /* TeatimeBackgroundMusic.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -683,6 +695,7 @@
 			files = (
 				4E8A02CE27295F1400E3AB63 /* AirplaneSoundEffect.mp3 in Resources */,
 				4E8A02D327295F1400E3AB63 /* BeachSoundEffect.mp3 in Resources */,
+				4E93ED3B2730330100272A06 /* NightBackgroundMusic.mp3 in Resources */,
 				4E0FAEB726C0EE9A003D80E3 /* LaunchScreen.storyboard in Resources */,
 				4E533F3226DFE32D00527FC2 /* TravelNote.storyboard in Resources */,
 				4E9DCB2B26C1780C001D218A /* Poppins-ExtraLight.ttf in Resources */,
@@ -699,9 +712,9 @@
 				4E8A58CA270584A900C8A646 /* FifthOnboarding.json in Resources */,
 				4E056DFA26C392F500FDF0F3 /* Home.storyboard in Resources */,
 				4E8A58CD270584A900C8A646 /* ThirdOnboarding.json in Resources */,
+				4E93ED392730330100272A06 /* TeatimeBackgroundMusic.mp3 in Resources */,
 				4E8A02D427295F1400E3AB63 /* RestaurantSoundEffect.mp3 in Resources */,
-				4E8A02D82729BB9B00E3AB63 /* Music2.mp3 in Resources */,
-				4E8A02DA2729BD0F00E3AB63 /* Music1.mp3 in Resources */,
+				4E93ED3D2730330100272A06 /* ContemplationBackgroundMusic.mp3 in Resources */,
 				4E1C2E512715EBB600B97EB0 /* ArticleDetail.storyboard in Resources */,
 				4E64D12B26EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib in Resources */,
 				4E9DCB2626C17803001D218A /* Poppins-BlackItalic.ttf in Resources */,
@@ -709,14 +722,16 @@
 				4E9DCB2A26C1780A001D218A /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				4E8A58CB270584A900C8A646 /* FourthOnboarding.json in Resources */,
 				4E9DCB2E26C17812001D218A /* Poppins-Light.ttf in Resources */,
+				4E93ED382730330100272A06 /* FestivalBackgroundMusic.mp3 in Resources */,
 				4E9DCB2226C177F5001D218A /* NotoSansKR-Medium.otf in Resources */,
 				4E9DCB2726C17804001D218A /* Poppins-Bold.ttf in Resources */,
-				4E8A02D72729BB9B00E3AB63 /* Music3.mp3 in Resources */,
 				4E9DCB2C26C1780E001D218A /* Poppins-ExtraLightItalic.ttf in Resources */,
 				4EA4CF92270DBDA3001632D4 /* Assets.scnassets in Resources */,
 				4E9DCB3226C1781B001D218A /* Poppins-Regular.ttf in Resources */,
+				4E93ED3C2730330100272A06 /* PlaceBackgroundMusic.mp3 in Resources */,
 				4ECB1691270AED36000029CB /* Loading.json in Resources */,
 				4E8A58B52705404600C8A646 /* Splash.storyboard in Resources */,
+				4E93ED3A2730330100272A06 /* VacationBackgroundMusic.mp3 in Resources */,
 				4E9DCB2F26C17814001D218A /* Poppins-Medium.ttf in Resources */,
 				4E533F3026DFD9A700527FC2 /* Community.storyboard in Resources */,
 				4EDA40292700B57E00B5E80B /* WrittingAddImageTableViewCell.xib in Resources */,
@@ -810,8 +825,9 @@
 				4E01361826FA1B710071F31D /* WelcomeViewModel.swift in Sources */,
 				4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */,
 				4EE9A3B026F3042E00395B2F /* FullArticleTableViewCell.swift in Sources */,
-				4E533F3E26E09A8E00527FC2 /* TabBarController.swift in Sources */,
+				4E533F3E26E09A8E00527FC2 /* TabBarWithCorners.swift in Sources */,
 				4E8A58B82705407600C8A646 /* SplashViewController.swift in Sources */,
+				4E93ED31272FA48700272A06 /* MyArticleViewModel.swift in Sources */,
 				4EE9A3AB26F2D1BA00395B2F /* ArticleModel.swift in Sources */,
 				4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */,
 				4EE9A3BB26F76A6800395B2F /* MyProfileEditViewController.swift in Sources */,

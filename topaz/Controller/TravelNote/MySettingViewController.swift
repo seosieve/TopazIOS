@@ -20,6 +20,14 @@ class MySettingViewController: UIViewController {
         makeShadow(target: withdrawControl, height: 5, opacity: 0.1, shadowRadius: 5)
     }
     
+    @IBAction func termsOfUsePressed(_ sender: UIControl) {
+        self.performSegue(withIdentifier: "goToTermsOfUse", sender: sender)
+    }
+    
+    @IBAction func privacyPolicyPressed(_ sender: UIControl) {
+        self.performSegue(withIdentifier: "goToPrivacyPolicy", sender: sender)
+    }
+    
     @IBAction func logoutPressed(_ sender: UIControl) {
         logoutAlert()
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -26,7 +26,7 @@
         <!--Article Detail View Controller-->
         <scene sceneID="Vto-a7-W3V">
             <objects>
-                <viewController storyboardIdentifier="ArticleDetailVC" id="p5a-QX-pBa" customClass="ArticleDetailViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleDetailVC" hidesBottomBarWhenPushed="YES" id="p5a-QX-pBa" customClass="ArticleDetailViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bzf-QI-XAi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,6 +189,19 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="ViewButton"/>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXD-Ht-2dw">
+                                                <rect key="frame" x="362" y="119" width="32" height="32"/>
+                                                <color key="backgroundColor" name="MintBlue"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="HT9-WY-zBP"/>
+                                                    <constraint firstAttribute="height" constant="32" id="Ibn-ep-2BM"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="MusicIcon"/>
+                                                <connections>
+                                                    <action selector="detailMusicButtonPressed:" destination="p5a-QX-pBa" eventType="touchUpInside" id="oKT-L6-xhf"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -212,7 +225,9 @@
                                             <constraint firstItem="of9-jh-sYU" firstAttribute="leading" secondItem="cQc-TA-RTz" secondAttribute="trailing" constant="8" id="QfN-aJ-WyV"/>
                                             <constraint firstItem="wgb-0O-joN" firstAttribute="leading" secondItem="of9-jh-sYU" secondAttribute="trailing" constant="8" id="SZ5-ja-bvj"/>
                                             <constraint firstItem="vNE-XY-P2t" firstAttribute="top" secondItem="WnQ-C1-K8a" secondAttribute="top" id="TQN-NQ-ER8"/>
+                                            <constraint firstItem="hh2-p8-GOP" firstAttribute="top" secondItem="QXD-Ht-2dw" secondAttribute="bottom" constant="16" id="W6f-p6-kar"/>
                                             <constraint firstItem="7cE-ch-hXh" firstAttribute="top" secondItem="y9o-0A-H49" secondAttribute="bottom" constant="28" id="XjM-Xt-Kev"/>
+                                            <constraint firstAttribute="trailing" secondItem="QXD-Ht-2dw" secondAttribute="trailing" constant="20" id="c5Z-H2-ef0"/>
                                             <constraint firstItem="j4b-e3-XLd" firstAttribute="centerX" secondItem="TpW-D7-bTI" secondAttribute="centerX" id="cuE-sb-B43"/>
                                             <constraint firstItem="K5Y-QI-FZc" firstAttribute="leading" secondItem="TpW-D7-bTI" secondAttribute="leading" constant="20" id="dRs-t8-nnK"/>
                                             <constraint firstItem="v8o-Z1-ImW" firstAttribute="leading" secondItem="Iwh-yG-uag" secondAttribute="trailing" constant="8" id="dq2-pR-60t"/>
@@ -276,6 +291,7 @@
                     <connections>
                         <outlet property="detailAutherImage" destination="7cE-ch-hXh" id="gjK-zI-9mm"/>
                         <outlet property="detailMainText" destination="jXk-ue-sV6" id="An0-wc-3Lq"/>
+                        <outlet property="detailMusicButton" destination="QXD-Ht-2dw" id="siv-nC-Toc"/>
                         <outlet property="detailNickname" destination="Iwh-yG-uag" id="Lqs-eS-TPG"/>
                         <outlet property="detailTailText" destination="K5Y-QI-FZc" id="Vqx-Z7-jB2"/>
                         <outlet property="detailTitle" destination="y9o-0A-H49" id="N9K-61-dEZ"/>
@@ -351,7 +367,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zk6-L1-VPI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="907"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="957"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="105-fr-bXm">
                                                 <rect key="frame" x="0.0" y="56.5" width="414" height="396"/>
@@ -442,7 +458,7 @@
                                             <constraint firstItem="EpG-mt-gdD" firstAttribute="top" secondItem="y1G-wg-kpH" secondAttribute="bottom" constant="20" id="fhV-sC-YHD"/>
                                             <constraint firstItem="WdK-dx-NG8" firstAttribute="centerX" secondItem="Zk6-L1-VPI" secondAttribute="centerX" id="gxK-Ca-Nzw"/>
                                             <constraint firstItem="105-fr-bXm" firstAttribute="centerX" secondItem="Zk6-L1-VPI" secondAttribute="centerX" id="gyT-ot-F0F"/>
-                                            <constraint firstAttribute="bottom" secondItem="Xco-YE-vWj" secondAttribute="bottom" constant="50" id="piG-mF-bEz"/>
+                                            <constraint firstAttribute="bottom" secondItem="Xco-YE-vWj" secondAttribute="bottom" constant="100" id="piG-mF-bEz"/>
                                             <constraint firstItem="Xco-YE-vWj" firstAttribute="top" secondItem="WdK-dx-NG8" secondAttribute="bottom" constant="40" id="zPB-vf-ael"/>
                                         </constraints>
                                     </view>
@@ -985,6 +1001,7 @@
         <image name="CancelButton" width="24" height="24"/>
         <image name="DetailButton" width="24" height="24"/>
         <image name="LikesButton" width="24" height="24"/>
+        <image name="MusicIcon" width="16" height="16"/>
         <image name="ViewButton" width="24" height="24"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="Gray1">

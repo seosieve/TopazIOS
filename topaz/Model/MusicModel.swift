@@ -8,9 +8,9 @@
 import UIKit
 
 struct BackgroundMusic {
-    let backgroundMusicImage = [UIImage(named: "BeachSoundEffectIcon"), UIImage(named: "LoadSoundEffectIcon"), UIImage(named: "FireplaceSoundEffectIcon")]
-    let backgroundMusicName = ["배경음악 1", "배경음악 2", "배경음악 3"]
-    let backgroundMusicFileName = ["Music1", "Music2", "Music3"]
+    let backgroundMusicImage = [UIImage(named: "FestivalBackgroundMusicIcon"), UIImage(named: "VacationBackgroundMusicIcon"), UIImage(named: "PlaceBackgroundMusicIcon"), UIImage(named: "NightBackgroundMusicIcon"), UIImage(named: "ContemplationBackgroundMusicIcon"), UIImage(named: "TeatimeBackgroundMusicIcon")]
+    let backgroundMusicName = ["활기찬 축제", "설레는 피서", "나만의 공간", "낭만적인 밤", "조용한 사색", "오후의 티타임"]
+    let backgroundMusicFileName = ["FestivalBackgroundMusic", "VacationBackgroundMusic", "PlaceBackgroundMusic", "NightBackgroundMusic", "ContemplationBackgroundMusic", "TeatimeBackgroundMusic"]
 }
 
 struct SoundEffect {

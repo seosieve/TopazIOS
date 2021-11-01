@@ -19,6 +19,7 @@ class ArticleDetailViewController: UIViewController {
     @IBOutlet weak var detailAutherImage: UIImageView!
     @IBOutlet weak var detailNickname: UILabel!
     @IBOutlet weak var detailstrWrittenDate: UILabel!
+    @IBOutlet weak var detailMusicButton: UIButton!
     // Body
     @IBOutlet weak var detailMainText: UILabel!
     @IBOutlet weak var mainDetailImageTableView: UITableView!
@@ -48,7 +49,7 @@ class ArticleDetailViewController: UIViewController {
         makeArticleUI()
         makeTableViewHeight()
     }
-    
+
     @IBAction func likesBarItemPressed(_ sender: UIBarButtonItem) {
         if sender.tintColor == UIColor(named: "Gray1") {
             sender.tintColor = UIColor(named: "MintBlue")
@@ -90,6 +91,18 @@ class ArticleDetailViewController: UIViewController {
             deleteAndModifyAlert()
         } else {
             reportAlert()
+        }
+    }
+    
+    @IBAction func detailMusicButtonPressed(_ sender: UIButton) {
+        if sender.backgroundColor == UIColor(named: "MintBlue") {
+            
+            sender.backgroundColor = UIColor(named: "Gray5")
+            makeShadow(target: detailMusicButton, opacity: 0)
+        } else {
+            
+            sender.backgroundColor = UIColor(named: "MintBlue")
+            makeShadow(target: detailMusicButton, radius: detailMusicButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         }
     }
     
@@ -141,6 +154,8 @@ extension ArticleDetailViewController {
             self.detailAutherImage.kf.setImage(with: url)
             makeCircle(target: self.detailAutherImage)
         }
+        makeCircle(target: detailMusicButton, color: "MintBlue", width: 0)
+        makeShadow(target: detailMusicButton, radius: detailMusicButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         // Body부분 설정
         detailMainText.text = article!.mainText
         if article!.tailText == "" {

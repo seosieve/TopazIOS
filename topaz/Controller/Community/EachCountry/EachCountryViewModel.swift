@@ -73,7 +73,6 @@ class EachCountryViewModel {
                 eachArticleHandler(self.tableArticleArr)
             }
         }
-        
     }
     
     
@@ -85,6 +84,4 @@ class EachCountryViewModel {
             kfUrlHandler(url)
         }
     }
-    
-    
 }

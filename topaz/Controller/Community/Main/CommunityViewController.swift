@@ -334,6 +334,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         if let indexPath = fullArticleTableView.indexPathForSelectedRow {
             articleDetailVC.article = tableArticleArr[indexPath.row]
         }
+        articleDetailVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(articleDetailVC, animated: true)
     }
 }
