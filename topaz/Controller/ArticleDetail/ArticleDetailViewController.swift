@@ -8,6 +8,7 @@
 import UIKit
 import Lottie
 import Kingfisher
+import SwiftySound
 
 class ArticleDetailViewController: UIViewController {
     // Head
@@ -36,6 +37,9 @@ class ArticleDetailViewController: UIViewController {
     var article: Article?
     let viewModel = ArticleDetailViewModel()
     let userdefault = UserDefaults.standard
+    var musicNameArr = ["", "", "", ""]
+    var musicVolumeArr: [Float] = [0, 0, 0, 0]
+    var musicPlayArr = [Sound?]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +52,13 @@ class ArticleDetailViewController: UIViewController {
         views.text = "\(self.article!.views + 1)"
         makeArticleUI()
         makeTableViewHeight()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        musicPlayArr.forEach { music in
+            music?.stop()
+        }
     }
 
     @IBAction func likesBarItemPressed(_ sender: UIBarButtonItem) {
@@ -96,11 +107,11 @@ class ArticleDetailViewController: UIViewController {
     
     @IBAction func detailMusicButtonPressed(_ sender: UIButton) {
         if sender.backgroundColor == UIColor(named: "MintBlue") {
-            
+            pauseMusic()
             sender.backgroundColor = UIColor(named: "Gray5")
             makeShadow(target: detailMusicButton, opacity: 0)
         } else {
-            
+            playMusic()
             sender.backgroundColor = UIColor(named: "MintBlue")
             makeShadow(target: detailMusicButton, radius: detailMusicButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         }
@@ -121,6 +132,18 @@ class ArticleDetailViewController: UIViewController {
 //MARK: - UI Functions
 extension ArticleDetailViewController {
     func makeArticleUI() {
+        // 음악 설정
+        makeCircle(target: detailMusicButton, color: "MintBlue", width: 0)
+        makeShadow(target: detailMusicButton, radius: detailMusicButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
+        if article!.musicName == ["", "", "", ""] {
+            detailMusicButton.isHidden = true
+        } else {
+            detailMusicButton.isHidden = false
+            musicNameArr = article!.musicName
+            musicVolumeArr = article!.musicVolume
+            let isOn = detailMusicButton.backgroundColor == UIColor(named: "MintBlue") ? true : false
+            setMusic(isOn: isOn)
+        }
         // 여행국가 설정
         let countryCount = article!.country.count
         for index in 0...2 {
@@ -154,8 +177,6 @@ extension ArticleDetailViewController {
             self.detailAutherImage.kf.setImage(with: url)
             makeCircle(target: self.detailAutherImage)
         }
-        makeCircle(target: detailMusicButton, color: "MintBlue", width: 0)
-        makeShadow(target: detailMusicButton, radius: detailMusicButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         // Body부분 설정
         detailMainText.text = article!.mainText
         if article!.tailText == "" {
@@ -165,16 +186,6 @@ extension ArticleDetailViewController {
         // Tail부분 설정
         makeCircle(target: likesButton)
         likes.text = "\(self.article!.likes)"
-    }
-    
-    func setGradient() {
-        let color1 = UIColor(named: "MintBlue")!
-        let color2 = UIColor(named: "SkyBlue")!
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.colors = [color1.cgColor,color2.cgColor]
-        gradient.locations = [0.0 , 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
-        gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
     }
     
     func makeTableViewHeight() {
@@ -214,15 +225,19 @@ extension ArticleDetailViewController {
         let alert = UIAlertController(title: "정말 글을 삭제하시겠어요?", message: "한 번 삭제된 글은 다시 되돌릴 수 없으니 신중하게 결정해주세요!", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         let delete = UIAlertAction(title: "삭제", style: .default) { action in
+            // 삭제시 Animation
             let backgroundView = UIView()
             let lottieView = AnimationView(name: "Loading")
             loadingAnimation(backgroundView, lottieView, view: self.view)
-            
+            // 유저 경험치 감소
+            self.viewModel.minusUserExp()
+            // storage 사진 삭제
             let articleID = self.article!.articleID
             let imageCount = self.article!.imageText.count
             for index in 0..<imageCount {
                 self.viewModel.deleteExperienceImage(articleID: articleID, index: index)
             }
+            // Article 삭제
             self.viewModel.deleteArticle(articleID: articleID) {
                 backgroundView.removeFromSuperview()
                 lottieView.removeFromSuperview()
@@ -247,6 +262,39 @@ extension ArticleDetailViewController {
         alert.addAction(report)
         alert.addAction(cancle)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func setMusic(isOn: Bool = true) {
+        DispatchQueue.global().async {
+            self.musicPlayArr = [Sound?]()
+            for (index,musicName) in self.musicNameArr.enumerated() {
+                if musicName != "" {
+                    let url = Bundle.main.url(forResource: musicName, withExtension: "mp3")!
+                    let sound = Sound(url: url)!
+                    self.musicPlayArr.append(sound)
+                    sound.play(numberOfLoops: -1)
+                    let volume = isOn ? self.musicVolumeArr[index] : 0
+                    sound.volume = volume
+                }
+            }
+        }
+    }
+    
+    func playMusic() {
+        DispatchQueue.global().async {
+            for (index,sound) in self.musicPlayArr.enumerated() {
+                sound?.resume()
+                sound?.fadeInResume(vol: self.musicVolumeArr[index])
+            }
+        }
+    }
+    
+    func pauseMusic() {
+        DispatchQueue.global().async {
+            for sound in self.musicPlayArr {
+                sound?.fadeOutPause()
+            }
+        }
     }
 }
 
@@ -310,6 +358,18 @@ extension ArticleDetailViewController: ModifyArticleDelegate {
             self.mainDetailImageTableView.reloadData()
             self.makeTableViewHeight()
             modifyArticleHandler()
+        }
+    }
+    
+    func cancle() {
+        if detailMusicButton.backgroundColor == UIColor(named: "MintBlue") {
+            musicPlayArr.forEach { music in
+                music?.play()
+            }
+        } else {
+            musicPlayArr.forEach { music in
+                music?.pause()
+            }
         }
     }
 }

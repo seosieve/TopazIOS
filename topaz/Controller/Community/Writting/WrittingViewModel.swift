@@ -9,6 +9,9 @@ import Foundation
 import Firebase
 
 class WrittingViewModel {
+    let database = Firestore.firestore()
+    let storage = Storage.storage()
+    let email = UserDefaults.standard.string(forKey: "email")!
     
     func makeCountry(_ countryButton: [UIButton]) -> [String] {
         var countryArr = [String]()
@@ -64,8 +67,10 @@ class WrittingViewModel {
         return newImage!
     }
     
-    func addArticle(articleID: String, country: [String], title: UITextView, mainText: UITextView, imageText: [String], imageName: [Int] , imageUrl: [String], tailText: String, makeArticleHandler: @escaping () -> ()) {
-        let document = Firestore.firestore().collection("Articles").document(articleID)
+    func addArticle(articleID: String, country: [String], title: UITextView, mainText: UITextView, imageText: [String], imageName: [Int], imageUrl: [String], musicName: [String], musicVolume: [Float], tailText: String, makeArticleHandler: @escaping () -> ()) {
+        let collection = database.collection("Articles")
+        let document = collection.document(articleID)
+        
         let nickname = UserDefaults.standard.string(forKey: "nickname")!
         let email = UserDefaults.standard.string(forKey: "email")!
         let writtenDate = NSDate().timeIntervalSince1970
@@ -73,7 +78,7 @@ class WrittingViewModel {
         let title = title.text ?? ""
         let mainText = mainText.text ?? ""
         
-        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl ,tailText: tailText, likes: 0, views: 0)
+        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, musicName: musicName, musicVolume: musicVolume, tailText: tailText, likes: 0, views: 0)
         
         document.setData(article.dicDataType){ error in
             if let error = error {
@@ -85,9 +90,8 @@ class WrittingViewModel {
     }
     
     func addExperienceImage(_ articleID: String, _ image: UIImage, addExperienceImageHandler: @escaping (String, Int) -> ()) {
-        let reference = Storage.storage().reference()
         let timeStamp = Int(NSDate().timeIntervalSince1970)
-        let imageRef = reference.child("Articles/\(articleID)/\(timeStamp).png")
+        let imageRef = storage.reference().child("Articles/\(articleID)/\(timeStamp).png")
         let data = image.pngData()!
         imageRef.putData(data, metadata: nil) { _, error in
             if let error = error {
@@ -103,8 +107,7 @@ class WrittingViewModel {
     }
     
     func deleteExperienceImage(_ articleID: String, _ timeStamp: Int, deleteExperienceImageHandler: @escaping () -> ()) {
-        let reference = Storage.storage().reference()
-        let imageRef = reference.child("Articles/\(articleID)/\(timeStamp).png")
+        let imageRef = storage.reference().child("Articles/\(articleID)/\(timeStamp).png")
         imageRef.delete { error in
             if let error = error {
                 print("프로필 사진 저장 에러 : \(error)")
@@ -112,5 +115,10 @@ class WrittingViewModel {
                 deleteExperienceImageHandler()
             }
         }
+    }
+    
+    func addUserExp() {
+        let collection = database.collection("UserDataBase")
+        collection.document(email).updateData(["exp" : FieldValue.increment(Int64(5))])
     }
 }

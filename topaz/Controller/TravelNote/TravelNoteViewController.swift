@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 import Lottie
 import Kingfisher
 
@@ -18,13 +18,21 @@ class TravelNoteViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var introduce: UILabel!
     @IBOutlet weak var myProfileEditButton: UIButton!
+    @IBOutlet weak var travelClass: UILabel!
+    @IBOutlet var expContainer: [UIView]!
+    @IBOutlet var expProgress: [UIView]! {
+        didSet {expProgress.sort{$0.tag < $1.tag}}
+    }
+    @IBOutlet var expressHandle: [UIView]! {
+        didSet {expressHandle.sort{$0.tag < $1.tag}}
+    }
+    @IBOutlet weak var travelClassDetail: UILabel!
     @IBOutlet weak var myProfileContainer: UIView!
     
     let viewModel = TravelNoteViewModel()
     let userdefault = UserDefaults.standard
     
     var imageUrl: String?
-    var exp: Int?
     var collectibles: [String]?
     var topazAlbumUrl: [String]?
     let backgroundView = UIView()
@@ -33,13 +41,10 @@ class TravelNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
+        makeTravelNoteUI()
         loadingAnimation(backgroundView, lottieView, view: self.view)
-        makeCircular(target: myProfileContainer, each: true)
-        makeCircle(target: profileImage, color: "Gray6", width: 1)
-        makeBorder(target: myProfileEditButton, radius: 12, isFilled: false)
-        viewModel.getUserDataBase(email: userdefault.string(forKey: "email")!) { imageUrl, exp, collectibles, topazAlbumUrl in
+        viewModel.getUserDataBase(email: userdefault.string(forKey: "email")!) { imageUrl, collectibles, topazAlbumUrl in
             self.imageUrl = imageUrl
-            self.exp = exp
             self.collectibles = collectibles
             self.topazAlbumUrl = topazAlbumUrl
             self.makeUserProfile()
@@ -47,6 +52,7 @@ class TravelNoteViewController: UIViewController {
             self.backgroundView.removeFromSuperview()
             self.lottieView.removeFromSuperview()
         }
+        addUserClassSnapshot(email: userdefault.string(forKey: "email")!)
     }
     
     @IBAction func myArticlePressed(_ sender: UIBarButtonItem) {
@@ -72,6 +78,21 @@ class TravelNoteViewController: UIViewController {
 
 //MARK: - UI Functions
 extension TravelNoteViewController {
+    func makeTravelNoteUI() {
+        makeCircular(target: myProfileContainer, each: true)
+        makeCircle(target: profileImage, color: "Gray6", width: 1)
+        expContainer.forEach { container in
+            makeCircle(target: container)
+        }
+        expProgress.forEach { progress in
+            makeCircle(target: progress)
+        }
+        expressHandle.forEach { handle in
+            makeCircle(target: handle)
+        }
+        makeBorder(target: myProfileEditButton, radius: 12, isFilled: false)
+    }
+    
     func makeCircular(target view: UIView, each: Bool) {
         view.clipsToBounds = false
         view.layer.cornerRadius = 12
@@ -82,6 +103,117 @@ extension TravelNoteViewController {
         view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 12).cgPath
         if each {
             view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        }
+    }
+    
+    func addMultipleFonts(label: UILabel, _ range: String) {
+        let attributedString = NSMutableAttributedString(string: label.text!)
+        attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Regular", size: 12)!, range: (label.text! as NSString).range(of: range))
+        label.attributedText = attributedString
+    }
+    
+    func addUserClassSnapshot(email: String) {
+        let database = Firestore.firestore()
+        let collection = database.collection("UserDataBase")
+            collection.document(email).addSnapshotListener { documentSnapshot, error in
+            if let error = error {
+                print("스냅샷 리스너 에러 : \(error)")
+            } else {
+                if let document = documentSnapshot {
+                    let exp = document.get("exp") as! Int
+                    self.makeUserClass(exp: exp)
+                }
+            }
+        }
+    }
+    
+    func makeUserClass(exp: Int) {
+        let maxWidth = expProgress[0].superview!.frame.width
+        
+        if exp < 100 {
+            travelClass.text = "이코노미 클래스"
+            travelClassDetail.text = "비즈니스 클래스까지 \(100 - exp)%"
+            addMultipleFonts(label: travelClassDetail, "까지")
+            expProgress[0].isHidden = false; expressHandle[0].isHidden = false
+            expProgress[1].isHidden = true
+            expProgress[2].isHidden = true
+            expProgress[0].constraints.forEach { constraint in
+                if constraint.firstAttribute == .width {
+                    if exp <= 8 {
+                        constraint.constant = 8
+                    } else {
+                        constraint.constant = CGFloat(exp) * (maxWidth / 99)
+                    }
+                }
+            }
+        } else if 100 <= exp && exp < 200 {
+            travelClass.text = "비즈니스 클래스"
+            travelClassDetail.text = "퍼스트 클래스까지 \(200 - exp)%"
+            addMultipleFonts(label: travelClassDetail, "까지")
+            expProgress[0].isHidden = false; expressHandle[0].isHidden = true
+            expProgress[1].isHidden = false; expressHandle[1].isHidden = false
+            expProgress[2].isHidden = true
+            expProgress[0].constraints.forEach { constraint in
+                if constraint.firstAttribute == .width {
+                    constraint.constant = maxWidth
+                }
+            }
+            expProgress[1].constraints.forEach { constraint in
+                if constraint.firstAttribute == .width {
+                    if exp - 100 <= 8 {
+                        constraint.constant = 8
+                    } else {
+                        constraint.constant = CGFloat(exp - 100) * (maxWidth / 99)
+                    }
+                }
+            }
+        } else if 200 <= exp && exp < 300 {
+            travelClass.text = "퍼스트 클래스"
+            travelClassDetail.text = "마스터 클래스까지 \(300 - exp)%"
+            addMultipleFonts(label: travelClassDetail, "까지")
+            expProgress[0].isHidden = false; expressHandle[0].isHidden = true
+            expProgress[1].isHidden = false; expressHandle[1].isHidden = true
+            expProgress[2].isHidden = false
+            expProgress[0].constraints.forEach { constraint in
+                if constraint.firstAttribute == .width {
+                    constraint.constant = maxWidth
+                }
+            }
+            expProgress[1].constraints.forEach { constraint in
+                if constraint.firstAttribute == .width {
+                    constraint.constant = maxWidth
+                }
+            }
+            expProgress[2].constraints.forEach { constraint in
+                if constraint.firstAttribute == .width {
+                    if exp - 200 <= 8 {
+                        constraint.constant = 8
+                    } else {
+                        constraint.constant = CGFloat(exp - 200) * (maxWidth / 99)
+                    }
+                }
+            }
+        } else {
+            travelClass.text = "마스터 클래스"
+            travelClassDetail.text = "토파즈의 지배자"
+            expProgress[0].isHidden = false; expressHandle[0].isHidden = true
+            expProgress[1].isHidden = false; expressHandle[1].isHidden = true
+            expProgress[2].isHidden = false
+            expProgress[0].constraints.forEach { constraint in
+                if constraint.firstAttribute == .width {
+                    constraint.constant = maxWidth
+                }
+            }
+            expProgress[1].constraints.forEach { constraint in
+                if constraint.firstAttribute == .width {
+                    constraint.constant = maxWidth
+                }
+            }
+            expProgress[2].constraints.forEach { constraint in
+                if constraint.firstAttribute == .width {
+                    constraint.constant = maxWidth
+                }
+            }
         }
     }
     

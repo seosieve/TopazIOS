@@ -33,11 +33,13 @@ class EachCountryViewModel {
                     let imageText = document.get("imageText") as! [String]
                     let imageName = document.get("imageName") as! [Int]
                     let imageUrl = document.get("imageUrl") as! [String]
+                    let musicName = document.get("musicName") as! [String]
+                    let musicVolume = document.get("musicVolume") as! [Float]
                     let tailText = document.get("tailText") as! String
                     let likes = document.get("likes") as! Int
                     let views = document.get("views") as! Int
                     
-                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
+                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, musicName: musicName, musicVolume: musicVolume, tailText: tailText, likes: likes, views: views)
                     hitArticleHandler(article)
                 }
             }
@@ -63,11 +65,13 @@ class EachCountryViewModel {
                     let imageText = document.get("imageText") as! [String]
                     let imageName = document.get("imageName") as! [Int]
                     let imageUrl = document.get("imageUrl") as! [String]
+                    let musicName = document.get("musicName") as! [String]
+                    let musicVolume = document.get("musicVolume") as! [Float]
                     let tailText = document.get("tailText") as! String
                     let likes = document.get("likes") as! Int
                     let views = document.get("views") as! Int
                     
-                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
+                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, musicName: musicName, musicVolume: musicVolume, tailText: tailText, likes: likes, views: views)
                     self.tableArticleArr.append(article)
                 }
                 eachArticleHandler(self.tableArticleArr)

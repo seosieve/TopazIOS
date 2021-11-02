@@ -19,12 +19,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var friendslistButton: UIBarButtonItem!
     @IBOutlet weak var sceneView: SCNView!
     
+    @IBOutlet var collectiblesContainer: UIView!
+    @IBOutlet weak var collectiblesCompleteButton: UIButton!
+    
     let userdefault = UserDefaults.standard
+    let viewModel = HomeViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
         makeEarthScene()
+        addCollectiblesView()
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
         sceneView.addGestureRecognizer(pinchRecognizer)
     }
@@ -55,6 +60,29 @@ class HomeViewController: UIViewController {
 
 //MARK: - UI Functions
 extension HomeViewController {
+    func addCollectiblesView() {
+        // Background Dim
+        let width = self.view.bounds.width
+        let height = self.view.bounds.height
+        let dimView = UIView()
+        dimView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        dimView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
+        dimView.tag = 100
+        self.tabBarController?.view.addSubview(dimView)
+        
+        // collectiblesView
+        collectiblesContainer.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        collectiblesContainer.center = self.view.center
+        self.tabBarController?.view.addSubview(collectiblesContainer)
+        makeBorder(target: collectiblesContainer, radius: 28, isFilled: true)
+        makeBorder(target: collectiblesCompleteButton, radius: 12, isFilled: true)
+        
+        collectiblesContainer.frame = CGRect(x: 0, y: 0, width: width - 48, height: 580)
+        UIView.animate(withDuration: 1.0) {
+            self.collectiblesContainer.layoutIfNeeded()
+        }
+    }
+    
     func addMultipleFonts(_ range: String) {
         let attributedString = NSMutableAttributedString(string: IceBreakingLabel.text!)
         attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 22)!, range: (IceBreakingLabel.text! as NSString).range(of: range))

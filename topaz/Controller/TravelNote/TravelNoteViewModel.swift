@@ -11,7 +11,7 @@ import Firebase
 class TravelNoteViewModel {
     let database = Firestore.firestore()
     
-    func getUserDataBase(email: String, userDataBaseHandler: @escaping (String, Int, [String], [String]) -> ()) {
+    func getUserDataBase(email: String, userDataBaseHandler: @escaping (String, [String], [String]) -> ()) {
         let collection = database.collection("UserDataBase")
         collection.document(email).getDocument { document, error in
             if let error = error {
@@ -19,10 +19,9 @@ class TravelNoteViewModel {
             } else {
                 if let document = document {
                     let imageUrl = document.get("imageUrl") as! String
-                    let exp = document.get("exp") as! Int
                     let collectibles = document.get("collectibles") as! [String]
                     let topazAlbumUrl = document.get("topazAlbumUrl") as! [String]
-                    userDataBaseHandler(imageUrl, exp, collectibles, topazAlbumUrl)
+                    userDataBaseHandler(imageUrl, collectibles, topazAlbumUrl)
                 }
             }
         }

@@ -620,7 +620,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Nx-9n-cf7">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="784"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="834"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8N-g9-UUW">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -752,7 +752,7 @@
                                             <constraint firstItem="Niy-XI-H5H" firstAttribute="leading" secondItem="1Nx-9n-cf7" secondAttribute="leading" id="KoY-JT-1eH"/>
                                             <constraint firstItem="83g-CD-qfm" firstAttribute="top" secondItem="Gxp-hw-o25" secondAttribute="bottom" constant="20" id="Lq3-5e-iKF"/>
                                             <constraint firstItem="C8N-g9-UUW" firstAttribute="top" secondItem="1Nx-9n-cf7" secondAttribute="top" id="M2W-ET-5F5"/>
-                                            <constraint firstAttribute="bottom" secondItem="IAg-GB-9aF" secondAttribute="bottom" constant="300" id="Nfm-Vu-UhZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="IAg-GB-9aF" secondAttribute="bottom" constant="350" id="Nfm-Vu-UhZ"/>
                                             <constraint firstItem="qKk-VM-Ri1" firstAttribute="leading" secondItem="1Nx-9n-cf7" secondAttribute="leading" id="XJS-qI-jDd"/>
                                             <constraint firstAttribute="trailing" secondItem="C8N-g9-UUW" secondAttribute="trailing" id="c1T-jl-jaQ"/>
                                             <constraint firstItem="Gxp-hw-o25" firstAttribute="top" secondItem="qKk-VM-Ri1" secondAttribute="bottom" constant="20" id="cCw-55-Qv4"/>

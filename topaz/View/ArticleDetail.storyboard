@@ -694,6 +694,25 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="xBj-Wx-MIc"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Ekz-sc-BJ4"/>
                             </scrollView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PSq-to-mct">
+                                <rect key="frame" x="80" y="798.5" width="51" height="31"/>
+                                <color key="onTintColor" name="LightMintBlue"/>
+                                <connections>
+                                    <action selector="musicSwitchChanged:" destination="2sf-Nm-ljT" eventType="valueChanged" id="Dd9-q8-gzj"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vJB-Hn-xnf">
+                                <rect key="frame" x="20" y="790" width="48" height="48"/>
+                                <color key="backgroundColor" name="MintBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="21K-O9-8mF"/>
+                                    <constraint firstAttribute="height" constant="48" id="rOa-5U-vf6"/>
+                                </constraints>
+                                <state key="normal" image="AddMusicButton"/>
+                                <connections>
+                                    <action selector="addMusicButtonPressed:" destination="2sf-Nm-ljT" eventType="touchUpInside" id="kyn-MR-QUP"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZX-xd-9Q9">
                                 <rect key="frame" x="346" y="790" width="48" height="48"/>
                                 <color key="backgroundColor" name="MintBlue"/>
@@ -761,9 +780,13 @@
                         <constraints>
                             <constraint firstItem="jpH-ui-qcE" firstAttribute="top" secondItem="e51-IM-otz" secondAttribute="top" id="4sv-bm-iS6"/>
                             <constraint firstItem="qlM-4k-bUw" firstAttribute="bottom" secondItem="e51-IM-otz" secondAttribute="bottom" id="8c1-ZR-ubQ"/>
+                            <constraint firstItem="PSq-to-mct" firstAttribute="centerY" secondItem="vJB-Hn-xnf" secondAttribute="centerY" id="AC3-X0-ekE"/>
+                            <constraint firstItem="PSq-to-mct" firstAttribute="leading" secondItem="vJB-Hn-xnf" secondAttribute="trailing" constant="12" id="MqM-jj-BqW"/>
                             <constraint firstItem="qlM-4k-bUw" firstAttribute="leading" secondItem="KxL-iz-yiD" secondAttribute="leading" id="Muf-CF-gdD"/>
                             <constraint firstItem="jpH-ui-qcE" firstAttribute="leading" secondItem="KxL-iz-yiD" secondAttribute="leading" id="NPI-5k-Lsv"/>
                             <constraint firstItem="qlM-4k-bUw" firstAttribute="trailing" secondItem="KxL-iz-yiD" secondAttribute="trailing" id="RGj-M9-yIX"/>
+                            <constraint firstItem="vJB-Hn-xnf" firstAttribute="leading" secondItem="e51-IM-otz" secondAttribute="leading" constant="20" id="UXa-04-77b"/>
+                            <constraint firstItem="e51-IM-otz" firstAttribute="bottom" secondItem="vJB-Hn-xnf" secondAttribute="bottom" constant="24" id="Vgm-Ji-h0I"/>
                             <constraint firstItem="e51-IM-otz" firstAttribute="bottom" secondItem="TZX-xd-9Q9" secondAttribute="bottom" constant="24" id="XXA-iK-zgI"/>
                             <constraint firstItem="jpH-ui-qcE" firstAttribute="centerX" secondItem="KxL-iz-yiD" secondAttribute="centerX" id="gAN-1L-Qxo"/>
                             <constraint firstItem="e51-IM-otz" firstAttribute="trailing" secondItem="TZX-xd-9Q9" secondAttribute="trailing" constant="20" id="gdN-Ty-4GC"/>
@@ -773,10 +796,12 @@
                     <navigationItem key="navigationItem" id="36R-cq-pZ2"/>
                     <connections>
                         <outlet property="addImageButton" destination="TZX-xd-9Q9" id="Tly-th-rfT"/>
+                        <outlet property="addMusicButton" destination="vJB-Hn-xnf" id="ckX-5r-EXS"/>
                         <outlet property="countryQuestionButton" destination="2zc-NZ-GUs" id="1OS-Yh-xgt"/>
                         <outlet property="mainTextView" destination="gSa-6b-72r" id="WmU-wb-rMZ"/>
                         <outlet property="modifyImageTableView" destination="6cJ-z9-FIY" id="k65-IO-fy7"/>
                         <outlet property="modifyImageTableViewConstraintY" destination="bDZ-Sv-lCd" id="vx2-Rb-OWa"/>
+                        <outlet property="musicSwitch" destination="PSq-to-mct" id="kdw-fv-wnk"/>
                         <outlet property="registerButton" destination="qDJ-cL-SCy" id="bax-gb-zp5"/>
                         <outlet property="tailTextView" destination="Ajz-e7-BIl" id="oIB-zg-Lzl"/>
                         <outlet property="titleTextView" destination="vW3-4Z-f8C" id="bNR-51-BwP"/>
@@ -998,6 +1023,7 @@
     </scenes>
     <resources>
         <image name="AddImageButton" width="24" height="24"/>
+        <image name="AddMusicButton" width="24" height="24"/>
         <image name="CancelButton" width="24" height="24"/>
         <image name="DetailButton" width="24" height="24"/>
         <image name="LikesButton" width="24" height="24"/>
@@ -1024,6 +1050,9 @@
         </namedColor>
         <namedColor name="Gray7">
             <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LightMintBlue">
+            <color red="0.67500001192092896" green="0.96899998188018799" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MintBlue">
             <color red="0.19200000166893005" green="0.86699998378753662" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -19,12 +19,14 @@ struct Article {
     let imageText: [String]
     let imageName: [Int]
     let imageUrl: [String]
+    let musicName: [String]
+    let musicVolume: [Float]
     let tailText: String
     var likes: Int
     var views: Int
     
     // [String:Any] 타입으로 변환
     var dicDataType: [String: Any] {
-        return ["articleID": articleID, "auther": auther, "autherEmail": autherEmail, "writtenDate": writtenDate, "strWrittenDate": strWrittenDate, "country": country, "title": title, "mainText": mainText, "imageText": imageText, "imageName": imageName, "imageUrl": imageUrl, "tailText": tailText, "likes": likes, "views": views]
+        return ["articleID": articleID, "auther": auther, "autherEmail": autherEmail, "writtenDate": writtenDate, "strWrittenDate": strWrittenDate, "country": country, "title": title, "mainText": mainText, "imageText": imageText, "imageName": imageName, "imageUrl": imageUrl, "musicName": musicName, "musicVolume": musicVolume, "tailText": tailText, "likes": likes, "views": views]
     }
 }

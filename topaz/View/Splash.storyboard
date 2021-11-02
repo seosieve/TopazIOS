@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Splash View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -18,19 +23,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gtg-Fj-hc8">
-                                <rect key="frame" x="157" y="398" width="100" height="100"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="180" width="414" height="488.5"/>
+                                <color key="backgroundColor" name="MintBlue"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="h2C-gS-GPY"/>
-                                    <constraint firstAttribute="width" constant="100" id="z9O-CS-WWM"/>
+                                    <constraint firstAttribute="width" secondItem="Gtg-Fj-hc8" secondAttribute="height" multiplier="100:118" id="vQ7-bf-pfl"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="copyrightⓒ 2021 All rights reserved by TOPAZ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBd-rh-YJS">
+                                <rect key="frame" x="74" y="825" width="266.5" height="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                <color key="textColor" name="White"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MintBlue"/>
                         <constraints>
+                            <constraint firstItem="VBd-rh-YJS" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="AQJ-iN-N0i"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VBd-rh-YJS" secondAttribute="bottom" constant="20" id="FVE-4W-XsN"/>
+                            <constraint firstItem="Gtg-Fj-hc8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MK8-ui-HXS"/>
                             <constraint firstItem="Gtg-Fj-hc8" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="gdZ-Pg-9dd"/>
-                            <constraint firstItem="Gtg-Fj-hc8" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="yol-AD-lho"/>
+                            <constraint firstItem="Gtg-Fj-hc8" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="180" id="nAb-ML-xL9"/>
                         </constraints>
                     </view>
                     <connections>
@@ -39,12 +52,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="46" y="64"/>
+            <point key="canvasLocation" x="44.927536231884062" y="63.616071428571423"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="MintBlue">
+            <color red="0.19200000166893005" green="0.86699998378753662" blue="0.82700002193450928" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

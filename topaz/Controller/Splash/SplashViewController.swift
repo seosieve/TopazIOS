@@ -18,7 +18,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         let user = Auth.auth().currentUser
         lottieAnimation(json: "Splash", container: animationContainer)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             if user == nil {
                 // Onboarding으로 이동
                 self.transferVC(storyBoard: "Onboarding", identifier: "OnboardingVC")
@@ -50,8 +50,7 @@ extension SplashViewController {
         lottieView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
         lottieView.leadingAnchor.constraint(equalTo: container.leadingAnchor).isActive = true
         lottieView.trailingAnchor.constraint(equalTo: container.trailingAnchor).isActive = true
-        lottieView.loopMode = .loop
-        lottieView.backgroundBehavior = .pauseAndRestore
+        lottieView.loopMode = .playOnce
         lottieView.play()
     }
 }

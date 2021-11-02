@@ -9,5 +9,6 @@ import Foundation
 import Firebase
 
 class HomeViewModel {
-    let db = Firestore.firestore()
+    let database = Firestore.firestore()
+    
 }

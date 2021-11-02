@@ -23,7 +23,6 @@
 		4E0FAEB226C0EE99003D80E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0FAEB026C0EE99003D80E3 /* Main.storyboard */; };
 		4E0FAEB726C0EE9A003D80E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0FAEB526C0EE9A003D80E3 /* LaunchScreen.storyboard */; };
 		4E13D0362709A06700CAC6F4 /* LuggageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E13D0352709A06700CAC6F4 /* LuggageCollectionViewCell.swift */; };
-		4E13D038270AE0AA00CAC6F4 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E13D037270AE0AA00CAC6F4 /* Splash.json */; };
 		4E13D03A270AE15300CAC6F4 /* Login.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E13D039270AE15200CAC6F4 /* Login.json */; };
 		4E18A57526E66050001504A9 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E18A57426E66050001504A9 /* MySettingViewController.swift */; };
 		4E1C2E4D2714025400B97EB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E1C2E4C2714025400B97EB0 /* Assets.xcassets */; };
@@ -94,6 +93,7 @@
 		4E93ED3B2730330100272A06 /* NightBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED352730330000272A06 /* NightBackgroundMusic.mp3 */; };
 		4E93ED3C2730330100272A06 /* PlaceBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED362730330000272A06 /* PlaceBackgroundMusic.mp3 */; };
 		4E93ED3D2730330100272A06 /* ContemplationBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED372730330100272A06 /* ContemplationBackgroundMusic.mp3 */; };
+		4E93ED452731701400272A06 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED442731701300272A06 /* Splash.json */; };
 		4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */; };
 		4E9B9BBD26EDE50800ABCE87 /* TravelNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */; };
 		4E9B9BBF26EDE87600ABCE87 /* WrittingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */; };
@@ -171,7 +171,6 @@
 		4E0FAEB626C0EE9A003D80E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E0FAEB826C0EE9A003D80E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E13D0352709A06700CAC6F4 /* LuggageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuggageCollectionViewCell.swift; sourceTree = "<group>"; };
-		4E13D037270AE0AA00CAC6F4 /* Splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
 		4E13D039270AE15200CAC6F4 /* Login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Login.json; sourceTree = "<group>"; };
 		4E18A57426E66050001504A9 /* MySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
 		4E1C2E4C2714025400B97EB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -242,6 +241,7 @@
 		4E93ED352730330000272A06 /* NightBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NightBackgroundMusic.mp3; sourceTree = "<group>"; };
 		4E93ED362730330000272A06 /* PlaceBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PlaceBackgroundMusic.mp3; sourceTree = "<group>"; };
 		4E93ED372730330100272A06 /* ContemplationBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ContemplationBackgroundMusic.mp3; sourceTree = "<group>"; };
+		4E93ED442731701300272A06 /* Splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
 		4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelNoteViewModel.swift; sourceTree = "<group>"; };
 		4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingViewController.swift; sourceTree = "<group>"; };
@@ -462,9 +462,9 @@
 			isa = PBXGroup;
 			children = (
 				4E8A02C1272942B100E3AB63 /* Music.json */,
-				4E13D037270AE0AA00CAC6F4 /* Splash.json */,
 				4ECB1690270AED36000029CB /* Loading.json */,
 				4E13D039270AE15200CAC6F4 /* Login.json */,
+				4E93ED442731701300272A06 /* Splash.json */,
 				4ECB1692270AF292000029CB /* SignUpComplete.json */,
 				4E8A58C9270584A900C8A646 /* FirstOnboarding.json */,
 				4E8A58C7270584A900C8A646 /* SecondOnboarding.json */,
@@ -726,6 +726,7 @@
 				4E9DCB2226C177F5001D218A /* NotoSansKR-Medium.otf in Resources */,
 				4E9DCB2726C17804001D218A /* Poppins-Bold.ttf in Resources */,
 				4E9DCB2C26C1780E001D218A /* Poppins-ExtraLightItalic.ttf in Resources */,
+				4E93ED452731701400272A06 /* Splash.json in Resources */,
 				4EA4CF92270DBDA3001632D4 /* Assets.scnassets in Resources */,
 				4E9DCB3226C1781B001D218A /* Poppins-Regular.ttf in Resources */,
 				4E93ED3C2730330100272A06 /* PlaceBackgroundMusic.mp3 in Resources */,
@@ -738,7 +739,6 @@
 				4E9DCB2826C17806001D218A /* Poppins-BoldItalic.ttf in Resources */,
 				4ECFB6E32725EA3500890C04 /* MusicCollectionViewCell.xib in Resources */,
 				4E9DCB1F26C177EF001D218A /* NotoSansKR-Black.otf in Resources */,
-				4E13D038270AE0AA00CAC6F4 /* Splash.json in Resources */,
 				4E9DCB2526C17801001D218A /* Poppins-Black.ttf in Resources */,
 				4E7FD112271FBF2100867F16 /* CountrySelectCollectionViewCell.xib in Resources */,
 				4E32E07926DE35FB005682E5 /* GoogleService-Info.plist in Resources */,

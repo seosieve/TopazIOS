@@ -31,11 +31,13 @@ class ArticleDetailViewModel {
                     let imageText = document.get("imageText") as! [String]
                     let imageName = document.get("imageName") as! [Int]
                     let imageUrl = document.get("imageUrl") as! [String]
+                    let musicName = document.get("musicName") as! [String]
+                    let musicVolume = document.get("musicVolume") as! [Float]
                     let tailText = document.get("tailText") as! String
                     let likes = document.get("likes") as! Int
                     let views = document.get("views") as! Int
                     
-                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, tailText: tailText, likes: likes, views: views)
+                    let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, musicName: musicName, musicVolume: musicVolume, tailText: tailText, likes: likes, views: views)
                     
                     articleHandler(article)
                 }
@@ -89,7 +91,7 @@ class ArticleDetailViewModel {
     
     func increaseLikes(currentID: String, isIncrease: Bool) {
         if isIncrease {
-            database.collection("UserDataBase").document(email).updateData(["likedPosts" : FieldValue.arrayUnion([currentID])]) { error in
+            database.collection("UserDataBase").document(email).updateData(["likedPosts" : FieldValue.arrayUnion([currentID]), "exp" : FieldValue.increment(Int64(1))]) { error in
                 if let error = error {
                     print("likedPosts 추가 에러: \(error)")
                 }
@@ -100,7 +102,7 @@ class ArticleDetailViewModel {
                 }
             }
         } else {
-            database.collection("UserDataBase").document(email).updateData(["likedPosts" : FieldValue.arrayRemove([currentID])]) { error in
+            database.collection("UserDataBase").document(email).updateData(["likedPosts" : FieldValue.arrayRemove([currentID]), "exp" : FieldValue.increment(Int64(-1))]) { error in
                 if let error = error {
                     print("likedPosts 삭제 에러: \(error)")
                 }
@@ -139,5 +141,10 @@ class ArticleDetailViewModel {
                 deleteArticleHandler()
             }
         }
+    }
+    
+    func minusUserExp() {
+        let collection = database.collection("UserDataBase")
+        collection.document(email).updateData(["exp" : FieldValue.increment(Int64(-5))])
     }
 }

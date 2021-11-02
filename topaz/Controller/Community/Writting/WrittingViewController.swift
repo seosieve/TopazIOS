@@ -12,7 +12,7 @@ import Kingfisher
 import SwiftySound
 
 class WrittingViewController: UIViewController {
-
+    
     @IBOutlet weak var writtingScrollView: UIScrollView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var countryQuestionButton: UIButton!
@@ -29,14 +29,13 @@ class WrittingViewController: UIViewController {
     
     let viewModel = WrittingViewModel()
     private let imagePicker = UIImagePickerController()
-    
     let articleID = Firestore.firestore().collection("Articles").document().documentID
     var selectedCountryArr = [String]()
     var imageUrlArr = [String]()
     var imageNameArr = [Int]()
     var textArr = [String]()
     var musicNameArr = ["", "", "", ""]
-    var volumeArr: [Float] = [0, 0, 0, 0]
+    var musicVolumeArr: [Float] = [0, 0, 0, 0]
     var musicPlayArr = [Sound?]()
     let backgroundView = UIView()
     let lottieView = AnimationView(name: "Loading")
@@ -46,13 +45,12 @@ class WrittingViewController: UIViewController {
         removeNavigationBackground(view: self)
         musicSwitch.isHidden = false
         musicSwitch.isEnabled = true
-        setSwitchThumbNail()
         makeCircle(target: registerButton, color: "MintBlue", width: 0)
         makeCircle(target: addMusicButton, color: "MintBlue", width: 0)
         makeCircle(target: addImageButton, color: "MintBlue", width: 0)
         makeShadow(target: addMusicButton, radius: addImageButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         makeShadow(target: addImageButton, radius: addImageButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
-        
+        musicSwitch.isHidden = true
         let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tabScrollView))
         writtingScrollView.addGestureRecognizer(tapGestureReconizer)
         
@@ -82,6 +80,9 @@ class WrittingViewController: UIViewController {
         for timeStamp in imageNameArr {
             viewModel.deleteExperienceImage(articleID, timeStamp) {
             }
+        }
+        musicPlayArr.forEach { music in
+            music?.fadeOutStop()
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -160,12 +161,6 @@ extension WrittingViewController {
         }        
     }
     
-    func setSwitchThumbNail() {
-        
-//        musicSwitch.thumbTintColor = UIColor(patternImage: UIImage(named: "AddMusicButton")!)
-        
-    }
-    
     func placeholderSetting() {
         titleTextView.text = "제목을 입력해주세요."
         titleTextView.textColor = UIColor(named: "Gray4")
@@ -193,12 +188,20 @@ extension WrittingViewController {
         let register = UIAlertAction(title: "예", style: .default) { action in
             // 성공일 때 Animation
             loadingAnimation(self.backgroundView, self.lottieView, view: self.view)
+            // 등록 버튼 여러 번 누를 수 없게 막기
             self.registerButton.isEnabled = false
+            // Keyboard 다운
             self.view.endEditing(true)
+            // 재생중인 음악 정지
+            self.musicPlayArr.forEach { music in
+                music?.fadeOutStop()
+            }
+            // 유저 경험치 추가
+            self.viewModel.addUserExp()
+            // Article 저장
             let imageText = self.viewModel.makeImageText(imageText: self.textArr)
             let tailText = self.viewModel.makeTailText(tailText: self.tailTextView)
-            
-            self.viewModel.addArticle(articleID: self.articleID, country: self.viewModel.makeCountry(self.countryButton), title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, imageName: self.imageNameArr, imageUrl: self.imageUrlArr, tailText: tailText) {
+            self.viewModel.addArticle(articleID: self.articleID, country: self.viewModel.makeCountry(self.countryButton), title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, imageName: self.imageNameArr, imageUrl: self.imageUrlArr, musicName: self.musicNameArr, musicVolume: self.musicVolumeArr, tailText: tailText) {
                 self.backgroundView.removeFromSuperview()
                 self.lottieView.removeFromSuperview()
                 self.dismiss(animated: true, completion: nil)
@@ -220,13 +223,15 @@ extension WrittingViewController {
     }
     
     func instantiateVC() {
-        pauseMusic()
+        musicPlayArr.forEach { music in
+            music?.fadeOutStop()
+        }
         let storyboard = UIStoryboard(name: "Community", bundle: .main)
         let MusicVC = storyboard.instantiateViewController(withIdentifier: "MusicVC")
         let destinationVC = MusicVC as! MusicAddViewController
         destinationVC.musicAddDelegate = self
         destinationVC.musicNameArr = musicNameArr
-        destinationVC.volumeArr = volumeArr
+        destinationVC.musicVolumeArr = musicVolumeArr
         MusicVC.modalPresentationStyle = .automatic
         MusicVC.modalTransitionStyle = .coverVertical
         self.present(MusicVC, animated: true, completion: nil)
@@ -241,7 +246,7 @@ extension WrittingViewController {
                     let sound = Sound(url: url)!
                     self.musicPlayArr.append(sound)
                     sound.play(numberOfLoops: -1)
-                    sound.volume = self.volumeArr[index]
+                    sound.volume = self.musicVolumeArr[index]
                 }
             }
         }
@@ -420,7 +425,7 @@ extension WrittingViewController: UIImagePickerControllerDelegate, UINavigationC
     }
 }
 
-//MARK: - transferCountryDelegate
+//MARK: - AddCountryDelegate
 extension WrittingViewController: AddCountryDelegate {
     // 다녀온 나라 정보값 받아오기
     func addCountry(selectedCountryArr: [String], addCountryHandler: @escaping () -> ()) {
@@ -430,21 +435,65 @@ extension WrittingViewController: AddCountryDelegate {
     }
 }
 
+//MARK: - MusicAddDelegate
 extension WrittingViewController: MusicAddDelegate {
-    func musicAdd(musicNameArr: [String], volumeArr: [Float], musicHandler: @escaping () -> ()) {
+    func musicAdd(musicNameArr: [String], musicVolumeArr: [Float], musicHandler: @escaping () -> ()) {
         self.musicNameArr = musicNameArr
-        self.volumeArr = volumeArr
+        self.musicVolumeArr = musicVolumeArr
         if musicNameArr == ["", "", "", ""] {
             musicPlayArr = [Sound?]()
             musicSwitch.isOn = false
             musicSwitch.isHidden = true
-            musicSwitch.isEnabled = false
         } else {
             setMusic()
             musicSwitch.isHidden = false
-            musicSwitch.isEnabled = true
             musicSwitch.isOn = true
         }
         musicHandler()
+    }
+}
+
+//MARK: - Sound
+extension Sound {
+    func dispatchDelay(delay:Double, closure: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: closure)
+    }
+    
+    func fadeOutStop() {
+        if volume > 0 {
+            dispatchDelay(delay: 0.1) { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.volume -= 0.05
+                strongSelf.fadeOutStop()
+            }
+        } else {
+            volume = 0
+            self.stop()
+        }
+    }
+    
+    func fadeOutPause() {
+        if volume > 0 {
+            dispatchDelay(delay: 0.1) { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.volume -= 0.05
+                strongSelf.fadeOutPause()
+            }
+        } else {
+            volume = 0
+            self.pause()
+        }
+    }
+    
+    func fadeInResume(vol: Float) {
+        if volume < vol {
+            dispatchDelay(delay: 0.1) { [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.volume += 0.05
+                strongSelf.fadeInResume(vol: vol)
+            }
+        } else {
+            volume = vol
+        }
     }
 }

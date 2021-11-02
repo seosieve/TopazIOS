@@ -9,7 +9,7 @@ import UIKit
 import SwiftySound
 
 protocol MusicAddDelegate {
-    func musicAdd(musicNameArr: [String], volumeArr: [Float], musicHandler: @escaping () -> ())
+    func musicAdd(musicNameArr: [String], musicVolumeArr: [Float], musicHandler: @escaping () -> ())
 }
 
 class MusicAddViewController: UIViewController {
@@ -48,7 +48,7 @@ class MusicAddViewController: UIViewController {
     var backgroundMusic: Sound?
     var soundEffectArr = [Sound?]()
     var musicNameArr = ["", "", "", ""]
-    var volumeArr: [Float] = [0, 0, 0, 0]
+    var musicVolumeArr: [Float] = [0, 0, 0, 0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +124,7 @@ class MusicAddViewController: UIViewController {
         makeMusicOutput()
         backgroundMusic = nil
         soundEffectArr = [Sound?]()
-        musicAddDelegate?.musicAdd(musicNameArr: musicNameArr, volumeArr: volumeArr) {
+        musicAddDelegate?.musicAdd(musicNameArr: musicNameArr, musicVolumeArr: musicVolumeArr) {
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -214,7 +214,7 @@ extension MusicAddViewController {
             let url = Bundle.main.url(forResource: fileName, withExtension: "mp3")!
             self.backgroundMusic = Sound(url: url)
             self.backgroundMusic!.play(numberOfLoops: -1)
-            let volume = isFirst ? self.volumeArr[0] : 0.5
+            let volume = isFirst ? self.musicVolumeArr[0] : 0.5
             self.backgroundMusic?.volume = volume
         }
     }
@@ -225,23 +225,23 @@ extension MusicAddViewController {
             let sound = Sound(url: url)!
             sound.play(numberOfLoops: -1)
             self.soundEffectArr.append(sound)
-            let volume = isFirst ? self.volumeArr[index] : 0.5
+            let volume = isFirst ? self.musicVolumeArr[index] : 0.5
             sound.volume = volume
         }
     }
     
     func makeMusicOutput() {
         musicNameArr = ["", "", "", ""]
-        volumeArr = [0, 0, 0, 0]
+        musicVolumeArr = [0, 0, 0, 0]
         musicNameArr[0] = backgroundMusicFileName
         for (index, soundEffect) in soundEffectFileName.enumerated() {
             musicNameArr[index+1] = soundEffect
         }
         if musicNameArr[0] != "" {
-            volumeArr[0] = backgroundMusic?.volume ?? 0
+            musicVolumeArr[0] = backgroundMusic?.volume ?? 0
         }
         for (index, soundEffect) in soundEffectArr.enumerated() {
-            volumeArr[index+1] = soundEffect?.volume ?? 0
+            musicVolumeArr[index+1] = soundEffect?.volume ?? 0
         }
     }
 }
@@ -278,7 +278,7 @@ extension MusicAddViewController: DeliverBackgroundMusicDelegate {
         backgroundMusicFileName = backgroundMusic
         coverAnimation(backgroundMusicFileName, soundEffectFileName)
         let originX = progressBarContainer[0].center.x
-        let originY = isFirst ? (-111 * volumeArr[0]) + 170 : 114.0
+        let originY = isFirst ? (-111 * musicVolumeArr[0]) + 170 : 114.0
         let progressBarConstant = isFirst ? 1.1 * (180 - originY) : 70
         progressBarHandle[0].center = CGPoint(x: originX, y: CGFloat(originY))
         progressBarProgress[0].constraints.forEach { constraint in
@@ -328,7 +328,7 @@ extension MusicAddViewController: DeliverSoundEffectDelegate {
         coverAnimation(backgroundMusicFileName, soundEffectFileName)
         let index = soundEffectFileName.count
         let originX = progressBarContainer[index].center.x
-        let originY = isFirst ? (-111 * volumeArr[index]) + 170 : 114.0
+        let originY = isFirst ? (-111 * musicVolumeArr[index]) + 170 : 114.0
         let progressBarConstant = isFirst ? 1.1 * (180 - originY) : 70
         progressBarHandle[index].center = CGPoint(x: originX, y: CGFloat(originY))
         progressBarProgress[index].constraints.forEach { constraint in

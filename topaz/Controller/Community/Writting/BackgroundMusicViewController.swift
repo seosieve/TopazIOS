@@ -12,6 +12,7 @@ protocol DeliverBackgroundMusicDelegate {
 }
 
 class BackgroundMusicViewController: UIViewController {
+    
     @IBOutlet weak var backgroundMusicCollectionView: UICollectionView!
     
     var backgroundMusicDelegate: DeliverBackgroundMusicDelegate?

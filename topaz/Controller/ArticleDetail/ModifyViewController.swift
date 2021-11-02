@@ -9,13 +9,15 @@ import UIKit
 import Firebase
 import Lottie
 import Kingfisher
+import SwiftySound
 
 protocol ModifyArticleDelegate {
     func modifyArticle(modifyArticleHandler: @escaping () -> ())
+    func cancle()
 }
 
 class ModifyViewController: UIViewController {
-
+    
     @IBOutlet weak var writtingScrollView: UIScrollView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var countryQuestionButton: UIButton!
@@ -27,6 +29,8 @@ class ModifyViewController: UIViewController {
     @IBOutlet weak var tailTextView: UITextView!
     @IBOutlet weak var modifyImageTableView: UITableView!
     @IBOutlet weak var modifyImageTableViewConstraintY: NSLayoutConstraint!
+    @IBOutlet weak var addMusicButton: UIButton!
+    @IBOutlet weak var musicSwitch: UISwitch!
     @IBOutlet weak var addImageButton: UIButton!
     
     let viewModel = ModifyViewModel()
@@ -38,6 +42,9 @@ class ModifyViewController: UIViewController {
     var imageUrlArr = [String]()
     var imageNameArr = [Int]()
     var textArr = [String]()
+    var musicNameArr = ["", "", "", ""]
+    var musicVolumeArr: [Float] = [0, 0, 0, 0]
+    var musicPlayArr = [Sound?]()
     let backgroundView = UIView()
     let lottieView = AnimationView(name: "Loading")
     
@@ -45,11 +52,11 @@ class ModifyViewController: UIViewController {
         super.viewDidLoad()
         imageUrlArr = article!.imageUrl
         imageNameArr = article!.imageName
-        
         makeCircle(target: registerButton, color: "MintBlue", width: 0)
         makeCircle(target: addImageButton, color: "MintBlue", width: 0)
+        makeCircle(target: addMusicButton, color: "MintBlue", width: 0)
         makeShadow(target: addImageButton, radius: addImageButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
-        
+        makeShadow(target: addMusicButton, radius: addImageButton.frame.size.height/2, width: 2, height: 2, opacity: 0.3)
         let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tabScrollView))
         writtingScrollView.addGestureRecognizer(tapGestureReconizer)
         
@@ -74,6 +81,10 @@ class ModifyViewController: UIViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        musicPlayArr.forEach { music in
+            music?.fadeOutStop()
+        }
+        modifyDelegate?.cancle()
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -94,6 +105,18 @@ class ModifyViewController: UIViewController {
     
     @IBAction func addCountryButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToModifyCountry", sender: sender)
+    }
+    
+    @IBAction func addMusicButtonPressed(_ sender: UIButton) {
+        instantiateVC()
+    }
+    
+    @IBAction func musicSwitchChanged(_ sender: UISwitch) {
+        if sender.isOn == true {
+            playMusic()
+        } else {
+            pauseMusic()
+        }
     }
     
     @IBAction func addImageButtonPressed(_ sender: UIButton) {
@@ -123,6 +146,14 @@ class ModifyViewController: UIViewController {
 //MARK: - UI Functions
 extension ModifyViewController {
     func modifyArticleUI() {
+        // 음악 설정
+        if article!.musicName == ["", "", "", ""] {
+            musicSwitch.isHidden = true
+        } else {
+            musicNameArr = article!.musicName
+            musicVolumeArr = article!.musicVolume
+            setMusic()
+        }
         // 여행국가 설정
         let countryCount = article!.country.count
         countryQuestionButton.isHidden = true
@@ -209,10 +240,13 @@ extension ModifyViewController {
             let likes = self.article!.likes
             let views = self.article!.views
             
-            self.viewModel.modifyArticle(articleID: articleID, country: self.viewModel.makeCountry(self.countryButton), title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, imageName: self.imageNameArr, imageUrl: self.imageUrlArr, tailText: tailText, likes: likes, views: views) {
+            self.viewModel.modifyArticle(articleID: articleID, country: self.viewModel.makeCountry(self.countryButton), title: self.titleTextView, mainText: self.mainTextView, imageText: imageText, imageName: self.imageNameArr, imageUrl: self.imageUrlArr, musicName: self.musicNameArr, musicVolume: self.musicVolumeArr, tailText: tailText, likes: likes, views: views) {
                 self.modifyDelegate?.modifyArticle {
                     self.backgroundView.removeFromSuperview()
                     self.lottieView.removeFromSuperview()
+                    self.musicPlayArr.forEach { music in
+                        music?.fadeOutStop()
+                    }
                     self.dismiss(animated: true, completion: nil)
                 }
             }
@@ -232,6 +266,51 @@ extension ModifyViewController {
         }
     }
     
+    func instantiateVC() {
+        musicPlayArr.forEach { music in
+            music?.fadeOutStop()
+        }
+        let storyboard = UIStoryboard(name: "Community", bundle: .main)
+        let MusicVC = storyboard.instantiateViewController(withIdentifier: "MusicVC")
+        let destinationVC = MusicVC as! MusicAddViewController
+        destinationVC.musicAddDelegate = self
+        destinationVC.musicNameArr = musicNameArr
+        destinationVC.musicVolumeArr = musicVolumeArr
+        MusicVC.modalPresentationStyle = .automatic
+        MusicVC.modalTransitionStyle = .coverVertical
+        self.present(MusicVC, animated: true, completion: nil)
+    }
+    
+    func setMusic() {
+        DispatchQueue.global().async {
+            self.musicPlayArr = [Sound?]()
+            for (index,musicName) in self.musicNameArr.enumerated() {
+                if musicName != "" {
+                    let url = Bundle.main.url(forResource: musicName, withExtension: "mp3")!
+                    let sound = Sound(url: url)!
+                    self.musicPlayArr.append(sound)
+                    sound.play(numberOfLoops: -1)
+                    sound.volume = self.musicVolumeArr[index]
+                }
+            }
+        }
+    }
+    
+    func playMusic() {
+        DispatchQueue.global().async {
+            for sound in self.musicPlayArr {
+                sound?.resume()
+            }
+        }
+    }
+    
+    func pauseMusic() {
+        DispatchQueue.global().async {
+            for sound in self.musicPlayArr {
+                sound?.pause()
+            }
+        }
+    }
 }
 
 //MARK: - UITextViewDelegate
@@ -391,12 +470,30 @@ extension ModifyViewController: UIImagePickerControllerDelegate, UINavigationCon
     }
 }
 
-//MARK: - transferCountryDelegate
+//MARK: - ModifyCountryDelegate
 extension ModifyViewController: ModifyCountryDelegate {
     // 다녀온 나라 정보값 받아오기
     func modifyCountry(selectedCountryArr: [String], modifyCountryHandler: @escaping () -> ()) {
         self.selectedCountryArr = selectedCountryArr
         setCountryButton(selectedCountryArr: selectedCountryArr)
         modifyCountryHandler()
+    }
+}
+
+//MARK: - MusicAddDelegate
+extension ModifyViewController: MusicAddDelegate {
+    func musicAdd(musicNameArr: [String], musicVolumeArr: [Float], musicHandler: @escaping () -> ()) {
+        self.musicNameArr = musicNameArr
+        self.musicVolumeArr = musicVolumeArr
+        if musicNameArr == ["", "", "", ""] {
+            musicPlayArr = [Sound?]()
+            musicSwitch.isOn = false
+            musicSwitch.isHidden = true
+        } else {
+            setMusic()
+            musicSwitch.isHidden = false
+            musicSwitch.isOn = true
+        }
+        musicHandler()
     }
 }

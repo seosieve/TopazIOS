@@ -66,7 +66,7 @@ class ModifyViewModel {
     }
     
     
-    func modifyArticle(articleID: String, country: [String], title: UITextView, mainText: UITextView, imageText: [String], imageName: [Int], imageUrl: [String], tailText: String, likes: Int, views: Int, modifyArticleHandler: @escaping () -> ()) {
+    func modifyArticle(articleID: String, country: [String], title: UITextView, mainText: UITextView, imageText: [String], imageName: [Int], imageUrl: [String], musicName: [String], musicVolume: [Float], tailText: String, likes: Int, views: Int, modifyArticleHandler: @escaping () -> ()) {
         let document = database.collection("Articles").document(articleID)
         let nickname = UserDefaults.standard.string(forKey: "nickname")!
         let email = UserDefaults.standard.string(forKey: "email")!
@@ -75,7 +75,7 @@ class ModifyViewModel {
         let title = title.text ?? ""
         let mainText = mainText.text ?? ""
         
-        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl ,tailText: tailText, likes: likes, views: views)
+        let article = Article(articleID: articleID, auther: nickname, autherEmail: email, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, musicName: musicName, musicVolume: musicVolume ,tailText: tailText, likes: likes, views: views)
         document.setData(article.dicDataType){ error in
             if let error = error {
                 print("FireStore 저장 에러 : \(error)")
