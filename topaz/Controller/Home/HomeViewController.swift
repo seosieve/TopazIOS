@@ -28,8 +28,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
-        makeEarthScene()
         addCollectiblesView()
+        makeEarthScene()
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
         sceneView.addGestureRecognizer(pinchRecognizer)
     }
@@ -55,31 +55,41 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
+    @IBAction func collectiblesCompleteButtonPressed(_ sender: UIButton) {
+        viewModel.addCollectibles()
+        guard let dimView = self.tabBarController?.view.viewWithTag(100) else { return }
+        UIView.transition(with: (self.tabBarController?.view)!, duration: 0.4, options: .transitionCrossDissolve, animations: {
+            dimView.removeFromSuperview()
+            self.collectiblesContainer.removeFromSuperview()
+        }, completion: nil)
+    }
 }
 
 //MARK: - UI Functions
 extension HomeViewController {
     func addCollectiblesView() {
-        // Background Dim
-        let width = self.view.bounds.width
-        let height = self.view.bounds.height
-        let dimView = UIView()
-        dimView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        dimView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
-        dimView.tag = 100
-        self.tabBarController?.view.addSubview(dimView)
-        
-        // collectiblesView
-        collectiblesContainer.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-//        collectiblesContainer.center = self.view.center
-        self.tabBarController?.view.addSubview(collectiblesContainer)
-        makeBorder(target: collectiblesContainer, radius: 28, isFilled: true)
-        makeBorder(target: collectiblesCompleteButton, radius: 12, isFilled: true)
-        
-        collectiblesContainer.frame = CGRect(x: 0, y: 0, width: width - 48, height: 580)
-        UIView.animate(withDuration: 1.0) {
-            self.collectiblesContainer.layoutIfNeeded()
+        let collectibles = userdefault.stringArray(forKey: "collectibles")!
+        if !collectibles.contains("welcomeSnowBall") {
+            // Background Dim
+            let width = self.view.bounds.width
+            let height = self.view.bounds.height
+            let dimView = UIView()
+            dimView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            dimView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
+            dimView.tag = 100
+            self.tabBarController?.view.addSubview(dimView)
+            // collectiblesView
+            collectiblesContainer.frame = CGRect(x: 0, y: 0, width: width - 48, height: 580)
+            collectiblesContainer.center = self.view.center
+            self.tabBarController?.view.addSubview(collectiblesContainer)
+            makeBorder(target: collectiblesContainer, radius: 28, isFilled: true)
+            makeBorder(target: collectiblesCompleteButton, radius: 12, isFilled: true)
+            collectiblesContainer.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            collectiblesContainer.alpha = 0
+            UIView.animate(withDuration: 0.4) {
+                self.collectiblesContainer.alpha = 1
+                self.collectiblesContainer.transform = CGAffineTransform.identity
+            }
         }
     }
     
@@ -143,6 +153,10 @@ extension HomeViewController {
         sceneView.scene = scene
         sceneView.showsStatistics = false
         sceneView.pointOfView = cameraNode
+        sceneView.alpha = 0
+        UIView.animate(withDuration: 1.5) {
+            self.sceneView.alpha = 1
+        }
     }
 }
 

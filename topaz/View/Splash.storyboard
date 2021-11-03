@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gtg-Fj-hc8">
-                                <rect key="frame" x="0.0" y="180" width="414" height="488.5"/>
+                                <rect key="frame" x="0.0" y="203.5" width="414" height="489"/>
                                 <color key="backgroundColor" name="MintBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Gtg-Fj-hc8" secondAttribute="height" multiplier="100:118" id="vQ7-bf-pfl"/>
@@ -43,7 +43,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="VBd-rh-YJS" secondAttribute="bottom" constant="20" id="FVE-4W-XsN"/>
                             <constraint firstItem="Gtg-Fj-hc8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MK8-ui-HXS"/>
                             <constraint firstItem="Gtg-Fj-hc8" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="gdZ-Pg-9dd"/>
-                            <constraint firstItem="Gtg-Fj-hc8" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="180" id="nAb-ML-xL9"/>
+                            <constraint firstItem="Gtg-Fj-hc8" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="v6S-Kl-SEs"/>
                         </constraints>
                     </view>
                     <connections>

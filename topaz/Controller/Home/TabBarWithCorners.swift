@@ -8,7 +8,6 @@
 import UIKit
 
 class TabBarWithCorners: UITabBar {
-    var color: UIColor?
     var radii: CGFloat = 20.0
     
     private var shapeLayer: CALayer?
@@ -27,13 +26,11 @@ class TabBarWithCorners: UITabBar {
     private func addShape() {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = createPath()
-        shapeLayer.strokeColor = UIColor.gray.withAlphaComponent(0.1).cgColor
-        shapeLayer.fillColor = color?.cgColor ?? UIColor.white.cgColor
-        shapeLayer.lineWidth = 0
-        shapeLayer.shadowColor = UIColor.black.cgColor
-        shapeLayer.shadowOffset = CGSize(width: 0, height: -5)
-        shapeLayer.shadowRadius = 10
-        shapeLayer.shadowOpacity = 0.1
+        shapeLayer.fillColor = UIColor(named: "White")?.cgColor
+        shapeLayer.shadowColor = UIColor(named: "Gray4")?.cgColor
+        shapeLayer.shadowOffset = CGSize(width: 0, height: -6)
+        shapeLayer.shadowRadius = 4
+        shapeLayer.shadowOpacity = 0.2
         shapeLayer.shadowPath =  UIBezierPath(roundedRect: bounds, cornerRadius: radii).cgPath
         if let oldShapeLayer = self.shapeLayer {
             layer.replaceSublayer(oldShapeLayer, with: shapeLayer)

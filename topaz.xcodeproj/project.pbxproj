@@ -93,7 +93,13 @@
 		4E93ED3B2730330100272A06 /* NightBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED352730330000272A06 /* NightBackgroundMusic.mp3 */; };
 		4E93ED3C2730330100272A06 /* PlaceBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED362730330000272A06 /* PlaceBackgroundMusic.mp3 */; };
 		4E93ED3D2730330100272A06 /* ContemplationBackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED372730330100272A06 /* ContemplationBackgroundMusic.mp3 */; };
-		4E93ED452731701400272A06 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED442731701300272A06 /* Splash.json */; };
+		4E93ED472731B98700272A06 /* TravelPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93ED462731B98700272A06 /* TravelPageViewController.swift */; };
+		4E93ED492731B9B400272A06 /* TravelAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93ED482731B9B400272A06 /* TravelAlbumViewController.swift */; };
+		4E93ED4B2731B9CE00272A06 /* TravelTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93ED4A2731B9CE00272A06 /* TravelTicketViewController.swift */; };
+		4E93ED4D2731B9E100272A06 /* TravelCollectiblesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93ED4C2731B9E100272A06 /* TravelCollectiblesViewController.swift */; };
+		4E93ED552732566500272A06 /* Splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED542732566500272A06 /* Splash.json */; };
+		4E93ED5827328C3900272A06 /* travelCollectiblesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93ED5627328C3900272A06 /* travelCollectiblesCollectionViewCell.swift */; };
+		4E93ED5927328C3900272A06 /* travelCollectiblesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E93ED5727328C3900272A06 /* travelCollectiblesCollectionViewCell.xib */; };
 		4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */; };
 		4E9B9BBD26EDE50800ABCE87 /* TravelNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */; };
 		4E9B9BBF26EDE87600ABCE87 /* WrittingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */; };
@@ -241,7 +247,13 @@
 		4E93ED352730330000272A06 /* NightBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NightBackgroundMusic.mp3; sourceTree = "<group>"; };
 		4E93ED362730330000272A06 /* PlaceBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = PlaceBackgroundMusic.mp3; sourceTree = "<group>"; };
 		4E93ED372730330100272A06 /* ContemplationBackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ContemplationBackgroundMusic.mp3; sourceTree = "<group>"; };
-		4E93ED442731701300272A06 /* Splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
+		4E93ED462731B98700272A06 /* TravelPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPageViewController.swift; sourceTree = "<group>"; };
+		4E93ED482731B9B400272A06 /* TravelAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelAlbumViewController.swift; sourceTree = "<group>"; };
+		4E93ED4A2731B9CE00272A06 /* TravelTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTicketViewController.swift; sourceTree = "<group>"; };
+		4E93ED4C2731B9E100272A06 /* TravelCollectiblesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCollectiblesViewController.swift; sourceTree = "<group>"; };
+		4E93ED542732566500272A06 /* Splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Splash.json; sourceTree = "<group>"; };
+		4E93ED5627328C3900272A06 /* travelCollectiblesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travelCollectiblesCollectionViewCell.swift; sourceTree = "<group>"; };
+		4E93ED5727328C3900272A06 /* travelCollectiblesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = travelCollectiblesCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelNoteViewModel.swift; sourceTree = "<group>"; };
 		4E9B9BBE26EDE87600ABCE87 /* WrittingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrittingViewController.swift; sourceTree = "<group>"; };
@@ -435,6 +447,12 @@
 			children = (
 				4E533F3B26E08A0900527FC2 /* TravelNoteViewController.swift */,
 				4E9B9BBC26EDE50800ABCE87 /* TravelNoteViewModel.swift */,
+				4E93ED462731B98700272A06 /* TravelPageViewController.swift */,
+				4E93ED482731B9B400272A06 /* TravelAlbumViewController.swift */,
+				4E93ED4A2731B9CE00272A06 /* TravelTicketViewController.swift */,
+				4E93ED4C2731B9E100272A06 /* TravelCollectiblesViewController.swift */,
+				4E93ED5627328C3900272A06 /* travelCollectiblesCollectionViewCell.swift */,
+				4E93ED5727328C3900272A06 /* travelCollectiblesCollectionViewCell.xib */,
 				4EE9A3B826F7684C00395B2F /* MyArticleViewController.swift */,
 				4E93ED30272FA48700272A06 /* MyArticleViewModel.swift */,
 				4EE9A3BA26F76A6800395B2F /* MyProfileEditViewController.swift */,
@@ -464,7 +482,7 @@
 				4E8A02C1272942B100E3AB63 /* Music.json */,
 				4ECB1690270AED36000029CB /* Loading.json */,
 				4E13D039270AE15200CAC6F4 /* Login.json */,
-				4E93ED442731701300272A06 /* Splash.json */,
+				4E93ED542732566500272A06 /* Splash.json */,
 				4ECB1692270AF292000029CB /* SignUpComplete.json */,
 				4E8A58C9270584A900C8A646 /* FirstOnboarding.json */,
 				4E8A58C7270584A900C8A646 /* SecondOnboarding.json */,
@@ -704,6 +722,7 @@
 				4E8A58CC270584A900C8A646 /* SecondOnboarding.json in Resources */,
 				4E9DCB3426C1781F001D218A /* Poppins-Thin.ttf in Resources */,
 				4E9DCB2326C177FB001D218A /* NotoSansKR-Regular.otf in Resources */,
+				4E93ED552732566500272A06 /* Splash.json in Resources */,
 				4E8A58A627034B1F00C8A646 /* ArticleDetailImageTableViewCell.xib in Resources */,
 				4E7FD10A271ECEBA00867F16 /* ReportTableViewCell.xib in Resources */,
 				4E9DCB2D26C17810001D218A /* Poppins-Italic.ttf in Resources */,
@@ -719,6 +738,7 @@
 				4E64D12B26EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib in Resources */,
 				4E9DCB2626C17803001D218A /* Poppins-BlackItalic.ttf in Resources */,
 				4E9DCB2426C177FD001D218A /* NotoSansKR-Thin.otf in Resources */,
+				4E93ED5927328C3900272A06 /* travelCollectiblesCollectionViewCell.xib in Resources */,
 				4E9DCB2A26C1780A001D218A /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				4E8A58CB270584A900C8A646 /* FourthOnboarding.json in Resources */,
 				4E9DCB2E26C17812001D218A /* Poppins-Light.ttf in Resources */,
@@ -726,7 +746,6 @@
 				4E9DCB2226C177F5001D218A /* NotoSansKR-Medium.otf in Resources */,
 				4E9DCB2726C17804001D218A /* Poppins-Bold.ttf in Resources */,
 				4E9DCB2C26C1780E001D218A /* Poppins-ExtraLightItalic.ttf in Resources */,
-				4E93ED452731701400272A06 /* Splash.json in Resources */,
 				4EA4CF92270DBDA3001632D4 /* Assets.scnassets in Resources */,
 				4E9DCB3226C1781B001D218A /* Poppins-Regular.ttf in Resources */,
 				4E93ED3C2730330100272A06 /* PlaceBackgroundMusic.mp3 in Resources */,
@@ -825,9 +844,11 @@
 				4E01361826FA1B710071F31D /* WelcomeViewModel.swift in Sources */,
 				4E9B9BBB26ED980F00ABCE87 /* HomeViewModel.swift in Sources */,
 				4EE9A3B026F3042E00395B2F /* FullArticleTableViewCell.swift in Sources */,
+				4E93ED5827328C3900272A06 /* travelCollectiblesCollectionViewCell.swift in Sources */,
 				4E533F3E26E09A8E00527FC2 /* TabBarWithCorners.swift in Sources */,
 				4E8A58B82705407600C8A646 /* SplashViewController.swift in Sources */,
 				4E93ED31272FA48700272A06 /* MyArticleViewModel.swift in Sources */,
+				4E93ED4B2731B9CE00272A06 /* TravelTicketViewController.swift in Sources */,
 				4EE9A3AB26F2D1BA00395B2F /* ArticleModel.swift in Sources */,
 				4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */,
 				4EE9A3BB26F76A6800395B2F /* MyProfileEditViewController.swift in Sources */,
@@ -855,10 +876,12 @@
 				4E9B9BC126EE673200ABCE87 /* CountryAddViewController.swift in Sources */,
 				4EE9A3B326F6379500395B2F /* CommunityViewModel.swift in Sources */,
 				4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */,
+				4E93ED472731B98700272A06 /* TravelPageViewController.swift in Sources */,
 				4E1C2E5427167F8000B97EB0 /* ModifyViewController.swift in Sources */,
 				4E32E07C26DE6147005682E5 /* EditAccountViewModel.swift in Sources */,
 				4EDA40282700B57E00B5E80B /* WrittingAddImageTableViewCell.swift in Sources */,
 				4E1C2E5E2717240700B97EB0 /* CountryModifyViewController.swift in Sources */,
+				4E93ED4D2731B9E100272A06 /* TravelCollectiblesViewController.swift in Sources */,
 				4E9B9BBF26EDE87600ABCE87 /* WrittingViewController.swift in Sources */,
 				4E1C2E562716808400B97EB0 /* ModifyViewModel.swift in Sources */,
 				4E8A58C42705545700C8A646 /* FifthPageViewController.swift in Sources */,
@@ -871,6 +894,7 @@
 				4E7FD109271ECEBA00867F16 /* ReportTableViewCell.swift in Sources */,
 				4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */,
 				4E0FAEAD26C0EE99003D80E3 /* SceneDelegate.swift in Sources */,
+				4E93ED492731B9B400272A06 /* TravelAlbumViewController.swift in Sources */,
 				4E7FD111271FBF2100867F16 /* CountrySelectCollectionViewCell.swift in Sources */,
 				4E01361C26FA25D50071F31D /* CompleteViewModel.swift in Sources */,
 				4EA4CF81270DB203001632D4 /* EarthNode.swift in Sources */,
@@ -1048,7 +1072,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.seosieve.topaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1073,7 +1097,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.seosieve.topaz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

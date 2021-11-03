@@ -37,9 +37,11 @@ class WelcomeViewModel {
                 let email = document?.get("email") as! String
                 let nickname = document?.get("nickname") as! String
                 let introduce = document?.get("introduce") as! String
+                let collectibles = document?.get("collectibles") as! [String]
                 userdefault.set(email, forKey: "email")
                 userdefault.set(nickname, forKey: "nickname")
                 userdefault.set(introduce, forKey: "introduce")
+                userdefault.set(collectibles, forKey: "collectibles")
                 userdefaultHandler()
             }
         }

@@ -11,7 +11,7 @@ import Lottie
 import Kingfisher
 
 class TravelNoteViewController: UIViewController {
-
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var nicknameConstraintW: NSLayoutConstraint!
@@ -28,8 +28,15 @@ class TravelNoteViewController: UIViewController {
     }
     @IBOutlet weak var travelClassDetail: UILabel!
     @IBOutlet weak var myProfileContainer: UIView!
+    @IBOutlet weak var travelAlbumButton: UIButton!
+    @IBOutlet weak var travelAlbumUnderLine: UIView!
+    @IBOutlet weak var travelTicketButton: UIButton!
+    @IBOutlet weak var travelTicketUnderLine: UIView!
+    @IBOutlet weak var travelCollectiblesButton: UIButton!
+    @IBOutlet weak var travelCollectiblesUnderLine: UIView!
     
     let viewModel = TravelNoteViewModel()
+    var travelPageViewController: TravelPageViewController!
     let userdefault = UserDefaults.standard
     
     var imageUrl: String?
@@ -67,11 +74,34 @@ class TravelNoteViewController: UIViewController {
         self.performSegue(withIdentifier: "goToMyProfileEdit", sender: sender)
     }
     
+    @IBAction func travelAlbumButtonPressed(_ sender: UIButton) {
+        travelPageViewController.moveFromIndex(index: 0, forward: false)
+        transferTravel(index: 0)
+    }
+    
+    @IBAction func travelTicketButtonPressed(_ sender: UIButton) {
+        if travelAlbumButton.titleLabel?.textColor == UIColor(named: "Gray2") {
+            travelPageViewController.moveFromIndex(index: 1)
+        } else {
+            travelPageViewController.moveFromIndex(index: 1, forward: false)
+        }
+        transferTravel(index: 1)
+    }
+    
+    @IBAction func travelCollectiblesButtonPressed(_ sender: UIButton) {
+        travelPageViewController.moveFromIndex(index: 2)
+        transferTravel(index: 2)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToMyProfileEdit" {
             let destinationVC = segue.destination as! MyProfileEditViewController
             destinationVC.imageUrl = imageUrl
             destinationVC.delegate = self
+        } else if segue.identifier == "goToPageVC" {
+            let destinationVC = segue.destination as! TravelPageViewController
+            travelPageViewController = destinationVC
+            destinationVC.travelDelegate = self
         }
     }
 }
@@ -258,5 +288,30 @@ extension TravelNoteViewController: EditDelegate {
         if imageChanged {
             makeUserImage()
         }
+    }
+}
+
+//MARK: - transferTravelDelegate
+extension TravelNoteViewController: transferTravelDelegate {
+    func transferTravel(index: Int) {
+        let activeFont = UIFont(name: "NotoSansKR-Bold", size: 16)!
+        let inactiveFont = UIFont(name: "NotoSansKR-Regular", size: 16)!
+        let activeColor = UIColor(named: "Gray1")!
+        let inactiveColor = UIColor(named: "Gray4")!
+        var font = [inactiveFont, inactiveFont, inactiveFont]
+        var color = [inactiveColor, inactiveColor, inactiveColor]
+        var alpha: [CGFloat] = [0, 0, 0]
+        font[index] = activeFont
+        color[index] = activeColor
+        alpha[index] = 1
+        travelAlbumButton.titleLabel?.font = font[0]
+        travelTicketButton.titleLabel?.font = font[1]
+        travelCollectiblesButton.titleLabel?.font = font[2]
+        travelAlbumButton.setTitleColor(color[0], for: .normal)
+        travelTicketButton.setTitleColor(color[1], for: .normal)
+        travelCollectiblesButton.setTitleColor(color[2], for: .normal)
+        travelAlbumUnderLine.alpha = alpha[0]
+        travelTicketUnderLine.alpha = alpha[1]
+        travelCollectiblesUnderLine.alpha = alpha[2]
     }
 }
