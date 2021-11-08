@@ -15,11 +15,15 @@ struct User {
     let likedPosts: [String]
     let friends: [String]
     let exp: Int
+    let albumName: [String]
+    let albumUrl: [String]
+    let albumDate: [String]
+    let ticketName: [String]
+    let ticketDate: [String]
     let collectibles: [String]
-    let topazAlbumUrl: [String]
     
     // [String:Any] 타입으로 변환
     var dicDataType: [String: Any] {
-        return ["email": email, "nickname": nickname, "introduce": introduce, "imageUrl": imageUrl, "likedPosts": likedPosts, "friends": friends, "exp": exp, "collectibles": collectibles, "topazAlbumUrl": topazAlbumUrl]
+        return ["email": email, "nickname": nickname, "introduce": introduce, "imageUrl": imageUrl, "likedPosts": likedPosts, "friends": friends, "exp": exp, "albumName": albumName, "albumUrl": albumUrl, "albumDate": albumDate, "ticketName": ticketName, "ticketDate": ticketDate, "collectibles": collectibles]
     }
 }

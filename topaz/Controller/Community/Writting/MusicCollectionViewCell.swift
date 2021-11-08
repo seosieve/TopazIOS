@@ -47,7 +47,7 @@ extension MusicCollectionViewCell {
             self.musicName.font = UIFont(name: "NotoSansKR-Medium", size: 12)
         }
         UIView.transition(with: self, duration: 0.2, options: .transitionCrossDissolve, animations: {
-            self.musicBackground.setGradient(viewBelow: self.musicIcon)
+            self.musicBackground.setMusicGradient(viewBelow: self.musicIcon)
         }, completion: nil)
     }
     
@@ -70,7 +70,7 @@ extension MusicCollectionViewCell {
 
 //MARK: - UIView
 extension UIView {
-    func setGradient(viewBelow: UIView){
+    func setMusicGradient(viewBelow: UIView){
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.name = "gradient"
         let topColor = UIColor(red: 0.43, green: 0.93, blue: 0.90, alpha: 1)

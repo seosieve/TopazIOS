@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import UIKit
 
 class EditProfileViewModel {
     let database = Firestore.firestore()
@@ -42,8 +43,20 @@ class EditProfileViewModel {
         }
     }
     
+    func makeDate() -> String {
+        let unixTimestamp = NSDate().timeIntervalSince1970
+        let date = Date(timeIntervalSince1970: unixTimestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+9")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "yyyy. MM. dd"
+        let strDate = dateFormatter.string(from: date)
+        return strDate
+    }
+    
     func addUserInfo(_ email: String, _ nickname: String, _ introduce: String, addInfoHandler: @escaping () -> ()) {
-        let user = User(email: email, nickname: nickname, introduce: introduce, imageUrl: "", likedPosts: [String](), friends: [String](), exp: 0, collectibles: [String](), topazAlbumUrl: [String]())
+        let strDate = [makeDate()]
+        let user = User(email: email, nickname: nickname, introduce: introduce, imageUrl: "", likedPosts: [String](), friends: [String](), exp: 0, albumName: ["토파즈와 시작한 첫 여행"], albumUrl: [String](), albumDate: strDate, ticketName: ["TO-PAZ"], ticketDate: strDate, collectibles: [String]())
         let collection = database.collection("UserDataBase")
         collection.document(email).setData(user.dicDataType) { error in
             if let error = error {
@@ -52,6 +65,29 @@ class EditProfileViewModel {
                 addInfoHandler()
             }
         }
+    }
+    
+    func addAlbumImage(email: String, addUserImageHandler: @escaping () -> ()) {
+        let timeStamp = Int(NSDate().timeIntervalSince1970)
+        let imageRef = storage.reference().child("AlbumImages/\(email)/\(timeStamp).png")
+        let data = UIImage(named: "FirstAlbumImage")!.pngData()!
+        imageRef.putData(data, metadata: nil) { _, error in
+            if let error = error {
+                print("프로필 사진 저장 에러 : \(error)")
+            } else {
+                imageRef.downloadURL { url, error in
+                    guard let url = url else { return }
+                    self.addAlbumUrl(email: email, url: url)
+                    addUserImageHandler()
+                }
+            }
+        }
+    }
+    
+    func addAlbumUrl(email: String, url: URL) {
+        let urlString = "\(url)"
+        let document = database.collection("UserDataBase").document(email)
+        document.updateData(["albumUrl": [urlString]])
     }
     
     func addUserImage(email: String, image: UIImage, addUserImageHandler: @escaping () -> ()) {

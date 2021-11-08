@@ -36,6 +36,7 @@ class MySettingViewModel {
         user?.delete { error in
             if let error = error {
                 print("유저 계정 삭제 에러 : \(error)")
+                withdrawHandler()
             } else {
                 self.removeUserImage(userEmail: email)
                 self.removeUserDataBase(userEmail: email)

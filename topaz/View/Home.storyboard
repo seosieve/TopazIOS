@@ -26,9 +26,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5d-Hj-0Ys">
+                                <rect key="frame" x="0.0" y="88" width="414" height="720"/>
+                            </view>
                             <sceneKitView clipsSubviews="YES" contentMode="scaleToFill" allowsCameraControl="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ttP-TL-bIa">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <color key="backgroundColor" name="White"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </sceneKitView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y68-KY-y6h">
                                 <rect key="frame" x="24" y="132" width="81" height="12"/>
@@ -50,11 +53,15 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="White"/>
                         <constraints>
+                            <constraint firstItem="a5d-Hj-0Ys" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="7f7-Jj-mGL"/>
                             <constraint firstItem="ttP-TL-bIa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Fa7-Pn-GEc"/>
                             <constraint firstItem="ttP-TL-bIa" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" id="Fdb-pO-ePE"/>
                             <constraint firstItem="PP4-Sc-DDT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="24" id="R4b-El-TMy"/>
                             <constraint firstItem="Y68-KY-y6h" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="W7b-oe-z7a"/>
+                            <constraint firstItem="a5d-Hj-0Ys" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Xow-do-Bqw"/>
                             <constraint firstItem="ttP-TL-bIa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Zph-5n-JdQ"/>
+                            <constraint firstItem="a5d-Hj-0Ys" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="kxT-ab-iOU"/>
+                            <constraint firstItem="a5d-Hj-0Ys" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="nkw-HI-gRf"/>
                             <constraint firstItem="PP4-Sc-DDT" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="sjP-LJ-yqv"/>
                             <constraint firstItem="Y68-KY-y6h" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="44" id="t7K-cm-Cl1"/>
                             <constraint firstItem="ttP-TL-bIa" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="zqD-00-Ulv"/>
@@ -68,6 +75,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="IceBreakingLabel" destination="PP4-Sc-DDT" id="CMd-i1-Aqd"/>
+                        <outlet property="backgroundView" destination="a5d-Hj-0Ys" id="0dn-a4-Qnx"/>
                         <outlet property="collectiblesCompleteButton" destination="d38-yq-v98" id="P1Z-nR-thA"/>
                         <outlet property="collectiblesContainer" destination="TMS-Mz-Bs8" id="B1S-DM-ZXb"/>
                         <outlet property="nicknameConstraintW" destination="ju3-zA-OYO" id="CvJ-Vm-QCY"/>
@@ -76,11 +84,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="TMS-Mz-Bs8">
-                    <rect key="frame" x="0.0" y="0.0" width="330" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="374" height="578"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d38-yq-v98">
-                            <rect key="frame" x="28" y="512" width="274" height="60"/>
+                            <rect key="frame" x="28" y="490" width="318" height="60"/>
                             <color key="backgroundColor" name="MintBlue"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="fR6-KE-Chw"/>
@@ -99,19 +107,19 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입 기념 선물이에요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqN-Ez-GX4">
-                            <rect key="frame" x="28" y="61" width="199" height="27"/>
+                            <rect key="frame" x="28" y="61" width="199" height="26.5"/>
                             <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="18"/>
                             <color key="textColor" name="Gray2"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기념 수집품은 여행수첩에서 확인이 가능해요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyc-cY-Sxx">
-                            <rect key="frame" x="28" y="93" width="265" height="21"/>
+                            <rect key="frame" x="28" y="87.5" width="264.5" height="20.5"/>
                             <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="14"/>
-                            <color key="textColor" name="Gray2"/>
+                            <color key="textColor" name="Gray3"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WelcomeSnowBall" translatesAutoresizingMaskIntoConstraints="NO" id="X0N-O3-0aa">
-                            <rect key="frame" x="28" y="145" width="274" height="274"/>
+                            <rect key="frame" x="28" y="128" width="318" height="318"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="X0N-O3-0aa" secondAttribute="height" multiplier="1:1" id="tCD-0t-oNB"/>
                             </constraints>
@@ -124,12 +132,12 @@
                         <constraint firstItem="d38-yq-v98" firstAttribute="leading" secondItem="Ugk-MB-JeF" secondAttribute="leading" constant="28" id="2LZ-U5-5wV"/>
                         <constraint firstItem="Ugk-MB-JeF" firstAttribute="bottom" secondItem="d38-yq-v98" secondAttribute="bottom" constant="28" id="6x5-t3-5oM"/>
                         <constraint firstItem="d38-yq-v98" firstAttribute="centerX" secondItem="TMS-Mz-Bs8" secondAttribute="centerX" id="9qy-ld-Dwv"/>
-                        <constraint firstItem="X0N-O3-0aa" firstAttribute="top" secondItem="qyc-cY-Sxx" secondAttribute="bottom" constant="31" id="B1P-XX-FUb"/>
+                        <constraint firstItem="X0N-O3-0aa" firstAttribute="top" secondItem="qyc-cY-Sxx" secondAttribute="bottom" constant="20" id="B1P-XX-FUb"/>
                         <constraint firstItem="qyc-cY-Sxx" firstAttribute="leading" secondItem="hqN-Ez-GX4" secondAttribute="leading" id="iNy-sR-iBI"/>
                         <constraint firstItem="hqN-Ez-GX4" firstAttribute="top" secondItem="pgh-Bo-INo" secondAttribute="bottom" constant="20" id="kUZ-Gr-Orj"/>
                         <constraint firstItem="hqN-Ez-GX4" firstAttribute="leading" secondItem="pgh-Bo-INo" secondAttribute="leading" id="kpc-0h-WPH"/>
                         <constraint firstItem="X0N-O3-0aa" firstAttribute="centerX" secondItem="TMS-Mz-Bs8" secondAttribute="centerX" id="sm9-ar-Qkr"/>
-                        <constraint firstItem="qyc-cY-Sxx" firstAttribute="top" secondItem="hqN-Ez-GX4" secondAttribute="bottom" constant="5" id="vSz-tY-GhX"/>
+                        <constraint firstItem="qyc-cY-Sxx" firstAttribute="top" secondItem="hqN-Ez-GX4" secondAttribute="bottom" id="vSz-tY-GhX"/>
                         <constraint firstItem="X0N-O3-0aa" firstAttribute="leading" secondItem="Ugk-MB-JeF" secondAttribute="leading" constant="28" id="wCq-MD-UzP"/>
                         <constraint firstItem="pgh-Bo-INo" firstAttribute="top" secondItem="TMS-Mz-Bs8" secondAttribute="top" constant="16" id="zvU-uI-jgp"/>
                     </constraints>
@@ -180,7 +188,6 @@
         <!--홈-->
         <scene sceneID="ccA-bj-gpa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NWR-kJ-kb7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sTi-62-5zT" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="홈" image="Home_OFF" selectedImage="Home_ON" id="ndC-ET-A5m"/>
                     <toolbarItems/>
@@ -198,6 +205,7 @@
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="bmf-a1-UjJ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NWR-kJ-kb7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2689.8550724637685" y="115.84821428571428"/>
         </scene>
@@ -212,6 +220,9 @@
         </namedColor>
         <namedColor name="Gray2">
             <color red="0.31000000238418579" green="0.31000000238418579" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray3">
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightMintBlue">
             <color red="0.67500001192092896" green="0.96899998188018799" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

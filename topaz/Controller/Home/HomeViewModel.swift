@@ -20,5 +20,4 @@ class HomeViewModel {
         collectibles.append("welcomeSnowBall")
         userdefault.set(collectibles, forKey: "collectibles")
     }
-    
 }

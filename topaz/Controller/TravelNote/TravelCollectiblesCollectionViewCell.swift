@@ -7,7 +7,7 @@
 
 import UIKit
 
-class travelCollectiblesCollectionViewCell: UICollectionViewCell {
+class TravelCollectiblesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var collectiblesIcon: UIImageView!
     @IBOutlet weak var collectiblesName: UILabel!
     
@@ -16,6 +16,6 @@ class travelCollectiblesCollectionViewCell: UICollectionViewCell {
     }
     
     static func nib() -> UINib {
-        return UINib(nibName: "travelCollectiblesCollectionViewCell", bundle: nil)
+        return UINib(nibName: "TravelCollectiblesCollectionViewCell", bundle: nil)
     }
 }

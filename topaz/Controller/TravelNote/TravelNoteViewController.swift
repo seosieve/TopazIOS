@@ -40,26 +40,22 @@ class TravelNoteViewController: UIViewController {
     let userdefault = UserDefaults.standard
     
     var imageUrl: String?
-    var collectibles: [String]?
-    var topazAlbumUrl: [String]?
     let backgroundView = UIView()
     let lottieView = AnimationView(name: "Loading")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        makeTravelNoteUI()
         loadingAnimation(backgroundView, lottieView, view: self.view)
-        viewModel.getUserDataBase(email: userdefault.string(forKey: "email")!) { imageUrl, collectibles, topazAlbumUrl in
+        makeTravelNoteUI()
+        makeUserProfile()
+        viewModel.getUserImage() { imageUrl in
             self.imageUrl = imageUrl
-            self.collectibles = collectibles
-            self.topazAlbumUrl = topazAlbumUrl
-            self.makeUserProfile()
             self.makeUserImage()
-            self.backgroundView.removeFromSuperview()
-            self.lottieView.removeFromSuperview()
         }
-        addUserClassSnapshot(email: userdefault.string(forKey: "email")!)
+        addUserClassSnapshot()
+        self.backgroundView.removeFromSuperview()
+        self.lottieView.removeFromSuperview()
     }
     
     @IBAction func myArticlePressed(_ sender: UIBarButtonItem) {
@@ -80,7 +76,7 @@ class TravelNoteViewController: UIViewController {
     }
     
     @IBAction func travelTicketButtonPressed(_ sender: UIButton) {
-        if travelAlbumButton.titleLabel?.textColor == UIColor(named: "Gray2") {
+        if travelAlbumButton.titleLabel?.textColor == UIColor(named: "Gray1") {
             travelPageViewController.moveFromIndex(index: 1)
         } else {
             travelPageViewController.moveFromIndex(index: 1, forward: false)
@@ -142,7 +138,8 @@ extension TravelNoteViewController {
         label.attributedText = attributedString
     }
     
-    func addUserClassSnapshot(email: String) {
+    func addUserClassSnapshot() {
+        let email = userdefault.string(forKey: "email")!
         let database = Firestore.firestore()
         let collection = database.collection("UserDataBase")
             collection.document(email).addSnapshotListener { documentSnapshot, error in

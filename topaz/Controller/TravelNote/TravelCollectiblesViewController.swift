@@ -14,11 +14,10 @@ class TravelCollectiblesViewController: UIViewController {
     
     @IBOutlet var collectiblesDetailContainer: UIView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         makeCollectionViewLayout(travelCollectiblesCollectionView)
-        travelCollectiblesCollectionView.register(travelCollectiblesCollectionViewCell.nib(), forCellWithReuseIdentifier: "CollectiblesCollectionViewCell")
+        travelCollectiblesCollectionView.register(TravelCollectiblesCollectionViewCell.nib(), forCellWithReuseIdentifier: "CollectiblesCollectionViewCell")
         travelCollectiblesCollectionView.dataSource = self
         travelCollectiblesCollectionView.delegate = self
     }
@@ -28,7 +27,14 @@ class TravelCollectiblesViewController: UIViewController {
         makeBorder(target: travelCollectiblesContainer, radius: 12, isFilled: true)
         makeShadow(target: travelCollectiblesContainer, radius: 12, height: 3, opacity: 0.2, shadowRadius: 4)
     }
-
+    
+    @objc func tabDimView() {
+        removeCollectiblesDetail()
+    }
+    
+    @IBAction func collectiblesDetailCancelButtonPressed(_ sender: UIButton) {
+        removeCollectiblesDetail()
+    }
 }
 
 //MARK: - UI Functions
@@ -45,21 +51,43 @@ extension TravelCollectiblesViewController {
         collectionView.collectionViewLayout = layout
     }
     
-    func addCollectiblesView() {
+    func popUpCollectiblesDetail() {
         // Background Dim
         let width = UIScreen.main.bounds.width
         let height = UIScreen.main.bounds.height
-        let dimView = UIView()
+        let dimView = UIVisualEffectView()
         dimView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        dimView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
         dimView.tag = 100
         self.tabBarController?.view.addSubview(dimView)
+        UIView.animate(withDuration: 0.3) {
+            dimView.effect = UIBlurEffect(style: .systemChromeMaterialDark)
+        }
+        let tapGestureReconizer = UITapGestureRecognizer(target: self, action: #selector(tabDimView))
+        dimView.addGestureRecognizer(tapGestureReconizer)
         // collectiblesView
-        collectiblesDetailContainer.frame = CGRect(x: 0, y: 0, width: width - 48, height: 580)
+        collectiblesDetailContainer.frame = CGRect(x: 0, y: 0, width: width-72, height: 289)
         collectiblesDetailContainer.center = CGPoint(x: width/2, y: height/2)
         self.tabBarController?.view.addSubview(collectiblesDetailContainer)
+        makeBorder(target: collectiblesDetailContainer, radius: 28, isFilled: true)
+        collectiblesDetailContainer.transform = CGAffineTransform(translationX: 0, y: 50)
+        collectiblesDetailContainer.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            self.collectiblesDetailContainer.alpha = 1
+            self.collectiblesDetailContainer.transform = CGAffineTransform.identity
+        }
     }
     
+    func removeCollectiblesDetail() {
+        guard let dimView = self.tabBarController?.view.viewWithTag(100) as? UIVisualEffectView else { return }
+        UIView.animate(withDuration: 0.3) {
+            dimView.effect = UIBlurEffect()
+            self.collectiblesDetailContainer.transform = CGAffineTransform(translationX: 0, y: 50)
+            self.collectiblesDetailContainer.alpha = 0
+        } completion: { _ in
+            dimView.removeFromSuperview()
+            self.collectiblesDetailContainer.removeFromSuperview()
+        }
+    }
 }
 
 //MARK: - UICollectionViewDataSource, UICollectionViewDelegate
@@ -69,9 +97,10 @@ extension TravelCollectiblesViewController: UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectiblesCollectionViewCell", for: indexPath) as! travelCollectiblesCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectiblesCollectionViewCell", for: indexPath) as! TravelCollectiblesCollectionViewCell
         if indexPath.row == 0 {
             cell.collectiblesIcon.image = UIImage(named: "WelcomeSnowBall")
+            cell.collectiblesName.textColor = UIColor(named: "Gray3")
             cell.collectiblesName.text = "웰컴 스노우볼"
         } else {
             cell.collectiblesIcon.image = UIImage(named: "UnacquiredCollectibles")
@@ -81,8 +110,9 @@ extension TravelCollectiblesViewController: UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-        addCollectiblesView()
+        if indexPath.row == 0 {
+            popUpCollectiblesDetail()
+        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

@@ -12,6 +12,7 @@ import SceneKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var IceBreakingLabel: UILabel!
     @IBOutlet weak var nicknameConstraintW: NSLayoutConstraint!
     @IBOutlet weak var searchButton: UIBarButtonItem!
@@ -24,14 +25,15 @@ class HomeViewController: UIViewController {
     
     let userdefault = UserDefaults.standard
     let viewModel = HomeViewModel()
+    let scene = SCNScene()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
+        backgroundView.setHomeBackgroundGradient()
         addCollectiblesView()
         makeEarthScene()
-        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
-        sceneView.addGestureRecognizer(pinchRecognizer)
+        blockUserGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,16 +44,18 @@ class HomeViewController: UIViewController {
     
     @objc func pinchGesture(_ sender: UIPinchGestureRecognizer) {
         if sender.numberOfTouches == 1 {
-            print("pinch recognize")
-            let push = UNMutableNotificationContent()
-            push.title = "test Title"
-            push.subtitle = "test subTitle"
-            push.body = "test body"
-            push.badge = 1
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
-            let request = UNNotificationRequest(identifier: "test", content: push, trigger: trigger)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            print("pinch gesture recognize")
+        }
+    }
+    
+    @objc func panGesture(_ sender: UIPanGestureRecognizer) {
+        if(sender.state == .ended) {
+            let earthNode = scene.rootNode.childNode(withName: "earth", recursively: true)!
+            let currentPivot = earthNode.pivot
+            let changePivot = SCNMatrix4Invert(earthNode.transform)
+            earthNode.pivot = SCNMatrix4Mult(changePivot, currentPivot)
+            earthNode.transform = SCNMatrix4Identity
+            print("aa")
         }
     }
     
@@ -71,16 +75,18 @@ extension HomeViewController {
         let collectibles = userdefault.stringArray(forKey: "collectibles")!
         if !collectibles.contains("welcomeSnowBall") {
             // Background Dim
-            let width = self.view.bounds.width
-            let height = self.view.bounds.height
-            let dimView = UIView()
+            let width = UIScreen.main.bounds.width
+            let height = UIScreen.main.bounds.height
+            let dimView = UIVisualEffectView()
             dimView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            dimView.backgroundColor = UIColor.black.withAlphaComponent(0.15)
             dimView.tag = 100
             self.tabBarController?.view.addSubview(dimView)
+            UIView.animate(withDuration: 1.0) {
+                dimView.effect = UIBlurEffect(style: .systemChromeMaterialDark)
+            }
             // collectiblesView
-            collectiblesContainer.frame = CGRect(x: 0, y: 0, width: width - 48, height: 580)
-            collectiblesContainer.center = self.view.center
+            collectiblesContainer.frame = CGRect(x: 0, y: 0, width: width - 40, height: 1.5 * (width - 40))
+            collectiblesContainer.center = CGPoint(x: width/2, y: height/2)
             self.tabBarController?.view.addSubview(collectiblesContainer)
             makeBorder(target: collectiblesContainer, radius: 28, isFilled: true)
             makeBorder(target: collectiblesCompleteButton, radius: 12, isFilled: true)
@@ -91,12 +97,6 @@ extension HomeViewController {
                 self.collectiblesContainer.transform = CGAffineTransform.identity
             }
         }
-    }
-    
-    func addMultipleFonts(_ range: String) {
-        let attributedString = NSMutableAttributedString(string: IceBreakingLabel.text!)
-        attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 22)!, range: (IceBreakingLabel.text! as NSString).range(of: range))
-        IceBreakingLabel.attributedText = attributedString
     }
     
     func makeNicknameLabel() {
@@ -119,12 +119,31 @@ extension HomeViewController {
         print("현재 로그인된 계정은 \(nickname)입니다.")
     }
     
+    func addMultipleFonts(_ range: String) {
+        let attributedString = NSMutableAttributedString(string: IceBreakingLabel.text!)
+        attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 22)!, range: (IceBreakingLabel.text! as NSString).range(of: range))
+        IceBreakingLabel.attributedText = attributedString
+    }
+    
     func makeEarthScene() {
-        let scene = SCNScene()
         
         let earthNode = EarthNode()
         earthNode.position = SCNVector3(x: 0, y: 0, z: 0)
+        earthNode.name = "earth"
         scene.rootNode.addChildNode(earthNode)
+        
+        let cloudsNode = CloudsNode()
+        cloudsNode.position = SCNVector3(x: 0, y: 0, z: 0)
+        scene.rootNode.addChildNode(cloudsNode)
+        
+        let planeNode = PlaneNode()
+        planeNode.position = SCNVector3(x: 0, y: 0, z: 0)
+        scene.rootNode.addChildNode(planeNode)
+        
+        let cameraNode = SCNNode()
+        cameraNode.camera = SCNCamera()
+        cameraNode.position = SCNVector3(x: 0, y: 1.5, z: 5)
+        scene.rootNode.addChildNode(cameraNode)
         
         let lightNode1 = SCNNode()
         lightNode1.light = SCNLight()
@@ -142,13 +161,9 @@ extension HomeViewController {
         lightNode3.light = SCNLight()
         lightNode3.light?.type = .omni
         lightNode3.light?.intensity = 200
+        lightNode3.light?.color = UIColor(named: "MintBlue")!
         lightNode3.position = SCNVector3(x: 10, y: 5, z: 10)
         scene.rootNode.addChildNode(lightNode3)
-        
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 1.5, z: 5)
-        scene.rootNode.addChildNode(cameraNode)
     
         sceneView.scene = scene
         sceneView.showsStatistics = false
@@ -157,6 +172,29 @@ extension HomeViewController {
         UIView.animate(withDuration: 1.5) {
             self.sceneView.alpha = 1
         }
+    }
+    
+    func blockUserGesture() {
+        let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(panGesture))
+        sceneView.addGestureRecognizer(pinch)
+        sceneView.addGestureRecognizer(pan)
+    }
+}
+
+//MARK: - UIView
+extension UIView {
+    func setHomeBackgroundGradient(){
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.name = "gradient"
+        let topColor = UIColor(named: "White")!
+        let bottomColor = UIColor(named: "LightMintBlue")!
+        gradient.colors = [topColor.cgColor, bottomColor.cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.frame = bounds
+        layer.addSublayer(gradient)
     }
 }
 

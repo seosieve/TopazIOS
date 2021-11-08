@@ -29,7 +29,6 @@ class TravelPageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.delegate = self
         moveFromIndex(index: 0)
     }
     
@@ -41,28 +40,3 @@ class TravelPageViewController: UIPageViewController {
         }
     }
 }
-
-//MARK: - UIPageViewControllerDataSource, UIPageViewControllerDelegate
-//extension TravelPageViewController: UIPageViewControllerDelegate {
-//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-//        guard let index = pageList.firstIndex(of: viewController) else { return nil }
-//        let previousIndex = index - 1
-//        if previousIndex < 0 { return nil }
-//        return pageList[previousIndex]
-//    }
-//
-//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-//        guard let index = pageList.firstIndex(of: viewController) else { return nil }
-//        let nextIndex = index + 1
-//        if nextIndex == pageList.count { return nil }
-//        return pageList[nextIndex]
-//    }
-    
-//    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-//        if completed {
-//            guard let currentVC = pageViewController.viewControllers?.first else { return }
-//            guard let currentIndex = pageList.firstIndex(of: currentVC) else { return }
-//            travelDelegate?.transferTravel(index: currentIndex)
-//        }
-//    }
-//}

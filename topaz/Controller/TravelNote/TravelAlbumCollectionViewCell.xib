@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansKR-Bold.otf">
+            <string>NotoSansKR-Bold</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumCollectionViewCell" id="gTV-IL-0wX" customClass="TravelAlbumCollectionViewCell" customModule="topaz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="236" height="350"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="236" height="350"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bb0-Mg-AIt">
+                        <rect key="frame" x="8" y="14" width="220" height="320"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FirstAlbumImage" translatesAutoresizingMaskIntoConstraints="NO" id="1eS-7C-bEq">
+                                <rect key="frame" x="12" y="20" width="196" height="196"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="196" id="ZV4-9x-MFb"/>
+                                    <constraint firstAttribute="height" constant="196" id="crA-17-x2q"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopazLogo-GrayScale" translatesAutoresizingMaskIntoConstraints="NO" id="tVS-73-lA6">
+                                <rect key="frame" x="73" y="288" width="74" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="ATO-wy-qo0"/>
+                                    <constraint firstAttribute="width" constant="74" id="Vym-t6-BvY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토파즈와 시작한 첫 여행" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqR-2q-T9Y">
+                                <rect key="frame" x="39.5" y="224" width="141" height="21"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="14"/>
+                                <color key="textColor" name="Gray2"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021. 10. 20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQK-vt-7vz">
+                                <rect key="frame" x="78.5" y="248" width="63" height="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                <color key="textColor" name="Gray4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstItem="DqR-2q-T9Y" firstAttribute="centerX" secondItem="Bb0-Mg-AIt" secondAttribute="centerX" id="59o-tq-jGz"/>
+                            <constraint firstItem="tVS-73-lA6" firstAttribute="centerX" secondItem="Bb0-Mg-AIt" secondAttribute="centerX" id="Cit-Nl-W47"/>
+                            <constraint firstItem="1eS-7C-bEq" firstAttribute="top" secondItem="Bb0-Mg-AIt" secondAttribute="top" constant="20" id="KZz-YR-8Fn"/>
+                            <constraint firstItem="DqR-2q-T9Y" firstAttribute="top" secondItem="1eS-7C-bEq" secondAttribute="bottom" constant="8" id="Rvd-rL-1aB"/>
+                            <constraint firstItem="1eS-7C-bEq" firstAttribute="centerX" secondItem="Bb0-Mg-AIt" secondAttribute="centerX" id="fX3-P3-OgU"/>
+                            <constraint firstAttribute="bottom" secondItem="tVS-73-lA6" secondAttribute="bottom" constant="16" id="fk7-va-JFS"/>
+                            <constraint firstItem="QQK-vt-7vz" firstAttribute="top" secondItem="DqR-2q-T9Y" secondAttribute="bottom" constant="3" id="ocB-ax-IsD"/>
+                            <constraint firstAttribute="height" constant="320" id="qvw-b7-WJq"/>
+                            <constraint firstItem="QQK-vt-7vz" firstAttribute="centerX" secondItem="Bb0-Mg-AIt" secondAttribute="centerX" id="t6N-Qr-Tag"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StickerImage" translatesAutoresizingMaskIntoConstraints="NO" id="qlP-1c-30S">
+                        <rect key="frame" x="89.5" y="0.0" width="57" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="BW1-MU-GfA"/>
+                            <constraint firstAttribute="width" constant="57" id="c27-wB-KI2"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="qlP-1c-30S" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="5Z1-iG-E70"/>
+                <constraint firstItem="Bb0-Mg-AIt" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="GQP-tR-pRf"/>
+                <constraint firstItem="qlP-1c-30S" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="WC0-Qg-on7"/>
+                <constraint firstItem="Bb0-Mg-AIt" firstAttribute="top" secondItem="qlP-1c-30S" secondAttribute="centerY" id="dri-CZ-a97"/>
+                <constraint firstItem="Bb0-Mg-AIt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="yjy-7F-wMu"/>
+            </constraints>
+            <connections>
+                <outlet property="albumBackground" destination="Bb0-Mg-AIt" id="cWH-WX-T4Z"/>
+                <outlet property="albumConstraintY" destination="WC0-Qg-on7" id="hC4-0s-i0n"/>
+                <outlet property="albumDate" destination="QQK-vt-7vz" id="BZ8-Bz-hOe"/>
+                <outlet property="albumImage" destination="1eS-7C-bEq" id="q2a-2t-N1q"/>
+                <outlet property="albumName" destination="DqR-2q-T9Y" id="MAF-ED-OJo"/>
+                <outlet property="albumSticker" destination="qlP-1c-30S" id="f4n-JO-WKs"/>
+            </connections>
+            <point key="canvasLocation" x="133" y="63"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="FirstAlbumImage" width="196" height="196"/>
+        <image name="StickerImage" width="57" height="28.5"/>
+        <image name="TopazLogo-GrayScale" width="74" height="16"/>
+        <namedColor name="Gray2">
+            <color red="0.31000000238418579" green="0.31000000238418579" blue="0.31000000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray4">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

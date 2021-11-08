@@ -130,6 +130,13 @@ class EditProfileViewController: UIViewController {
                 makeUserGroup.leave()
             }
         }
+        makeUserGroup.enter()
+        DispatchQueue.global().async {
+            self.viewModel.addAlbumImage(email: self.userEmail) {
+                print("addAlbumImage Success")
+                makeUserGroup.leave()
+            }
+        }
         makeUserGroup.notify(queue: .main) {
             self.performSegue(withIdentifier: "goToComplete", sender: sender)
         }
