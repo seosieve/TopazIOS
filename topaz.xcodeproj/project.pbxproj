@@ -135,6 +135,7 @@
 		4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E9DCB0F26C177E1001D218A /* Poppins-ThinItalic.ttf */; };
 		4EA4CF81270DB203001632D4 /* EarthNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4CF80270DB203001632D4 /* EarthNode.swift */; };
 		4EA4CF92270DBDA3001632D4 /* Assets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EA4CF91270DBDA3001632D4 /* Assets.scnassets */; };
+		4EC8C3D5273A932400B9B3F9 /* PlaceRecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */; };
 		4ECB1691270AED36000029CB /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB1690270AED36000029CB /* Loading.json */; };
 		4ECB1693270AF292000029CB /* SignUpComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB1692270AF292000029CB /* SignUpComplete.json */; };
 		4ECFB6CB2720445E00890C04 /* EachArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6C92720445E00890C04 /* EachArticleTableViewCell.swift */; };
@@ -295,6 +296,7 @@
 		4E9DCB1E26C177E2001D218A /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
 		4EA4CF80270DB203001632D4 /* EarthNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthNode.swift; sourceTree = "<group>"; };
 		4EA4CF91270DBDA3001632D4 /* Assets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = Assets.scnassets; path = Controller/Home/Assets.scnassets; sourceTree = "<group>"; };
+		4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRecommendViewController.swift; sourceTree = "<group>"; };
 		4ECB1690270AED36000029CB /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		4ECB1692270AF292000029CB /* SignUpComplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpComplete.json; sourceTree = "<group>"; };
 		4ECFB6C92720445E00890C04 /* EachArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 			children = (
 				4E533F3326E060F500527FC2 /* HomeViewController.swift */,
 				4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */,
+				4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */,
 				4E533F3D26E09A8E00527FC2 /* TabBarWithCorners.swift */,
 				4EA4CF80270DB203001632D4 /* EarthNode.swift */,
 				4E93ED5E2738CECB00272A06 /* CloudsNode.swift */,
@@ -910,6 +913,7 @@
 				4ECFB6D327205A5700890C04 /* EachDefaultTableViewCell.swift in Sources */,
 				4ECFB6DB2725DBD000890C04 /* MusicPageViewController.swift in Sources */,
 				4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */,
+				4EC8C3D5273A932400B9B3F9 /* PlaceRecommendViewController.swift in Sources */,
 				4E7FD104271EAB3B00867F16 /* ReportViewModel.swift in Sources */,
 				4ECFB6CB2720445E00890C04 /* EachArticleTableViewCell.swift in Sources */,
 				4E0FAEAB26C0EE99003D80E3 /* AppDelegate.swift in Sources */,
@@ -1084,7 +1088,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = topaz/topaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B44YL23J9X;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = topaz/Info.plist;
@@ -1109,7 +1113,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = topaz/topaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B44YL23J9X;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = topaz/Info.plist;

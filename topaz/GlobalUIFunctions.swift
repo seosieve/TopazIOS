@@ -36,6 +36,12 @@ func makeShadow(target view: UIView, radius: CGFloat = 0, width: Int = 0, height
     view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: radius).cgPath
 }
 
+func makeModalCircular(target view: UIView) {
+    view.clipsToBounds = false
+    view.layer.cornerRadius = 28
+    view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+}
+
 //Navigation Bar line과 Background 제거
 func removeNavigationBackground(view: UIViewController) {
     view.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)

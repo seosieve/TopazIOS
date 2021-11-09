@@ -144,12 +144,6 @@ class MusicAddViewController: UIViewController {
 
 //MARK: - UI Functions
 extension MusicAddViewController {
-    func makeModalCircular(target view: UIView) {
-        view.clipsToBounds = false
-        view.layer.cornerRadius = 28
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-    }
-    
     func makeSettingBackground() {
         progressBarContainer.forEach { container in
             container.layer.cornerRadius = container.frame.size.width/2

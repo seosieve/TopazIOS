@@ -489,7 +489,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TyH-G4-2mr">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="White"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PgD-Uh-4l6"/>
@@ -963,7 +963,7 @@
                                                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G63-32-YQL" userLabel="cover">
                                                                 <rect key="frame" x="13" y="5" width="24" height="24"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectMini" translatesAutoresizingMaskIntoConstraints="NO" id="z85-rh-hE9" userLabel="thumbnail">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectIcon" translatesAutoresizingMaskIntoConstraints="NO" id="z85-rh-hE9" userLabel="thumbnail">
                                                                         <rect key="frame" x="2" y="2" width="20" height="20"/>
                                                                         <color key="tintColor" name="MintBlue"/>
                                                                         <constraints>
@@ -1075,7 +1075,7 @@
                                                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oa-TF-4OK" userLabel="cover">
                                                                 <rect key="frame" x="13" y="5" width="24" height="24"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectMini" translatesAutoresizingMaskIntoConstraints="NO" id="iGE-0n-IqB" userLabel="thumbnail">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectIcon" translatesAutoresizingMaskIntoConstraints="NO" id="iGE-0n-IqB" userLabel="thumbnail">
                                                                         <rect key="frame" x="2" y="2" width="20" height="20"/>
                                                                         <color key="tintColor" name="MintBlue"/>
                                                                         <constraints>
@@ -1127,7 +1127,7 @@
                                                             <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gg6-mD-oza" userLabel="cover">
                                                                 <rect key="frame" x="13" y="5" width="24" height="24"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectMini" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-yf-fpc" userLabel="thumbnail">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BeachSoundEffectIcon" translatesAutoresizingMaskIntoConstraints="NO" id="cXa-yf-fpc" userLabel="thumbnail">
                                                                         <rect key="frame" x="2" y="2" width="20" height="20"/>
                                                                         <color key="tintColor" name="MintBlue"/>
                                                                         <constraints>
@@ -1762,14 +1762,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AzV-oq-4k8"/>
+        <segue reference="RPR-So-E0G"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name=" " width="128" height="128"/>
         <image name="AddImageButton" width="24" height="24"/>
         <image name="AddMusicButton" width="24" height="24"/>
         <image name="BeachSoundEffectIcon" width="64" height="64"/>
-        <image name="BeachSoundEffectMini" width="20" height="20"/>
         <image name="CancelButton" width="24" height="24"/>
         <image name="Community_OFF" width="33" height="31"/>
         <image name="Community_ON" width="33" height="31"/>
