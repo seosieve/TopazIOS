@@ -11,8 +11,8 @@ import Lottie
 //Border 생성
 func makeBorder(target view: UIView, radius: Int, width: Int = 1, color: String = "Gray5", isFilled Fill: Bool) {
     if Fill {
+        view.clipsToBounds = true
         view.layer.cornerRadius = CGFloat(radius)
-        view.layer.masksToBounds = true
     } else {
         view.layer.cornerRadius = CGFloat(radius)
         view.layer.borderWidth = CGFloat(width)
@@ -21,7 +21,7 @@ func makeBorder(target view: UIView, radius: Int, width: Int = 1, color: String 
 }
 
 func makeCircle(target view: UIView, color: String = "MintBlue", width: Int = 0) {
-    view.layer.masksToBounds = true
+    view.clipsToBounds = true
     view.layer.cornerRadius = view.frame.size.height/2
     view.layer.borderWidth = CGFloat(width)
     view.layer.borderColor = UIColor(named: color)?.cgColor
