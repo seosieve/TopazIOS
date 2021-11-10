@@ -11,7 +11,6 @@ import FirebaseAuth
 import SceneKit
 
 class HomeViewController: UIViewController {
-    
     @IBOutlet weak var upperBackgroundView: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var IceBreakingLabel: UILabel!

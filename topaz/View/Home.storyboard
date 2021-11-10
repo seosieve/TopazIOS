@@ -192,7 +192,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 추천 여행지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gms-V2-IcG">
-                                        <rect key="frame" x="28" y="16" width="127.5" height="20"/>
+                                        <rect key="frame" x="28" y="16" width="135" height="25"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="17"/>
                                         <color key="textColor" name="Gray2"/>
                                         <nil key="highlightedColor"/>
@@ -212,31 +212,246 @@
                                             <action selector="cancelButtonPressed:" destination="pJf-6R-qoh" eventType="touchUpInside" id="WYd-GV-T6v"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="wuw-S6-4j6">
-                                        <rect key="frame" x="51" y="56" width="326" height="56"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="wuw-S6-4j6">
+                                        <rect key="frame" x="20" y="61" width="344" height="81"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epE-cR-SzQ">
-                                                <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQJ-ME-pCM">
+                                                <rect key="frame" x="0.0" y="0.0" width="56" height="81"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dna-uX-JRL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                                        <color key="backgroundColor" name="Gray7"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="56" id="L6q-IE-lvC"/>
+                                                            <constraint firstAttribute="width" constant="56" id="n8j-W5-2DW"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="Vacation-OFF"/>
+                                                        <state key="selected" image="Vacation-ON"/>
+                                                        <connections>
+                                                            <action selector="placeButtonPressed:" destination="pJf-6R-qoh" eventType="touchUpInside" id="ZTP-xk-h6j"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="피서" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2j0-3O-9d4">
+                                                        <rect key="frame" x="17" y="64" width="22.5" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="17" id="ffR-4X-dlx"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
+                                                        <color key="textColor" name="Gray2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="56" id="6cr-Jx-Mxr"/>
-                                                    <constraint firstAttribute="height" constant="56" id="azP-Te-pDv"/>
+                                                    <constraint firstItem="dna-uX-JRL" firstAttribute="top" secondItem="LQJ-ME-pCM" secondAttribute="top" id="U6C-as-aJm"/>
+                                                    <constraint firstAttribute="width" constant="56" id="a4G-7n-uZZ"/>
+                                                    <constraint firstItem="2j0-3O-9d4" firstAttribute="top" secondItem="dna-uX-JRL" secondAttribute="bottom" constant="8" id="bWp-js-65H"/>
+                                                    <constraint firstItem="2j0-3O-9d4" firstAttribute="centerX" secondItem="LQJ-ME-pCM" secondAttribute="centerX" id="jZJ-ti-DFH"/>
+                                                    <constraint firstItem="dna-uX-JRL" firstAttribute="centerX" secondItem="LQJ-ME-pCM" secondAttribute="centerX" id="kmg-T6-R0V"/>
+                                                    <constraint firstAttribute="height" constant="81" id="vvp-zA-HkA"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOl-rf-itp">
-                                                <rect key="frame" x="86" y="0.0" width="240" height="56"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilE-BD-4cu">
+                                                <rect key="frame" x="72" y="0.0" width="56" height="81"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8B2-r6-e2a">
+                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                                        <color key="backgroundColor" name="Gray7"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="56" id="PHa-4w-qBA"/>
+                                                            <constraint firstAttribute="width" constant="56" id="bVP-Ey-H1M"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="City-OFF"/>
+                                                        <state key="selected" image="City-ON"/>
+                                                        <connections>
+                                                            <action selector="placeButtonPressed:" destination="pJf-6R-qoh" eventType="touchUpInside" id="56L-hi-Luk"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jqf-Th-3bU">
+                                                        <rect key="frame" x="17" y="64" width="22.5" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="17" id="tw9-ch-Qna"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
+                                                        <color key="textColor" name="Gray2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="8B2-r6-e2a" firstAttribute="top" secondItem="ilE-BD-4cu" secondAttribute="top" id="95W-yu-Ws8"/>
+                                                    <constraint firstItem="8B2-r6-e2a" firstAttribute="centerX" secondItem="ilE-BD-4cu" secondAttribute="centerX" id="NHo-iJ-Ngu"/>
+                                                    <constraint firstItem="Jqf-Th-3bU" firstAttribute="centerX" secondItem="ilE-BD-4cu" secondAttribute="centerX" id="ROQ-Vh-n2o"/>
+                                                    <constraint firstAttribute="height" constant="81" id="cBJ-Gr-o1e"/>
+                                                    <constraint firstItem="Jqf-Th-3bU" firstAttribute="top" secondItem="8B2-r6-e2a" secondAttribute="bottom" constant="8" id="oKC-Oo-bTY"/>
+                                                    <constraint firstAttribute="width" constant="56" id="u7G-fE-KHX"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="67Y-2W-U5p">
+                                                <rect key="frame" x="144" y="0.0" width="56" height="81"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd1-nI-mDQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                                        <color key="backgroundColor" name="Gray7"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="56" id="K9D-0f-1Lw"/>
+                                                            <constraint firstAttribute="width" constant="56" id="jAl-m7-Ogd"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="Ocean-OFF"/>
+                                                        <state key="selected" image="Ocean-ON"/>
+                                                        <connections>
+                                                            <action selector="placeButtonPressed:" destination="pJf-6R-qoh" eventType="touchUpInside" id="ty1-LV-rAt"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="바다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-ia-o8M">
+                                                        <rect key="frame" x="17" y="64" width="22.5" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="17" id="a7n-t7-lS7"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
+                                                        <color key="textColor" name="Gray2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="OFy-ia-o8M" firstAttribute="centerX" secondItem="67Y-2W-U5p" secondAttribute="centerX" id="Dys-mK-ZpY"/>
+                                                    <constraint firstAttribute="width" constant="56" id="JYV-1g-Ucu"/>
+                                                    <constraint firstItem="OFy-ia-o8M" firstAttribute="top" secondItem="jd1-nI-mDQ" secondAttribute="bottom" constant="8" id="NeX-gG-aqC"/>
+                                                    <constraint firstAttribute="height" constant="81" id="jCx-i4-mUp"/>
+                                                    <constraint firstItem="jd1-nI-mDQ" firstAttribute="top" secondItem="67Y-2W-U5p" secondAttribute="top" id="jU7-wj-Kk3"/>
+                                                    <constraint firstItem="jd1-nI-mDQ" firstAttribute="centerX" secondItem="67Y-2W-U5p" secondAttribute="centerX" id="yfM-yT-uh9"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8b-8I-yxW">
+                                                <rect key="frame" x="216" y="0.0" width="56" height="81"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVG-2c-d1L">
+                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                                        <color key="backgroundColor" name="Gray7"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="56" id="4xc-xc-8Cs"/>
+                                                            <constraint firstAttribute="width" constant="56" id="P3O-Oo-IdJ"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="Mountain-OFF"/>
+                                                        <state key="selected" image="Mountain-ON"/>
+                                                        <connections>
+                                                            <action selector="placeButtonPressed:" destination="pJf-6R-qoh" eventType="touchUpInside" id="C8Z-vR-rwJ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="산" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDh-Wk-cMn">
+                                                        <rect key="frame" x="22.5" y="64" width="11.5" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="17" id="Pms-4b-uIj"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
+                                                        <color key="textColor" name="Gray2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="OVG-2c-d1L" firstAttribute="top" secondItem="e8b-8I-yxW" secondAttribute="top" id="0wJ-A0-gB9"/>
+                                                    <constraint firstAttribute="width" constant="56" id="EAV-Oi-vDR"/>
+                                                    <constraint firstAttribute="height" constant="81" id="JT5-3l-9ag"/>
+                                                    <constraint firstItem="OVG-2c-d1L" firstAttribute="centerX" secondItem="e8b-8I-yxW" secondAttribute="centerX" id="NdE-CF-WsN"/>
+                                                    <constraint firstItem="YDh-Wk-cMn" firstAttribute="top" secondItem="OVG-2c-d1L" secondAttribute="bottom" constant="8" id="bu4-Iu-lvG"/>
+                                                    <constraint firstItem="YDh-Wk-cMn" firstAttribute="centerX" secondItem="e8b-8I-yxW" secondAttribute="centerX" id="jao-g6-LqZ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICO-W4-dpj">
+                                                <rect key="frame" x="288" y="0.0" width="56" height="81"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8q-Uo-4wk">
+                                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                                                        <color key="backgroundColor" name="Gray7"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="56" id="Ggc-d0-uHx"/>
+                                                            <constraint firstAttribute="width" constant="56" id="a1e-rS-uXa"/>
+                                                        </constraints>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" image="Historic-OFF"/>
+                                                        <state key="selected" image="Historic-ON"/>
+                                                        <connections>
+                                                            <action selector="placeButtonPressed:" destination="pJf-6R-qoh" eventType="touchUpInside" id="52c-5U-3qr"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유적지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzN-de-iSr">
+                                                        <rect key="frame" x="11.5" y="64" width="33.5" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="17" id="kze-8W-tOC"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
+                                                        <color key="textColor" name="Gray2"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="F8q-Uo-4wk" firstAttribute="top" secondItem="ICO-W4-dpj" secondAttribute="top" id="4Jx-oF-vM0"/>
+                                                    <constraint firstAttribute="height" constant="81" id="5sj-07-AdD"/>
+                                                    <constraint firstAttribute="width" constant="56" id="66h-R7-Qi8"/>
+                                                    <constraint firstItem="jzN-de-iSr" firstAttribute="centerX" secondItem="ICO-W4-dpj" secondAttribute="centerX" id="EX8-bb-oPf"/>
+                                                    <constraint firstItem="F8q-Uo-4wk" firstAttribute="centerX" secondItem="ICO-W4-dpj" secondAttribute="centerX" id="X4o-ok-p2r"/>
+                                                    <constraint firstItem="jzN-de-iSr" firstAttribute="top" secondItem="F8q-Uo-4wk" secondAttribute="bottom" constant="8" id="X88-XW-9bd"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                     </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhilippineImage" translatesAutoresizingMaskIntoConstraints="NO" id="mxH-7C-mbJ">
+                                        <rect key="frame" x="0.0" y="166" width="414" height="320"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="320" id="bB4-ys-AtZ"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="태국" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mch-uH-8GD">
+                                        <rect key="frame" x="24" y="510" width="31.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="17"/>
+                                        <color key="textColor" name="Gray1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thailand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODy-4y-zN6">
+                                        <rect key="frame" x="63.5" y="510" width="72" height="25"/>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="17"/>
+                                        <color key="textColor" name="Gray4"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3e-Ts-h8G">
+                                        <rect key="frame" x="24" y="551" width="366" height="64.5"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="열대 해변, 숨겨진 사원, 지역 시장과 흥겨운 리듬이 터지는 클럽 태국의 푸켓은 낮에는 여유롭다가 밤에는 활기를 되찾는 사람들을 유혹하는 섬입니다.">
+                                                <attributes>
+                                                    <color key="NSColor" name="Gray1"/>
+                                                    <font key="NSFont" size="12" name="NotoSansKR-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="White"/>
                                 <constraints>
+                                    <constraint firstItem="ODy-4y-zN6" firstAttribute="leading" secondItem="Mch-uH-8GD" secondAttribute="trailing" constant="8" id="8Bo-XB-ACa"/>
                                     <constraint firstItem="gms-V2-IcG" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" constant="28" id="FmE-z0-YPP"/>
+                                    <constraint firstItem="t3e-Ts-h8G" firstAttribute="centerX" secondItem="VUY-Gu-lzf" secondAttribute="centerX" id="Gef-M7-h9F"/>
+                                    <constraint firstItem="t3e-Ts-h8G" firstAttribute="top" secondItem="ODy-4y-zN6" secondAttribute="bottom" constant="16" id="KIJ-Oi-K7i"/>
                                     <constraint firstAttribute="trailing" secondItem="Vzw-tI-NSO" secondAttribute="trailing" constant="20" id="KV6-Vz-VQp"/>
+                                    <constraint firstItem="ODy-4y-zN6" firstAttribute="top" secondItem="Mch-uH-8GD" secondAttribute="top" id="RDg-lO-0Yp"/>
                                     <constraint firstItem="Vzw-tI-NSO" firstAttribute="top" secondItem="VUY-Gu-lzf" secondAttribute="top" constant="14" id="TLa-Pu-zhc"/>
+                                    <constraint firstItem="Mch-uH-8GD" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" constant="24" id="XSR-Ox-ZSI"/>
+                                    <constraint firstItem="Mch-uH-8GD" firstAttribute="top" secondItem="mxH-7C-mbJ" secondAttribute="bottom" constant="24" id="Ysx-xb-wxP"/>
                                     <constraint firstItem="wuw-S6-4j6" firstAttribute="top" secondItem="gms-V2-IcG" secondAttribute="bottom" constant="20" id="cQg-Pd-2VO"/>
+                                    <constraint firstItem="mxH-7C-mbJ" firstAttribute="top" secondItem="wuw-S6-4j6" secondAttribute="bottom" constant="24" id="e9K-JC-HlK"/>
+                                    <constraint firstItem="mxH-7C-mbJ" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" id="fys-3X-2UX"/>
+                                    <constraint firstItem="t3e-Ts-h8G" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" constant="24" id="gA1-sA-goL"/>
                                     <constraint firstItem="gms-V2-IcG" firstAttribute="top" secondItem="VUY-Gu-lzf" secondAttribute="top" constant="16" id="gtj-nG-qJq"/>
+                                    <constraint firstItem="mxH-7C-mbJ" firstAttribute="centerX" secondItem="VUY-Gu-lzf" secondAttribute="centerX" id="rKz-YL-tto"/>
                                     <constraint firstItem="wuw-S6-4j6" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" constant="20" id="uEg-Np-fEh"/>
                                 </constraints>
                             </view>
@@ -252,6 +467,21 @@
                     </view>
                     <connections>
                         <outlet property="placeRecommendViewContainer" destination="VUY-Gu-lzf" id="bRx-Wq-4J7"/>
+                        <outlet property="recommendCountryEnglishName" destination="ODy-4y-zN6" id="TpP-K3-6hg"/>
+                        <outlet property="recommendCountryImage" destination="mxH-7C-mbJ" id="WhJ-qU-rTj"/>
+                        <outlet property="recommendCountryImageConstraintY" destination="bB4-ys-AtZ" id="RHX-un-Yht"/>
+                        <outlet property="recommendCountryIntroduce" destination="t3e-Ts-h8G" id="v7E-qa-KCB"/>
+                        <outlet property="recommendCountryName" destination="Mch-uH-8GD" id="LR0-Rf-y6W"/>
+                        <outletCollection property="placeButton" destination="dna-uX-JRL" collectionClass="NSMutableArray" id="8zb-PF-w94"/>
+                        <outletCollection property="placeButton" destination="8B2-r6-e2a" collectionClass="NSMutableArray" id="guL-1W-R5K"/>
+                        <outletCollection property="placeButton" destination="jd1-nI-mDQ" collectionClass="NSMutableArray" id="a3B-AS-v6E"/>
+                        <outletCollection property="placeButton" destination="OVG-2c-d1L" collectionClass="NSMutableArray" id="Pkz-4Z-NMh"/>
+                        <outletCollection property="placeButton" destination="F8q-Uo-4wk" collectionClass="NSMutableArray" id="DST-qP-U28"/>
+                        <outletCollection property="placeLabel" destination="2j0-3O-9d4" collectionClass="NSMutableArray" id="4vW-sm-zmf"/>
+                        <outletCollection property="placeLabel" destination="Jqf-Th-3bU" collectionClass="NSMutableArray" id="xsu-Mh-Hae"/>
+                        <outletCollection property="placeLabel" destination="OFy-ia-o8M" collectionClass="NSMutableArray" id="WTm-pz-c6U"/>
+                        <outletCollection property="placeLabel" destination="YDh-Wk-cMn" collectionClass="NSMutableArray" id="XHF-Nm-xJQ"/>
+                        <outletCollection property="placeLabel" destination="jzN-de-iSr" collectionClass="NSMutableArray" id="VkZ-Ee-gSm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0W-vJ-LmP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -324,10 +554,21 @@
         </scene>
     </scenes>
     <resources>
+        <image name="City-OFF" width="56" height="56"/>
+        <image name="City-ON" width="56" height="56"/>
+        <image name="Historic-OFF" width="56" height="56"/>
+        <image name="Historic-ON" width="56" height="56"/>
         <image name="Home_OFF" width="29" height="34"/>
         <image name="Home_ON" width="29" height="34"/>
         <image name="MainBackgroundImage-Day" width="414" height="499"/>
+        <image name="Mountain-OFF" width="56" height="56"/>
+        <image name="Mountain-ON" width="56" height="56"/>
+        <image name="Ocean-OFF" width="56" height="56"/>
+        <image name="Ocean-ON" width="56" height="56"/>
+        <image name="PhilippineImage" width="414" height="442"/>
         <image name="TopazLogo-Home" width="110" height="24"/>
+        <image name="Vacation-OFF" width="56" height="56"/>
+        <image name="Vacation-ON" width="56" height="56"/>
         <image name="WelcomeSnowBall" width="318" height="318"/>
         <namedColor name="Gray1">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -337,6 +578,12 @@
         </namedColor>
         <namedColor name="Gray3">
             <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray4">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray7">
+            <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LightMintBlue">
             <color red="0.67500001192092896" green="0.96899998188018799" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

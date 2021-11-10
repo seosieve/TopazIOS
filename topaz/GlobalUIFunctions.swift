@@ -91,7 +91,6 @@ func loadingAnimation(_ background: UIView, _ animation: AnimationView, view: UI
     animation.play()
 }
 
-
 //Button Tern ON & OFF
 func shiftButton(for button: UIButton, isOn: Bool) {
     if isOn == true {

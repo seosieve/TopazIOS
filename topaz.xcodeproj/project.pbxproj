@@ -136,6 +136,7 @@
 		4EA4CF81270DB203001632D4 /* EarthNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA4CF80270DB203001632D4 /* EarthNode.swift */; };
 		4EA4CF92270DBDA3001632D4 /* Assets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EA4CF91270DBDA3001632D4 /* Assets.scnassets */; };
 		4EC8C3D5273A932400B9B3F9 /* PlaceRecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */; };
+		4EC8C3D7273C0F5500B9B3F9 /* TeamTopazViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8C3D6273C0F5500B9B3F9 /* TeamTopazViewController.swift */; };
 		4ECB1691270AED36000029CB /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB1690270AED36000029CB /* Loading.json */; };
 		4ECB1693270AF292000029CB /* SignUpComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB1692270AF292000029CB /* SignUpComplete.json */; };
 		4ECFB6CB2720445E00890C04 /* EachArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6C92720445E00890C04 /* EachArticleTableViewCell.swift */; };
@@ -297,6 +298,7 @@
 		4EA4CF80270DB203001632D4 /* EarthNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthNode.swift; sourceTree = "<group>"; };
 		4EA4CF91270DBDA3001632D4 /* Assets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = Assets.scnassets; path = Controller/Home/Assets.scnassets; sourceTree = "<group>"; };
 		4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRecommendViewController.swift; sourceTree = "<group>"; };
+		4EC8C3D6273C0F5500B9B3F9 /* TeamTopazViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTopazViewController.swift; sourceTree = "<group>"; };
 		4ECB1690270AED36000029CB /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		4ECB1692270AF292000029CB /* SignUpComplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpComplete.json; sourceTree = "<group>"; };
 		4ECFB6C92720445E00890C04 /* EachArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				4EDA402426FC231400B5E80B /* MyProfileEditViewModel.swift */,
 				4E18A57426E66050001504A9 /* MySettingViewController.swift */,
 				4E01361926FA24600071F31D /* MySettingViewModel.swift */,
+				4EC8C3D6273C0F5500B9B3F9 /* TeamTopazViewController.swift */,
 			);
 			path = TravelNote;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				4E8A58B82705407600C8A646 /* SplashViewController.swift in Sources */,
 				4E93ED31272FA48700272A06 /* MyArticleViewModel.swift in Sources */,
 				4E93ED4B2731B9CE00272A06 /* TravelTicketViewController.swift in Sources */,
+				4EC8C3D7273C0F5500B9B3F9 /* TeamTopazViewController.swift in Sources */,
 				4EE9A3AB26F2D1BA00395B2F /* ArticleModel.swift in Sources */,
 				4EDA402526FC231400B5E80B /* MyProfileEditViewModel.swift in Sources */,
 				4EE9A3BB26F76A6800395B2F /* MyProfileEditViewController.swift in Sources */,

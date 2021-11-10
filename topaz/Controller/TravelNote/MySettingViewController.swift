@@ -9,14 +9,14 @@ import UIKit
 import FirebaseAuth
 
 class MySettingViewController: UIViewController {
-    @IBOutlet weak var logoutControl: UIControl!
+    @IBOutlet weak var mySettingStackView: UIStackView!
     @IBOutlet weak var withdrawControl: UIControl!
     
     let viewModel = MySettingViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeShadow(target: logoutControl, height: 5, opacity: 0.1, shadowRadius: 5)
+        makeShadow(target: mySettingStackView, height: 5, opacity: 0.1, shadowRadius: 5)
         makeShadow(target: withdrawControl, height: 5, opacity: 0.1, shadowRadius: 5)
     }
     
@@ -27,6 +27,11 @@ class MySettingViewController: UIViewController {
     @IBAction func privacyPolicyPressed(_ sender: UIControl) {
         self.performSegue(withIdentifier: "goToPrivacyPolicy", sender: sender)
     }
+    
+    @IBAction func teamTopazPressed(_ sender: UIControl) {
+        self.performSegue(withIdentifier: "goToTeamTopaz", sender: sender)
+    }
+    
     
     @IBAction func logoutPressed(_ sender: UIControl) {
         logoutAlert()
