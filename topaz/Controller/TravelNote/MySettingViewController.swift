@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 
 class MySettingViewController: UIViewController {
+    @IBOutlet weak var blockUserListControl: UIControl!
     @IBOutlet weak var mySettingStackView: UIStackView!
     @IBOutlet weak var withdrawControl: UIControl!
     
@@ -16,8 +17,14 @@ class MySettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeShadow(target: blockUserListControl, height: 5, opacity: 0.1, shadowRadius: 5)
         makeShadow(target: mySettingStackView, height: 5, opacity: 0.1, shadowRadius: 5)
         makeShadow(target: withdrawControl, height: 5, opacity: 0.1, shadowRadius: 5)
+    }
+    
+    
+    @IBAction func blockUserListPressed(_ sender: UIControl) {
+        self.performSegue(withIdentifier: "goToBlockUserList", sender: sender)
     }
     
     @IBAction func termsOfUsePressed(_ sender: UIControl) {

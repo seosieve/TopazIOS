@@ -14,6 +14,7 @@ struct User {
     let imageUrl: String
     let likedPosts: [String]
     let friends: [String]
+    let blockedUsers: [String]
     let exp: Int
     let albumName: [String]
     let albumUrl: [String]
@@ -24,6 +25,6 @@ struct User {
     
     // [String:Any] 타입으로 변환
     var dicDataType: [String: Any] {
-        return ["email": email, "nickname": nickname, "introduce": introduce, "imageUrl": imageUrl, "likedPosts": likedPosts, "friends": friends, "exp": exp, "albumName": albumName, "albumUrl": albumUrl, "albumDate": albumDate, "ticketName": ticketName, "ticketDate": ticketDate, "collectibles": collectibles]
+        return ["email": email, "nickname": nickname, "introduce": introduce, "imageUrl": imageUrl, "likedPosts": likedPosts, "friends": friends, "blockedUsers": blockedUsers, "exp": exp, "albumName": albumName, "albumUrl": albumUrl, "albumDate": albumDate, "ticketName": ticketName, "ticketDate": ticketDate, "collectibles": collectibles]
     }
 }

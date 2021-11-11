@@ -48,6 +48,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" name="Gray7"/>
             <connections>
+                <outlet property="defaultImage" destination="mbK-LQ-0hT" id="aht-60-Qwg"/>
                 <outlet property="defaultText" destination="adK-ep-0wZ" id="nrH-g6-ccT"/>
             </connections>
             <point key="canvasLocation" x="197.10144927536234" y="122.54464285714285"/>

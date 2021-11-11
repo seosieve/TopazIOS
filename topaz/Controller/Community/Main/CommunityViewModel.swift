@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 
 class CommunityViewModel {
+    let blockedUsers =  UserDefaults.standard.stringArray(forKey: "blockedUsers")!
     let database = Firestore.firestore()
     var collectionArticleArr = [Article]()
     var tableArticleArr = [Article]()
@@ -20,7 +21,7 @@ class CommunityViewModel {
         let dateBound = NSDate().timeIntervalSince1970 - 604800
         collection.whereField("writtenDate", isGreaterThan: dateBound).getDocuments { querySnapshot, error in
             if let error = error {
-                print("글 불러오기 에러 : \(error)")
+                print("글 불러오기 에러: \(error)")
             } else {
                 for document in querySnapshot!.documents {
                     let articleID = document.get("articleID") as! String
@@ -67,7 +68,7 @@ class CommunityViewModel {
         let convertedSortMethod = convertSortMethod(sortMethod: sortMethod)
         collection.order(by: convertedSortMethod).getDocuments { querySnapshot, error in
             if let error = error {
-                print("글 불러오기 에러 : \(error)")
+                print("글 불러오기 에러: \(error)")
             } else {
                 for document in querySnapshot!.documents.reversed() {
                     let articleID = document.get("articleID") as! String
@@ -89,6 +90,7 @@ class CommunityViewModel {
                     
                     let article = Article(articleID: articleID, auther: auther, autherEmail: autherEmail, writtenDate: writtenDate, strWrittenDate: strWrittenDate, country: country, title: title, mainText: mainText, imageText: imageText, imageName: imageName, imageUrl: imageUrl, musicName: musicName, musicVolume: musicVolume, tailText: tailText, likes: likes, views: views)
                     self.tableArticleArr.append(article)
+                    
                 }
                 articleHandler(self.tableArticleArr)
             }

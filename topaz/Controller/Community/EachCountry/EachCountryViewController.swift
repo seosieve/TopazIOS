@@ -51,17 +51,18 @@ class EachCountryViewController: UIViewController {
         eachArticleTableView.register(EachDefaultTableViewCell.nib(), forCellReuseIdentifier: "EachDefaultTableViewCell")
         eachArticleTableView.dataSource = self
         eachArticleTableView.delegate = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let blockedUsers = UserDefaults.standard.stringArray(forKey: "blockedUsers")!
         viewModel.getHitArticle(country: currentCountry) { article in
             self.hitArticle = article
             self.hitArticleTableView.reloadData()
         }
         viewModel.getEachArticle(country: currentCountry) { articleArr in
             self.eachArticleArr = articleArr
+            self.eachArticleArr = self.eachArticleArr.filter{!blockedUsers.contains($0.autherEmail)}
             self.eachArticleTableView.reloadData()
             self.makeTableViewHeight()
         }
@@ -196,6 +197,7 @@ extension EachCountryViewController: UICollectionViewDelegate, UICollectionViewD
         } else if mainCountry.countryName[indexPath.row] == currentCountry {
             countryCollectionViewSlideAnimation()
         } else {
+            let blockedUsers = UserDefaults.standard.stringArray(forKey: "blockedUsers")!
             currentCountry = mainCountry.countryName[indexPath.row]
             setCurrentCountry()
             viewModel.getHitArticle(country: currentCountry) { article in
@@ -204,6 +206,7 @@ extension EachCountryViewController: UICollectionViewDelegate, UICollectionViewD
             }
             viewModel.getEachArticle(country: currentCountry) { articleArr in
                 self.eachArticleArr = articleArr
+                self.eachArticleArr = self.eachArticleArr.filter{!blockedUsers.contains($0.autherEmail)}
                 self.eachArticleTableView.reloadData()
                 self.makeTableViewHeight()
             }
@@ -250,23 +253,37 @@ extension EachCountryViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == hitArticleTableView {
+            let blockedUsers =  UserDefaults.standard.stringArray(forKey: "blockedUsers")!
             let cell = tableView.dequeueReusableCell(withIdentifier: "EachArticleTableViewCell", for: indexPath) as! EachArticleTableViewCell
             cell.selectionStyle = .none
-            cell.title.text = hitArticle!.title
-            cell.auther.text = hitArticle!.auther
-            cell.boardingTime.text = hitArticle!.strWrittenDate
-            cell.likes.setTitle(String(hitArticle!.likes), for: .normal)
-            cell.views.setTitle(String(hitArticle!.views), for: .normal)
-            viewModel.getImageUrl(imageUrl: hitArticle!.imageUrl) { url in
-                if let url = url {
-                    // 이미지가 있을 때 이미지 설정
-                    let processor = DownsamplingImageProcessor(size: CGSize(width: 200, height: 200))
-                    cell.mainImage.kf.setImage(with: url, options: [.processor(processor)])
-                } else {
-                    // 이미지가 없을 때 default이미지 설정
-                    cell.mainImage.image = UIImage(named: "DefaultArticleImage")
+            
+            if blockedUsers.contains(hitArticle!.autherEmail) {
+                cell.title.text = "차단된 사용자의 게시글이에요."
+                cell.auther.text = hitArticle!.auther
+                cell.boardingTime.text = hitArticle!.strWrittenDate
+                cell.likes.setTitle(String(hitArticle!.likes), for: .normal)
+                cell.views.setTitle(String(hitArticle!.views), for: .normal)
+                cell.isUserInteractionEnabled = false
+                cell.mainImage.image = UIImage()
+            } else {
+                cell.title.text = hitArticle!.title
+                cell.auther.text = hitArticle!.auther
+                cell.boardingTime.text = hitArticle!.strWrittenDate
+                cell.likes.setTitle(String(hitArticle!.likes), for: .normal)
+                cell.views.setTitle(String(hitArticle!.views), for: .normal)
+                cell.isUserInteractionEnabled = true
+                viewModel.getImageUrl(imageUrl: hitArticle!.imageUrl) { url in
+                    if let url = url {
+                        // 이미지가 있을 때 이미지 설정
+                        let processor = DownsamplingImageProcessor(size: CGSize(width: 200, height: 200))
+                        cell.mainImage.kf.setImage(with: url, options: [.processor(processor)])
+                    } else {
+                        // 이미지가 없을 때 default이미지 설정
+                        cell.mainImage.image = UIImage(named: "DefaultArticleImage")
+                    }
                 }
             }
+            
             DispatchQueue.main.async {
                 self.makeShadow(target: cell.shadowView)
                 cell.mainView.roundCorners(topLeft: 6, bottomLeft: 24)

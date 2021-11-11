@@ -56,7 +56,7 @@ class EditProfileViewModel {
     
     func addUserInfo(_ email: String, _ nickname: String, _ introduce: String, addInfoHandler: @escaping () -> ()) {
         let strDate = [makeDate()]
-        let user = User(email: email, nickname: nickname, introduce: introduce, imageUrl: "", likedPosts: [String](), friends: [String](), exp: 0, albumName: ["토파즈와 시작한 첫 여행"], albumUrl: [String](), albumDate: strDate, ticketName: ["TO-PAZ"], ticketDate: strDate, collectibles: [String]())
+        let user = User(email: email, nickname: nickname, introduce: introduce, imageUrl: "", likedPosts: [String](), friends: [String](), blockedUsers: [String](), exp: 0, albumName: ["토파즈와 시작한 첫 여행"], albumUrl: [String](), albumDate: strDate, ticketName: ["TO-PAZ"], ticketDate: strDate, collectibles: [String]())
         let collection = database.collection("UserDataBase")
         collection.document(email).setData(user.dicDataType) { error in
             if let error = error {

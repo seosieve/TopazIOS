@@ -137,6 +137,10 @@
 		4EA4CF92270DBDA3001632D4 /* Assets.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EA4CF91270DBDA3001632D4 /* Assets.scnassets */; };
 		4EC8C3D5273A932400B9B3F9 /* PlaceRecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */; };
 		4EC8C3D7273C0F5500B9B3F9 /* TeamTopazViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8C3D6273C0F5500B9B3F9 /* TeamTopazViewController.swift */; };
+		4EC8C3D9273C531F00B9B3F9 /* BlockUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8C3D8273C531F00B9B3F9 /* BlockUserListViewController.swift */; };
+		4EC8C3DC273C577A00B9B3F9 /* BlockUserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8C3DA273C577A00B9B3F9 /* BlockUserListTableViewCell.swift */; };
+		4EC8C3DD273C577A00B9B3F9 /* BlockUserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EC8C3DB273C577A00B9B3F9 /* BlockUserListTableViewCell.xib */; };
+		4EC8C3DF273C5E4800B9B3F9 /* BlockUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC8C3DE273C5E4800B9B3F9 /* BlockUserListViewModel.swift */; };
 		4ECB1691270AED36000029CB /* Loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB1690270AED36000029CB /* Loading.json */; };
 		4ECB1693270AF292000029CB /* SignUpComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = 4ECB1692270AF292000029CB /* SignUpComplete.json */; };
 		4ECFB6CB2720445E00890C04 /* EachArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECFB6C92720445E00890C04 /* EachArticleTableViewCell.swift */; };
@@ -299,6 +303,10 @@
 		4EA4CF91270DBDA3001632D4 /* Assets.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; name = Assets.scnassets; path = Controller/Home/Assets.scnassets; sourceTree = "<group>"; };
 		4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRecommendViewController.swift; sourceTree = "<group>"; };
 		4EC8C3D6273C0F5500B9B3F9 /* TeamTopazViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTopazViewController.swift; sourceTree = "<group>"; };
+		4EC8C3D8273C531F00B9B3F9 /* BlockUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserListViewController.swift; sourceTree = "<group>"; };
+		4EC8C3DA273C577A00B9B3F9 /* BlockUserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserListTableViewCell.swift; sourceTree = "<group>"; };
+		4EC8C3DB273C577A00B9B3F9 /* BlockUserListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlockUserListTableViewCell.xib; sourceTree = "<group>"; };
+		4EC8C3DE273C5E4800B9B3F9 /* BlockUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUserListViewModel.swift; sourceTree = "<group>"; };
 		4ECB1690270AED36000029CB /* Loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Loading.json; sourceTree = "<group>"; };
 		4ECB1692270AF292000029CB /* SignUpComplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SignUpComplete.json; sourceTree = "<group>"; };
 		4ECFB6C92720445E00890C04 /* EachArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EachArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -483,6 +491,10 @@
 				4E18A57426E66050001504A9 /* MySettingViewController.swift */,
 				4E01361926FA24600071F31D /* MySettingViewModel.swift */,
 				4EC8C3D6273C0F5500B9B3F9 /* TeamTopazViewController.swift */,
+				4EC8C3D8273C531F00B9B3F9 /* BlockUserListViewController.swift */,
+				4EC8C3DE273C5E4800B9B3F9 /* BlockUserListViewModel.swift */,
+				4EC8C3DA273C577A00B9B3F9 /* BlockUserListTableViewCell.swift */,
+				4EC8C3DB273C577A00B9B3F9 /* BlockUserListTableViewCell.xib */,
 			);
 			path = TravelNote;
 			sourceTree = "<group>";
@@ -802,6 +814,7 @@
 				4E8A02CC27295F1400E3AB63 /* WaterfallSoundEffect.mp3 in Resources */,
 				4E8A02C2272942B100E3AB63 /* Music.json in Resources */,
 				4E8A02D227295F1400E3AB63 /* DowntownSoundEffect.mp3 in Resources */,
+				4EC8C3DD273C577A00B9B3F9 /* BlockUserListTableViewCell.xib in Resources */,
 				4E8A02D127295F1400E3AB63 /* WindSoundEffect.mp3 in Resources */,
 				4E8A58CE270584A900C8A646 /* FirstOnboarding.json in Resources */,
 				4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */,
@@ -900,7 +913,9 @@
 				4E13D0362709A06700CAC6F4 /* LuggageCollectionViewCell.swift in Sources */,
 				4E1C2E582716C72200B97EB0 /* CountryModel.swift in Sources */,
 				4ECFB6E52725EFF100890C04 /* MusicModel.swift in Sources */,
+				4EC8C3D9273C531F00B9B3F9 /* BlockUserListViewController.swift in Sources */,
 				4E0FAEAF26C0EE99003D80E3 /* WelcomeViewController.swift in Sources */,
+				4EC8C3DF273C5E4800B9B3F9 /* BlockUserListViewModel.swift in Sources */,
 				4ECFB6CE272045EC00890C04 /* EachCountryViewModel.swift in Sources */,
 				4E9B9BC126EE673200ABCE87 /* CountryAddViewController.swift in Sources */,
 				4EE9A3B326F6379500395B2F /* CommunityViewModel.swift in Sources */,
@@ -917,6 +932,7 @@
 				4ECFB6D327205A5700890C04 /* EachDefaultTableViewCell.swift in Sources */,
 				4ECFB6DB2725DBD000890C04 /* MusicPageViewController.swift in Sources */,
 				4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */,
+				4EC8C3DC273C577A00B9B3F9 /* BlockUserListTableViewCell.swift in Sources */,
 				4EC8C3D5273A932400B9B3F9 /* PlaceRecommendViewController.swift in Sources */,
 				4E7FD104271EAB3B00867F16 /* ReportViewModel.swift in Sources */,
 				4ECFB6CB2720445E00890C04 /* EachArticleTableViewCell.swift in Sources */,
@@ -1092,7 +1108,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = topaz/topaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = B44YL23J9X;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = topaz/Info.plist;
@@ -1117,7 +1133,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = topaz/topaz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = B44YL23J9X;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = topaz/Info.plist;

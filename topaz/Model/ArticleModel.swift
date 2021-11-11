@@ -14,7 +14,7 @@ struct Article {
     let writtenDate: Double
     let strWrittenDate: String
     let country: [String]
-    let title: String
+    var title: String
     let mainText: String
     let imageText: [String]
     let imageName: [Int]

@@ -11,6 +11,7 @@ import Firebase
 class ArticleDetailViewModel {
     let storage = Storage.storage()
     let database = Firestore.firestore()
+    let userdefault = UserDefaults.standard
     var email = UserDefaults.standard.string(forKey: "email")!
     
     func getArticle(articleID: String, articleHandler: @escaping (Article) -> ()) {
@@ -119,7 +120,7 @@ class ArticleDetailViewModel {
         let imageRef = self.storage.reference(withPath: "Articles/\(articleID)/\(index).png")
         imageRef.delete { error in
             if let error = error {
-                print("글 이미지 삭제 에러 : \(error)")
+                print("글 이미지 삭제 에러: \(error)")
             } else {
                 print("deleteExperienceImage Success")
             }
@@ -135,10 +136,26 @@ class ArticleDetailViewModel {
         let collection = database.collection("Articles")
         collection.document(articleID).delete { error in
             if let error = error {
-                print("글 삭제 에러 : \(error)")
+                print("글 삭제 에러: \(error)")
             } else {
                 print("deleteArticle Success")
                 deleteArticleHandler()
+            }
+        }
+    }
+    
+    func blockUser(autherEmail: String, blockUserHandler: @escaping () -> ()) {
+        let collection = database.collection("UserDataBase")
+        collection.document(email).updateData(["blockedUsers": FieldValue.arrayUnion([autherEmail])]) { error in
+            if let error = error {
+                print("유저 차단 에러: \(error)")
+            } else {
+                print("blockUser Success")
+                // also add in Userdefault
+                var blockedUsers = self.userdefault.stringArray(forKey: "blockedUsers")!
+                blockedUsers.append(autherEmail)
+                self.userdefault.set(blockedUsers, forKey: "blockedUsers")
+                blockUserHandler()
             }
         }
     }

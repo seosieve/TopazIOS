@@ -17,7 +17,7 @@ class TravelNoteViewModel {
         let collection = database.collection("UserDataBase")
         collection.document(email).getDocument { document, error in
             if let error = error {
-                print("유저 불러오기 에러 : \(error)")
+                print("유저 불러오기 에러: \(error)")
             } else {
                 if let document = document {
                     let imageUrl = document.get("imageUrl") as! String
@@ -32,7 +32,7 @@ class TravelNoteViewModel {
         let collection = database.collection("UserDataBase")
         collection.document(email).getDocument { document, error in
             if let error = error {
-                print("유저 불러오기 에러 : \(error)")
+                print("유저 불러오기 에러: \(error)")
             } else {
                 if let document = document {
                     let albumUrl = document.get("albumUrl") as! [String]
@@ -49,7 +49,7 @@ class TravelNoteViewModel {
         let collection = database.collection("UserDataBase")
         collection.document(email).getDocument { document, error in
             if let error = error {
-                print("유저 불러오기 에러 : \(error)")
+                print("유저 불러오기 에러: \(error)")
             } else {
                 if let document = document {
                     let ticketName = document.get("ticketName") as! [String]

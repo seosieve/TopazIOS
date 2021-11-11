@@ -70,9 +70,17 @@ class CommunityViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let blockedUsers =  UserDefaults.standard.stringArray(forKey: "blockedUsers")!
+        viewModel.getCollectionArticle { articleArr in
+            if articleArr.count != 0 {
+                self.collectionArticleArr = articleArr
+                self.luggageCollectionView.reloadData()
+            }
+        }
         let sortMethod = selectedSortMethod.currentTitle!
         viewModel.getTableArticle(sortMethod: sortMethod) { articleArr in
             self.tableArticleArr = articleArr
+            self.tableArticleArr = self.tableArticleArr.filter{!blockedUsers.contains($0.autherEmail)}
             self.fullArticleTableView.reloadData()
             self.makeTableViewHeight()
         }
@@ -92,6 +100,7 @@ class CommunityViewController: UIViewController {
     }
     
     @IBAction func sortMethodPressed(_ sender: UIButton) {
+        let blockedUsers =  UserDefaults.standard.stringArray(forKey: "blockedUsers")!
         swipeSortConstraintY.constant = -105
         UIView.animate(withDuration: 0.4) {
             self.view.layoutIfNeeded()
@@ -103,6 +112,7 @@ class CommunityViewController: UIViewController {
         let sortMethod = selectedSortMethod.currentTitle!
         viewModel.getTableArticle(sortMethod: sortMethod) { articleArr in
             self.tableArticleArr = articleArr
+            self.tableArticleArr = self.tableArticleArr.filter{!blockedUsers.contains($0.autherEmail)}
             self.fullArticleTableView.reloadData()
             DispatchQueue.main.async {
                 self.makeTableViewHeight()
@@ -237,14 +247,23 @@ extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDat
             makeBorder(target: cell.countryImage, radius: 6, color: "Gray6", isFilled: false)
             return cell
         } else {
+            let blockedUsers =  UserDefaults.standard.stringArray(forKey: "blockedUsers")!
             let count = collectionArticleArr.count == 0 ? 1 : collectionArticleArr.count
             let luggage = luggageImgArr[indexPath.row % luggageImgArr.count]
             let collectionArticle = collectionArticleArr[indexPath.row % count]
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "luggageCell", for: indexPath) as! LuggageCollectionViewCell
             cell.luggageImage.image = luggage
-            cell.luggageTag.text = collectionArticle.country[0]
-            cell.luggageAuther.text = collectionArticle.auther
-            cell.luggageTitle.text = collectionArticle.title
+            if blockedUsers.contains(collectionArticle.autherEmail) {
+                cell.luggageTag.text = ""
+                cell.luggageAuther.text = ""
+                cell.luggageTitle.text = "차단된 사용자의 게시글이에요."
+                cell.isUserInteractionEnabled = false
+            } else {
+                cell.luggageTag.text = collectionArticle.country[0]
+                cell.luggageAuther.text = collectionArticle.auther
+                cell.luggageTitle.text = collectionArticle.title
+                cell.isUserInteractionEnabled = true
+            }
             return cell
         }
     }

@@ -8,6 +8,7 @@
 import UIKit
 
 class EachDefaultTableViewCell: UITableViewCell {
+    @IBOutlet weak var defaultImage: UIImageView!
     @IBOutlet weak var defaultText: UILabel!
     
     override func awakeFromNib() {

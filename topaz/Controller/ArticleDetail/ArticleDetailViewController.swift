@@ -101,7 +101,7 @@ class ArticleDetailViewController: UIViewController {
         if userdefault.string(forKey: "nickname") == article?.auther {
             deleteAndModifyAlert()
         } else {
-            reportAlert()
+            blockAndReportAlert()
         }
     }
     
@@ -251,17 +251,56 @@ extension ArticleDetailViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func reportAlert() {
+    func blockAndReportAlert() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let block = UIAlertAction(title: "차단하기", style: .default) { action in
+            let blockedUsers = self.userdefault.stringArray(forKey: "blockedUsers")!
+            if blockedUsers.count < 10 {
+                self.blockConfirmAlert()
+            } else {
+                self.popUpToast()
+            }
+            
+        }
         let report = UIAlertAction(title: "신고하기", style: .default) { action in
             self.performSegue(withIdentifier: "goToReport", sender: action)
         }
         let cancle = UIAlertAction(title: "취소", style: .cancel)
+        block.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
         report.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
         cancle.setValue(UIColor(named: "Gray2"), forKey: "titleTextColor")
+        alert.addAction(block)
         alert.addAction(report)
         alert.addAction(cancle)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func blockConfirmAlert() {
+        let alert = UIAlertController(title: "정말 유저를 차단하시겠어요?", message: "유저를 차단하면 해당 유저의 글이 더이상 보이지 않아요!", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let block = UIAlertAction(title: "차단", style: .default) { action in
+            let autherEmail = self.article!.autherEmail
+            self.viewModel.blockUser(autherEmail: autherEmail) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        alert.addAction(cancel)
+        alert.addAction(block)
+        block.setValue(UIColor(named: "WarningRed"), forKey: "titleTextColor")
+        alert.view.tintColor = UIColor(named: "Gray2")
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func popUpToast() {
+        // Make Custom Alert Toast
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.setValue(NSAttributedString(string: "차단은 최대 10명까지 가능합니다.", attributes: [NSAttributedString.Key.font : UIFont(name: "NotoSansKR-Regular", size: 12)!,NSAttributedString.Key.foregroundColor : UIColor(named: "White")!]), forKey: "attributedTitle")
+        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        present(alert, animated: true)
+        let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when){
+            alert.dismiss(animated: true, completion: nil)
+        }
     }
     
     func setMusic(isOn: Bool = true) {

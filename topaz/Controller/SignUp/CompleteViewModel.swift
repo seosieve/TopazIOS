@@ -29,10 +29,12 @@ class CompleteViewModel {
                 let nickname = document?.get("nickname") as! String
                 let introduce = document?.get("introduce") as! String
                 let collectibles = document?.get("collectibles") as! [String]
+                let blockedUsers = document?.get("blockedUsers") as! [String]
                 userdefault.set(email, forKey: "email")
                 userdefault.set(nickname, forKey: "nickname")
                 userdefault.set(introduce, forKey: "introduce")
                 userdefault.set(collectibles, forKey: "collectibles")
+                userdefault.set(blockedUsers, forKey: "blockedUsers")
                 userdefaultHandler()
             }
         }
