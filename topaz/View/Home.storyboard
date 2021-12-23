@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -72,23 +72,73 @@
                                     <action selector="placeRecommendButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="G73-jG-dv8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BcW-jc-u81">
+                                <rect key="frame" x="158.5" y="704" width="97" height="40"/>
+                                <color key="backgroundColor" name="MintBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="TiP-kC-C67"/>
+                                    <constraint firstAttribute="height" constant="40" id="ffh-xr-Cgo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="아시아">
+                                    <color key="titleColor" name="White"/>
+                                </state>
+                                <connections>
+                                    <action selector="continentButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Q3C-2J-nIr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo7-1C-7rp">
+                                <rect key="frame" x="116.5" y="708" width="32" height="32"/>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="Kmt-Ep-44d"/>
+                                    <constraint firstAttribute="height" constant="32" id="TEy-aN-YBP"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="goNextButton"/>
+                                <connections>
+                                    <action selector="goBackButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bNO-vl-O8b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atn-tu-LWf">
+                                <rect key="frame" x="265.5" y="708" width="32" height="32"/>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="P2o-MA-P10"/>
+                                    <constraint firstAttribute="height" constant="32" id="bdQ-ev-dwg"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="goNextButton"/>
+                                <connections>
+                                    <action selector="goForwardButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hMd-xw-h7r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="White"/>
                         <constraints>
                             <constraint firstItem="Vay-eJ-DrX" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" constant="-100" id="0eN-jg-VcU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="top" secondItem="uAr-RB-yDo" secondAttribute="bottom" id="2aj-Gk-JUF"/>
+                            <constraint firstItem="BcW-jc-u81" firstAttribute="leading" secondItem="Mo7-1C-7rp" secondAttribute="trailing" constant="10" id="5zz-ow-t8l"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="BcW-jc-u81" secondAttribute="bottom" constant="20" id="6Tq-hP-eAu"/>
                             <constraint firstItem="uAr-RB-yDo" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="8U5-hL-w82"/>
                             <constraint firstItem="uAr-RB-yDo" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="9MH-tE-BII"/>
                             <constraint firstItem="Vay-eJ-DrX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="AXE-gH-G65"/>
+                            <constraint firstItem="atn-tu-LWf" firstAttribute="centerY" secondItem="BcW-jc-u81" secondAttribute="centerY" id="Evs-Zz-x3a"/>
                             <constraint firstItem="ttP-TL-bIa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Fa7-Pn-GEc"/>
                             <constraint firstItem="ttP-TL-bIa" firstAttribute="bottom" secondItem="5EZ-qb-Rvc" secondAttribute="bottom" id="Fdb-pO-ePE"/>
+                            <constraint firstItem="atn-tu-LWf" firstAttribute="leading" secondItem="BcW-jc-u81" secondAttribute="trailing" constant="10" id="IXm-Kk-6qv"/>
+                            <constraint firstItem="BcW-jc-u81" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Oxw-Ll-f2n"/>
                             <constraint firstItem="PP4-Sc-DDT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="24" id="R4b-El-TMy"/>
                             <constraint firstItem="CGk-rj-anW" firstAttribute="top" secondItem="PP4-Sc-DDT" secondAttribute="bottom" constant="16" id="U5s-BD-nrx"/>
                             <constraint firstItem="Y68-KY-y6h" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="W7b-oe-z7a"/>
                             <constraint firstItem="ttP-TL-bIa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Zph-5n-JdQ"/>
                             <constraint firstItem="Vay-eJ-DrX" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="bN6-0B-NBA"/>
                             <constraint firstItem="Vay-eJ-DrX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="g0q-jr-awd"/>
+                            <constraint firstItem="Mo7-1C-7rp" firstAttribute="centerY" secondItem="BcW-jc-u81" secondAttribute="centerY" id="gMG-T8-qQs"/>
                             <constraint firstItem="uAr-RB-yDo" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="j2a-yx-MtM"/>
                             <constraint firstItem="CGk-rj-anW" firstAttribute="leading" secondItem="PP4-Sc-DDT" secondAttribute="leading" id="nIQ-Ad-bMJ"/>
                             <constraint firstItem="PP4-Sc-DDT" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="sjP-LJ-yqv"/>
@@ -110,11 +160,15 @@
                         <outlet property="backgroundImage" destination="Vay-eJ-DrX" id="1mb-1u-1uu"/>
                         <outlet property="collectiblesCompleteButton" destination="d38-yq-v98" id="P1Z-nR-thA"/>
                         <outlet property="collectiblesContainer" destination="TMS-Mz-Bs8" id="B1S-DM-ZXb"/>
+                        <outlet property="continentButton" destination="BcW-jc-u81" id="ZTZ-pP-fTS"/>
+                        <outlet property="goBackButton" destination="Mo7-1C-7rp" id="cqF-AI-Hhn"/>
+                        <outlet property="goForwardButton" destination="atn-tu-LWf" id="usS-Tf-7xc"/>
                         <outlet property="nicknameConstraintW" destination="ju3-zA-OYO" id="CvJ-Vm-QCY"/>
                         <outlet property="placeRecommendButton" destination="CGk-rj-anW" id="v30-gC-rkw"/>
                         <outlet property="sceneView" destination="ttP-TL-bIa" id="8XS-wF-PyV"/>
                         <outlet property="upperBackgroundView" destination="uAr-RB-yDo" id="poP-jb-94G"/>
                         <segue destination="pJf-6R-qoh" kind="presentation" identifier="goToPlaceRecommend" id="lti-uB-Crv"/>
+                        <segue destination="jL6-Uf-So5" kind="show" identifier="goToTicketing" id="fti-mJ-mBE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -189,7 +243,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VUY-Gu-lzf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 추천 여행지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gms-V2-IcG">
                                         <rect key="frame" x="28" y="16" width="135" height="25"/>
@@ -409,14 +463,14 @@
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="태국" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mch-uH-8GD">
-                                        <rect key="frame" x="24" y="510" width="31.5" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="필리핀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mch-uH-8GD">
+                                        <rect key="frame" x="24" y="510" width="47" height="25"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="17"/>
                                         <color key="textColor" name="Gray1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thailand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODy-4y-zN6">
-                                        <rect key="frame" x="63.5" y="510" width="72" height="25"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="philippines" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODy-4y-zN6">
+                                        <rect key="frame" x="79" y="510" width="91" height="25"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="17"/>
                                         <color key="textColor" name="Gray4"/>
                                         <nil key="highlightedColor"/>
@@ -424,7 +478,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3e-Ts-h8G">
                                         <rect key="frame" x="24" y="551" width="366" height="64.5"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="열대 해변, 숨겨진 사원, 지역 시장과 흥겨운 리듬이 터지는 클럽 태국의 푸켓은 낮에는 여유롭다가 밤에는 활기를 되찾는 사람들을 유혹하는 섬입니다.">
+                                            <fragment content="서태평양에 있는 7000여개의 섬으로 이루어진 필리핀은 맑은 바다와 열대과일이 유명한 휴양지로 섬 중에 유명한 세부와 보라카이에서의 스노쿨링과 카약 등의 액티비티는 관광객들에게 설렘을 줍니다.">
                                                 <attributes>
                                                     <color key="NSColor" name="Gray1"/>
                                                     <font key="NSFont" size="12" name="NotoSansKR-Regular"/>
@@ -434,20 +488,41 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKn-wR-AHK">
+                                        <rect key="frame" x="20" y="728" width="374" height="60"/>
+                                        <color key="backgroundColor" name="Gray6"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="HXq-Qx-fIG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="티켓 예매하기">
+                                            <color key="titleColor" name="White"/>
+                                        </state>
+                                        <state key="disabled" title="아직 준비중인 나라에요.">
+                                            <color key="titleColor" name="Gray4"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ticketingButtonPressed:" destination="pJf-6R-qoh" eventType="touchUpInside" id="vZq-va-Tic"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="White"/>
                                 <constraints>
                                     <constraint firstItem="ODy-4y-zN6" firstAttribute="leading" secondItem="Mch-uH-8GD" secondAttribute="trailing" constant="8" id="8Bo-XB-ACa"/>
+                                    <constraint firstItem="lKn-wR-AHK" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" constant="20" id="FJd-nJ-rsr"/>
                                     <constraint firstItem="gms-V2-IcG" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" constant="28" id="FmE-z0-YPP"/>
                                     <constraint firstItem="t3e-Ts-h8G" firstAttribute="centerX" secondItem="VUY-Gu-lzf" secondAttribute="centerX" id="Gef-M7-h9F"/>
                                     <constraint firstItem="t3e-Ts-h8G" firstAttribute="top" secondItem="ODy-4y-zN6" secondAttribute="bottom" constant="16" id="KIJ-Oi-K7i"/>
                                     <constraint firstAttribute="trailing" secondItem="Vzw-tI-NSO" secondAttribute="trailing" constant="20" id="KV6-Vz-VQp"/>
                                     <constraint firstItem="ODy-4y-zN6" firstAttribute="top" secondItem="Mch-uH-8GD" secondAttribute="top" id="RDg-lO-0Yp"/>
                                     <constraint firstItem="Vzw-tI-NSO" firstAttribute="top" secondItem="VUY-Gu-lzf" secondAttribute="top" constant="14" id="TLa-Pu-zhc"/>
+                                    <constraint firstItem="lKn-wR-AHK" firstAttribute="centerX" secondItem="VUY-Gu-lzf" secondAttribute="centerX" id="UcH-zO-NEg"/>
                                     <constraint firstItem="Mch-uH-8GD" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" constant="24" id="XSR-Ox-ZSI"/>
                                     <constraint firstItem="Mch-uH-8GD" firstAttribute="top" secondItem="mxH-7C-mbJ" secondAttribute="bottom" constant="24" id="Ysx-xb-wxP"/>
                                     <constraint firstItem="wuw-S6-4j6" firstAttribute="top" secondItem="gms-V2-IcG" secondAttribute="bottom" constant="20" id="cQg-Pd-2VO"/>
                                     <constraint firstItem="mxH-7C-mbJ" firstAttribute="top" secondItem="wuw-S6-4j6" secondAttribute="bottom" constant="24" id="e9K-JC-HlK"/>
+                                    <constraint firstAttribute="bottom" secondItem="lKn-wR-AHK" secondAttribute="bottom" constant="20" id="fFO-Kn-Mew"/>
                                     <constraint firstItem="mxH-7C-mbJ" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" id="fys-3X-2UX"/>
                                     <constraint firstItem="t3e-Ts-h8G" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" constant="24" id="gA1-sA-goL"/>
                                     <constraint firstItem="gms-V2-IcG" firstAttribute="top" secondItem="VUY-Gu-lzf" secondAttribute="top" constant="16" id="gtj-nG-qJq"/>
@@ -455,14 +530,22 @@
                                     <constraint firstItem="wuw-S6-4j6" firstAttribute="leading" secondItem="VUY-Gu-lzf" secondAttribute="leading" constant="20" id="uEg-Np-fEh"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaf-Cy-p9T">
+                                <rect key="frame" x="0.0" y="808" width="414" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wtd-X4-iEb"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="kaf-Cy-p9T" firstAttribute="top" secondItem="VUY-Gu-lzf" secondAttribute="bottom" id="AuG-F0-kdm"/>
+                            <constraint firstItem="kaf-Cy-p9T" firstAttribute="leading" secondItem="jcN-7T-6xy" secondAttribute="leading" id="AuK-Jh-ifu"/>
+                            <constraint firstAttribute="bottom" secondItem="kaf-Cy-p9T" secondAttribute="bottom" id="Cxw-EX-NLy"/>
                             <constraint firstItem="VUY-Gu-lzf" firstAttribute="top" secondItem="wtd-X4-iEb" secondAttribute="top" id="ESb-4s-dvV"/>
+                            <constraint firstItem="kaf-Cy-p9T" firstAttribute="centerX" secondItem="jcN-7T-6xy" secondAttribute="centerX" id="IVd-A4-ggP"/>
                             <constraint firstItem="VUY-Gu-lzf" firstAttribute="leading" secondItem="jcN-7T-6xy" secondAttribute="leading" id="Jyb-gy-XfM"/>
                             <constraint firstItem="VUY-Gu-lzf" firstAttribute="centerX" secondItem="jcN-7T-6xy" secondAttribute="centerX" id="P4E-XY-Oaz"/>
-                            <constraint firstAttribute="bottom" secondItem="VUY-Gu-lzf" secondAttribute="bottom" id="xBr-BS-ZQb"/>
+                            <constraint firstItem="wtd-X4-iEb" firstAttribute="bottom" secondItem="VUY-Gu-lzf" secondAttribute="bottom" id="xBr-BS-ZQb"/>
                         </constraints>
                     </view>
                     <connections>
@@ -472,6 +555,7 @@
                         <outlet property="recommendCountryImageConstraintY" destination="bB4-ys-AtZ" id="RHX-un-Yht"/>
                         <outlet property="recommendCountryIntroduce" destination="t3e-Ts-h8G" id="v7E-qa-KCB"/>
                         <outlet property="recommendCountryName" destination="Mch-uH-8GD" id="LR0-Rf-y6W"/>
+                        <outlet property="ticketingButton" destination="lKn-wR-AHK" id="emw-Vo-xpj"/>
                         <outletCollection property="placeButton" destination="dna-uX-JRL" collectionClass="NSMutableArray" id="8zb-PF-w94"/>
                         <outletCollection property="placeButton" destination="8B2-r6-e2a" collectionClass="NSMutableArray" id="guL-1W-R5K"/>
                         <outletCollection property="placeButton" destination="jd1-nI-mDQ" collectionClass="NSMutableArray" id="a3B-AS-v6E"/>
@@ -486,7 +570,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0W-vJ-LmP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4107.2463768115949" y="115.84821428571428"/>
+            <point key="canvasLocation" x="3387" y="-590"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ljb-TS-O5K">
+            <objects>
+                <viewController id="jL6-Uf-So5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4jV-ah-Q2D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="EgE-Ti-8qc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="epb-iW-st7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="voE-tY-tIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4259" y="116"/>
         </scene>
         <!--TravelNoteVC-->
         <scene sceneID="qIz-Ob-z0v">
@@ -570,6 +670,7 @@
         <image name="Vacation-OFF" width="56" height="56"/>
         <image name="Vacation-ON" width="56" height="56"/>
         <image name="WelcomeSnowBall" width="318" height="318"/>
+        <image name="goNextButton" width="8" height="11"/>
         <namedColor name="Gray1">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -581,6 +682,9 @@
         </namedColor>
         <namedColor name="Gray4">
             <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Gray6">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Gray7">
             <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

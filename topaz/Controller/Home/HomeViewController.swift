@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SceneKit
+import SwiftUI
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var upperBackgroundView: UIView!
@@ -16,15 +17,20 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var IceBreakingLabel: UILabel!
     @IBOutlet weak var nicknameConstraintW: NSLayoutConstraint!
     @IBOutlet weak var placeRecommendButton: UIButton!
+    @IBOutlet weak var continentButton: UIButton!
+    @IBOutlet weak var goBackButton: UIButton!
+    @IBOutlet weak var goForwardButton: UIButton!
     @IBOutlet weak var sceneView: SCNView!
     
     @IBOutlet var collectiblesContainer: UIView!
     @IBOutlet weak var collectiblesCompleteButton: UIButton!
     
     let userdefault = UserDefaults.standard
+    let continent = Continent()
+    var continentCount = 0
     let viewModel = HomeViewModel()
     let scene = SCNScene()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
@@ -32,6 +38,13 @@ class HomeViewController: UIViewController {
         makeEarthScene()
         makeCircle(target: placeRecommendButton, color: "MintBlue", width: 1)
         makeShadow(target: placeRecommendButton, radius: 18)
+        makeCircle(target: continentButton, color: "White", width: 2)
+        makeShadow(target: continentButton, radius: 20, opacity: 0.8)
+        goForwardButton.transform = goForwardButton.transform.rotated(by: .pi)
+        makeCircle(target: goBackButton)
+        makeShadow(target: goBackButton, radius: 16, opacity: 0.8)
+        makeCircle(target: goForwardButton)
+        makeShadow(target: goForwardButton, radius: 16, opacity: 0.8)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,11 +59,52 @@ class HomeViewController: UIViewController {
         }
     }
     
-    
+    @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+        let point = gestureRecognize.location(in: sceneView)
+        let hitResults = sceneView.hitTest(point, options: [:])
+        if hitResults.count > 0 {
+            let result = hitResults[0]
+            let continentTitle = result.node.geometry!.name!
+            if continent.continentName.contains(continentTitle) {
+                continentButton.setTitle(continentTitle, for: .normal)
+                continentCount = continent.continentName.firstIndex(of: continentTitle)!
+                print(continentTitle)
+                print(continentCount)
+            }
+            
+        }
+    }
     
     @IBAction func placeRecommendButtonPressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToPlaceRecommend", sender: sender)
     }
+    
+    @IBAction func continentButtonPressed(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func goBackButtonPressed(_ sender: UIButton) {
+        if continentCount == 0 {
+            continentCount = 5
+        } else {
+            continentCount -= 1
+        }
+        let continentTitle = continent.continentName[continentCount]
+        continentButton.setTitle(continentTitle, for: .normal)
+    }
+    
+    @IBAction func goForwardButtonPressed(_ sender: UIButton) {
+        if continentCount == 5 {
+            continentCount = 0
+        } else {
+            continentCount += 1
+        }
+        let continentTitle = continent.continentName[continentCount]
+        continentButton.setTitle(continentTitle, for: .normal)
+    }
+    
+    
+    
     
     @IBAction func collectiblesCompleteButtonPressed(_ sender: UIButton) {
         viewModel.addCollectibles()
@@ -177,6 +231,7 @@ extension HomeViewController {
         sceneView.cameraControlConfiguration.panSensitivity = 0.15
         sceneView.cameraControlConfiguration.rotationSensitivity = 0.15
         blockUserGesture()
+        addTapRecognizer()
         sceneView.alpha = 0
         backgroundImage.alpha = 0
         UIView.animate(withDuration: 1.5) {
@@ -188,6 +243,11 @@ extension HomeViewController {
     func blockUserGesture() {
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
         sceneView.addGestureRecognizer(pinch)
+    }
+    
+    func addTapRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        sceneView.addGestureRecognizer(tap)
     }
 }
 

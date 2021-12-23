@@ -10,6 +10,12 @@ import SceneKit
 class EarthNode: SCNNode {
     override init() {
         super.init()
+        let earthBound = SCNScene(named: "Assets.scnassets/earth_isolate.scn")!
+        let earthBoundArr = earthBound.rootNode.childNodes
+        earthBoundArr.forEach { childNode in
+            self.addChildNode(childNode as SCNNode)
+        }
+        
         let earth = SCNScene(named: "Assets.scnassets/Earth.scn")!
         let earthArr = earth.rootNode.childNodes
         earthArr.forEach { childNode in
