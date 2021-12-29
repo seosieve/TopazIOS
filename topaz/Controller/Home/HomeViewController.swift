@@ -12,9 +12,11 @@ import SceneKit
 import SwiftUI
 
 class HomeViewController: UIViewController {
+    @IBOutlet weak var mainTopazLogo: UIBarButtonItem!
     @IBOutlet weak var upperBackgroundView: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
-    @IBOutlet weak var IceBreakingLabel: UILabel!
+    @IBOutlet weak var iceBreakingLabel: UILabel!
+    @IBOutlet weak var iceBreakingLabelBorder: UIView!
     @IBOutlet weak var nicknameConstraintW: NSLayoutConstraint!
     @IBOutlet weak var placeRecommendButton: UIButton!
     @IBOutlet weak var continentButton: UIButton!
@@ -27,6 +29,7 @@ class HomeViewController: UIViewController {
     
     let userdefault = UserDefaults.standard
     let continent = Continent()
+    let time = Time()
     var continentCount = 0
     let viewModel = HomeViewModel()
     let scene = SCNScene()
@@ -35,8 +38,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
         addCollectiblesViewIfNeeded()
-        makeEarthScene()
-        makeCircle(target: placeRecommendButton, color: "MintBlue", width: 1)
+        let currentTime = time.convertTime(detectCurrentTime())
+        makeViewByTime(currentTime)
+        makeEarthScene(currentTime)
         makeShadow(target: placeRecommendButton, radius: 18)
         makeCircle(target: continentButton, color: "White", width: 2)
         makeShadow(target: continentButton, radius: 20, opacity: 0.8)
@@ -51,6 +55,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         // 닉네임 변경하면 바로 바꾸기 위해 viewWillAppear에 배치
         makeNicknameLabel()
+        
     }
     
     @objc func pinchGesture(_ sender: UIPinchGestureRecognizer) {
@@ -69,7 +74,6 @@ class HomeViewController: UIViewController {
                 continentButton.setTitle(continentTitle, for: .normal)
                 continentCount = continent.continentName.firstIndex(of: continentTitle)!
                 print(continentTitle)
-                print(continentCount)
             }
             
         }
@@ -80,7 +84,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func continentButtonPressed(_ sender: UIButton) {
-        
+        self.performSegue(withIdentifier: "goToContinent", sender: sender)
     }
     
     @IBAction func goBackButtonPressed(_ sender: UIButton) {
@@ -103,9 +107,6 @@ class HomeViewController: UIViewController {
         continentButton.setTitle(continentTitle, for: .normal)
     }
     
-    
-    
-    
     @IBAction func collectiblesCompleteButtonPressed(_ sender: UIButton) {
         viewModel.addCollectibles()
         guard let dimView = self.tabBarController?.view.viewWithTag(100) else { return }
@@ -113,6 +114,13 @@ class HomeViewController: UIViewController {
             dimView.removeFromSuperview()
             self.collectiblesContainer.removeFromSuperview()
         }, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToContinent" {
+            let destinationVC = segue.destination as! ContinentRecommendViewController
+            destinationVC.continent = continentButton.currentTitle!
+        }
     }
 }
 
@@ -148,7 +156,7 @@ extension HomeViewController {
     
     func makeNicknameLabel() {
         let nickname = userdefault.string(forKey: "nickname") ?? ""
-        IceBreakingLabel.text = "\(nickname)님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
+        iceBreakingLabel.text = "\(nickname)님, 꼭 멀리가야만\n좋은 여행은 아니에요!"
         addMultipleFonts(nickname)
         let nicknameCount = nickname.count
         switch nicknameCount {
@@ -167,12 +175,55 @@ extension HomeViewController {
     }
     
     func addMultipleFonts(_ range: String) {
-        let attributedString = NSMutableAttributedString(string: IceBreakingLabel.text!)
-        attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 22)!, range: (IceBreakingLabel.text! as NSString).range(of: range))
-        IceBreakingLabel.attributedText = attributedString
+        let attributedString = NSMutableAttributedString(string: iceBreakingLabel.text!)
+        attributedString.addAttribute(.font, value: UIFont(name: "NotoSansKR-Bold", size: 22)!, range: (iceBreakingLabel.text! as NSString).range(of: range))
+        iceBreakingLabel.attributedText = attributedString
     }
     
-    func makeEarthScene() {
+    func detectCurrentTime() -> Int {
+        let unixTimestamp = NSDate().timeIntervalSince1970
+        let date = Date(timeIntervalSince1970: unixTimestamp)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+9")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "ss"
+        let strDate = dateFormatter.string(from: date)
+        return Int(strDate)!
+    }
+    
+    func makeViewByTime(_ currentTime: String) {
+        switch currentTime {
+        case "Morning":
+            self.view.backgroundColor = UIColor(named: "White")
+            mainTopazLogo.image = UIImage(named: "TopazLogo-Home")
+            upperBackgroundView.backgroundColor = UIColor(named: "White")
+            backgroundImage.image = UIImage(named: "MainBackgroundImage-Morning")
+            iceBreakingLabel.textColor = UIColor(named: "Gray2")
+            iceBreakingLabelBorder.backgroundColor = UIColor(named: "LightMintBlue")
+            makeCircle(target: placeRecommendButton, color: "MintBlue", width: 1)
+            placeRecommendButton.setTitleColor(UIColor(named: "MintBlue"), for: .normal)
+        case "Evening":
+            self.view.backgroundColor = UIColor(named: "EveningOrange")
+            mainTopazLogo.image = UIImage(named: "TopazLogo-White")
+            upperBackgroundView.backgroundColor = UIColor(named: "EveningOrange")
+            backgroundImage.image = UIImage(named: "MainBackgroundImage-Evening")
+            iceBreakingLabel.textColor = UIColor(named: "White")
+            iceBreakingLabelBorder.backgroundColor = UIColor(named: "White")?.withAlphaComponent(0.3)
+            makeCircle(target: placeRecommendButton, color: "EveningOrange", width: 1)
+            placeRecommendButton.setTitleColor(UIColor(named: "EveningOrange"), for: .normal)
+        default:
+            self.view.backgroundColor = UIColor(named: "NightBlue")
+            mainTopazLogo.image = UIImage(named: "TopazLogo-White")
+            upperBackgroundView.backgroundColor = UIColor(named: "NightBlue")
+            backgroundImage.image = UIImage(named: "MainBackgroundImage-Night")
+            iceBreakingLabel.textColor = UIColor(named: "White")
+            iceBreakingLabelBorder.backgroundColor = UIColor(named: "MintBlue")?.withAlphaComponent(0.3)
+            makeCircle(target: placeRecommendButton, color: "NightBlue", width: 1)
+            placeRecommendButton.setTitleColor(UIColor(named: "NightBlue"), for: .normal)
+        }
+    }
+    
+    func makeEarthScene(_ currentTime: String) {
         let earthNode = EarthNode()
         earthNode.position = SCNVector3(x: 0, y: 0, z: 0)
         earthNode.name = "earth"
@@ -221,7 +272,17 @@ extension HomeViewController {
         colorLightNode.light = SCNLight()
         colorLightNode.light?.type = .omni
         colorLightNode.light?.intensity = 100
-        colorLightNode.light?.color = UIColor(named: "MintBlue")!
+        switch currentTime {
+        case "Morning":
+            colorLightNode.light?.color = UIColor(named: "MintBlue")!
+        case "Evening":
+            colorLightNode.light?.color = UIColor(named: "WarningRed")!
+        default:
+            colorLightNode.light?.color = UIColor(named: "MintBlue")!
+            colorLightNode.light?.intensity = 200
+            mainLightNode2.removeFromParentNode()
+            mainLightNode1.removeFromParentNode()
+        }
         colorLightNode.position = SCNVector3(x: -5, y: 5, z: 1)
         scene.rootNode.addChildNode(colorLightNode)
     

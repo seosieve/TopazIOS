@@ -156,19 +156,22 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="IceBreakingLabel" destination="PP4-Sc-DDT" id="CMd-i1-Aqd"/>
                         <outlet property="backgroundImage" destination="Vay-eJ-DrX" id="1mb-1u-1uu"/>
                         <outlet property="collectiblesCompleteButton" destination="d38-yq-v98" id="P1Z-nR-thA"/>
                         <outlet property="collectiblesContainer" destination="TMS-Mz-Bs8" id="B1S-DM-ZXb"/>
                         <outlet property="continentButton" destination="BcW-jc-u81" id="ZTZ-pP-fTS"/>
                         <outlet property="goBackButton" destination="Mo7-1C-7rp" id="cqF-AI-Hhn"/>
                         <outlet property="goForwardButton" destination="atn-tu-LWf" id="usS-Tf-7xc"/>
+                        <outlet property="iceBreakingLabel" destination="PP4-Sc-DDT" id="CMd-i1-Aqd"/>
+                        <outlet property="iceBreakingLabelBorder" destination="Y68-KY-y6h" id="tgK-A8-Dam"/>
+                        <outlet property="mainTopazLogo" destination="tzM-Ra-vOb" id="v3N-DR-I4k"/>
                         <outlet property="nicknameConstraintW" destination="ju3-zA-OYO" id="CvJ-Vm-QCY"/>
                         <outlet property="placeRecommendButton" destination="CGk-rj-anW" id="v30-gC-rkw"/>
                         <outlet property="sceneView" destination="ttP-TL-bIa" id="8XS-wF-PyV"/>
                         <outlet property="upperBackgroundView" destination="uAr-RB-yDo" id="poP-jb-94G"/>
                         <segue destination="pJf-6R-qoh" kind="presentation" identifier="goToPlaceRecommend" id="lti-uB-Crv"/>
                         <segue destination="jL6-Uf-So5" kind="show" identifier="goToTicketing" id="fti-mJ-mBE"/>
+                        <segue destination="hx8-xu-rlL" kind="presentation" identifier="goToContinent" id="bb9-Ww-ODm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -232,7 +235,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="3387" y="116"/>
+            <point key="canvasLocation" x="3449" y="118"/>
         </scene>
         <!--Place Recommend View Controller-->
         <scene sceneID="oFn-Vo-LeW">
@@ -588,6 +591,94 @@
             </objects>
             <point key="canvasLocation" x="4259" y="116"/>
         </scene>
+        <!--Continent Recommend View Controller-->
+        <scene sceneID="Mzp-7d-Qpp">
+            <objects>
+                <viewController id="hx8-xu-rlL" customClass="ContinentRecommendViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="94E-dI-ltr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqH-iA-l6n">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어디로 떠나실래요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwv-Q0-Zj3">
+                                        <rect key="frame" x="28" y="16" width="139" height="25"/>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="17"/>
+                                        <color key="textColor" name="Gray2"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eip-Xb-ZLG">
+                                        <rect key="frame" x="350" y="14" width="40" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="B4B-dl-w3E"/>
+                                            <constraint firstAttribute="width" constant="40" id="vYS-TV-pmv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="취소">
+                                            <color key="titleColor" name="Gray3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancleButtonPressed:" destination="hx8-xu-rlL" eventType="touchUpInside" id="VR1-dp-6SV"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcE-e0-28O">
+                                        <rect key="frame" x="20" y="65" width="374" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1T-79-oXc">
+                                                <rect key="frame" x="8" y="4" width="24" height="24"/>
+                                                <color key="tintColor" name="Gray4"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="SearchButton"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="Gray6"/>
+                                        <constraints>
+                                            <constraint firstItem="A1T-79-oXc" firstAttribute="centerY" secondItem="vcE-e0-28O" secondAttribute="centerY" id="Bhj-Td-TzE"/>
+                                            <constraint firstItem="A1T-79-oXc" firstAttribute="leading" secondItem="vcE-e0-28O" secondAttribute="leading" constant="8" id="W6f-je-U0Z"/>
+                                            <constraint firstAttribute="height" constant="32" id="eIo-xy-oGf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="White"/>
+                                <constraints>
+                                    <constraint firstItem="xwv-Q0-Zj3" firstAttribute="top" secondItem="TqH-iA-l6n" secondAttribute="top" constant="16" id="1AB-au-ndx"/>
+                                    <constraint firstItem="vcE-e0-28O" firstAttribute="top" secondItem="xwv-Q0-Zj3" secondAttribute="bottom" constant="24" id="4pA-QU-p5o"/>
+                                    <constraint firstItem="xwv-Q0-Zj3" firstAttribute="leading" secondItem="TqH-iA-l6n" secondAttribute="leading" constant="28" id="LeW-uw-4AF"/>
+                                    <constraint firstItem="vcE-e0-28O" firstAttribute="leading" secondItem="TqH-iA-l6n" secondAttribute="leading" constant="20" id="XSV-4p-5Fz"/>
+                                    <constraint firstItem="Eip-Xb-ZLG" firstAttribute="top" secondItem="TqH-iA-l6n" secondAttribute="top" constant="14" id="o7B-Th-grl"/>
+                                    <constraint firstItem="vcE-e0-28O" firstAttribute="centerX" secondItem="TqH-iA-l6n" secondAttribute="centerX" id="ujT-bH-XhY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Eip-Xb-ZLG" secondAttribute="trailing" constant="24" id="zKp-AP-h3I"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBG-PJ-MAf">
+                                <rect key="frame" x="0.0" y="808" width="414" height="34"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3hg-QH-ryD"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TqH-iA-l6n" firstAttribute="top" secondItem="3hg-QH-ryD" secondAttribute="top" id="H95-TK-hAS"/>
+                            <constraint firstItem="TqH-iA-l6n" firstAttribute="bottom" secondItem="3hg-QH-ryD" secondAttribute="bottom" id="K4z-jP-2sL"/>
+                            <constraint firstItem="gBG-PJ-MAf" firstAttribute="centerX" secondItem="94E-dI-ltr" secondAttribute="centerX" id="LiL-YJ-9HU"/>
+                            <constraint firstItem="gBG-PJ-MAf" firstAttribute="top" secondItem="TqH-iA-l6n" secondAttribute="bottom" id="RpS-fD-Qcy"/>
+                            <constraint firstItem="gBG-PJ-MAf" firstAttribute="leading" secondItem="94E-dI-ltr" secondAttribute="leading" id="W1w-0G-rao"/>
+                            <constraint firstItem="TqH-iA-l6n" firstAttribute="centerX" secondItem="94E-dI-ltr" secondAttribute="centerX" id="aoV-9X-Gxc"/>
+                            <constraint firstAttribute="bottom" secondItem="gBG-PJ-MAf" secondAttribute="bottom" id="dLH-Cv-goQ"/>
+                            <constraint firstItem="TqH-iA-l6n" firstAttribute="leading" secondItem="94E-dI-ltr" secondAttribute="leading" id="flB-18-d3z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="continentRecommendViewContainer" destination="TqH-iA-l6n" id="I8K-Ui-9v6"/>
+                        <outlet property="continentTitleLabel" destination="xwv-Q0-Zj3" id="Dor-qO-2Zc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OyV-tw-3mi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3447.826086956522" y="817.63392857142856"/>
+        </scene>
         <!--TravelNoteVC-->
         <scene sceneID="qIz-Ob-z0v">
             <objects>
@@ -666,6 +757,7 @@
         <image name="Ocean-OFF" width="56" height="56"/>
         <image name="Ocean-ON" width="56" height="56"/>
         <image name="PhilippineImage" width="414" height="442"/>
+        <image name="SearchButton" width="24" height="24"/>
         <image name="TopazLogo-Home" width="110" height="24"/>
         <image name="Vacation-OFF" width="56" height="56"/>
         <image name="Vacation-ON" width="56" height="56"/>

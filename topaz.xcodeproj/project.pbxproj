@@ -39,6 +39,8 @@
 		4E1C2E5E2717240700B97EB0 /* CountryModifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C2E5D2717240700B97EB0 /* CountryModifyViewController.swift */; };
 		4E1C2E6127172FDF00B97EB0 /* CountryModifyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1C2E5F27172FDF00B97EB0 /* CountryModifyCollectionViewCell.swift */; };
 		4E1C2E6227172FDF00B97EB0 /* CountryModifyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E1C2E6027172FDF00B97EB0 /* CountryModifyCollectionViewCell.xib */; };
+		4E21A52E277C721A001548D7 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E21A52D277C721A001548D7 /* TimeModel.swift */; };
+		4E21A530277CA8E0001548D7 /* ContinentRecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E21A52F277CA8E0001548D7 /* ContinentRecommendViewController.swift */; };
 		4E32E05126CD16FF005682E5 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05026CD16FF005682E5 /* TermsViewController.swift */; };
 		4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E05226CD3085005682E5 /* CompleteViewController.swift */; };
 		4E32E07926DE35FB005682E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */; };
@@ -205,6 +207,8 @@
 		4E1C2E5D2717240700B97EB0 /* CountryModifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModifyViewController.swift; sourceTree = "<group>"; };
 		4E1C2E5F27172FDF00B97EB0 /* CountryModifyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModifyCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E1C2E6027172FDF00B97EB0 /* CountryModifyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryModifyCollectionViewCell.xib; sourceTree = "<group>"; };
+		4E21A52D277C721A001548D7 /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
+		4E21A52F277CA8E0001548D7 /* ContinentRecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentRecommendViewController.swift; sourceTree = "<group>"; };
 		4E32E05026CD16FF005682E5 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		4E32E05226CD3085005682E5 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
 		4E32E07826DE35FB005682E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -451,6 +455,7 @@
 				4E533F3326E060F500527FC2 /* HomeViewController.swift */,
 				4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */,
 				4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */,
+				4E21A52F277CA8E0001548D7 /* ContinentRecommendViewController.swift */,
 				4E533F3D26E09A8E00527FC2 /* TabBarWithCorners.swift */,
 				4EA4CF80270DB203001632D4 /* EarthNode.swift */,
 				4E93ED5E2738CECB00272A06 /* CloudsNode.swift */,
@@ -676,6 +681,7 @@
 				4E7FD0FF271D83DA00867F16 /* UserModel.swift */,
 				4E7FD10B271ED29600867F16 /* ReportModel.swift */,
 				4ECFB6E42725EFF100890C04 /* MusicModel.swift */,
+				4E21A52D277C721A001548D7 /* TimeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -898,6 +904,7 @@
 				4E93ED5F2738CECB00272A06 /* CloudsNode.swift in Sources */,
 				4E93ED5C2733BFAA00272A06 /* TravelAlbumCollectionViewCell.swift in Sources */,
 				4E7FD10C271ED29600867F16 /* ReportModel.swift in Sources */,
+				4E21A52E277C721A001548D7 /* TimeModel.swift in Sources */,
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
 				4E7FD100271D83DA00867F16 /* UserModel.swift in Sources */,
 				4ECFB6E22725EA3500890C04 /* MusicCollectionViewCell.swift in Sources */,
@@ -923,6 +930,7 @@
 				4E93ED472731B98700272A06 /* TravelPageViewController.swift in Sources */,
 				4E1C2E5427167F8000B97EB0 /* ModifyViewController.swift in Sources */,
 				4E32E07C26DE6147005682E5 /* EditAccountViewModel.swift in Sources */,
+				4E21A530277CA8E0001548D7 /* ContinentRecommendViewController.swift in Sources */,
 				4EDA40282700B57E00B5E80B /* WrittingAddImageTableViewCell.swift in Sources */,
 				4E1C2E5E2717240700B97EB0 /* CountryModifyViewController.swift in Sources */,
 				4E93ED4D2731B9E100272A06 /* TravelCollectiblesViewController.swift in Sources */,
