@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let winScene = (scene as? UIWindowScene) else { return }
         // RootViewController 설정
+        // SplashVC에 넘어가서 유저 로그인 상태 판별
         let SplashVC = UIStoryboard(name: "Splash", bundle: .main).instantiateViewController(withIdentifier: "SplashVC")
         let win = UIWindow(windowScene: winScene)
         win.rootViewController = SplashVC
@@ -52,7 +53,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-

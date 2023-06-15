@@ -55,16 +55,23 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         // 닉네임 변경하면 바로 바꾸기 위해 viewWillAppear에 배치
         makeNicknameLabel()
-        
     }
     
     @objc func pinchGesture(_ sender: UIPinchGestureRecognizer) {
         if sender.numberOfTouches == 2 {
             print("pinch gesture recognize")
+            
         }
     }
     
-    @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+    @objc func panGesture(_ sender: UIPinchGestureRecognizer) {
+        
+    }
+    
+    @objc func handleTap(_ gestureRecognize: UITapGestureRecognizer) {
+        if gestureRecognize.numberOfTouches == 2 {
+            print("aa")
+        }
         let point = gestureRecognize.location(in: sceneView)
         let hitResults = sceneView.hitTest(point, options: [:])
         if hitResults.count > 0 {
@@ -75,7 +82,6 @@ class HomeViewController: UIViewController {
                 continentCount = continent.continentName.firstIndex(of: continentTitle)!
                 print(continentTitle)
             }
-            
         }
     }
     
@@ -186,7 +192,7 @@ extension HomeViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT+9")
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "ss"
+        dateFormatter.dateFormat = "H"
         let strDate = dateFormatter.string(from: date)
         return Int(strDate)!
     }
@@ -303,7 +309,10 @@ extension HomeViewController {
     
     func blockUserGesture() {
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
+        //FIX - 드래그(pan) 1손가락만 되게하고 2손가락 disable, rotate만 완전 막으면 완벽할듯 - enable찾기
+//        let pan = UIPanGestureRecognizer(target: self, action: #selector(panGesture))
         sceneView.addGestureRecognizer(pinch)
+//        sceneView.addGestureRecognizer(pan)
     }
     
     func addTapRecognizer() {

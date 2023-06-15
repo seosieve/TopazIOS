@@ -664,11 +664,11 @@
 				4E1C2E522715EC0900B97EB0 /* ArticleDetail */,
 				4E8A58B62705406200C8A646 /* Splash */,
 				4E8A58A92704806900C8A646 /* Onboarding */,
-				4E533F3A26E089C200527FC2 /* TravelNote */,
 				4E056DFB26C39A1700FDF0F3 /* Main */,
 				4E056DFC26C39A3F00FDF0F3 /* SignUp */,
-				4E533F3726E0610D00527FC2 /* Community */,
 				4E533F3626E0610200527FC2 /* Home */,
+				4E533F3726E0610D00527FC2 /* Community */,
+				4E533F3A26E089C200527FC2 /* TravelNote */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1118,7 +1118,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = B44YL23J9X;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = topaz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1143,7 +1143,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = B44YL23J9X;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = topaz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
