@@ -13,6 +13,7 @@ import SwiftUI
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var mainTopazLogo: UIBarButtonItem!
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var upperBackgroundView: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var iceBreakingLabel: UILabel!
@@ -60,7 +61,6 @@ class HomeViewController: UIViewController {
     @objc func pinchGesture(_ sender: UIPinchGestureRecognizer) {
         if sender.numberOfTouches == 2 {
             print("pinch gesture recognize")
-            
         }
     }
     
@@ -83,6 +83,10 @@ class HomeViewController: UIViewController {
                 print(continentTitle)
             }
         }
+    }
+    
+    @IBAction func searchButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToSearch", sender: sender)
     }
     
     @IBAction func placeRecommendButtonPressed(_ sender: UIButton) {
@@ -123,7 +127,10 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToContinent" {
+        if segue.identifier == "goToSearch" {
+            let destinationVC = segue.destination as! ContinentRecommendViewController
+            destinationVC.bySearchButton = true
+        } else if segue.identifier == "goToContinent" {
             let destinationVC = segue.destination as! ContinentRecommendViewController
             destinationVC.continent = continentButton.currentTitle!
         }
@@ -202,6 +209,7 @@ extension HomeViewController {
         case "Morning":
             self.view.backgroundColor = UIColor(named: "White")
             mainTopazLogo.image = UIImage(named: "TopazLogo-Home")
+            searchButton.tintColor = UIColor(named: "Gray1")
             upperBackgroundView.backgroundColor = UIColor(named: "White")
             backgroundImage.image = UIImage(named: "MainBackgroundImage-Morning")
             iceBreakingLabel.textColor = UIColor(named: "Gray2")
@@ -211,6 +219,7 @@ extension HomeViewController {
         case "Evening":
             self.view.backgroundColor = UIColor(named: "EveningOrange")
             mainTopazLogo.image = UIImage(named: "TopazLogo-White")
+            searchButton.tintColor = UIColor(named: "White")
             upperBackgroundView.backgroundColor = UIColor(named: "EveningOrange")
             backgroundImage.image = UIImage(named: "MainBackgroundImage-Evening")
             iceBreakingLabel.textColor = UIColor(named: "White")
@@ -220,6 +229,7 @@ extension HomeViewController {
         default:
             self.view.backgroundColor = UIColor(named: "NightBlue")
             mainTopazLogo.image = UIImage(named: "TopazLogo-White")
+            searchButton.tintColor = UIColor(named: "White")
             upperBackgroundView.backgroundColor = UIColor(named: "NightBlue")
             backgroundImage.image = UIImage(named: "MainBackgroundImage-Night")
             iceBreakingLabel.textColor = UIColor(named: "White")

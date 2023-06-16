@@ -10,15 +10,73 @@ import UIKit
 class ContinentRecommendViewController: UIViewController {
     @IBOutlet weak var continentRecommendViewContainer: UIView!
     @IBOutlet weak var continentTitleLabel: UILabel!
+    @IBOutlet weak var searchContainerView: UIView!
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var continentRecommendCollectionView: UICollectionView!
+    @IBOutlet weak var continentRecommendCollectionViewH: NSLayoutConstraint!
     
+    
+    var bySearchButton = false
     var continent = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         makeModalCircular(target: continentRecommendViewContainer)
-        continentTitleLabel.text = "\(continent)로 떠나실래요?"
+        makeTitleLabel(bySearchButton)
+        makeCircle(target: searchContainerView)
+        searchTextField.borderStyle = .none
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGestureRecognizer)
+        
+        
+        continentRecommendCollectionView.delegate = self
+        continentRecommendCollectionView.dataSource = self
+        continentRecommendCollectionView.register(ContinentRecommendCollectionViewCell.nib(), forCellWithReuseIdentifier: "ContinentRecommendCollectionViewCell")
+        
+        //height 나중에 다 구현하고 다시 손보기
+//        let height = continentRecommendCollectionView.collectionViewLayout.collectionViewContentSize.height
+//        continentRecommendCollectionViewH.constant = height
+//        view.layoutIfNeeded()
     }
+    
+    @objc func dismissKeyboard() {
+        searchTextField.endEditing(true)
+    }
+    
     @IBAction func cancleButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+//MARK: - UI Functions
+extension ContinentRecommendViewController {
+    func makeTitleLabel(_ bySearchButton: Bool) {
+        if bySearchButton {
+            continentTitleLabel.text = "어디로 떠나실래요?"
+        } else {
+            switch continent {
+            case "유럽":
+                continentTitleLabel.text = "\(continent)으로 떠나실래요?"
+            default:
+                continentTitleLabel.text = "\(continent)로 떠나실래요?"
+            }
+        }
+    }
+}
+
+//MARK: - UICollectionView
+extension ContinentRecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContinentRecommendCollectionViewCell", for: indexPath) as! ContinentRecommendCollectionViewCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.bounds.width - 56)/2
+        return CGSize(width: width, height: 168)
     }
 }

@@ -17,6 +17,8 @@
 		4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E056DFD26C39AB500FDF0F3 /* AcceptTermsViewController.swift */; };
 		4E056E0026C39AD200FDF0F3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E056DFF26C39AD200FDF0F3 /* EditProfileViewController.swift */; };
 		4E056E0226C3B50100FDF0F3 /* GlobalUIFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E056E0126C3B50100FDF0F3 /* GlobalUIFunctions.swift */; };
+		4E08E2352A3C76D200597110 /* ContinentRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E08E2332A3C76D200597110 /* ContinentRecommendCollectionViewCell.swift */; };
+		4E08E2362A3C76D200597110 /* ContinentRecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E08E2342A3C76D200597110 /* ContinentRecommendCollectionViewCell.xib */; };
 		4E0ADBE8273933D0005C7ECD /* TravelTicketCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ADBE6273933D0005C7ECD /* TravelTicketCollectionViewCell.swift */; };
 		4E0ADBE9273933D0005C7ECD /* TravelTicketCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E0ADBE7273933D0005C7ECD /* TravelTicketCollectionViewCell.xib */; };
 		4E0ADBEB27394DB4005C7ECD /* PlaneNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0ADBEA27394DB4005C7ECD /* PlaneNode.swift */; };
@@ -183,6 +185,8 @@
 		4E056DFD26C39AB500FDF0F3 /* AcceptTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptTermsViewController.swift; sourceTree = "<group>"; };
 		4E056DFF26C39AD200FDF0F3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		4E056E0126C3B50100FDF0F3 /* GlobalUIFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUIFunctions.swift; sourceTree = "<group>"; };
+		4E08E2332A3C76D200597110 /* ContinentRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		4E08E2342A3C76D200597110 /* ContinentRecommendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContinentRecommendCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E0ADBE6273933D0005C7ECD /* TravelTicketCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTicketCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E0ADBE7273933D0005C7ECD /* TravelTicketCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelTicketCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E0ADBEA27394DB4005C7ECD /* PlaneNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneNode.swift; sourceTree = "<group>"; };
@@ -456,6 +460,8 @@
 				4E9B9BBA26ED980F00ABCE87 /* HomeViewModel.swift */,
 				4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */,
 				4E21A52F277CA8E0001548D7 /* ContinentRecommendViewController.swift */,
+				4E08E2332A3C76D200597110 /* ContinentRecommendCollectionViewCell.swift */,
+				4E08E2342A3C76D200597110 /* ContinentRecommendCollectionViewCell.xib */,
 				4E533F3D26E09A8E00527FC2 /* TabBarWithCorners.swift */,
 				4EA4CF80270DB203001632D4 /* EarthNode.swift */,
 				4E93ED5E2738CECB00272A06 /* CloudsNode.swift */,
@@ -821,6 +827,7 @@
 				4E8A02C2272942B100E3AB63 /* Music.json in Resources */,
 				4E8A02D227295F1400E3AB63 /* DowntownSoundEffect.mp3 in Resources */,
 				4EC8C3DD273C577A00B9B3F9 /* BlockUserListTableViewCell.xib in Resources */,
+				4E08E2362A3C76D200597110 /* ContinentRecommendCollectionViewCell.xib in Resources */,
 				4E8A02D127295F1400E3AB63 /* WindSoundEffect.mp3 in Resources */,
 				4E8A58CE270584A900C8A646 /* FirstOnboarding.json in Resources */,
 				4E9DCB3526C17821001D218A /* Poppins-ThinItalic.ttf in Resources */,
@@ -941,6 +948,7 @@
 				4ECFB6DB2725DBD000890C04 /* MusicPageViewController.swift in Sources */,
 				4E533F3926E0612000527FC2 /* CommunityViewController.swift in Sources */,
 				4EC8C3DC273C577A00B9B3F9 /* BlockUserListTableViewCell.swift in Sources */,
+				4E08E2352A3C76D200597110 /* ContinentRecommendCollectionViewCell.swift in Sources */,
 				4EC8C3D5273A932400B9B3F9 /* PlaceRecommendViewController.swift in Sources */,
 				4E7FD104271EAB3B00867F16 /* ReportViewModel.swift in Sources */,
 				4ECFB6CB2720445E00890C04 /* EachArticleTableViewCell.swift in Sources */,
