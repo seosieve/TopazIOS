@@ -28,6 +28,7 @@ class PlaceRecommendViewController: UIViewController {
     
     let recommendCountry = RecommendCountry()
     var placeRecommendDelegate: PlaceRecommendDelegate?
+    let viewModel = PlaceRecommendViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,12 +77,22 @@ extension PlaceRecommendViewController {
     
     func changeRecommendPlace(selectedButton: UIButton) {
         let tag = selectedButton.tag
-        UIView.transition(with: recommendCountryImage, duration: 0.4, options: .transitionCrossDissolve, animations: {
-            self.recommendCountryImage.image = self.recommendCountry.countryImage[tag-1]
-        }, completion: nil)
         recommendCountryName.text = recommendCountry.countryName[tag-1]
         recommendCountryEnglishName.text = recommendCountry.countryEnglishName[tag-1]
         recommendCountryIntroduce.text = recommendCountry.countryIntroduce[tag-1]
+        // 이미지 변경
+        UIView.transition(with: recommendCountryImage, duration: 0.4, options: .transitionCrossDissolve, animations: {
+            if true {
+                // Unsplash API Request 남아있을때
+                let recommendPlace = self.recommendCountryEnglishName.text ?? "Airplane"
+                self.viewModel.getImage(by: recommendPlace) { imageUrl in
+                    self.recommendCountryImage.load(url: imageUrl)
+                }
+            } else {
+                // Unsplash API Request 끝났을때
+                self.recommendCountryImage.image = self.recommendCountry.countryImage[tag-1]
+            }
+        }, completion: nil)
     }
     
     func changeTicketingButton(selectedButton: UIButton) {

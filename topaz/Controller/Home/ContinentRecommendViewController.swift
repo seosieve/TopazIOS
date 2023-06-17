@@ -72,6 +72,7 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContinentRecommendCollectionViewCell", for: indexPath) as! ContinentRecommendCollectionViewCell
+        makeShadow(target: cell, radius: 12, width: 5, height: 10, opacity: 0.2, shadowRadius: 5)
         return cell
     }
     
