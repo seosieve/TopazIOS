@@ -27,6 +27,7 @@ class PlaceRecommendViewController: UIViewController {
     @IBOutlet weak var ticketingButton: UIButton!
     
     let recommendCountry = RecommendCountry()
+    let unsplashCountry = UnsplashCountry()
     var placeRecommendDelegate: PlaceRecommendDelegate?
     let viewModel = PlaceRecommendViewModel()
     
@@ -37,6 +38,16 @@ class PlaceRecommendViewController: UIViewController {
             makeBorder(target: button, radius: 12, isFilled: true)
         }
         makeBorder(target: ticketingButton, radius: 12, isFilled: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
+        viewModel.getImage(by: recommendPlace) { UrlArr in
+            self.unsplashCountry.countryImage[0] = UrlArr
+            //이미지 그리기
+            self.unsplashImageDraw(1)
+        }
     }
     
     @IBAction func placeButtonPressed(_ sender: UIButton) {
@@ -80,19 +91,43 @@ extension PlaceRecommendViewController {
         recommendCountryName.text = recommendCountry.countryName[tag-1]
         recommendCountryEnglishName.text = recommendCountry.countryEnglishName[tag-1]
         recommendCountryIntroduce.text = recommendCountry.countryIntroduce[tag-1]
-        // 이미지 변경
-        UIView.transition(with: recommendCountryImage, duration: 0.4, options: .transitionCrossDissolve, animations: {
-            if true {
-                // Unsplash API Request 남아있을때
-                let recommendPlace = self.recommendCountryEnglishName.text ?? "Airplane"
-                self.viewModel.getImage(by: recommendPlace) { imageUrl in
-                    self.recommendCountryImage.load(url: imageUrl)
-                }
-            } else {
-                // Unsplash API Request 끝났을때
-                self.recommendCountryImage.image = self.recommendCountry.countryImage[tag-1]
+        // 이미지 변경 - Unsplash Image Load
+        if unsplashCountry.countryImage[tag-1].isEmpty {
+            let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
+            viewModel.getImage(by: recommendPlace) { UrlArr in
+                self.unsplashCountry.countryImage[tag-1] = UrlArr
+                //이미지 그리기
+                self.unsplashImageDraw(tag)
             }
-        }, completion: nil)
+        } else {
+            print("Unsplash Image already exist")
+            self.unsplashImageDraw(tag)
+        }
+        // 이미지 그리기
+//        UIView.transition(with: recommendCountryImage, duration: 0.4, options: .transitionCrossDissolve, animations: {
+//            if true {
+//                // Unsplash API Request 남아있을때
+//                self.recommendCountryImage.load(url: self.unsplashCountry.countryImage[tag].first!)
+//            } else {
+//                // Unsplash API Request 끝났을때
+//                self.recommendCountryImage.image = self.recommendCountry.countryImage[tag-1]
+//            }
+//        }, completion: nil)
+    }
+    
+    func unsplashImageDraw(_ tag: Int) {
+        DispatchQueue.main.async {
+            let instantImageView = UIImageView()
+            instantImageView.frame = CGRect(x: 0, y: 0, width: self.recommendCountryImage.bounds.width, height: self.recommendCountryImage.bounds.height)
+            self.recommendCountryImage.addSubview(instantImageView)
+            for i in 0..<self.unsplashCountry.countryImage[tag-1].count {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i*3)) {
+                    UIView.transition(with: instantImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                        instantImageView.load(url: self.unsplashCountry.countryImage[tag-1][i])
+                    }, completion: nil)
+                }
+            }
+        }
     }
     
     func changeTicketingButton(selectedButton: UIButton) {

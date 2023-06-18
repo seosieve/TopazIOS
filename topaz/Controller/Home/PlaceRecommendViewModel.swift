@@ -8,8 +8,8 @@
 import UIKit
 
 class PlaceRecommendViewModel {
-    func getImage(by countryName: String, getImageHandler: @escaping (URL) -> Void) {
-        if let url = URL.with(string: "search/photos?per_page=5&query=\(countryName)") {
+    func getImage(by countryName: String, getImageHandler: @escaping ([URL]) -> Void) {
+        if let url = URL.with(string: "search/photos?page=\(Int.random(in: 1...10))&per_page=5&query=\(countryName)") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             urlRequest.setAccessKey()
@@ -19,9 +19,12 @@ class PlaceRecommendViewModel {
                 } else if let response = response as? HTTPURLResponse, let data = data {
                     print("Status Code: \(response.statusCode)")
                     do {
+                        var UrlArr = [URL]()
                         let searchResults = try JSONDecoder().decode(SearchResults.self, from: data)
-                        let imageUrl = searchResults.results[1].urls.regularUrl
-                        getImageHandler(imageUrl)
+                        searchResults.results.forEach { result in
+                            UrlArr.append(result.urls.regularUrl)
+                        }
+                        getImageHandler(UrlArr)
                     } catch {
                         print(error)
                     }
