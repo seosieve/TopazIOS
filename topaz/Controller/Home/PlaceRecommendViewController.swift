@@ -38,10 +38,6 @@ class PlaceRecommendViewController: UIViewController {
             makeBorder(target: button, radius: 12, isFilled: true)
         }
         makeBorder(target: ticketingButton, radius: 12, isFilled: true)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
         viewModel.getImage(by: recommendPlace) { UrlArr in
             self.unsplashCountry.countryImage[0] = UrlArr
@@ -103,16 +99,7 @@ extension PlaceRecommendViewController {
             print("Unsplash Image already exist")
             self.unsplashImageDraw(tag)
         }
-        // 이미지 그리기
-//        UIView.transition(with: recommendCountryImage, duration: 0.4, options: .transitionCrossDissolve, animations: {
-//            if true {
-//                // Unsplash API Request 남아있을때
-//                self.recommendCountryImage.load(url: self.unsplashCountry.countryImage[tag].first!)
-//            } else {
-//                // Unsplash API Request 끝났을때
-//                self.recommendCountryImage.image = self.recommendCountry.countryImage[tag-1]
-//            }
-//        }, completion: nil)
+        // API Call 갯수 한계시에 Default Image로 설정해야하는데 한계점 찍어도 터지지는 않는듯..??
     }
     
     func unsplashImageDraw(_ tag: Int) {

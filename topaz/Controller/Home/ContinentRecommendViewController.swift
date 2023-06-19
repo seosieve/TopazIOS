@@ -28,7 +28,8 @@ class ContinentRecommendViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
         
-        
+        searchTextField.delegate = self
+        searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         continentRecommendCollectionView.delegate = self
         continentRecommendCollectionView.dataSource = self
         continentRecommendCollectionView.register(ContinentRecommendCollectionViewCell.nib(), forCellWithReuseIdentifier: "ContinentRecommendCollectionViewCell")
@@ -39,12 +40,23 @@ class ContinentRecommendViewController: UIViewController {
 //        view.layoutIfNeeded()
     }
     
+    @IBAction func cancleButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @objc func dismissKeyboard() {
         searchTextField.endEditing(true)
     }
     
-    @IBAction func cancleButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let textInput = textField.text ?? ""
+        
+        let a = ["한국", "하그그브", "하네넨"]
+        a.forEach { aa in
+            if aa.contains(textInput) {
+                print(aa)
+            }
+        }
     }
 }
 
@@ -65,6 +77,14 @@ extension ContinentRecommendViewController {
 }
 
 //MARK: - UICollectionView
+extension ContinentRecommendViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
+//MARK: - UICollectionView
 extension ContinentRecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
@@ -73,6 +93,7 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContinentRecommendCollectionViewCell", for: indexPath) as! ContinentRecommendCollectionViewCell
         makeShadow(target: cell, radius: 12, width: 5, height: 10, opacity: 0.2, shadowRadius: 5)
+        cell.countryFlagImageView.load(url: URL(string: "https://flagcdn.com/w320/km.png")!)
         return cell
     }
     
