@@ -18,6 +18,9 @@ class ContinentRecommendViewController: UIViewController {
     
     var bySearchButton = false
     var continent = ""
+    var restCountryResults = [RestCountryResults]()
+    
+    let viewModel = ContinentRecommendViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +35,20 @@ class ContinentRecommendViewController: UIViewController {
         searchTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         continentRecommendCollectionView.delegate = self
         continentRecommendCollectionView.dataSource = self
-        continentRecommendCollectionView.register(ContinentRecommendCollectionViewCell.nib(), forCellWithReuseIdentifier: "ContinentRecommendCollectionViewCell")
-        
+        continentRecommendCollectionView.register(ContinentRecommendCollectionViewCell.nib(), forCellWithReuseIdentifier: "recommendCell")
         //height 나중에 다 구현하고 다시 손보기
 //        let height = continentRecommendCollectionView.collectionViewLayout.collectionViewContentSize.height
 //        continentRecommendCollectionViewH.constant = height
 //        view.layoutIfNeeded()
+        
+        
+        viewModel.getCountry(by: "캐") { results in
+            self.restCountryResults = results
+            DispatchQueue.main.async {
+                self.continentRecommendCollectionView.reloadData()
+            }
+            print(self.restCountryResults.count)
+        }
     }
     
     @IBAction func cancleButtonPressed(_ sender: UIButton) {
@@ -76,9 +87,18 @@ extension ContinentRecommendViewController {
     }
 }
 
-//MARK: - UICollectionView
+//MARK: - UITextFieldDelegate
 extension ContinentRecommendViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let text = textField.text ?? ""
+        viewModel.getCountry(by: text) { results in
+            self.restCountryResults = results
+            DispatchQueue.main.async {
+                self.continentRecommendCollectionView.reloadData()
+            }
+            print(self.restCountryResults.count)
+        }
+        print(text)
         textField.resignFirstResponder()
         return true
     }
@@ -87,13 +107,15 @@ extension ContinentRecommendViewController: UITextFieldDelegate {
 //MARK: - UICollectionView
 extension ContinentRecommendViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return restCountryResults.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContinentRecommendCollectionViewCell", for: indexPath) as! ContinentRecommendCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell", for: indexPath) as! ContinentRecommendCollectionViewCell
         makeShadow(target: cell, radius: 12, width: 5, height: 10, opacity: 0.2, shadowRadius: 5)
-        cell.countryFlagImageView.load(url: URL(string: "https://flagcdn.com/w320/km.png")!)
+        cell.countryFlagImageView.load(url: URL(string: restCountryResults[indexPath.row].flags.png)!)
+        cell.countryNameLabel.text = restCountryResults[indexPath.row].translations.kor.official
+        cell.countryNameEngLabel.text = restCountryResults[indexPath.row].name.common
         return cell
     }
     

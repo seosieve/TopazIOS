@@ -58,6 +58,7 @@
 		4E64D12B26EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E64D12926EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib */; };
 		4E759CD22A3D956D00834195 /* PlaceRecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E759CD12A3D956D00834195 /* PlaceRecommendViewModel.swift */; };
 		4E759CD42A3D98C500834195 /* UnsplashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E759CD32A3D98C500834195 /* UnsplashModel.swift */; };
+		4E759CD62A41F0DF00834195 /* ContinentRecommendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E759CD52A41F0DF00834195 /* ContinentRecommendViewModel.swift */; };
 		4E7FD100271D83DA00867F16 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FD0FF271D83DA00867F16 /* UserModel.swift */; };
 		4E7FD102271EAB2B00867F16 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FD101271EAB2B00867F16 /* ReportViewController.swift */; };
 		4E7FD104271EAB3B00867F16 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FD103271EAB3B00867F16 /* ReportViewModel.swift */; };
@@ -230,6 +231,7 @@
 		4E64D12926EF5BA100DB3FDB /* CountryAddCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryAddCollectionViewCell.xib; sourceTree = "<group>"; };
 		4E759CD12A3D956D00834195 /* PlaceRecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRecommendViewModel.swift; sourceTree = "<group>"; };
 		4E759CD32A3D98C500834195 /* UnsplashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashModel.swift; sourceTree = "<group>"; };
+		4E759CD52A41F0DF00834195 /* ContinentRecommendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentRecommendViewModel.swift; sourceTree = "<group>"; };
 		4E7FD0FF271D83DA00867F16 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		4E7FD101271EAB2B00867F16 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		4E7FD103271EAB3B00867F16 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				4EC8C3D4273A932400B9B3F9 /* PlaceRecommendViewController.swift */,
 				4E759CD12A3D956D00834195 /* PlaceRecommendViewModel.swift */,
 				4E21A52F277CA8E0001548D7 /* ContinentRecommendViewController.swift */,
+				4E759CD52A41F0DF00834195 /* ContinentRecommendViewModel.swift */,
 				4E08E2332A3C76D200597110 /* ContinentRecommendCollectionViewCell.swift */,
 				4E08E2342A3C76D200597110 /* ContinentRecommendCollectionViewCell.xib */,
 				4E533F3D26E09A8E00527FC2 /* TabBarWithCorners.swift */,
@@ -893,6 +896,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E759CD62A41F0DF00834195 /* ContinentRecommendViewModel.swift in Sources */,
 				4ECFB6D92725BFC900890C04 /* MusicAddViewController.swift in Sources */,
 				4E8A58BE2705541D00C8A646 /* SecondPageViewController.swift in Sources */,
 				4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SearchResults: Codable {
+struct UnsplashResults: Codable {
     let results: [ImageInfo]
 }
 
@@ -28,11 +28,11 @@ struct Urls: Codable {
 
 //MARK: - Unsplash Base URL
 extension URL {
-    private static var baseUrl: String {
+    private static var unsplashBaseUrl: String {
         return "https://api.unsplash.com/"
     }
-    static func with(string: String) -> URL? {
-        return URL(string: "\(baseUrl)\(string)")
+    static func withUnsplash(string: String) -> URL? {
+        return URL(string: "\(unsplashBaseUrl)\(string)")
     }
 }
 
@@ -53,7 +53,6 @@ extension UIImageView {
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self?.contentMode = .scaleToFill
                         self?.image = image
                     }
                 }

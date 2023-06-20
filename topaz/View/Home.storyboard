@@ -676,7 +676,7 @@
                                                             <inset key="sectionInset" minX="20" minY="10" maxX="20" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContinentRecommendCollectionViewCell" id="ulX-dL-ReD" customClass="ContinentRecommendCollectionViewCell" customModule="topaz">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ContinentRecommendCollectionViewCell" id="ulX-dL-ReD" customClass="ContinentRecommendCollectionViewCell">
                                                                 <rect key="frame" x="20" y="10" width="128" height="128"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MKB-eD-fBe">
@@ -824,7 +824,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZZd-Sw-80J"/>
+        <segue reference="bb9-Ww-ODm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="City-OFF" width="56" height="56"/>

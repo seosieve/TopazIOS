@@ -31,3 +31,38 @@ class UnsplashCountry {
 struct Continent {
     let continentName = ["아시아", "유럽", "아프리카", "오세아니아", "북아메리카", "남아메리카"]
 }
+
+struct RestCountryResults: Codable {
+    let flags: Flag
+    let name: Name
+    let translations: Translations
+}
+
+struct Flag: Codable {
+    let png: String
+}
+
+struct Name: Codable {
+    let common: String
+}
+
+struct Translations: Codable {
+    let kor: Kor
+}
+
+struct Kor: Codable {
+    let official: String
+    let common: String
+}
+
+//MARK: - Unsplash Base URL
+extension URL {
+    private static var restCountryBaseUrl: String {
+        return "https://restcountries.com/v3.1/"
+    }
+    static func withRestCountry(string: String) -> URL? {
+        let urlString = "\(restCountryBaseUrl)\(string)"
+        let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        return URL(string: encodedString)
+    }
+}

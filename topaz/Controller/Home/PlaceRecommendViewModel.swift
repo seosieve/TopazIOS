@@ -9,7 +9,7 @@ import UIKit
 
 class PlaceRecommendViewModel {
     func getImage(by countryName: String, getImageHandler: @escaping ([URL]) -> Void) {
-        if let url = URL.with(string: "search/photos?page=\(Int.random(in: 1...10))&per_page=5&query=\(countryName)") {
+        if let url = URL.withUnsplash(string: "search/photos?page=\(Int.random(in: 1...10))&per_page=5&query=\(countryName)") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
             urlRequest.setAccessKey()
@@ -20,7 +20,7 @@ class PlaceRecommendViewModel {
                     print("Status Code: \(response.statusCode)")
                     do {
                         var UrlArr = [URL]()
-                        let searchResults = try JSONDecoder().decode(SearchResults.self, from: data)
+                        let searchResults = try JSONDecoder().decode(UnsplashResults.self, from: data)
                         searchResults.results.forEach { result in
                             UrlArr.append(result.urls.regularUrl)
                         }

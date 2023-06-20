@@ -9,9 +9,12 @@ import UIKit
 
 class ContinentRecommendCollectionViewCell: UICollectionViewCell {
     
+    
     @IBOutlet weak var countryImageView: UIImageView!
     @IBOutlet weak var countryFlagImageView: UIImageView!
     @IBOutlet weak var textContainerView: UIView!
+    @IBOutlet weak var countryNameLabel: UILabel!
+    @IBOutlet weak var countryNameEngLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
