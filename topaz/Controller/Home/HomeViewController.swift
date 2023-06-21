@@ -128,10 +128,12 @@ class HomeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToSearch" {
-            let destinationVC = segue.destination as! ContinentRecommendViewController
+            let navigationVC = segue.destination as! UINavigationController
+            let destinationVC = navigationVC.topViewController as! ContinentRecommendViewController
             destinationVC.bySearchButton = true
         } else if segue.identifier == "goToContinent" {
-            let destinationVC = segue.destination as! ContinentRecommendViewController
+            let navigationVC = segue.destination as! UINavigationController
+            let destinationVC = navigationVC.topViewController as! ContinentRecommendViewController
             destinationVC.continent = continentButton.currentTitle!
         }
     }

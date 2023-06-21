@@ -51,7 +51,6 @@ struct Translations: Codable {
 }
 
 struct Kor: Codable {
-    let official: String
     let common: String
 }
 

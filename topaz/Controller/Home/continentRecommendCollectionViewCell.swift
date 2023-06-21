@@ -9,6 +9,7 @@ import UIKit
 
 class ContinentRecommendCollectionViewCell: UICollectionViewCell {
     
+    var tapAction: (() -> ())?
     
     @IBOutlet weak var countryImageView: UIImageView!
     @IBOutlet weak var countryFlagImageView: UIImageView!
@@ -18,11 +19,17 @@ class ContinentRecommendCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+        contentView.addGestureRecognizer(tapGestureRecognizer)
         setViews()
     }
 
     static func nib() -> UINib {
         return UINib(nibName: "ContinentRecommendCollectionViewCell", bundle: nil)
+    }
+    
+    @objc func didTapView() {
+        tapAction?()
     }
     
     func setViews() {

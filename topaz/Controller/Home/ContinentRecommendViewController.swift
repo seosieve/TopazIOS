@@ -13,8 +13,6 @@ class ContinentRecommendViewController: UIViewController {
     @IBOutlet weak var searchContainerView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var continentRecommendCollectionView: UICollectionView!
-    @IBOutlet weak var continentRecommendCollectionViewH: NSLayoutConstraint!
-    
     
     var bySearchButton = false
     var continent = ""
@@ -24,9 +22,11 @@ class ContinentRecommendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
         makeModalCircular(target: continentRecommendViewContainer)
-        makeTitleLabel(bySearchButton)
         makeCircle(target: searchContainerView)
+        makeTitleLabel(bySearchButton)
+        makeViewByContinent(continent: continent)
         searchTextField.borderStyle = .none
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
@@ -36,22 +36,9 @@ class ContinentRecommendViewController: UIViewController {
         continentRecommendCollectionView.delegate = self
         continentRecommendCollectionView.dataSource = self
         continentRecommendCollectionView.register(ContinentRecommendCollectionViewCell.nib(), forCellWithReuseIdentifier: "recommendCell")
-        //height 나중에 다 구현하고 다시 손보기
-//        let height = continentRecommendCollectionView.collectionViewLayout.collectionViewContentSize.height
-//        continentRecommendCollectionViewH.constant = height
-//        view.layoutIfNeeded()
-        
-        
-        viewModel.getCountry(by: "캐") { results in
-            self.restCountryResults = results
-            DispatchQueue.main.async {
-                self.continentRecommendCollectionView.reloadData()
-            }
-            print(self.restCountryResults.count)
-        }
     }
     
-    @IBAction func cancleButtonPressed(_ sender: UIButton) {
+    @IBAction func cancelButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -85,13 +72,34 @@ extension ContinentRecommendViewController {
             }
         }
     }
+    
+    func makeViewByContinent(continent: String) {
+        let continentDic = ["아시아": "Asia", "유럽": "Europe", "오세아니아": "Oceania", "아프리카": "Africa", "남아메리카": "South America", "북아메리카": "North America"]
+        if bySearchButton {
+            viewModel.getCountry { results in
+                self.restCountryResults = results
+                DispatchQueue.main.async {
+                    self.continentRecommendCollectionView.reloadData()
+                }
+                print(self.restCountryResults.count)
+            }
+        } else {
+            viewModel.getCountry(byContinent: continentDic[continent]!) { results in
+                self.restCountryResults = results
+                DispatchQueue.main.async {
+                    self.continentRecommendCollectionView.reloadData()
+                }
+                print(self.restCountryResults.count)
+            }
+        }
+    }
 }
 
 //MARK: - UITextFieldDelegate
 extension ContinentRecommendViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let text = textField.text ?? ""
-        viewModel.getCountry(by: text) { results in
+        viewModel.getCountry(byName: text) { results in
             self.restCountryResults = results
             DispatchQueue.main.async {
                 self.continentRecommendCollectionView.reloadData()
@@ -114,8 +122,16 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell", for: indexPath) as! ContinentRecommendCollectionViewCell
         makeShadow(target: cell, radius: 12, width: 5, height: 10, opacity: 0.2, shadowRadius: 5)
         cell.countryFlagImageView.load(url: URL(string: restCountryResults[indexPath.row].flags.png)!)
-        cell.countryNameLabel.text = restCountryResults[indexPath.row].translations.kor.official
-        cell.countryNameEngLabel.text = restCountryResults[indexPath.row].name.common
+        cell.countryNameLabel.text = restCountryResults[indexPath.row].translations.kor.common
+        cell.countryNameEngLabel.text = restCountryResults[indexPath.row].name.common.count > 10 ? "" : restCountryResults[indexPath.row].name.common
+        viewModel.getImage(by: restCountryResults[indexPath.row].name.common) { UrlArr in
+            print(UrlArr)
+            cell.countryImageView.load(url: UrlArr[0])
+        }
+        cell.tapAction = {
+            print(indexPath)
+            self.performSegue(withIdentifier: "goToCountryDetail", sender: nil)
+        }
         return cell
     }
     
