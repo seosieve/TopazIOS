@@ -21,8 +21,12 @@ struct ImageInfo: Codable {
 
 struct Urls: Codable {
     let regular: String
+    let small: String
     var regularUrl: URL {
         return URL(string: regular)!
+    }
+    var smallUrl: URL {
+        return URL(string: small)!
     }
 }
 
@@ -32,7 +36,9 @@ extension URL {
         return "https://api.unsplash.com/"
     }
     static func withUnsplash(string: String) -> URL? {
-        return URL(string: "\(unsplashBaseUrl)\(string)")
+        let urlString = "\(unsplashBaseUrl)\(string)"
+        let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        return URL(string: encodedString)
     }
 }
 
@@ -48,13 +54,23 @@ extension URLRequest {
 
 //MARK: - UIImageView load with URL
 extension UIImageView {
+    static var cache = NSCache<AnyObject, UIImage>()
+    
     func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.contentMode = .scaleAspectFill
-                        self?.image = image
+        if let cachedImage = UIImageView.cache.object(forKey: url as AnyObject) {
+            DispatchQueue.main.async {
+                self.image = cachedImage
+            }
+            print("You get image from cache")
+        } else {
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self?.contentMode = .scaleAspectFill
+                            self?.image = image
+                            UIImageView.cache.setObject(self!.image!, forKey: url as AnyObject)
+                        }
                     }
                 }
             }

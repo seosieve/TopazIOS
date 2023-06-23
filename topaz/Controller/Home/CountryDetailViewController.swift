@@ -8,18 +8,31 @@
 import UIKit
 
 class CountryDetailViewController: UIViewController {
-    
     @IBOutlet weak var CountryDetailViewContainer: UIView!
+    @IBOutlet weak var label: UILabel!
+    
+    var countryName = ""
+    
+    var viewModel = CountryDetailViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        self.navigationController?.isNavigationBarHidden = false
         makeModalCircular(target: CountryDetailViewContainer)
+        print(countryName)
+        viewModel.getCountry(byName: countryName) { results in
+            print(results)
+            DispatchQueue.main.async {
+                self.label.text = results[0].capital[0]
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

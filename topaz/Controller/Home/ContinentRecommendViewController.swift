@@ -17,6 +17,9 @@ class ContinentRecommendViewController: UIViewController {
     var bySearchButton = false
     var continent = ""
     var restCountryResults = [RestCountryResults]()
+    var unsplashImageResults = [UIImage]()
+    var clickedCountry = ""
+    let continentDic = ["아시아": "Asia", "유럽": "Europe", "오세아니아": "Oceania", "아프리카": "Africa", "남아메리카": "South America", "북아메리카": "North America"]
     
     let viewModel = ContinentRecommendViewModel()
     
@@ -48,12 +51,13 @@ class ContinentRecommendViewController: UIViewController {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         let textInput = textField.text ?? ""
-        
-        let a = ["한국", "하그그브", "하네넨"]
-        a.forEach { aa in
-            if aa.contains(textInput) {
-                print(aa)
-            }
+        print(textInput)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToCountryDetail" {
+            let destinationVC = segue.destination as! CountryDetailViewController
+            destinationVC.countryName = clickedCountry
         }
     }
 }
@@ -74,7 +78,6 @@ extension ContinentRecommendViewController {
     }
     
     func makeViewByContinent(continent: String) {
-        let continentDic = ["아시아": "Asia", "유럽": "Europe", "오세아니아": "Oceania", "아프리카": "Africa", "남아메리카": "South America", "북아메리카": "North America"]
         if bySearchButton {
             viewModel.getCountry { results in
                 self.restCountryResults = results
@@ -99,14 +102,37 @@ extension ContinentRecommendViewController {
 extension ContinentRecommendViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let text = textField.text ?? ""
-        viewModel.getCountry(byName: text) { results in
-            self.restCountryResults = results
-            DispatchQueue.main.async {
-                self.continentRecommendCollectionView.reloadData()
+        
+        restCountryResults.removeAll()
+        if text == "" {
+            if bySearchButton {
+                viewModel.getCountry { results in
+                    self.restCountryResults = results
+                    DispatchQueue.main.async {
+                        self.continentRecommendCollectionView.reloadData()
+                    }
+                    print(self.restCountryResults.count)
+                }
+            } else {
+                viewModel.getCountry(byContinent: continentDic[continent]!) { results in
+                    self.restCountryResults = results
+                    DispatchQueue.main.async {
+                        self.continentRecommendCollectionView.reloadData()
+                    }
+                    print(self.restCountryResults.count)
+                }
             }
-            print(self.restCountryResults.count)
+        } else {
+            viewModel.getCountry(byName: text) { results in
+                print(results)
+                self.restCountryResults = results
+                results.forEach { result in
+                    DispatchQueue.main.async {
+                        self.continentRecommendCollectionView.reloadData()
+                    }
+                }
+            }
         }
-        print(text)
         textField.resignFirstResponder()
         return true
     }
@@ -125,11 +151,11 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
         cell.countryNameLabel.text = restCountryResults[indexPath.row].translations.kor.common
         cell.countryNameEngLabel.text = restCountryResults[indexPath.row].name.common.count > 10 ? "" : restCountryResults[indexPath.row].name.common
         viewModel.getImage(by: restCountryResults[indexPath.row].name.common) { UrlArr in
-            print(UrlArr)
             cell.countryImageView.load(url: UrlArr[0])
         }
         cell.tapAction = {
             print(indexPath)
+            self.clickedCountry = self.restCountryResults[indexPath.row].name.official
             self.performSegue(withIdentifier: "goToCountryDetail", sender: nil)
         }
         return cell

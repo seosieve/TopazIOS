@@ -9,7 +9,7 @@ import UIKit
 
 class ContinentRecommendViewModel {
     func getCountry(getCountryHandler: @escaping ([RestCountryResults]) -> Void) {
-        if let url = URL.withRestCountry(string: "all?fields=name,translations,flags") {
+        if let url = URL.withRestCountry(string: "all?fields=name,translations,flags,capital") {
             let urlRequest = URLRequest(url: url)
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 if let error = error {
@@ -28,7 +28,7 @@ class ContinentRecommendViewModel {
     }
     
     func getCountry(byContinent text: String, getCountryHandler: @escaping ([RestCountryResults]) -> Void) {
-        if let url = URL.withRestCountry(string: "region/\(text)?fields=name,translations,flags") {
+        if let url = URL.withRestCountry(string: "region/\(text)?fields=name,translations,flags,capital") {
             let urlRequest = URLRequest(url: url)
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 if let error = error {
@@ -47,7 +47,7 @@ class ContinentRecommendViewModel {
     }
     
     func getCountry(byName text: String, getCountryHandler: @escaping ([RestCountryResults]) -> Void) {
-        if let url = URL.withRestCountry(string: "translation/\(text)?fields=name,translations,flags") {
+        if let url = URL.withRestCountry(string: "translation/\(text)?fields=name,translations,flags,capital") {
             let urlRequest = URLRequest(url: url)
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 if let error = error {
@@ -79,7 +79,7 @@ class ContinentRecommendViewModel {
                         var UrlArr = [URL]()
                         let searchResults = try JSONDecoder().decode(UnsplashResults.self, from: data)
                         searchResults.results.forEach { result in
-                            UrlArr.append(result.urls.regularUrl)
+                            UrlArr.append(result.urls.smallUrl)
                         }
                         getImageHandler(UrlArr)
                     } catch {

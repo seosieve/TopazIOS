@@ -23,6 +23,12 @@ class ContinentRecommendCollectionViewCell: UICollectionViewCell {
         contentView.addGestureRecognizer(tapGestureRecognizer)
         setViews()
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        countryImageView.image = nil
+        countryFlagImageView.image = nil
+    }
 
     static func nib() -> UINib {
         return UINib(nibName: "ContinentRecommendCollectionViewCell", bundle: nil)

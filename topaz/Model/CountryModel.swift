@@ -34,7 +34,9 @@ struct Continent {
 
 struct RestCountryResults: Codable {
     let flags: Flag
+//    let coatOfArms: CoatOfArms
     let name: Name
+    let capital: [String]
     let translations: Translations
 }
 
@@ -42,8 +44,13 @@ struct Flag: Codable {
     let png: String
 }
 
+//struct CoatOfArms: Codable {
+//    let png: String
+//}
+
 struct Name: Codable {
     let common: String
+    let official: String
 }
 
 struct Translations: Codable {
