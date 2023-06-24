@@ -50,6 +50,9 @@
 		4E32E07E26DF6ED8005682E5 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E32E07D26DF6ED8005682E5 /* EditProfileViewModel.swift */; };
 		4E5156A82A42DD5C00F96A6D /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5156A72A42DD5C00F96A6D /* CountryDetailViewController.swift */; };
 		4E5156AA2A45A13900F96A6D /* CountryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5156A92A45A13900F96A6D /* CountryDetailViewModel.swift */; };
+		4E5156AC2A46CD6800F96A6D /* CountryPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5156AB2A46CD6800F96A6D /* CountryPageViewController.swift */; };
+		4E5156AE2A46D14300F96A6D /* CountryMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5156AD2A46D14300F96A6D /* CountryMapViewController.swift */; };
+		4E5156B02A46D15500F96A6D /* CountryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5156AF2A46D15500F96A6D /* CountryInfoViewController.swift */; };
 		4E533F3026DFD9A700527FC2 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E533F2F26DFD9A700527FC2 /* Community.storyboard */; };
 		4E533F3226DFE32D00527FC2 /* TravelNote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E533F3126DFE32D00527FC2 /* TravelNote.storyboard */; };
 		4E533F3426E060F500527FC2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E533F3326E060F500527FC2 /* HomeViewController.swift */; };
@@ -225,6 +228,9 @@
 		4E32E07D26DF6ED8005682E5 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		4E5156A72A42DD5C00F96A6D /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
 		4E5156A92A45A13900F96A6D /* CountryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewModel.swift; sourceTree = "<group>"; };
+		4E5156AB2A46CD6800F96A6D /* CountryPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPageViewController.swift; sourceTree = "<group>"; };
+		4E5156AD2A46D14300F96A6D /* CountryMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryMapViewController.swift; sourceTree = "<group>"; };
+		4E5156AF2A46D15500F96A6D /* CountryInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryInfoViewController.swift; sourceTree = "<group>"; };
 		4E533F2F26DFD9A700527FC2 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		4E533F3126DFE32D00527FC2 /* TravelNote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelNote.storyboard; sourceTree = "<group>"; };
 		4E533F3326E060F500527FC2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -476,6 +482,9 @@
 				4E08E2342A3C76D200597110 /* ContinentRecommendCollectionViewCell.xib */,
 				4E5156A72A42DD5C00F96A6D /* CountryDetailViewController.swift */,
 				4E5156A92A45A13900F96A6D /* CountryDetailViewModel.swift */,
+				4E5156AB2A46CD6800F96A6D /* CountryPageViewController.swift */,
+				4E5156AF2A46D15500F96A6D /* CountryInfoViewController.swift */,
+				4E5156AD2A46D14300F96A6D /* CountryMapViewController.swift */,
 				4E533F3D26E09A8E00527FC2 /* TabBarWithCorners.swift */,
 				4EA4CF80270DB203001632D4 /* EarthNode.swift */,
 				4E93ED5E2738CECB00272A06 /* CloudsNode.swift */,
@@ -932,6 +941,7 @@
 				4E056DFE26C39AB500FDF0F3 /* AcceptTermsViewController.swift in Sources */,
 				4E7FD100271D83DA00867F16 /* UserModel.swift in Sources */,
 				4ECFB6E22725EA3500890C04 /* MusicCollectionViewCell.swift in Sources */,
+				4E5156AE2A46D14300F96A6D /* CountryMapViewController.swift in Sources */,
 				4E759CD42A3D98C500834195 /* UnsplashModel.swift in Sources */,
 				4E1C2E6127172FDF00B97EB0 /* CountryModifyCollectionViewCell.swift in Sources */,
 				4E1C2E4F27154B3100B97EB0 /* SplashViewModel.swift in Sources */,
@@ -950,6 +960,7 @@
 				4EC8C3DF273C5E4800B9B3F9 /* BlockUserListViewModel.swift in Sources */,
 				4ECFB6CE272045EC00890C04 /* EachCountryViewModel.swift in Sources */,
 				4E9B9BC126EE673200ABCE87 /* CountryAddViewController.swift in Sources */,
+				4E5156AC2A46CD6800F96A6D /* CountryPageViewController.swift in Sources */,
 				4EE9A3B326F6379500395B2F /* CommunityViewModel.swift in Sources */,
 				4E32E05326CD3085005682E5 /* CompleteViewController.swift in Sources */,
 				4E93ED472731B98700272A06 /* TravelPageViewController.swift in Sources */,
@@ -992,6 +1003,7 @@
 				4ECFB6DF2725DC5A00890C04 /* SoundEffectViewController.swift in Sources */,
 				4E0ADBE8273933D0005C7ECD /* TravelTicketCollectionViewCell.swift in Sources */,
 				4EE9A3B926F7684C00395B2F /* MyArticleViewController.swift in Sources */,
+				4E5156B02A46D15500F96A6D /* CountryInfoViewController.swift in Sources */,
 				4E056E0026C39AD200FDF0F3 /* EditProfileViewController.swift in Sources */,
 				4E64D12A26EF5BA100DB3FDB /* CountryAddCollectionViewCell.swift in Sources */,
 			);

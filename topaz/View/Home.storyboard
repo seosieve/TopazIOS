@@ -765,7 +765,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xy-dO-Cct">
-                                        <rect key="frame" x="57" y="369" width="300" height="100"/>
+                                        <rect key="frame" x="57" y="708" width="300" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="667-Uz-hcH"/>
                                             <constraint firstAttribute="height" constant="100" id="b9A-4x-6Dh"/>
@@ -774,15 +774,25 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rj7-bV-8Bs">
+                                        <rect key="frame" x="0.0" y="56" width="414" height="632"/>
+                                        <connections>
+                                            <segue destination="fEq-O4-THg" kind="embed" id="gfc-FT-Lpf"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="hWT-4o-8MO" firstAttribute="top" secondItem="aDb-Hz-Tih" secondAttribute="top" constant="16" id="6Om-QF-4DM"/>
                                     <constraint firstItem="2xy-dO-Cct" firstAttribute="centerX" secondItem="aDb-Hz-Tih" secondAttribute="centerX" id="Bt1-eV-lEB"/>
+                                    <constraint firstItem="Rj7-bV-8Bs" firstAttribute="top" secondItem="aDb-Hz-Tih" secondAttribute="top" constant="56" id="DvO-Re-Aya"/>
+                                    <constraint firstAttribute="bottom" secondItem="2xy-dO-Cct" secondAttribute="bottom" constant="30" id="KrY-TB-Tc1"/>
                                     <constraint firstItem="hWT-4o-8MO" firstAttribute="leading" secondItem="aDb-Hz-Tih" secondAttribute="leading" constant="28" id="MOZ-DZ-hmX"/>
                                     <constraint firstItem="wrc-2f-ZEV" firstAttribute="top" secondItem="aDb-Hz-Tih" secondAttribute="top" constant="14" id="PkQ-A5-R7n"/>
                                     <constraint firstAttribute="trailing" secondItem="wrc-2f-ZEV" secondAttribute="trailing" constant="24" id="R9L-3C-nOQ"/>
-                                    <constraint firstItem="2xy-dO-Cct" firstAttribute="centerY" secondItem="aDb-Hz-Tih" secondAttribute="centerY" id="Xg3-Cj-UfX"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rj7-bV-8Bs" secondAttribute="trailing" id="dcF-VS-n1m"/>
+                                    <constraint firstItem="Rj7-bV-8Bs" firstAttribute="leading" secondItem="aDb-Hz-Tih" secondAttribute="leading" id="faj-XP-Its"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rj7-bV-8Bs" secondAttribute="bottom" constant="150" id="n3x-Ll-bUs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -874,7 +884,7 @@
         <!--Navigation Controller-->
         <scene sceneID="wle-Pr-Z8a">
             <objects>
-                <navigationController storyboardIdentifier="navigationView" automaticallyAdjustsScrollViewInsets="NO" id="4HI-sI-YNG" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4HI-sI-YNG" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tNH-IC-KDg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -888,6 +898,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="af4-sM-lzu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3447.826086956522" y="817.63392857142856"/>
+        </scene>
+        <!--Country Page View Controller-->
+        <scene sceneID="h0V-KL-5Re">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fEq-O4-THg" customClass="CountryPageViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="q7h-dD-z96" kind="presentation" modalPresentationStyle="overFullScreen" id="bJ7-YN-ple"/>
+                        <segue destination="289-Ym-JL6" kind="presentation" modalPresentationStyle="overFullScreen" id="Tkg-3N-7Nn"/>
+                    </connections>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e2c-Lb-3qJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6016" y="818"/>
+        </scene>
+        <!--Country Info View Controller-->
+        <scene sceneID="EAZ-7H-AMS">
+            <objects>
+                <viewController storyboardIdentifier="FirstPageVC" id="q7h-dD-z96" customClass="CountryInfoViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lFY-rt-H2t">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="632"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="o83-B8-Zk2"/>
+                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rMq-zW-waQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6752" y="818"/>
+        </scene>
+        <!--Country Map View Controller-->
+        <scene sceneID="7QA-C5-vZD">
+            <objects>
+                <viewController storyboardIdentifier="SecondPageVC" id="289-Ym-JL6" customClass="CountryMapViewController" customModule="topaz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="caP-YN-RLe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="632"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="7za-OH-YL0"/>
+                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bo0-Qs-lLp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7477" y="818"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -943,6 +996,12 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
