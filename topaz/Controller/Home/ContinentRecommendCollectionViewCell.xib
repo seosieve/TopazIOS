@@ -52,8 +52,9 @@
                             <constraint firstAttribute="height" constant="40" id="UJD-hS-tP4"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NetherlandsImage" translatesAutoresizingMaskIntoConstraints="NO" id="rWI-Se-1P2">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rWI-Se-1P2">
                         <rect key="frame" x="0.0" y="0.0" width="179" height="128"/>
+                        <color key="backgroundColor" name="White"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thailand" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-mB-CU8">
                         <rect key="frame" x="123" y="84" width="40" height="28"/>
@@ -86,13 +87,15 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="NetherlandsImage" width="414" height="442"/>
         <image name="Thailand" width="81" height="58"/>
         <namedColor name="Gray1">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Gray4">
             <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

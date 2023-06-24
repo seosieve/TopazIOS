@@ -59,6 +59,7 @@ class ContinentRecommendViewModel {
                         getCountryHandler(searchResults)
                     } catch {
                         print(error)
+                        getCountryHandler([RestCountryResults]())
                     }
                 }
             }.resume()

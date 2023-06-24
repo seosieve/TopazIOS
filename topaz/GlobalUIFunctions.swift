@@ -79,9 +79,11 @@ func loadingAnimation(view: UIView) {
 }
 // Loading Animation View - 삭제가능
 func loadingAnimation(_ background: UIView, _ animation: AnimationView, view: UIView) {
+    background.isHidden = false
     background.frame = CGRect(x:0, y:0, width:view.bounds.width, height:view.bounds.height)
     background.backgroundColor = UIColor(named: "White")
     view.addSubview(background)
+    animation.isHidden = false
     animation.frame = CGRect(x:0, y:0, width:60, height:60)
     animation.center = view.center
     animation.contentMode = .scaleAspectFill

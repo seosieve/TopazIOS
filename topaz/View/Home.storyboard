@@ -607,6 +607,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JtE-wG-q6b">
+                                <rect key="frame" x="0.0" y="107" width="414" height="731"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqH-iA-l6n">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="838"/>
                                 <subviews>
@@ -693,22 +697,19 @@
                                     <constraint firstAttribute="trailing" secondItem="Eip-Xb-ZLG" secondAttribute="trailing" constant="24" id="zKp-AP-h3I"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBG-PJ-MAf">
-                                <rect key="frame" x="0.0" y="838" width="414" height="0.0"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3hg-QH-ryD"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="TqH-iA-l6n" firstAttribute="bottom" secondItem="3hg-QH-ryD" secondAttribute="bottom" id="K4z-jP-2sL"/>
-                            <constraint firstItem="gBG-PJ-MAf" firstAttribute="centerX" secondItem="94E-dI-ltr" secondAttribute="centerX" id="LiL-YJ-9HU"/>
-                            <constraint firstItem="gBG-PJ-MAf" firstAttribute="top" secondItem="TqH-iA-l6n" secondAttribute="bottom" id="RpS-fD-Qcy"/>
-                            <constraint firstItem="gBG-PJ-MAf" firstAttribute="leading" secondItem="94E-dI-ltr" secondAttribute="leading" id="W1w-0G-rao"/>
+                            <constraint firstItem="TqH-iA-l6n" firstAttribute="bottom" secondItem="94E-dI-ltr" secondAttribute="bottom" id="K4z-jP-2sL"/>
+                            <constraint firstAttribute="bottom" secondItem="JtE-wG-q6b" secondAttribute="bottom" id="Z3m-iA-hta"/>
                             <constraint firstItem="TqH-iA-l6n" firstAttribute="centerX" secondItem="94E-dI-ltr" secondAttribute="centerX" id="aoV-9X-Gxc"/>
-                            <constraint firstAttribute="bottom" secondItem="gBG-PJ-MAf" secondAttribute="bottom" id="dLH-Cv-goQ"/>
+                            <constraint firstItem="JtE-wG-q6b" firstAttribute="centerX" secondItem="94E-dI-ltr" secondAttribute="centerX" id="dq8-WJ-9CB"/>
                             <constraint firstItem="TqH-iA-l6n" firstAttribute="leading" secondItem="94E-dI-ltr" secondAttribute="leading" id="flB-18-d3z"/>
                             <constraint firstItem="TqH-iA-l6n" firstAttribute="top" secondItem="94E-dI-ltr" secondAttribute="top" id="lau-nt-B9S"/>
+                            <constraint firstItem="JtE-wG-q6b" firstAttribute="leading" secondItem="3hg-QH-ryD" secondAttribute="leading" id="mEq-Ef-30d"/>
+                            <constraint firstItem="JtE-wG-q6b" firstAttribute="top" secondItem="94E-dI-ltr" secondAttribute="top" constant="107" id="v0o-xj-ScX"/>
+                            <constraint firstItem="3hg-QH-ryD" firstAttribute="trailing" secondItem="JtE-wG-q6b" secondAttribute="trailing" id="z8F-9X-nXy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="GSY-jU-4os">
@@ -719,6 +720,7 @@
                         <outlet property="continentRecommendCollectionView" destination="kV6-85-pnj" id="h5K-am-wQi"/>
                         <outlet property="continentRecommendViewContainer" destination="TqH-iA-l6n" id="I8K-Ui-9v6"/>
                         <outlet property="continentTitleLabel" destination="xwv-Q0-Zj3" id="Dor-qO-2Zc"/>
+                        <outlet property="lottieBackgroundView" destination="JtE-wG-q6b" id="h3A-Qu-tzf"/>
                         <outlet property="searchContainerView" destination="vcE-e0-28O" id="m3V-JS-BqP"/>
                         <outlet property="searchTextField" destination="9fa-0Z-RWL" id="LtO-Ke-c1P"/>
                         <segue destination="dhy-CE-DUl" kind="push" identifier="goToCountryDetail" id="0EU-WS-ivZ"/>

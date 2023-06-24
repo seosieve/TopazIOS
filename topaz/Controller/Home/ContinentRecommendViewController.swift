@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import Lottie
 
 class ContinentRecommendViewController: UIViewController {
+    @IBOutlet weak var lottieBackgroundView: UIView!
     @IBOutlet weak var continentRecommendViewContainer: UIView!
     @IBOutlet weak var continentTitleLabel: UILabel!
     @IBOutlet weak var searchContainerView: UIView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var continentRecommendCollectionView: UICollectionView!
     
+    let lottieView = AnimationView(name: "Loading")
     var bySearchButton = false
     var continent = ""
     var restCountryResults = [RestCountryResults]()
@@ -78,22 +81,36 @@ extension ContinentRecommendViewController {
     }
     
     func makeViewByContinent(continent: String) {
+        loadingAnimation(lottieBackgroundView, lottieView, view: self.view)
         if bySearchButton {
             viewModel.getCountry { results in
                 self.restCountryResults = results
                 DispatchQueue.main.async {
+                    self.lottieBackgroundView.isHidden = true
+                    self.lottieView.isHidden = true
                     self.continentRecommendCollectionView.reloadData()
                 }
-                print(self.restCountryResults.count)
             }
         } else {
             viewModel.getCountry(byContinent: continentDic[continent]!) { results in
                 self.restCountryResults = results
                 DispatchQueue.main.async {
+                    self.lottieBackgroundView.isHidden = true
+                    self.lottieView.isHidden = true
                     self.continentRecommendCollectionView.reloadData()
                 }
-                print(self.restCountryResults.count)
             }
+        }
+    }
+    
+    func popUpToast(_ string: String) {
+        // Make Custom Alert Toast
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.setValue(NSAttributedString(string: string, attributes: [NSAttributedString.Key.font : UIFont(name: "NotoSansKR-Regular", size: 12)!,NSAttributedString.Key.foregroundColor : UIColor(named: "White")!]), forKey: "attributedTitle")
+        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            alert.dismiss(animated: true, completion: nil)
         }
     }
 }
@@ -103,32 +120,47 @@ extension ContinentRecommendViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let text = textField.text ?? ""
         
+        loadingAnimation(lottieBackgroundView, lottieView, view: self.view)
         restCountryResults.removeAll()
         if text == "" {
             if bySearchButton {
                 viewModel.getCountry { results in
                     self.restCountryResults = results
                     DispatchQueue.main.async {
+                        self.lottieBackgroundView.isHidden = true
+                        self.lottieView.isHidden = true
                         self.continentRecommendCollectionView.reloadData()
                     }
-                    print(self.restCountryResults.count)
                 }
             } else {
                 viewModel.getCountry(byContinent: continentDic[continent]!) { results in
                     self.restCountryResults = results
                     DispatchQueue.main.async {
+                        self.lottieBackgroundView.isHidden = true
+                        self.lottieView.isHidden = true
                         self.continentRecommendCollectionView.reloadData()
                     }
-                    print(self.restCountryResults.count)
                 }
             }
         } else {
             viewModel.getCountry(byName: text) { results in
-                print(results)
-                self.restCountryResults = results
-                results.forEach { result in
+                // 검색한 단어로 이루어진 나라가 없을 때
+                if results.isEmpty {
+                    self.restCountryResults = results
                     DispatchQueue.main.async {
+                        self.popUpToast("\(text)라는 나라를 찾을 수 없어요. 다시 검색해주세요.")
+                        self.lottieBackgroundView.isHidden = true
+                        self.lottieView.isHidden = true
                         self.continentRecommendCollectionView.reloadData()
+                    }
+                } else {
+                    self.restCountryResults = results
+                    results.forEach { result in
+                        DispatchQueue.main.async {
+                            self.lottieBackgroundView.isHidden = true
+                            self.lottieView.isHidden = true
+                            self.continentRecommendCollectionView.reloadData()
+                        }
                     }
                 }
             }
@@ -151,7 +183,13 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
         cell.countryNameLabel.text = restCountryResults[indexPath.row].translations.kor.common
         cell.countryNameEngLabel.text = restCountryResults[indexPath.row].name.common.count > 10 ? "" : restCountryResults[indexPath.row].name.common
         viewModel.getImage(by: restCountryResults[indexPath.row].name.common) { UrlArr in
-            cell.countryImageView.load(url: UrlArr[0])
+            if UrlArr.isEmpty {
+                DispatchQueue.main.async {
+                    cell.countryImageView.image = UIImage(named: "DefaultArticleImage")
+                }
+            } else {
+                cell.countryImageView.load(url: UrlArr[0])
+            }
         }
         cell.tapAction = {
             print(indexPath)
