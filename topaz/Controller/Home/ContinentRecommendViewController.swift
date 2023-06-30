@@ -20,8 +20,9 @@ class ContinentRecommendViewController: UIViewController {
     var bySearchButton = false
     var continent = ""
     var restCountryResults = [RestCountryResults]()
-    var unsplashImageResults = [UIImage]()
-    var clickedCountry = ""
+    var unsplashImageResults = [UIImage?]()
+    var clickedCountryResult:RestCountryResults? = nil
+    var clickedCountryImage:UIImage? = nil
     let continentDic = ["아시아": "Asia", "유럽": "Europe", "오세아니아": "Oceania", "아프리카": "Africa", "남아메리카": "South America", "북아메리카": "North America"]
     
     let viewModel = ContinentRecommendViewModel()
@@ -60,7 +61,8 @@ class ContinentRecommendViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToCountryDetail" {
             let destinationVC = segue.destination as! CountryDetailViewController
-            destinationVC.countryName = clickedCountry
+            destinationVC.countryResult = clickedCountryResult
+            destinationVC.countryImage = clickedCountryImage
         }
     }
 }
@@ -85,6 +87,7 @@ extension ContinentRecommendViewController {
         if bySearchButton {
             viewModel.getCountry { results in
                 self.restCountryResults = results
+                self.unsplashImageResults = Array(repeating: UIImage(named: "DefaultArticleImage")!, count: results.count)
                 DispatchQueue.main.async {
                     self.lottieBackgroundView.isHidden = true
                     self.lottieView.isHidden = true
@@ -94,6 +97,7 @@ extension ContinentRecommendViewController {
         } else {
             viewModel.getCountry(byContinent: continentDic[continent]!) { results in
                 self.restCountryResults = results
+                self.unsplashImageResults = Array(repeating: UIImage(named: "DefaultArticleImage")!, count: results.count)
                 DispatchQueue.main.async {
                     self.lottieBackgroundView.isHidden = true
                     self.lottieView.isHidden = true
@@ -126,6 +130,7 @@ extension ContinentRecommendViewController: UITextFieldDelegate {
             if bySearchButton {
                 viewModel.getCountry { results in
                     self.restCountryResults = results
+                    self.unsplashImageResults = Array(repeating: UIImage(named: "DefaultArticleImage")!, count: results.count)
                     DispatchQueue.main.async {
                         self.lottieBackgroundView.isHidden = true
                         self.lottieView.isHidden = true
@@ -135,6 +140,7 @@ extension ContinentRecommendViewController: UITextFieldDelegate {
             } else {
                 viewModel.getCountry(byContinent: continentDic[continent]!) { results in
                     self.restCountryResults = results
+                    self.unsplashImageResults = Array(repeating: UIImage(named: "DefaultArticleImage")!, count: results.count)
                     DispatchQueue.main.async {
                         self.lottieBackgroundView.isHidden = true
                         self.lottieView.isHidden = true
@@ -147,6 +153,7 @@ extension ContinentRecommendViewController: UITextFieldDelegate {
                 // 검색한 단어로 이루어진 나라가 없을 때
                 if results.isEmpty {
                     self.restCountryResults = results
+                    self.unsplashImageResults = Array(repeating: UIImage(named: "DefaultArticleImage")!, count: results.count)
                     DispatchQueue.main.async {
                         self.popUpToast("\(text)라는 나라를 찾을 수 없어요. 다시 검색해주세요.")
                         self.lottieBackgroundView.isHidden = true
@@ -155,6 +162,7 @@ extension ContinentRecommendViewController: UITextFieldDelegate {
                     }
                 } else {
                     self.restCountryResults = results
+                    self.unsplashImageResults = Array(repeating: UIImage(named: "DefaultArticleImage")!, count: results.count)
                     results.forEach { result in
                         DispatchQueue.main.async {
                             self.lottieBackgroundView.isHidden = true
@@ -188,12 +196,19 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
                     cell.countryImageView.image = UIImage(named: "DefaultArticleImage")
                 }
             } else {
-                cell.countryImageView.load(url: UrlArr[0])
+                cell.countryImageView.loadWithHandler(url: UrlArr[1]) { image in
+                    self.unsplashImageResults[indexPath.row] = cell.countryImageView.image ?? nil
+                    print(cell.countryImageView.image)
+                }
             }
         }
         cell.tapAction = {
             print(indexPath)
-            self.clickedCountry = self.restCountryResults[indexPath.row].name.official
+            print(self.restCountryResults[indexPath.row])
+            print(self.unsplashImageResults[indexPath.row])
+            print("*********************************")
+            self.clickedCountryResult = self.restCountryResults[indexPath.row]
+            self.clickedCountryImage = self.unsplashImageResults[indexPath.row]
             self.performSegue(withIdentifier: "goToCountryDetail", sender: nil)
         }
         return cell

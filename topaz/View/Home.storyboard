@@ -777,7 +777,7 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rj7-bV-8Bs">
                                         <rect key="frame" x="0.0" y="56" width="414" height="632"/>
                                         <connections>
-                                            <segue destination="fEq-O4-THg" kind="embed" id="gfc-FT-Lpf"/>
+                                            <segue destination="fEq-O4-THg" kind="embed" identifier="goToPageVC" id="gfc-FT-Lpf"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -919,9 +919,23 @@
                     <view key="view" contentMode="scaleToFill" id="lFY-rt-H2t">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="632"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ItalyImage" translatesAutoresizingMaskIntoConstraints="NO" id="7Ur-1L-e2f">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="432"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="o83-B8-Zk2"/>
-                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <color key="backgroundColor" name="White"/>
+                        <constraints>
+                            <constraint firstItem="7Ur-1L-e2f" firstAttribute="leading" secondItem="o83-B8-Zk2" secondAttribute="leading" id="2Gf-wp-Xl6"/>
+                            <constraint firstItem="o83-B8-Zk2" firstAttribute="bottom" secondItem="7Ur-1L-e2f" secondAttribute="bottom" constant="200" id="Yfh-Le-tSP"/>
+                            <constraint firstItem="o83-B8-Zk2" firstAttribute="trailing" secondItem="7Ur-1L-e2f" secondAttribute="trailing" id="ftW-Rt-HwI"/>
+                            <constraint firstItem="7Ur-1L-e2f" firstAttribute="top" secondItem="lFY-rt-H2t" secondAttribute="top" id="nya-Ky-XhF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="countryImageView" destination="7Ur-1L-e2f" id="VNL-2K-WH3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rMq-zW-waQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -955,6 +969,7 @@
         <image name="Historic-ON" width="56" height="56"/>
         <image name="Home_OFF" width="29" height="34"/>
         <image name="Home_ON" width="29" height="34"/>
+        <image name="ItalyImage" width="414" height="442"/>
         <image name="MainBackgroundImage-Morning" width="414" height="499"/>
         <image name="Mountain-OFF" width="56" height="56"/>
         <image name="Mountain-ON" width="56" height="56"/>
@@ -996,9 +1011,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

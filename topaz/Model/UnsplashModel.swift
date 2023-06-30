@@ -76,4 +76,26 @@ extension UIImageView {
             }
         }
     }
+    
+    func loadWithHandler(url: URL, loadImageHandler: @escaping (UIImage) -> Void) {
+        if let cachedImage = UIImageView.cache.object(forKey: url as AnyObject) {
+            DispatchQueue.main.async {
+                self.image = cachedImage
+            }
+            print("You get image from cache")
+        } else {
+            DispatchQueue.global().async { [weak self] in
+                if let data = try? Data(contentsOf: url) {
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self?.contentMode = .scaleAspectFill
+                            self?.image = image
+                            loadImageHandler(image)
+                            UIImageView.cache.setObject(self!.image!, forKey: url as AnyObject)
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

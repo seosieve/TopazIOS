@@ -11,21 +11,25 @@ class CountryDetailViewController: UIViewController {
     @IBOutlet weak var CountryDetailViewContainer: UIView!
     @IBOutlet weak var label: UILabel!
     
-    var countryName = ""
+    var countryResult:RestCountryResults? = nil
+    var countryImage:UIImage? = nil
     
     var viewModel = CountryDetailViewModel()
+    var countryPageViewController: CountryPageViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         makeModalCircular(target: CountryDetailViewContainer)
-        print(countryName)
-        viewModel.getCountry(byName: countryName) { results in
-            print(results)
-            DispatchQueue.main.async {
-                self.label.text = results[0].capital[0]
-                self.view.layoutIfNeeded()
-            }
-        }
+        print(countryResult ?? "aa")
+        print(countryImage ?? "bb")
+//        viewModel.getCountry(byName: countryName) { results in
+//            print(results)
+//            DispatchQueue.main.async {
+//                self.label.text = results[0].capital[0]
+//                self.view.layoutIfNeeded()
+//            }
+//        }
+        
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -34,5 +38,13 @@ class CountryDetailViewController: UIViewController {
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPageVC" {
+            let destinationVC = segue.destination as! CountryPageViewController
+            countryPageViewController = destinationVC
+            destinationVC.transferCountryImage(countryImage)
+        }
     }
 }

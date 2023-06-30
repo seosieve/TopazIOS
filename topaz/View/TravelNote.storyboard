@@ -714,13 +714,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행 등급" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXC-QV-Zay">
-                                                        <rect key="frame" x="24" y="198" width="0.0" height="17.5"/>
+                                                        <rect key="frame" x="24" y="198" width="1" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="12"/>
                                                         <color key="textColor" name="Gray3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이코노미 클래스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUZ-C0-gTI">
-                                                        <rect key="frame" x="59" y="196" width="108" height="23.5"/>
+                                                        <rect key="frame" x="60" y="196" width="108" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="16"/>
                                                         <color key="textColor" name="Gray2"/>
                                                         <nil key="highlightedColor"/>
@@ -732,10 +732,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-7m-fQY">
-                                                        <rect key="frame" x="59" y="227.5" width="335" height="8"/>
+                                                        <rect key="frame" x="60" y="227.5" width="334" height="8"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWR-H7-70w">
-                                                                <rect key="frame" x="0.0" y="0.0" width="108.5" height="8"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="108" height="8"/>
                                                                 <subviews>
                                                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUI-yD-egk">
                                                                         <rect key="frame" x="0.0" y="0.0" width="8" height="8"/>
@@ -765,7 +765,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="td4-Ta-AI0">
-                                                                <rect key="frame" x="113.5" y="0.0" width="108" height="8"/>
+                                                                <rect key="frame" x="113" y="0.0" width="108" height="8"/>
                                                                 <subviews>
                                                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zgA-Yn-R27">
                                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="8"/>
@@ -795,7 +795,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aa5-qc-6nw">
-                                                                <rect key="frame" x="226.5" y="0.0" width="108.5" height="8"/>
+                                                                <rect key="frame" x="226" y="0.0" width="108" height="8"/>
                                                                 <subviews>
                                                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvQ-rw-POZ">
                                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="8"/>
@@ -830,7 +830,7 @@
                                                         </constraints>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="등급" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-gd-Hu7">
-                                                        <rect key="frame" x="170" y="201.5" width="22.5" height="17.5"/>
+                                                        <rect key="frame" x="171" y="201.5" width="22.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="12"/>
                                                         <color key="textColor" name="Gray3"/>
                                                         <nil key="highlightedColor"/>
@@ -2020,7 +2020,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jrc-Kh-eIS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1790" y="344"/>
+            <point key="canvasLocation" x="1768" y="344"/>
         </scene>
         <!--Travel Album View Controller-->
         <scene sceneID="wJN-Y9-ASe">

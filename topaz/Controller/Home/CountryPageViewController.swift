@@ -29,6 +29,11 @@ class CountryPageViewController: UIPageViewController {
             setViewControllers([firstVC], direction: .forward, animated: true)
         }
     }
+    
+    func transferCountryImage(_ image: UIImage?) {
+        let countryInfoViewController = pageList[0] as! CountryInfoViewController
+        countryInfoViewController.countryImage = image
+    }
 }
 
 extension CountryPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {

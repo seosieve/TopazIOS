@@ -81,6 +81,7 @@ class ContinentRecommendViewModel {
                         let searchResults = try JSONDecoder().decode(UnsplashResults.self, from: data)
                         searchResults.results.forEach { result in
                             UrlArr.append(result.urls.smallUrl)
+                            UrlArr.append(result.urls.regularUrl)
                         }
                         getImageHandler(UrlArr)
                     } catch {

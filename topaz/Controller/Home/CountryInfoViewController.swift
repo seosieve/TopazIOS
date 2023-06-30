@@ -8,10 +8,14 @@
 import UIKit
 
 class CountryInfoViewController: UIViewController {
-
+    
+    @IBOutlet weak var countryImageView: UIImageView!
+    var countryImage: UIImage? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        countryImageView.image = countryImage
+        print(countryImage,"%%%%%%%%%%%%%%%%%%%")
     }
     
 
