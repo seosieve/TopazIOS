@@ -41,7 +41,7 @@ class TravelNoteViewController: UIViewController {
     
     var imageUrl: String?
     let backgroundView = UIView()
-    let lottieView = AnimationView(name: "Loading")
+    let lottieView = LottieAnimationView(name: "Loading")
     
     override func viewDidLoad() {
         super.viewDidLoad()

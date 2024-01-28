@@ -17,17 +17,38 @@ struct ImageInfo: Codable {
     let height: Int
     let color: String
     let urls: Urls
+    let links: Links
+    let user: Photographer
 }
 
 struct Urls: Codable {
+    let full: String
     let regular: String
     let small: String
+    var fullUrl: URL {
+        return URL(string: full)!
+    }
     var regularUrl: URL {
         return URL(string: regular)!
     }
     var smallUrl: URL {
         return URL(string: small)!
     }
+}
+
+struct Links: Codable {
+    let html: String
+}
+
+struct Photographer: Codable {
+    let name: String
+}
+
+//MARK: - Unsplash Error
+enum UnsplashError: Error {
+    case invalidURL
+    case invalidResponse
+    case invalidImage
 }
 
 //MARK: - Unsplash Base URL
@@ -69,7 +90,9 @@ extension UIImageView {
                         DispatchQueue.main.async {
                             self?.contentMode = .scaleAspectFill
                             self?.image = image
-                            UIImageView.cache.setObject(self!.image!, forKey: url as AnyObject)
+                            if let imageView = self {
+                                UIImageView.cache.setObject(self!.image!, forKey: url as AnyObject)
+                            }
                         }
                     }
                 }
@@ -77,7 +100,27 @@ extension UIImageView {
         }
     }
     
-    func loadWithHandler(url: URL, loadImageHandler: @escaping (UIImage) -> Void) {
+    func loadAsync(url: URL) async throws {
+        if let cachedImage = UIImageView.cache.object(forKey: url as AnyObject) {
+            print("You get image from cache")
+            self.image = cachedImage
+        } else {
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url)
+                if let image = UIImage(data: data) {
+                    self.contentMode = .scaleAspectFill
+                    self.image = image
+                    UIImageView.cache.setObject(self.image!, forKey: url as AnyObject)
+                } else {
+                    throw UnsplashError.invalidImage
+                }
+            } catch {
+                throw error
+            }
+        }
+    }
+    
+    func loadWithHandler(url: URL, loadImageHandler: @escaping () -> Void) {
         if let cachedImage = UIImageView.cache.object(forKey: url as AnyObject) {
             DispatchQueue.main.async {
                 self.image = cachedImage
@@ -90,7 +133,7 @@ extension UIImageView {
                         DispatchQueue.main.async {
                             self?.contentMode = .scaleAspectFill
                             self?.image = image
-                            loadImageHandler(image)
+                            loadImageHandler()
                             UIImageView.cache.setObject(self!.image!, forKey: url as AnyObject)
                         }
                     }

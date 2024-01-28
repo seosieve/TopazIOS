@@ -11,8 +11,8 @@ class CountryDetailViewController: UIViewController {
     @IBOutlet weak var CountryDetailViewContainer: UIView!
     @IBOutlet weak var label: UILabel!
     
-    var countryResult:RestCountryResults? = nil
-    var countryImage:UIImage? = nil
+    var restCountryResult:RestCountryResults? = nil
+    var unsplashResults:UnsplashResults? = nil
     
     var viewModel = CountryDetailViewModel()
     var countryPageViewController: CountryPageViewController!
@@ -20,8 +20,8 @@ class CountryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeModalCircular(target: CountryDetailViewContainer)
-        print(countryResult ?? "aa")
-        print(countryImage ?? "bb")
+        print(restCountryResult ?? "aa")
+        print(unsplashResults ?? "bb")
 //        viewModel.getCountry(byName: countryName) { results in
 //            print(results)
 //            DispatchQueue.main.async {
@@ -44,7 +44,7 @@ class CountryDetailViewController: UIViewController {
         if segue.identifier == "goToPageVC" {
             let destinationVC = segue.destination as! CountryPageViewController
             countryPageViewController = destinationVC
-            destinationVC.transferCountryImage(countryImage)
+            destinationVC.transferCountryResult(restCountryResult, unsplashResults)
         }
     }
 }

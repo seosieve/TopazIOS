@@ -227,7 +227,7 @@ extension ArticleDetailViewController {
         let delete = UIAlertAction(title: "삭제", style: .default) { action in
             // 삭제시 Animation
             let backgroundView = UIView()
-            let lottieView = AnimationView(name: "Loading")
+            let lottieView = LottieAnimationView(name: "Loading")
             loadingAnimation(backgroundView, lottieView, view: self.view)
             // 유저 경험치 감소
             self.viewModel.minusUserExp()

@@ -30,9 +30,10 @@ class CountryPageViewController: UIPageViewController {
         }
     }
     
-    func transferCountryImage(_ image: UIImage?) {
+    func transferCountryResult(_ restCountryResult: RestCountryResults?, _ unsplashResults: UnsplashResults?) {
         let countryInfoViewController = pageList[0] as! CountryInfoViewController
-        countryInfoViewController.countryImage = image
+        countryInfoViewController.restCountryResult = restCountryResult
+        countryInfoViewController.unsplashResults = unsplashResults
     }
 }
 

@@ -29,6 +29,8 @@ import CoreGraphics
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
+#else
+import UIKit
 #endif
 
 /// Represents an item which could be processed by an `ImageProcessor`.
@@ -352,9 +354,6 @@ public enum Radius {
 /// case.
 ///
 public struct RoundCornerImageProcessor: ImageProcessor {
-
-    /// Represents a radius specified in a `RoundCornerImageProcessor`.
-    public typealias Radius = Kingfisher.Radius
 
     /// Identifier of the processor.
     /// - Note: See documentation of `ImageProcessor` protocol for more.
@@ -919,20 +918,5 @@ extension KFCrossPlatformColor {
     var rgbaDescription: String {
         let components = self.rgba
         return String(format: "(%.2f,%.2f,%.2f,%.2f)", components.r, components.g, components.b, components.a)
-    }
-    
-    @available(*, deprecated, message: "`hex` is not safe for colors in extended space. Do not use this.")
-    var hex: String {
-        
-        let (r, g, b, a) = rgba
-
-        let rInt = Int(r * 255) << 24
-        let gInt = Int(g * 255) << 16
-        let bInt = Int(b * 255) << 8
-        let aInt = Int(a * 255)
-        
-        let rgba = rInt | gInt | bInt | aInt
-        
-        return String(format:"#%08x", rgba)
     }
 }

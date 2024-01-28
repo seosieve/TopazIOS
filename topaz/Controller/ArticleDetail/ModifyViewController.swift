@@ -46,7 +46,7 @@ class ModifyViewController: UIViewController {
     var musicVolumeArr: [Float] = [0, 0, 0, 0]
     var musicPlayArr = [Sound?]()
     let backgroundView = UIView()
-    let lottieView = AnimationView(name: "Loading")
+    let lottieView = LottieAnimationView(name: "Loading")
     
     override func viewDidLoad() {
         super.viewDidLoad()

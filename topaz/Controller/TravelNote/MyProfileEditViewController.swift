@@ -35,7 +35,7 @@ class MyProfileEditViewController: UIViewController {
     let originalNickname = UserDefaults.standard.string(forKey: "nickname")!
     let originalIntroduce = UserDefaults.standard.string(forKey: "introduce")!
     let backgroundView = UIView()
-    let lottieView = AnimationView(name: "Loading")
+    let lottieView = LottieAnimationView(name: "Loading")
     
     override func viewDidLoad() {
         super.viewDidLoad()

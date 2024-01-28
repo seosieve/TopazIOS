@@ -21,7 +21,7 @@ class ThirdPageViewController: UIViewController {
 //MARK: - UI Functions
 extension ThirdPageViewController {
     func lottieAnimation(json: String, container: UIView) {
-        let lottieView = AnimationView(name: json)
+        let lottieView = LottieAnimationView(name: json)
         container.addSubview(lottieView)
         lottieView.translatesAutoresizingMaskIntoConstraints = false
         lottieView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true

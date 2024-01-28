@@ -61,11 +61,5 @@ extension TeamTopazViewController {
             }
         }
     }
-    
-    func openUrl(urlStr: String) {
-        if let url = URL(string: urlStr) {
-            UIApplication.shared.open(url)
-        }
-    }
 }
 

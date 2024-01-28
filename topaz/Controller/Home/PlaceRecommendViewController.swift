@@ -39,11 +39,22 @@ class PlaceRecommendViewController: UIViewController {
         }
         makeBorder(target: ticketingButton, radius: 12, isFilled: true)
         let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
-        viewModel.getImage(by: recommendPlace) { UrlArr in
-            self.unsplashCountry.countryImage[0] = UrlArr
-            //이미지 그리기
+        //continuation wrapping
+        Task {
+            let urlArr = await withCheckedContinuation { continuation in
+                viewModel.getImage(by: recommendPlace) { urlArr in
+                    continuation.resume(returning: urlArr)
+                }
+            }
+            self.unsplashCountry.countryImage[0] = urlArr
             self.unsplashImageDraw(1)
         }
+        
+        Task {
+            try await viewModel.getImageAsync(by: recommendPlace)
+            await unsplashImageDrawAsync(1)
+        }
+
     }
     
     @IBAction func placeButtonPressed(_ sender: UIButton) {
@@ -88,31 +99,50 @@ extension PlaceRecommendViewController {
         recommendCountryEnglishName.text = recommendCountry.countryEnglishName[tag-1]
         recommendCountryIntroduce.text = recommendCountry.countryIntroduce[tag-1]
         // 이미지 변경 - Unsplash Image Load
-        if unsplashCountry.countryImage[tag-1].isEmpty {
-            let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
-            viewModel.getImage(by: recommendPlace) { UrlArr in
-                self.unsplashCountry.countryImage[tag-1] = UrlArr
-                //이미지 그리기
-                self.unsplashImageDraw(tag)
-            }
-        } else {
-            print("Unsplash Image already exist")
-            self.unsplashImageDraw(tag)
+        let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
+        Task {
+            try await viewModel.getImageAsync(by: recommendPlace)
+            await unsplashImageDrawAsync(tag)
         }
-        // API Call 갯수 한계시에 Default Image로 설정해야하는데 한계점 찍어도 터지지는 않는듯..??
+        
+//        if unsplashCountry.countryImage[tag-1].isEmpty {
+//            let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
+//            viewModel.getImage(by: recommendPlace) { UrlArr in
+//                self.unsplashCountry.countryImage[tag-1] = UrlArr
+//                //이미지 그리기
+//                self.unsplashImageDraw(tag)
+//            }
+//        } else {
+//            print("Unsplash Image already exist")
+//            self.unsplashImageDraw(tag)
+//        }
     }
     
+    //사실 mainActor 필요없음
     func unsplashImageDraw(_ tag: Int) {
-        DispatchQueue.main.async {
-            let instantImageView = UIImageView()
-            instantImageView.frame = CGRect(x: 0, y: 0, width: self.recommendCountryImage.bounds.width, height: self.recommendCountryImage.bounds.height)
-            self.recommendCountryImage.addSubview(instantImageView)
-            for i in 0..<self.unsplashCountry.countryImage[tag-1].count {
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i*3)) {
-                    UIView.transition(with: instantImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                        instantImageView.load(url: self.unsplashCountry.countryImage[tag-1][i])
-                    }, completion: nil)
-                }
+        print(Thread.current)
+        let instantImageView = UIImageView()
+        instantImageView.frame = CGRect(x: 0, y: 0, width: self.recommendCountryImage.bounds.width, height: self.recommendCountryImage.bounds.height)
+        self.recommendCountryImage.addSubview(instantImageView)
+        for i in 0..<self.unsplashCountry.countryImage[tag-1].count {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i*3)) {
+                UIView.transition(with: instantImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                    instantImageView.load(url: self.unsplashCountry.countryImage[tag-1][i])
+                }, completion: nil)
+            }
+        }
+    }
+    
+    func unsplashImageDrawAsync(_ tag: Int) async {
+        let instantImageView = UIImageView()
+        instantImageView.frame = CGRect(x: 0, y: 0, width: self.recommendCountryImage.bounds.width, height: self.recommendCountryImage.bounds.height)
+        self.recommendCountryImage.addSubview(instantImageView)
+        let url = await UnsplashCountryAsync.shared.countryImage
+        for i in 0..<url.count {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i*3)) {
+                UIView.transition(with: instantImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                    instantImageView.load(url: url[i])
+                }, completion: nil)
             }
         }
     }

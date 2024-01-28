@@ -56,8 +56,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="179" height="128"/>
                         <color key="backgroundColor" name="White"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thailand" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-mB-CU8">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uj7-mB-CU8">
                         <rect key="frame" x="123" y="84" width="40" height="28"/>
+                        <color key="backgroundColor" name="White"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="HLE-6J-16w"/>
                             <constraint firstAttribute="height" constant="28" id="x8d-cR-nfW"/>
@@ -87,7 +88,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Thailand" width="81" height="58"/>
         <namedColor name="Gray1">
             <color red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

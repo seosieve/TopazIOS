@@ -28,15 +28,36 @@ class UnsplashCountry {
     var countryImage = Array(repeating: [URL](), count: 5)
 }
 
+actor UnsplashCountryAsync {
+    private init() {}
+    
+    static let shared = UnsplashCountryAsync()
+    
+    var countryImage = [URL]()
+    
+    func deleteAll() {
+        countryImage.removeAll()
+    }
+    
+    func appendCountry(searchResults: UnsplashResults) {
+        searchResults.results.forEach { countryImage.append($0.urls.regularUrl) }
+    }
+}
+
 struct Continent {
     let continentName = ["아시아", "유럽", "아프리카", "오세아니아", "북아메리카", "남아메리카"]
 }
 
 struct RestCountryResults: Codable {
-    let flags: Flag
-//    let coatOfArms: CoatOfArms
     let name: Name
-    let capital: [String]
+//    let subregion: String
+    let flags: Flag
+    let latlng: [Double]
+    let flag: String
+    let population: Int
+    let timezones: [String]
+//    let coatOfArms: CoatOfArms
+//    let capital: [String?]
     let translations: Translations
 }
 

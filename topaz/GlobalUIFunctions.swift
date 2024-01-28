@@ -48,9 +48,16 @@ func removeNavigationBackground(view: UIViewController) {
     view.navigationController?.navigationBar.shadowImage = UIImage()
 }
 
+//버튼 클릭했을 때 Web URL Open
+func openUrl(urlStr: String) {
+    if let url = URL(string: urlStr) {
+        UIApplication.shared.open(url)
+    }
+}
+
 // 움직이지 않는 loop Animation Set
 func setLoopAnimation(json: String, container: UIView) {
-    let lottieView = AnimationView(name: json)
+    let lottieView = LottieAnimationView(name: json)
     container.addSubview(lottieView)
     lottieView.translatesAutoresizingMaskIntoConstraints = false
     lottieView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
@@ -68,7 +75,7 @@ func loadingAnimation(view: UIView) {
     backgroundView.frame = CGRect(x:0, y:0, width:view.bounds.width, height:view.bounds.height)
     backgroundView.backgroundColor = UIColor(named: "White")
     view.addSubview(backgroundView)
-    let lottieView = AnimationView(name: "Loading")
+    let lottieView = LottieAnimationView(name: "Loading")
     lottieView.frame = CGRect(x:0, y:0, width:60, height:60)
     lottieView.center = view.center
     lottieView.contentMode = .scaleAspectFill
@@ -78,7 +85,7 @@ func loadingAnimation(view: UIView) {
     lottieView.play()
 }
 // Loading Animation View - 삭제가능
-func loadingAnimation(_ background: UIView, _ animation: AnimationView, view: UIView) {
+func loadingAnimation(_ background: UIView, _ animation: LottieAnimationView, view: UIView) {
     background.isHidden = false
     background.frame = CGRect(x:0, y:0, width:view.bounds.width, height:view.bounds.height)
     background.backgroundColor = UIColor(named: "White")
@@ -139,8 +146,6 @@ func movePlane(level:Int, planeX: NSLayoutConstraint, view: UIView, bar: UIProgr
         }
     }
 }
-
-
 
 
 

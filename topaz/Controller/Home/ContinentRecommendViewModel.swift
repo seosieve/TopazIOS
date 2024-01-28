@@ -9,7 +9,7 @@ import UIKit
 
 class ContinentRecommendViewModel {
     func getCountry(getCountryHandler: @escaping ([RestCountryResults]) -> Void) {
-        if let url = URL.withRestCountry(string: "all?fields=name,translations,flags,capital") {
+        if let url = URL.withRestCountry(string: "all") {
             let urlRequest = URLRequest(url: url)
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 if let error = error {
@@ -28,7 +28,7 @@ class ContinentRecommendViewModel {
     }
     
     func getCountry(byContinent text: String, getCountryHandler: @escaping ([RestCountryResults]) -> Void) {
-        if let url = URL.withRestCountry(string: "region/\(text)?fields=name,translations,flags,capital") {
+        if let url = URL.withRestCountry(string: "region/\(text)") {
             let urlRequest = URLRequest(url: url)
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 if let error = error {
@@ -47,7 +47,7 @@ class ContinentRecommendViewModel {
     }
     
     func getCountry(byName text: String, getCountryHandler: @escaping ([RestCountryResults]) -> Void) {
-        if let url = URL.withRestCountry(string: "translation/\(text)?fields=name,translations,flags,capital") {
+        if let url = URL.withRestCountry(string: "translation/\(text)") {
             let urlRequest = URLRequest(url: url)
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 if let error = error {
@@ -66,7 +66,7 @@ class ContinentRecommendViewModel {
         }
     }
     
-    func getImage(by countryName: String, getImageHandler: @escaping ([URL]) -> Void) {
+    func getImage(by countryName: String, getImageHandler: @escaping (UnsplashResults?) -> Void) {
         if let url = URL.withUnsplash(string: "search/photos?page=1&per_page=1&query=\(countryName)") {
             var urlRequest = URLRequest(url: url)
             urlRequest.httpMethod = "GET"
@@ -76,14 +76,16 @@ class ContinentRecommendViewModel {
                     print(error)
                 } else if let response = response as? HTTPURLResponse, let data = data {
                     print("Status Code: \(response.statusCode)")
+//                    if let rateRemaining = response.allHeaderFields["x-ratelimit-remaining"] as? String {
+//                        print(rateRemaining)
+//                    }
                     do {
-                        var UrlArr = [URL]()
                         let searchResults = try JSONDecoder().decode(UnsplashResults.self, from: data)
-                        searchResults.results.forEach { result in
-                            UrlArr.append(result.urls.smallUrl)
-                            UrlArr.append(result.urls.regularUrl)
+                        if searchResults.results.isEmpty {
+                            getImageHandler(nil)
+                        } else {
+                            getImageHandler(searchResults)
                         }
-                        getImageHandler(UrlArr)
                     } catch {
                         print(error)
                     }
