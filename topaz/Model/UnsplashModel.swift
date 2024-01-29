@@ -91,7 +91,7 @@ extension UIImageView {
                             self?.contentMode = .scaleAspectFill
                             self?.image = image
                             if let imageView = self {
-                                UIImageView.cache.setObject(self!.image!, forKey: url as AnyObject)
+                                UIImageView.cache.setObject(imageView.image!, forKey: url as AnyObject)
                             }
                         }
                     }

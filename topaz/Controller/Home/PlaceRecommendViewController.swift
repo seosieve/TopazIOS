@@ -27,7 +27,6 @@ class PlaceRecommendViewController: UIViewController {
     @IBOutlet weak var ticketingButton: UIButton!
     
     let recommendCountry = RecommendCountry()
-    let unsplashCountry = UnsplashCountry()
     var placeRecommendDelegate: PlaceRecommendDelegate?
     let viewModel = PlaceRecommendViewModel()
     
@@ -39,22 +38,10 @@ class PlaceRecommendViewController: UIViewController {
         }
         makeBorder(target: ticketingButton, radius: 12, isFilled: true)
         let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
-        //continuation wrapping
-        Task {
-            let urlArr = await withCheckedContinuation { continuation in
-                viewModel.getImage(by: recommendPlace) { urlArr in
-                    continuation.resume(returning: urlArr)
-                }
-            }
-            self.unsplashCountry.countryImage[0] = urlArr
-            self.unsplashImageDraw(1)
-        }
-        
         Task {
             try await viewModel.getImageAsync(by: recommendPlace)
             await unsplashImageDrawAsync(1)
         }
-
     }
     
     @IBAction func placeButtonPressed(_ sender: UIButton) {
@@ -116,21 +103,6 @@ extension PlaceRecommendViewController {
 //            print("Unsplash Image already exist")
 //            self.unsplashImageDraw(tag)
 //        }
-    }
-    
-    //사실 mainActor 필요없음
-    func unsplashImageDraw(_ tag: Int) {
-        print(Thread.current)
-        let instantImageView = UIImageView()
-        instantImageView.frame = CGRect(x: 0, y: 0, width: self.recommendCountryImage.bounds.width, height: self.recommendCountryImage.bounds.height)
-        self.recommendCountryImage.addSubview(instantImageView)
-        for i in 0..<self.unsplashCountry.countryImage[tag-1].count {
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(i*3)) {
-                UIView.transition(with: instantImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    instantImageView.load(url: self.unsplashCountry.countryImage[tag-1][i])
-                }, completion: nil)
-            }
-        }
     }
     
     func unsplashImageDrawAsync(_ tag: Int) async {

@@ -47,7 +47,6 @@ class PlaceRecommendViewModel {
             await UnsplashCountryAsync.shared.deleteAll()
             let searchResults = try JSONDecoder().decode(UnsplashResults.self, from: data)
             await UnsplashCountryAsync.shared.appendCountry(searchResults: searchResults)
-            print(Thread.current)
         } catch {
             throw error
         }
