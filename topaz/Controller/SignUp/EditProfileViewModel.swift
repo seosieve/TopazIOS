@@ -5,9 +5,9 @@
 //  Created by 서충원 on 2021/09/01.
 //
 
-import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 import UIKit
 
 class EditProfileViewModel {

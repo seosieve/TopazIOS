@@ -40,7 +40,8 @@ extension CountryInfoViewController {
     func setViews() {
         countryName.text = restCountryResult?.translations.kor.common
         countryEnglishName.text = restCountryResult?.name.common
-//        countryScript.text = "\(restCountryResult?.name.common) is located in \(subregion), it’s exact latitude and longitude is \(latlng). International time is \(timezones) faster or slower than Korea’s time. \(population) of people are living, and capital city is \(capital). They speaks \(languages.ara). \(flag)"
+        countryScript.withLineSpacing(6)
+        countryScript.text = "\(restCountryResult!.name.common) is located in \(restCountryResult!.subregion), it’s exact latitude and longitude is \(restCountryResult!.latlng[0]), \(restCountryResult!.latlng[1]). International time is \(restCountryResult!.timezones.first!) faster or slower than Korea’s time. \(restCountryResult!.population) of people are living."
         
         if unsplashResults == nil {
             imageLink.setTitle("", for: .normal)

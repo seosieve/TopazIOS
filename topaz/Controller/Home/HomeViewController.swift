@@ -9,7 +9,6 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SceneKit
-import SwiftUI
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var mainTopazLogo: UIBarButtonItem!
@@ -332,4 +331,12 @@ extension HomeViewController {
         sceneView.addGestureRecognizer(tap)
     }
 }
+
+
+
+
+
+
+    
+
 

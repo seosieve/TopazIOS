@@ -147,5 +147,16 @@ func movePlane(level:Int, planeX: NSLayoutConstraint, view: UIView, bar: UIProgr
     }
 }
 
+extension UILabel {
+    func withLineSpacing(_ lineSpacing: CGFloat) {
+        let attString = NSMutableAttributedString(string: self.text!)
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = lineSpacing
+        attString.addAttribute(.paragraphStyle, value: style, range: NSMakeRange(0, attString.length))
+        self.attributedText = attString
+    }
+}
+
+
 
 

@@ -20,7 +20,7 @@ class SplashViewController: UIViewController {
         lottieAnimation(json: "Splash", container: animationContainer)
         
         //FIX - now()+3으로 바꾸기 - 빠르게 시뮬돌리기위해서 바꿔놨음
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
             if user == nil {
                 // Onboarding으로 이동
                 print("SplashVC: 현재 로그인 상태가 아니므로 OnboardingVC로 화면을 시작합니다.")

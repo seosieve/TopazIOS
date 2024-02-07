@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class CompleteViewModel {
     func signIn(email: String, password: String, signInHandler: @escaping () -> ()) {

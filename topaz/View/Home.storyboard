@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -767,32 +767,39 @@
                                             <action selector="cancelButtonPressed:" destination="dhy-CE-DUl" eventType="touchUpInside" id="ODc-xd-Rdm"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xy-dO-Cct">
-                                        <rect key="frame" x="57" y="756" width="300" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="667-Uz-hcH"/>
-                                            <constraint firstAttribute="height" constant="100" id="b9A-4x-6Dh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rj7-bV-8Bs">
                                         <rect key="frame" x="0.0" y="56" width="414" height="680"/>
                                         <connections>
                                             <segue destination="fEq-O4-THg" kind="embed" identifier="goToPageVC" id="gfc-FT-Lpf"/>
                                         </connections>
                                     </containerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="티켓 예매하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xy-dO-Cct">
+                                        <rect key="frame" x="20" y="786" width="374" height="60"/>
+                                        <color key="backgroundColor" name="MintBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="b9A-4x-6Dh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="18"/>
+                                        <color key="textColor" name="Gray7"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="hWT-4o-8MO" firstAttribute="top" secondItem="aDb-Hz-Tih" secondAttribute="top" constant="16" id="6Om-QF-4DM"/>
                                     <constraint firstItem="2xy-dO-Cct" firstAttribute="centerX" secondItem="aDb-Hz-Tih" secondAttribute="centerX" id="Bt1-eV-lEB"/>
                                     <constraint firstItem="Rj7-bV-8Bs" firstAttribute="top" secondItem="aDb-Hz-Tih" secondAttribute="top" constant="56" id="DvO-Re-Aya"/>
-                                    <constraint firstAttribute="bottom" secondItem="2xy-dO-Cct" secondAttribute="bottom" constant="30" id="KrY-TB-Tc1"/>
+                                    <constraint firstAttribute="bottom" secondItem="2xy-dO-Cct" secondAttribute="bottom" constant="40" id="KrY-TB-Tc1"/>
                                     <constraint firstItem="hWT-4o-8MO" firstAttribute="leading" secondItem="aDb-Hz-Tih" secondAttribute="leading" constant="28" id="MOZ-DZ-hmX"/>
                                     <constraint firstItem="wrc-2f-ZEV" firstAttribute="top" secondItem="aDb-Hz-Tih" secondAttribute="top" constant="14" id="PkQ-A5-R7n"/>
                                     <constraint firstAttribute="trailing" secondItem="wrc-2f-ZEV" secondAttribute="trailing" constant="24" id="R9L-3C-nOQ"/>
+                                    <constraint firstItem="2xy-dO-Cct" firstAttribute="leading" secondItem="aDb-Hz-Tih" secondAttribute="leading" constant="20" id="c49-DP-Lwu"/>
                                     <constraint firstAttribute="trailing" secondItem="Rj7-bV-8Bs" secondAttribute="trailing" id="dcF-VS-n1m"/>
                                     <constraint firstItem="Rj7-bV-8Bs" firstAttribute="leading" secondItem="aDb-Hz-Tih" secondAttribute="leading" id="faj-XP-Its"/>
                                     <constraint firstAttribute="bottom" secondItem="Rj7-bV-8Bs" secondAttribute="bottom" constant="150" id="n3x-Ll-bUs"/>

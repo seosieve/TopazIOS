@@ -46,14 +46,12 @@ struct Continent {
 
 struct RestCountryResults: Codable {
     let name: Name
-//    let subregion: String
+    let subregion: String
     let flags: Flag
     let latlng: [Double]
     let flag: String
     let population: Int
     let timezones: [String]
-//    let coatOfArms: CoatOfArms
-//    let capital: [String?]
     let translations: Translations
 }
 
