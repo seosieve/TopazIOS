@@ -63,15 +63,6 @@
 
 <br>
 
-> 여행경험 글쓰기 화면
-
-<img src="https://github.com/seosieve/TopazIOS/assets/76729543/929f1d4b-7052-49e9-9108-823f715cbf75" width="20%"> <img src="https://github.com/seosieve/TopazIOS/assets/76729543/f70358d6-324f-4506-863e-34b460332d3b" width="20%">
-
-- 최대 3국가까지 **다녀온 나라들을 선택**하고, 글을 쓸 수 있습니다.
-- 앨범이나 카메라에서 **사진을 선택**하고, 게시글에 첨부가 가능합니다.
-
-<br>
-
 > 배경음악 편집 화면
 
 <img src="https://github.com/seosieve/TopazIOS/assets/76729543/f7ab2a41-f783-4643-be66-726fe1a31b1e" width="20%"> <img src="https://github.com/seosieve/TopazIOS/assets/76729543/97311dfb-fce7-4eaf-ba5a-ccc064526551" width="20%">
