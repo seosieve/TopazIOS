@@ -93,7 +93,8 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func continentButtonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "goToContinent", sender: sender)
+        //아직 미구현
+//        self.performSegue(withIdentifier: "goToContinent", sender: sender)
     }
     
     @IBAction func goBackButtonPressed(_ sender: UIButton) {

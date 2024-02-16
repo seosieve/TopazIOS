@@ -53,13 +53,13 @@ enum UnsplashError: Error {
 
 //MARK: - Unsplash Base URL
 extension URL {
-    private static var unsplashBaseUrl: String {
-        return "https://api.unsplash.com/"
-    }
+    private static let unsplashBaseUrl = "https://api.unsplash.com/"
+    
     static func withUnsplash(string: String) -> URL? {
         let urlString = "\(unsplashBaseUrl)\(string)"
-        let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        return URL(string: encodedString)
+        //URL 한글입력 percentString으로 변경
+        let addingPercentString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        return URL(string: addingPercentString)
     }
 }
 

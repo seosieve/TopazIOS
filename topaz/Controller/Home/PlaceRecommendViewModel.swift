@@ -8,6 +8,7 @@
 import UIKit
 
 class PlaceRecommendViewModel {
+    //with GCD
     func getImage(by countryName: String, getImageHandler: @escaping ([URL]) -> Void) {
         if let url = URL.withUnsplash(string: "search/photos?page=\(Int.random(in: 1...10))&per_page=5&query=\(countryName)") {
             var urlRequest = URLRequest(url: url)

@@ -38,10 +38,10 @@ class PlaceRecommendViewController: UIViewController {
         }
         makeBorder(target: ticketingButton, radius: 12, isFilled: true)
         let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
-        Task {
-            try await viewModel.getImageAsync(by: recommendPlace)
-            await unsplashImageDrawAsync(1)
-        }
+//        Task {
+//            try await viewModel.getImageAsync(by: recommendPlace)
+//            await unsplashImageDrawAsync(1)
+//        }
     }
     
     @IBAction func placeButtonPressed(_ sender: UIButton) {
