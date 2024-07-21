@@ -182,7 +182,46 @@ func playBackgroundMusic(fileName: String, isFirst: Bool = false) {
 </div>
 <br>
 
-
+- NSCache를 이용한 메모리 캐싱과 FileManager을 이용한 디스크 캐싱을 함께 사용
+- FileManager 저장 시, 1시간 단위의 만료 기간을 UserDefaults에 함께 저장, API Call 초기화 주기와 Sync
+- UIImage 리사이징을 통해 파일시스템 용량의 과중화 또한 방지
+```swift
+func getImage(urlString: String, fileName: String, completion: @escaping (UIImage) -> Void) {
+    //Memory Caching
+    if let cachedImage = getMemoryImage(fileName: fileName) {
+        completion(cachedImage)
+        return
+    }
+    //Disk Caching
+    if let diskImage = getDiskImage(fileName: fileName) {
+        //Set Memory Cache
+        cache.setObject(diskImage, forKey: fileName as NSString)
+        completion(diskImage)
+        return
+    }
+    
+    guard let url = URL(string: urlString) else { return }
+    let urlRequest = URLRequest(url: url)
+    
+    URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, response, error) in
+        if let error = error {
+            print(error)
+        } else if let response = response as? HTTPURLResponse, let data = data {
+            print("Status Code: \(response.statusCode)")
+            guard let image = UIImage(data: data) else { return }
+            //Set Memory Cache
+            self?.cache.setObject(image, forKey: fileName as NSString)
+            //Set Disk Cache
+            self?.repository.addImage(image: image, fileName: fileName)
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        }
+    }.resume()
+}
+```
+### 비용적, 사용자적 이점
+- 변경 후, 게시글 하나당 평균 용량 4.05MB에서 1.87MB로 감소
 
 
 <br><br><br><br><br><br><br><br><br><br>
