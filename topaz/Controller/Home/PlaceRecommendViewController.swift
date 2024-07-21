@@ -37,11 +37,6 @@ class PlaceRecommendViewController: UIViewController {
             makeBorder(target: button, radius: 12, isFilled: true)
         }
         makeBorder(target: ticketingButton, radius: 12, isFilled: true)
-        let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
-//        Task {
-//            try await viewModel.getImageAsync(by: recommendPlace)
-//            await unsplashImageDrawAsync(1)
-//        }
     }
     
     @IBAction func placeButtonPressed(_ sender: UIButton) {
@@ -87,6 +82,7 @@ extension PlaceRecommendViewController {
         recommendCountryIntroduce.text = recommendCountry.countryIntroduce[tag-1]
         // 이미지 변경 - Unsplash Image Load
         let recommendPlace = recommendCountryEnglishName.text ?? "Airplane"
+        
         Task {
             try await viewModel.getImageAsync(by: recommendPlace)
             await unsplashImageDrawAsync(tag)

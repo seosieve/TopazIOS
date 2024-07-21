@@ -40,10 +40,6 @@ actor UnsplashCountryAsync {
     }
 }
 
-struct Continent {
-    let continentName = ["아시아", "유럽", "아프리카", "오세아니아", "북아메리카", "남아메리카"]
-}
-
 struct RestCountryResults: Codable {
     let name: Name
     let subregion: String
@@ -58,10 +54,6 @@ struct RestCountryResults: Codable {
 struct Flag: Codable {
     let png: String
 }
-
-//struct CoatOfArms: Codable {
-//    let png: String
-//}
 
 struct Name: Codable {
     let common: String
@@ -81,6 +73,7 @@ extension URL {
     private static var restCountryBaseUrl: String {
         return "https://restcountries.com/v3.1/"
     }
+    
     static func withRestCountry(string: String) -> URL? {
         let urlString = "\(restCountryBaseUrl)\(string)"
         let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!

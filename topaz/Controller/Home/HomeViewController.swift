@@ -28,7 +28,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectiblesCompleteButton: UIButton!
     
     let userdefault = UserDefaults.standard
-    let continent = Continent()
     let time = Time()
     var continentCount = 0
     let viewModel = HomeViewModel()
@@ -38,17 +37,17 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         removeNavigationBackground(view: self)
         addCollectiblesViewIfNeeded()
-        let currentTime = time.convertTime(detectCurrentTime())
-        makeViewByTime(currentTime)
-        makeEarthScene(currentTime)
-        makeShadow(target: placeRecommendButton, radius: 18)
-        makeCircle(target: continentButton, color: "White", width: 2)
-        makeShadow(target: continentButton, radius: 20, opacity: 0.8)
-        goForwardButton.transform = goForwardButton.transform.rotated(by: .pi)
-        makeCircle(target: goBackButton)
-        makeShadow(target: goBackButton, radius: 16, opacity: 0.8)
-        makeCircle(target: goForwardButton)
-        makeShadow(target: goForwardButton, radius: 16, opacity: 0.8)
+//        let currentTime = time.convertTime(detectCurrentTime())
+//        makeViewByTime(currentTime)
+//        makeEarthScene(currentTime)
+//        makeShadow(target: placeRecommendButton, radius: 18)
+//        makeCircle(target: continentButton, color: "White", width: 2)
+//        makeShadow(target: continentButton, radius: 20, opacity: 0.8)
+//        goForwardButton.transform = goForwardButton.transform.rotated(by: .pi)
+//        makeCircle(target: goBackButton)
+//        makeShadow(target: goBackButton, radius: 16, opacity: 0.8)
+//        makeCircle(target: goForwardButton)
+//        makeShadow(target: goForwardButton, radius: 16, opacity: 0.8)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,18 +67,17 @@ class HomeViewController: UIViewController {
     }
     
     @objc func handleTap(_ gestureRecognize: UITapGestureRecognizer) {
-        if gestureRecognize.numberOfTouches == 2 {
-            print("aa")
-        }
         let point = gestureRecognize.location(in: sceneView)
         let hitResults = sceneView.hitTest(point, options: [:])
         if hitResults.count > 0 {
             let result = hitResults[0]
-            let continentTitle = result.node.geometry!.name!
-            if continent.continentName.contains(continentTitle) {
+            guard let continentTitle = result.node.geometry?.name else { return }
+            
+            if Continent.allContinents.contains(continentTitle) {
                 continentButton.setTitle(continentTitle, for: .normal)
-                continentCount = continent.continentName.firstIndex(of: continentTitle)!
-                print(continentTitle)
+                if let count = Continent.allContinents.firstIndex(of: continentTitle) {
+                    continentCount = count
+                }
             }
         }
     }
@@ -93,8 +91,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func continentButtonPressed(_ sender: UIButton) {
-        //아직 미구현
-//        self.performSegue(withIdentifier: "goToContinent", sender: sender)
+        self.performSegue(withIdentifier: "goToContinent", sender: sender)
     }
     
     @IBAction func goBackButtonPressed(_ sender: UIButton) {
@@ -103,7 +100,7 @@ class HomeViewController: UIViewController {
         } else {
             continentCount -= 1
         }
-        let continentTitle = continent.continentName[continentCount]
+        let continentTitle = Continent.allContinents[continentCount]
         continentButton.setTitle(continentTitle, for: .normal)
     }
     
@@ -113,7 +110,7 @@ class HomeViewController: UIViewController {
         } else {
             continentCount += 1
         }
-        let continentTitle = continent.continentName[continentCount]
+        let continentTitle = Continent.allContinents[continentCount]
         continentButton.setTitle(continentTitle, for: .normal)
     }
     

@@ -23,9 +23,9 @@ class ContinentRecommendViewController: UIViewController {
     var unsplashResults = [UnsplashResults?]()
     var clickedRestCountryResult:RestCountryResults? = nil
     var clickedUnsplashResult:UnsplashResults? = nil
-    let continentDic = ["아시아": "Asia", "유럽": "Europe", "오세아니아": "Oceania", "아프리카": "Africa", "남아메리카": "South America", "북아메리카": "North America"]
     
     let viewModel = ContinentRecommendViewModel()
+    let networkManager = NetworkManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +95,10 @@ extension ContinentRecommendViewController {
                 }
             }
         } else {
-            viewModel.getCountry(byContinent: continentDic[continent]!) { results in
+            guard let continent = Continent(rawValue: continent) else { return }
+            let selectedContinent = String(describing: continent)
+            
+            viewModel.getCountry(byContinent: selectedContinent) { results in
                 self.restCountryResults = results
                 self.unsplashResults = Array(repeating: nil, count: results.count)
                 DispatchQueue.main.async {
@@ -138,7 +141,10 @@ extension ContinentRecommendViewController: UITextFieldDelegate {
                     }
                 }
             } else {
-                viewModel.getCountry(byContinent: continentDic[continent]!) { results in
+                guard let continent = Continent(rawValue: continent) else { return false }
+                let selectedContinent = String(describing: continent)
+                
+                viewModel.getCountry(byContinent: selectedContinent) { results in
                     self.restCountryResults = results
                     self.unsplashResults = Array(repeating: nil, count: results.count)
                     DispatchQueue.main.async {
@@ -185,22 +191,35 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recommendCell", for: indexPath) as! ContinentRecommendCollectionViewCell
+        ///Configure Reusable Cell
+        let identifier = "recommendCell"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? ContinentRecommendCollectionViewCell
+        guard let cell else { return UICollectionViewCell() }
+        ///Configure List
+        let restCountry = restCountryResults[indexPath.row]
+        
         makeShadow(target: cell, radius: 12, width: 5, height: 10, opacity: 0.2, shadowRadius: 5)
-        cell.countryFlagImageView.load(url: URL(string: restCountryResults[indexPath.row].flags.png)!)
+        
+        let urlString = restCountry.flags.png
+        let fileName = restCountry.name.official
+        networkManager.getImage(urlString: urlString, fileName: fileName) { image in
+            cell.countryFlagImageView.image = image
+        }
+        
+        
         cell.countryNameLabel.text = restCountryResults[indexPath.row].translations.kor.common
         cell.countryNameEngLabel.text = restCountryResults[indexPath.row].name.common.count > 10 ? "" : restCountryResults[indexPath.row].name.common
-        viewModel.getImage(by: restCountryResults[indexPath.row].name.common) { unsplashResult in
-            if unsplashResult == nil {
-                DispatchQueue.main.async {
-                    cell.countryImageView.image = UIImage(named: "DefaultArticleImage")
-                }
-                self.unsplashResults[indexPath.row] = nil
-            } else {
-                cell.countryImageView.load(url: unsplashResult!.results[0].urls.smallUrl)
-                self.unsplashResults[indexPath.row] = unsplashResult
-            }
-        }
+//        viewModel.getImage(by: restCountryResults[indexPath.row].name.common) { unsplashResult in
+//            if unsplashResult == nil {
+//                DispatchQueue.main.async {
+//                    cell.countryImageView.image = UIImage(named: "DefaultArticleImage")
+//                }
+//                self.unsplashResults[indexPath.row] = nil
+//            } else {
+//                cell.countryImageView.load(url: unsplashResult!.results[0].urls.smallUrl)
+//                self.unsplashResults[indexPath.row] = unsplashResult
+//            }
+//        }
         cell.tapAction = {
             print(indexPath)
             print(self.restCountryResults[indexPath.row])
