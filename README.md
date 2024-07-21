@@ -175,9 +175,12 @@ func playBackgroundMusic(fileName: String, isFirst: Bool = false) {
 </div>
 <br>
 
-### 3. 회전목마
-
-
+### 3. Unsplash API 메모리 & 디스크 캐싱
+> 각 나라별로 API Call을 하다보니 API 한도가 너무 빨리 소모되는 상황이 발생
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/314565b1-6dd5-4bdc-b86b-40840277d4bb" width="75%"> <img src="https://github.com/seosieve/TopazIOS/assets/76729543/32af170b-bd75-4403-9088-a6a8738dc86e" width="11.8%"> <img src="https://github.com/seosieve/TopazIOS/assets/76729543/47a43577-9195-419f-8955-19cbbc9e3976" width="11.8%"> 
+</div>
+<br>
 
 
 
