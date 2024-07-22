@@ -12,7 +12,7 @@ final class NetworkManager {
     private let repository = ImageFileRepository()
     private let cache = NSCache<NSString, UIImage>()
     
-    func getCachedImage(fileName: String) -> UIImage? {
+    func getMemoryImage(fileName: String) -> UIImage? {
         return cache.object(forKey: fileName as NSString)
     }
     
@@ -21,12 +21,14 @@ final class NetworkManager {
     }
     
     func getImage(urlString: String, fileName: String, completion: @escaping (UIImage) -> Void) {
-        if let cachedImage = getCachedImage(fileName: fileName) {
+        ///Memory Caching
+        if let cachedImage = getMemoryImage(fileName: fileName) {
             completion(cachedImage)
             return
         }
-        
+        ///Disk Caching
         if let diskImage = getDiskImage(fileName: fileName) {
+            ///Set Memory Cache
             cache.setObject(diskImage, forKey: fileName as NSString)
             completion(diskImage)
             return
@@ -41,9 +43,10 @@ final class NetworkManager {
             } else if let response = response as? HTTPURLResponse, let data = data {
                 print("Status Code: \(response.statusCode)")
                 guard let image = UIImage(data: data) else { return }
-                self?.repository.addImage(image: image, fileName: fileName)
+                ///Set Memory Cache
                 self?.cache.setObject(image, forKey: fileName as NSString)
-                print("NetworkImage")
+                ///Set Disk Cache
+                self?.repository.addImage(image: image, fileName: fileName)
                 DispatchQueue.main.async {
                     completion(image)
                 }
@@ -51,3 +54,5 @@ final class NetworkManager {
         }.resume()
     }
 }
+
+

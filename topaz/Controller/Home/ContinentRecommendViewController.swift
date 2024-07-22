@@ -209,17 +209,17 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
         
         cell.countryNameLabel.text = restCountryResults[indexPath.row].translations.kor.common
         cell.countryNameEngLabel.text = restCountryResults[indexPath.row].name.common.count > 10 ? "" : restCountryResults[indexPath.row].name.common
-//        viewModel.getImage(by: restCountryResults[indexPath.row].name.common) { unsplashResult in
-//            if unsplashResult == nil {
-//                DispatchQueue.main.async {
-//                    cell.countryImageView.image = UIImage(named: "DefaultArticleImage")
-//                }
-//                self.unsplashResults[indexPath.row] = nil
-//            } else {
-//                cell.countryImageView.load(url: unsplashResult!.results[0].urls.smallUrl)
-//                self.unsplashResults[indexPath.row] = unsplashResult
-//            }
-//        }
+        viewModel.getImage(by: restCountryResults[indexPath.row].name.common) { unsplashResult in
+            if unsplashResult == nil {
+                DispatchQueue.main.async {
+                    cell.countryImageView.image = UIImage(named: "DefaultArticleImage")
+                }
+                self.unsplashResults[indexPath.row] = nil
+            } else {
+                cell.countryImageView.load(url: unsplashResult!.results[0].urls.smallUrl)
+                self.unsplashResults[indexPath.row] = unsplashResult
+            }
+        }
         cell.tapAction = {
             print(indexPath)
             print(self.restCountryResults[indexPath.row])
