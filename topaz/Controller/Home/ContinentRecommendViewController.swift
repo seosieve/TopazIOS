@@ -125,11 +125,11 @@ extension ContinentRecommendViewController {
 //MARK: - UITextFieldDelegate
 extension ContinentRecommendViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let text = textField.text ?? ""
+        guard let text = textField.text else { return false }
         
         loadingAnimation(lottieBackgroundView, lottieView, view: self.view)
         restCountryResults.removeAll()
-        if text == "" {
+        if text.isEmpty {
             if bySearchButton {
                 viewModel.getCountry { results in
                     self.restCountryResults = results
@@ -197,19 +197,15 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
         guard let cell else { return UICollectionViewCell() }
         ///Configure List
         let restCountry = restCountryResults[indexPath.row]
-        
-        makeShadow(target: cell, radius: 12, width: 5, height: 10, opacity: 0.2, shadowRadius: 5)
-        
+        cell.configureCell(restCountry)
+        ///Flag Image
         let urlString = restCountry.flags.png
         let fileName = restCountry.name.official
         networkManager.getImage(urlString: urlString, fileName: fileName) { image in
             cell.countryFlagImageView.image = image
         }
-        
-        
-        cell.countryNameLabel.text = restCountryResults[indexPath.row].translations.kor.common
-        cell.countryNameEngLabel.text = restCountryResults[indexPath.row].name.common.count > 10 ? "" : restCountryResults[indexPath.row].name.common
-        viewModel.getImage(by: restCountryResults[indexPath.row].name.common) { unsplashResult in
+        ///Unsplash Image
+        viewModel.getImage(by: restCountry.name.common) { unsplashResult in
             if unsplashResult == nil {
                 DispatchQueue.main.async {
                     cell.countryImageView.image = UIImage(named: "DefaultArticleImage")
@@ -220,6 +216,7 @@ extension ContinentRecommendViewController: UICollectionViewDelegate, UICollecti
                 self.unsplashResults[indexPath.row] = unsplashResult
             }
         }
+        ///Click Action
         cell.tapAction = {
             print(indexPath)
             print(self.restCountryResults[indexPath.row])

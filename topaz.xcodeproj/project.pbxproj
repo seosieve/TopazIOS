@@ -11,6 +11,7 @@
 		4E01361A26FA24600071F31D /* MySettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01361926FA24600071F31D /* MySettingViewModel.swift */; };
 		4E01361C26FA25D50071F31D /* CompleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01361B26FA25D50071F31D /* CompleteViewModel.swift */; };
 		4E03824F2C4E5FE20016F1A6 /* Music.json in Resources */ = {isa = PBXBuildFile; fileRef = 4E03824E2C4E5FE20016F1A6 /* Music.json */; };
+		4E0382C92C4F498A0016F1A6 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0382C82C4F498A0016F1A6 /* APIKey.swift */; };
 		4E056DF126C25E5100FDF0F3 /* FindPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E056DF026C25E5100FDF0F3 /* FindPasswordViewController.swift */; };
 		4E056DF326C25EEB00FDF0F3 /* EditAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E056DF226C25EEB00FDF0F3 /* EditAccountViewController.swift */; };
 		4E056DF826C3901E00FDF0F3 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E056DF726C3901E00FDF0F3 /* SignUp.storyboard */; };
@@ -190,6 +191,7 @@
 		4E01361926FA24600071F31D /* MySettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewModel.swift; sourceTree = "<group>"; };
 		4E01361B26FA25D50071F31D /* CompleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewModel.swift; sourceTree = "<group>"; };
 		4E03824E2C4E5FE20016F1A6 /* Music.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Music.json; sourceTree = "<group>"; };
+		4E0382C82C4F498A0016F1A6 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		4E056DF026C25E5100FDF0F3 /* FindPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPasswordViewController.swift; sourceTree = "<group>"; };
 		4E056DF226C25EEB00FDF0F3 /* EditAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewController.swift; sourceTree = "<group>"; };
 		4E056DF726C3901E00FDF0F3 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -628,6 +630,7 @@
 			isa = PBXGroup;
 			children = (
 				4ECA9E7B2C4CD97F00B3C6EC /* NetworkManager.swift */,
+				4E0382C82C4F498A0016F1A6 /* APIKey.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -997,6 +1000,7 @@
 				4EDA40282700B57E00B5E80B /* WrittingAddImageTableViewCell.swift in Sources */,
 				4E1C2E5E2717240700B97EB0 /* CountryModifyViewController.swift in Sources */,
 				4E93ED4D2731B9E100272A06 /* TravelCollectiblesViewController.swift in Sources */,
+				4E0382C92C4F498A0016F1A6 /* APIKey.swift in Sources */,
 				4E9B9BBF26EDE87600ABCE87 /* WrittingViewController.swift in Sources */,
 				4E1C2E562716808400B97EB0 /* ModifyViewModel.swift in Sources */,
 				4E8A58C42705545700C8A646 /* FifthPageViewController.swift in Sources */,

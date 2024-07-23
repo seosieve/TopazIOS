@@ -65,11 +65,8 @@ extension URL {
 
 //MARK: - Unsplash Access Key
 extension URLRequest {
-    private static var accessKey: String {
-        return "Client-ID 90F3-aRMjztqoF00rWwWbUW3g109EGHACjIQ_Kc5yQ4"
-    }
     mutating func setAccessKey() {
-        return setValue(URLRequest.accessKey, forHTTPHeaderField: "Authorization")
+        return setValue("Client-ID \(APIKey.unsplashKey)", forHTTPHeaderField: "Authorization")
     }
 }
 

@@ -53,4 +53,11 @@ class ContinentRecommendCollectionViewCell: UICollectionViewCell {
         textContainerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
     }
     
+    func configureCell(_ restCountry: RestCountryResults) {
+        ///Shadow
+        makeShadow(target: self, radius: 12, width: 5, height: 10, opacity: 0.2, shadowRadius: 5)
+        ///Country Names
+        countryNameLabel.text = restCountry.translations.kor.common
+        countryNameEngLabel.text = restCountry.name.common.count > 10 ? "" : restCountry.name.common
+    }
 }

@@ -10,9 +10,9 @@ import UIKit
 struct Time {
     func convertTime(_ currentTime :Int) -> String {
         switch currentTime {
-        case 8..<20:
+        case 8..<17:
             return "Morning"
-        case 20...21:
+        case 17...21:
             return "Evening"
         default:
             return "Night"
