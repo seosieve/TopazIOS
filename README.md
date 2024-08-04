@@ -46,7 +46,7 @@
 
 ## 프로젝트 기술 스택
 - **활용기술 및 키워드**
-  - **iOS** : swift 5.8, xcode 15.0.1, UIKit, SceneKit
+  - **iOS** : swift 5.7, xcode 14.0, UIKit, SceneKit
   - **Network** : URLSession, Firebase
   - **UI** : StoryBoard
 
