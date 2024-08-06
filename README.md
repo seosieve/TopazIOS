@@ -221,8 +221,12 @@ func getImage(urlString: String, fileName: String, completion: @escaping (UIImag
 }
 ```
 ### 비용적, 사용자적 이점
-- 변경 후, 게시글 하나당 평균 용량 4.05MB에서 1.87MB로 감소
-
+- 변경 후, View당 평균 Unsplash API Call 27회에서 4회로 감소
+- 앱 내 Document파일도 최대 32.5MB이상 증가하지 않아 메모리에 큰 부담을 주지 않음
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/c9f1e306-b02f-44a2-a05f-c84cdf788673">
+</div>
+<br>
 
 
 
